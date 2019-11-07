@@ -1,5 +1,5 @@
 <template>
-  <div ref="box" class="turntable-box" :style="opts.boxStyle">
+  <div ref="box" class="turntable-box">
     <div ref="outer" class="outer lottery lotteryContent" :style="outerStyle">
       <img ref="lanrenImg" :src="opts.lanrenImg" />
     </div>
@@ -15,17 +15,13 @@
 import lanrenImg from "@/components/turntable/image/lanren.png";
 import lotteryBtnImg from "@/components/turntable/image/arrow.png";
 var defaultOpt = {
-  boxStyle: {
-    width: "360px",
-    height: "360px"
-  },
   lanrenImg: lanrenImg, //转盘图片
   lotteryBtnImg: lotteryBtnImg, //转盘按钮图片
   rotateNum: 5, //转盘转动圈数
   direction: 0, //0为顺时针转动,1为逆时针转动
   lotteryData: [], //抽奖数据
   lotteryCount: 0, //抽奖次数
-  canLotteryCount: 100000, //能抽奖次数
+  totalLotteryCount: 100000, //能抽奖次数
   getDegByUser(selectItem, angle, count) {
     console.log(count);
     return angle;
@@ -56,12 +52,9 @@ export default {
   },
   created() {
     this.opts = Object.assign({}, defaultOpt, this.options);
+    this.opts = Object.assign(this.options, this.opts);
   },
-  computed: {
-    isCompleted() {
-      return this.opts.lotteryCount >= this.opts.canLotteryCount;
-    }
-  },
+  computed: {},
   mounted() {
     this.init();
   },
@@ -69,26 +62,30 @@ export default {
   methods: {
     init() {
       this.defNum = this.opts.rotateNum * 360; //转盘需要转动的角度
-      this.$refs.outer.addEventListener("webkitTransitionEnd", () => {
-        let degTemp = this.dataDeg;
-        if (this.opts.direction == 0) {
-          this.outerStyle = Object.assign({
+      let vm = this;
+      vm.$refs.outer.addEventListener("webkitTransitionEnd", () => {
+        let degTemp = vm.dataDeg;
+        let tempcount = vm.opts.lotteryCount;
+        if (vm.opts.direction == 0 && tempcount != 1) {
+          vm.outerStyle = Object.assign({
             "-webkit-transition": "none",
             transition: "none",
             "-webkit-transform": `rotate(${degTemp}deg)`,
             transform: `rotate(${degTemp}deg)`
           });
         } else {
-          this.outerStyle = Object.assign({
-            "-webkit-transition": "none",
-            transition: "none",
-            "-webkit-transform": `rotate(${-degTemp}deg)`,
-            transform: `rotate(${-degTemp}deg)`
-          });
+          if (tempcount != 1) {
+            vm.outerStyle = Object.assign({
+              "-webkit-transition": "none",
+              transition: "none",
+              "-webkit-transform": `rotate(${-degTemp}deg)`,
+              transform: `rotate(${-degTemp}deg)`
+            });
+          }
         }
-        this.opts.lotteryCount++;
-        this.$emit("lotteryEndHandler", this.selectItem, this);
-        this.doing = false;
+
+        vm.selectItem && vm.$emit("lotteryEndHandler", vm.selectItem, vm);
+        vm.doing = false;
       });
     },
     goLottery(_deg) {
@@ -108,6 +105,7 @@ export default {
         "-webkit-transform": `rotate(${realDeg}deg)`,
         transform: `rotate(${realDeg}deg)`
       });
+      this.opts.lotteryCount++;
     },
     lotteryBtnClick() {
       if (this.doing) {
@@ -119,9 +117,13 @@ export default {
     getRandomNum(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
     },
-    countDeg(litem) {
+    countDeg(litem, readName) {
       let deg = null;
       this.selectItem = litem;
+      if (readName) {
+        this.selectItem.name = readName;
+      }
+
       let angle = litem.angle;
       angle = this.opts.getDegByUser(litem, angle, this.opts.lotteryCount);
       let min = angle[0] + 5;
@@ -130,22 +132,27 @@ export default {
 
       return deg;
     },
-    lotteryMove({ fieldName = null, fieldValue = null, index = -1 }) {
-      if (this.isCompleted) {
+    lotteryMove({
+      fieldName = null,
+      fieldValue = null,
+      index = -1,
+      readName = ""
+    }) {
+      if (this.opts.lotteryCount >= this.opts.totalLotteryCount) {
         this.$emit("activeComplete", this);
         return;
       }
       let deg = null;
       if (index !== -1) {
         let litem = this.opts.lotteryData[index];
-        deg = this.countDeg(litem);
+        deg = this.countDeg(litem, readName);
       } else {
         let litem = this.opts.lotteryData.find(item => {
           if (item[fieldName] == fieldValue) {
             return true;
           }
         });
-        deg = this.countDeg(litem);
+        deg = this.countDeg(litem, readName);
       }
       if (deg !== null) this.goLottery(deg);
     },
@@ -158,18 +165,10 @@ export default {
 </script>
 <style scoped>
 .turntable-box {
-  width: 14rem;
-  height: 14rem;
+  width: 600px;
+  height: 600px;
   position: relative;
   margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
 }
 .turntable-box .outer {
   width: 100%;
@@ -200,8 +199,10 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 2;
 
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
 }
 .turntable-box .inner.start:active {
   -webkit-transform: translate(-50%, -50%) scale(0.95);
@@ -209,14 +210,5 @@ export default {
   -ms-transform: translate(-50%, -50%) scale(0.95);
   -o-transform: translate(-50%, -50%) scale(0.95);
   transform: translate(-50%, -50%) scale(0.95);
-}
-.turntable-box .inner.start {
-  background-position: 0 0;
-}
-.turntable-box .inner.no-start {
-  background-position: -5rem 0;
-}
-.turntable-box .inner.completed {
-  background-position: -10rem 0;
 }
 </style>

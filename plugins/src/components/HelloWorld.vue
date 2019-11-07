@@ -17,24 +17,29 @@ export default {
   data() {
     return {
       options: {
+        rotateNum: 5,
+        totalLotteryCount: 100,
+        lotteryCount: 0,
+        lanrenImg:
+          "https://azure-shop.obs.cn-south-1.myhuaweicloud.com/20191105110204536-shop_pic_cj_lp%403.png",
+        lotteryBtnImg:
+          "https://azure-shop.obs.cn-south-1.myhuaweicloud.com/20191028161011784-shop_btn_yellow_cj.png",
         lotteryData: [
           //抽奖数据
-          { name: "三网通流量 10M", id: 1, angle: [0, 30] },
-          { name: "iPhone7", id: 2, angle: [30, 90] },
-          { name: "三网通流量 30M", id: 3, angle: [90, 150] },
-          { name: "话费5元", id: 4, angle: [150, 210] },
-          { name: "ipad mini4", id: 5, angle: [210, 270] },
-          { name: "话费20元", id: 6, angle: [270, 330] }
+          { name: "80积分", id: 1, angle: [240, 360] },
+          { name: "200积分", id: 2, angle: [0, 120] },
+          { name: "免单", id: 3, angle: [120, 240] }
         ],
-        canLotteryCount: 10000, //能抽奖次数
-        getDegByUser(item, angle, count) {
+        getDegByUser(item, angle) {
           //用户设定角度
-          if (item.id == 1) {
-            if (count % 2 == 0) {
-              return [0, 30];
-            } else {
-              return [330, 360];
-            }
+          if (item.id == 1 && angle.length == 0) {
+            return [240, 360];
+          }
+          if (item.id == 2 && angle.length == 0) {
+            return [0, 120];
+          }
+          if (item.id == 3 && angle.length == 0) {
+            return [120, 240];
           }
           return angle;
         }
