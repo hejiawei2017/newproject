@@ -1,0 +1,5 @@
+<movable-area class='movable-area' style="width:{{AreaWidth}};height:{{AreaHeight}}">
+  <movable-view class='movable-view' style="width:{{ViewWidth}};height:{{ViewHeight}}" bind:touchstart="touchstart" bind:touchend="touchend" animation="true" damping="50" inertia="true" data-index="{{index}}" x="{{x}}" out-of-bounds="true" direction="horizontal">
+    <slot></slot>
+  </movable-view>     
+</movable-area>

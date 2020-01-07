@@ -1,0 +1,103 @@
+/* pages/dateSelect/dateSelect.wxss */
+page{
+  font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "\9ED1\4F53", Arial, sans-serif;
+  color:#333;
+  font-size: 28rpx;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+input{
+  font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "\9ED1\4F53", Arial, sans-serif;
+}
+.date-select-container {
+  position: fixed;
+  top: 0;
+  background: #fff;
+  height: 112px
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.week-container {
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+}
+.layout-flex{
+    display:flex;
+}
+.layout-flex .row{
+    flex-direction: row;
+}
+.layout-flex .column{
+    flex-direction: column;
+}
+.layout-header {
+  padding: 15px;
+  font-size: 20px
+}
+.start-date {
+  flex:1;
+}
+.end-date {
+  flex:1;
+  text-align:right;
+}
+.date-text {
+  font-size: 16px;
+  color: #999;
+}
+.date-color {
+  color: #ff9c01;
+}
+.align-center{
+    align-items:center;
+    justify-content: center;
+}
+.date-day{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+    flex-grow: 0;
+    margin:5px;
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+}
+.date-day.active{
+    background: #ff4a4d;
+    color:#FFF;
+    border-radius: 100%;
+}
+.date-day.start-date::after{
+    content: "入住";
+    display: block;
+    font-size: 10px;
+    color: #fff;
+}
+.date-day.end-date::after{
+    content: "离开";
+    display: block;
+    font-size: 10px;
+    color: #fff;
+}
+.date-day.through-date {
+    background: rgb(255, 199, 200);
+    border-radius: 100%;
+}
+.date-day.unavailable{
+    color:#aaa;
+}
+
+.date-week{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin:5px;
+}
+.week{
+    color:#FF9C01;
+}

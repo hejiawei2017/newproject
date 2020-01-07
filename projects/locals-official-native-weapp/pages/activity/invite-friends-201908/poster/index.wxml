@@ -1,0 +1,12 @@
+<scroll-view class="page-container" scrollY="{{true}}">
+  <!-- poster -->
+  <View class="poster-container">
+        <canvas canvas-id="poster" class="poster" style="width: {{posterWidth}}px; height: {{posterHeight}}px;" binderror="onDrawError" />
+        <text class="wait">
+            正在生成中，请稍等...
+            <text style="display: block">生成进度 {{progress}}%</text>
+        </text>
+    </View>
+  <!-- banner -->
+  <button class="save-button" bindtap="saveToAlbum">保存图片</button>
+</scroll-view>

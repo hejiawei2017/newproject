@@ -1,0 +1,84 @@
+<wxs src="../../wxs/ImageUtils.wxs" module="imageUtils" />
+<wxs src="../../wxs/HouseUtils.wxs" module="houseUtils" />
+<wxs src="../../wxs/DateUtils.wxs" module="dateUtils" />
+<view class="wrap">
+    <view class="house-info container no-padding-top">
+        <view class="left">
+          <view class="title">{{ houseInfo.title }}</view>
+        <view class='night-price'>￥{{ houseInfo.standardPrice }}每晚</view>
+        <view class='number-info'>
+            <text class='tenant-info'>{{houseInfo.tenantNumber}}人·{{houseInfo.roomNumber}}室·{{houseInfo.bedNumber}}床·{{(houseInfo.publicToiletNumber || 0) + (houseInfo.toiletNumber || 0)}}卫</text>
+            <view wx:if="{{ !isFromLotel && !isForeignCity }}" class="stars-container">
+                <stars value="{{ houseInfo.stars }}" />
+            </view>
+            <!-- <text>122</text> -->
+        </view>
+        </view>
+        <view class="right">
+            <image mode="aspectFill" src="{{ imageUtils.processImage(houseInfo.houseImages[0].imagePath) }}" />
+        </view>
+    </view>
+    <view class="container" catchtap="bindDateSelectTap">
+        <view class="title">旅行时间</view>
+        <view class="checkin-container">
+            <view class="checkin-date">
+                <text class="text">入住日期</text>
+                <view class="date">
+                    <text>{{ dateUtils.setMonthDay(checkinStartDate) }}</text>
+                    <text class="day">{{ dateUtils.setDay(checkinStartDate) }}</text>
+                </view>
+            </view>
+            <view>
+                <text class="days">{{ checkinDays }}晚</text>
+            </view>
+            <view class="checkin-date">
+                <text class="text">退房日期</text>
+                <view class="date">
+                    <text>{{ dateUtils.setMonthDay(checkinEndDate) }}</text>
+                    <text class="day">{{ dateUtils.setDay(checkinEndDate) }}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="container check-in-count">
+        <amount-control
+            size-class="font-size"
+            wx:if="{{ houseInfo.tenantNumber  }}"
+            text="人住人数" min="1" max="{{ houseInfo.tenantNumber }}"
+            bind:getNum="getCheckinPersons"
+        />
+        <!-- <view class="insurance">
+            <view>50万住宿意外险</view>
+            <text>Locals路客为以上入住人购买入住旅客意外伤害保险，最高赔付50万元，为您的出行人身安全保价护航，请准确填写入住信息确保信息权益兑现。</text>
+        </view> -->
+    </view>
+    <view class="container" wx:if="{{ isShowTextarea }}">
+        <text class="title">咨询管家</text>
+        <textarea
+            class="textarea size24"
+            auto-height="true"
+            value="{{ textareaValue }}"
+            bindinput="bindinput"
+            auto-focus="{{ true }}"
+            placeholder="输入咨询内容，管家通常在 2 分钟内回复"
+        />
+    </view>
+    <form bindsubmit="submit">
+        <view class="footer {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+            <button 
+                loading="{{ submitLoading }}" 
+                disabled="{{ displayButton || submitLoading }}" 
+                formType="submit"
+            >{{ isForeignCity ? '联系预订' : '联系管家' }}</button>
+        </view> 
+    </form>
+</view>
+<auth-drawer-box 
+    id="auth-drawer-box"
+    initHide="{{ true }}"
+    bind:cancelEvent="_cancelEventFn"
+/>
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

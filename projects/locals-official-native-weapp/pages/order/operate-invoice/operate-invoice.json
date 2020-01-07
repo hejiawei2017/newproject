@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "常用发票抬头",
+  "component": true,
+  "usingComponents": {
+    "im-message": "/components/im-message/im-message",
+    "movableArea": "/components/movableArea/index"
+  }
+}

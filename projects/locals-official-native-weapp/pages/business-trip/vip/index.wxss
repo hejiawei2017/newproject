@@ -1,0 +1,164 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	overflow: auto;
+	background-color: #1C1C1C;
+}
+
+.des-card {
+	position: absolute;
+	top: 10rpx;
+	margin: 20rpx 0;
+}
+
+.card-bg {
+	position: relative;
+	width: 700rpx;
+	height: 1100rpx;
+}
+
+.des-main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 300rpx;
+	width: 700rpx;
+}
+
+.des-card-header {
+	width: 100%;
+	height: 100rpx;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10rpx;
+}
+
+.card-title {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	margin-left: 50rpx;
+	width: 50%;
+	color: #fff;
+}
+
+.card-title-icon {
+	height: 46rpx;
+	width: 42rpx;
+	margin-right: 15rpx;
+}
+
+.card-title-text {
+	height: 38rpx;
+	width: 140rpx;
+	margin-right: 15rpx;
+}
+
+.card-cert-mark {
+	height: 35rpx;
+	width: 110rpx;
+}
+
+.log-link {
+	margin-right: 35rpx;
+	color: #fff;
+	font-size: 28rpx;
+	font-weight:300;
+	text-decoration: underline;
+}
+
+.card-body {
+	position: relative;
+	display: flex;
+	margin-top: 40rpx;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.des-features {
+	width: 580rpx;
+	height: 370rpx;
+}
+.row {
+	width: 100%;
+	box-sizing: border-box;
+}
+.row__pading {
+	padding: 0 35rpx;
+}
+.tab-group {
+	width: 100%;
+	display:flex;
+	justify-content:space-around;
+	margin: 40rpx 0;
+}
+
+.trade-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* margin: 40rpx 0; */
+	height: 80rpx;
+	width: 400rpx;
+	background: linear-gradient(180deg, rgba(210,159,117,1) 0%, rgba(117,70,37,1) 100%);
+	box-shadow: 0rpx 2rpx 6rpx 0rpx rgba(55, 88, 119, 0.37);
+	color: #fff;
+	border-radius: 50rpx;
+	font-size: 36rpx;
+	font-weight: bold;
+}
+
+.tab-title {
+	font-size:28rpx;
+	font-weight:bold;
+	color:rgba(241,218,195,1);
+	line-height:42rpx;
+}
+.tab-des {
+	font-size:24rpx;
+	font-weight:400;
+	color:rgba(244,208,182,1);
+	line-height:36rpx;
+}
+
+.tab-des__invalid {
+	text-decoration:line-through;
+}
+.des-text {
+	margin-top: 12rpx;
+	font-size: 28rpx;
+	font-weight: 400;
+	color: rgba(150,101,65,1);
+}
+
+.des-text__center{
+	display: block;
+	width: 100%;
+	margin-top: 12rpx;
+	font-size: 28rpx;
+	font-weight: 400;
+	color: rgba(150,101,65,1);
+	text-align: center;
+}
+
+.active .des-features {
+	height: 500rpx;
+}
+/* .active .trade-btn {
+	position:absolute;
+	top:40%;
+	margin-top: 0;
+} */

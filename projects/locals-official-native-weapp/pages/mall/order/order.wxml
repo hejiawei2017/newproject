@@ -1,0 +1,94 @@
+<wxs src="../../../wxs/utils.wxs" module="utils" />
+<view wx:if="{{sourcefrom === 'buy' && !goods.isCombination}}" class="trade-type">
+  <view class="trade-type__btn trade-type__left {{!isGiven? 'trade-type--select' : ''}}" bindtap="self">
+    <text>填写地址</text>
+    <view wx:if="{{!isGiven}}" class="trade-type__bar"></view>
+  </view>
+  <view class="trade-type__btn trade-type__right {{isGiven? 'trade-type--select' : ''}}" bindtap="give">
+    <text>赠送给好友</text>
+    <view wx:if="{{isGiven}}" class="trade-type__bar"></view>
+  </view>
+</view>
+<view class="container">
+  <view class="address">
+    <block wx:if="{{!isGiven}}">
+      <permission request-permission="scope.address" permission-desc="您取消了地址定位服务，暂时不能获取到您的地址，需要您重新授权" show-permisson-dialog="{{showPermissonDialog}}">
+        <view wx:if="{{!address}}" class="noAddress" bindtap="getWxAddress" style="font-size:16px;font-weight:500;color:#333;">
+          新增收货地址
+          <image class="grey__more" src="https://oss.localhome.cn//localhomeqy/mine/gray_more%402x.png"></image>
+        </view>
+        <view wx:else="{{address !== ''}}" class="haveAddress" bindtap="getWxAddress">
+          <text space="nbsp" class="haveAddress__area">{{address.provinceName}} {{address.cityName}} {{address.countyName}}</text>
+          <text class="detail">{{address.detailInfo}}</text>
+          <text class="phone" space="nbsp">{{address.userName}} {{address.maskPhone}}</text>
+          <image class="grey__more haveAddress__arrow" src="https://oss.localhome.cn//localhomeqy/mine/gray_more%402x.png" />
+        </view>
+      </permission>
+    </block>
+    <block wx:else>
+      <view class="noAddress" style="font-size:16px;font-weight:500;color:#333;">
+        <view>
+          <view>赠送好友</view>
+          <view style="font-size:11px;color:#999;margin-top:6rpx;">购买后转发给好友填写收货人信息即可</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 商品 -->
+  <view class="goods-wrap">
+    <view class="info-wrap">
+      <image class="cover" mode="aspectFit" src="{{goods.picUrl}}" />
+      <view class="desc-wrap">
+        <view class="title">{{goods.title}}</view>
+        <view class="standard">规格:{{goods.specification}}  {{plusdesc||""}}</view>
+        <view class="price-wrap">
+          <view class="price">
+            <text style="font-size:12px;">￥</text>
+            {{utils.fentoYuan(goods.price)}}
+            <text style="font-size:20rpx;color:#999;">/{{goods.unit}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="num">
+      <view>购买数量</view>
+      <view wx:if="{{goods.isCombination}}" class="num__limit">每人限购一套</view>
+      <view class="action-wrap">
+        <image wx:if="{{sourcefrom === 'buy'}}" bindtap="numMinus" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/delete%202.png" />
+        <view>{{sourcefrom === 'claim'? num:orderNum}}</view>
+        <image wx:if="{{sourcefrom === 'buy'}}" bindtap="numAdd" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/add.png" />
+      </view>
+    </view>
+    <view wx:if="{{!isGiven}}" class="transport">
+      <view>配送方式</view>
+      <view class="transport__way">
+        <view style="text-align: right">快递包邮</view>
+        <view class="transport-hint">{{config.transporthint}}</view>
+        <!-- <image class="grey__more" src="https://oss.localhome.cn//localhomeqy/mine/gray_more%402x.png" /> -->
+      </view>
+    </view>
+    <!-- <view class="promotion" wx:if="{{sourcefrom === 'buy'}}">
+      <view>促销</view>
+      <view class="promotion__content">
+        老板放假大放送  -¥20
+        <image class="grey__more" src="https://oss.localhome.cn//localhomeqy/mine/gray_more%402x.png" />
+      </view>
+    </view> -->
+    <view class="ps" wx:if="{{sourcefrom === 'buy'}}">
+      <view>买家留言</view>
+      <input bindinput="psInput" placeholder="添加备注" placeholder-class="input-placeholder" />
+    </view>
+  </view>
+  <view class="footer {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+    <view class="buy-wrap" wx:if="{{sourcefrom === 'buy'}}">
+      <view class="final__price">
+        <view class="price" style="font-size:18px;">
+          <text style="font-size:12px;">￥</text>
+          {{utils.fentoYuan(totalFee)}}
+        </view>
+      </view>
+      <view class="submit" bindtap="sendOrder">提交订单</view>
+    </view>
+    <view wx:else class="submit" bindtap="claimOrder">提交</view>
+  </view>
+</view>

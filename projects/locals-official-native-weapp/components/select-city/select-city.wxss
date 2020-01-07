@@ -1,0 +1,238 @@
+.list-warpper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.search-wrap {
+  flex: 1 0 90rpx;
+}
+
+.select-city-wrap {
+  height: calc(100vh - 90rpx);
+}
+
+.list-scroll {
+  width: 100%;
+  height: calc(100vh - 190rpx);
+  box-sizing: border-box;
+}
+.list-scroll.top{
+  padding-top: 20rpx;
+}
+
+/* 样式控制  */
+
+.list-title {
+  box-sizing: border-box;
+  width: 710rpx;
+	height: 50rpx;
+  line-height: 50rpx;
+	background-color: #f8f8f8;
+  letter-spacing: 1px;
+  font-size: 24rpx;
+  padding-left: 40rpx;
+	color: #484848;
+}
+.list-item {
+  padding: 30rpx 0;
+}
+.list-name {
+  position: relative;
+  font-size: 26rpx;
+  padding-left: 40rpx;
+  color: #484848;
+  margin-top: 40rpx;
+}
+
+.list-right-wrapper {
+  width: 40rpx;
+  position: absolute;
+  display: flex;
+  flex-flow: column nowrap;
+  bottom: 20rpx;
+  right: 9rpx;
+  border-radius: 20rpx;
+  z-index: 2;
+}
+.list-right-wrapper-foreign {
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+}
+
+.bottom90rpx {
+  bottom: 90rpx;
+}
+
+.right-item {
+  padding: 5rpx 0;
+  text-align: center;
+  font-size: 20rpx;
+  color: #e84358;
+}
+
+.right-selected {
+  background: #e84358;
+  color:#fff;
+  border-radius:100%;
+}
+
+.list-search {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 90rpx;
+  padding: 10rpx 30rpx;
+  box-sizing: border-box;
+  z-index: 20;
+  background: #FFF;
+}
+
+.search-title {
+  flex-shrink: 0;
+  font-size: 28rpx;
+  padding-right: 10rpx;
+}
+
+.list-search-box {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  width: 100%;
+  height: 70rpx;
+  background: #f5f5f5;
+  border-radius: 90rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.list-search-box input {
+  width: 100%;
+  padding-left: 10rpx;
+}
+
+.search-button {
+  /* width: 100rpx; */
+  flex-shrink: 0;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  margin-left: 10rpx;
+}
+
+/* 热门城市横排显示样式  */
+
+.relative {
+  position: relative;
+}
+
+.local-info {
+  flex-basis: 70%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.local-info-text {
+  flex-grow: 1;
+}
+
+.local-info-text .local-name {
+	font-size: 30rpx;
+	line-height: 54rpx;
+	letter-spacing: 1rpx;
+	color: #484848;
+}
+
+.local-info-text .address {
+  font-size: 24rpx;
+	line-height: 54rpx;
+	letter-spacing: 1rpx;
+	color: #555555;
+}
+
+.list-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 19rpx 40rpx;
+}
+
+.list-horizontal .list-name.absolute-right {
+  position: absolute;
+  right: 33rpx;
+  top: 30rpx;
+  margin-right: 8rpx;
+}
+
+.list-horizontal .list-name {
+  width: 152rpx;
+	height: 50rpx;
+  line-height: 50rpx;
+  padding: 0;
+	border-radius: 25rpx;
+	border: solid 2rpx #e5e5e5;
+  padding-left: 0;
+  text-align: center;
+  margin-right: 15rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.list-horizontal .list-name.no-margin-right {
+  margin-right: 0 
+}
+.list-item .list-name.no-margin-top {
+  margin-top: 0;
+}
+/* 无数据  */
+.nodata {
+  padding-top: 200rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #ddd;
+}
+
+.icon-location {
+  margin-top: 13rpx;
+  margin-right: 10rpx;
+  background: url('https://oss.localhome.cn/new_icon/location5.png') no-repeat;
+  background-size: 100%;
+  width: 24px;
+  height: 27px;
+}
+
+.foreign__wrap {
+  padding: 0rpx 40rpx;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.foreign__list_item {
+  width: 30%;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0;
+  border-radius: 25rpx;
+  border: solid 1px #e5e5e5;
+  padding-left: 0;
+  text-align: center;
+  margin-right: 4%;
+  margin-top: 30rpx;
+  margin-bottom: 0rpx;
+  font-size: 26rpx;
+  color: #484848;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.foreign__list_item:nth-of-type(3n) {
+  margin-right: 0;
+}

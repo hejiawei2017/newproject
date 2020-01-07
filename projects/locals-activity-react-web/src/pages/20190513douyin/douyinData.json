@@ -1,0 +1,579 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "price": 699,
+      "oldPrice": 1988,
+      "title": "无锡壹笙酒店",
+      "title2": "不言观影主题房入住1晚 （含双早）",
+      "tag": ["园林建筑", "京杭大运河", "亲子酒店", "商务出行", "地铁周边"],
+      "swiperData": [
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/wuxi01A.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/wuxi02A.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/wuxi04A.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/wuxi07A.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/wuxi09A.jpg"
+      ],
+      "order": {
+        "title": "无锡壹笙酒店",
+        "type": "不言观影主题房入住1晚 （含双早）",
+        "address": "江苏省无锡市梁溪区淘沙巷11号",
+        "ad": "无锡",
+        "time": "2019-06-19至2020-03-31",
+        "price": 699,
+        "checkIn": "2019-06-19至2020-03-31",
+        "bookingStartDate": "2019-06-19",
+        "bookingEndDate": "2020-03-31",
+        "checkInDate": "2019-06-19",
+        "checkOutDate": "2020-03-31"
+      },
+      "info": [
+        {
+          "img": [
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyingwuxi/3_01.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyingwuxi/3_02.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyingwuxi/3_03.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyingwuxi/3_04.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E6%97%A0%E9%94%A1ID12.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyingwuxi/3_06.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyingwuxi/3_07.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E6%97%A0%E9%94%A1ID11.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinend/ID1.jpg"
+          ]
+        }
+      ],
+      "contact": {
+        "phone": "18051510069",
+        "wechat": "18051510069",
+        "landlordPhone": "18051510069"
+      },
+      "notice": [
+        {
+          "tip": "【抢购说明】",
+          "text": [
+            "1.预订有效期2019-06-19至2020-03-31",
+            "2.入住有效期2019-06-19至2020-03-31。",
+            "3.费用包含：不言观影主题房入住1晚 （含双早）。",
+            "4.特价商品购买后不设退款，逾期作废，请谨慎购买。",
+            "5.民宿地址：无锡市梁溪区淘沙巷11号。"
+          ]
+        },
+        {
+          "tip": "【使用说明】",
+          "text": [
+            "1.用户购买后收到短信通知则视为购买成功，特价商品购买后不设退款。",
+            "2.用户需在有效期内使用本商品，特价商品逾期作废；法定节假日不可使用；周五与周六期间入住需加收300元/间夜。",
+            "3.用户购买后需自行与民宿主联系沟通预订，至少需提前1天进行预订，下单手机号是预订及入住唯一凭证，请谨慎保管。",
+            "4.本商品不支持线上改期，如需改期请与民宿主自行沟通。",
+            "5.预约电话：0510-85178666。"
+          ]
+        },
+        {
+          "tip": "【入住须知】",
+          "text": [
+            "1.入住时间：14：:00以后，离店时间：12:00前。",
+            "2.酒店允许携带儿童入住。",
+            "3.每间客房最多容纳1名18岁及以下儿童，和成人共用现有床铺。",
+            "4.不接受18岁以下客人在无监护人陪同的情况下入住。",
+            "5.加床及儿童政策取决于您所选的房型，若超过房型限定人数，或携带儿童年龄不在政策描述范围内，可能需收取额外费用，提出的任何要求均需获得酒店的确认。",
+            "6.不可携带宠物。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "price": 1099,
+      "oldPrice": 2000,
+      "title": "墅家玉庐雪嵩院",
+      "title2": "墅家旗下三店通用房券（丽江、苏州、婺源）双人早餐，迷你吧",
+      "tag": ["雪山下的村落", "最原始的丽江", "纳西"],
+      "swiperData": [
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/lijiang01A.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/lijiang02A.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/lijiang03A.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/lijiang08A.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/lijiang09A.JPG",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/lijiang10A.JPG",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinswiper/lijiang11A.JPG"
+      ],
+      "order": {
+        "title": "墅家玉庐雪嵩院",
+        "type": "价值2000元以内房型一晚 双人早餐 迷你吧",
+        "address": "云南省丽江市玉湖村",
+        "ad": "丽江",
+        "time": "2019-06-01至2020-5-31",
+        "price": 1099,
+        "checkIn": "2019-06-01至2020-5-31",
+        "bookingStartDate": "2019-06-01",
+        "bookingEndDate": "2020-5-31",
+        "checkInDate": "2019-06-01",
+        "checkOutDate": "2020-5-31"
+      },
+      "info": [
+        {
+          "img": [
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yejia/4_01.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yejia/4_02.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yejia/4_03.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yejia/4_04.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yejia/4_05.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yejia/4_06.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yejia/4_07.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yejia/4_08.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yejia/4_09.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinend/ID2.jpg"
+          ]
+        }
+      ],
+      "contact": {
+        "phone": "18612489428",
+        "wechat": "shujiaxiaomi",
+        "landlordPhone": "18612489428"
+      },
+      "notice": [
+        {
+          "tip": "【抢购说明】",
+          "text": [
+            "1.预订有效期2019-06-01至2020-5-31。",
+            "2.丽江店7、8月需加价 500元，苏州店7、8月及周六加价500元，婺源店3-5月加价500元，法定节假日不可用。",
+            "3.费用包含：价值2000元以内房型一晚，双人早餐，迷你吧。",
+            "4.特价商品购买后不设退款，逾期作废，请谨慎购买。",
+            "5.民宿地址：云南省丽江市玉湖村。"
+          ]
+        },
+        {
+          "tip": "【使用说明】",
+          "text": [
+            "1.用户购买后收到短信通知则视为购买成功，特价商品购买后不设退款。",
+            "2.用户需在有效期内使用本商品，特价商品逾期作废；法定节假日不可使用。",
+            "3.用户购买后需自行与民宿主联系沟通预订，下单手机号是预订及入住唯一凭证，请谨慎保管。",
+            "4.本商品不支持线上改期，如需改期请与民宿主自行沟通。"
+          ]
+        },
+        {
+          "tip": "【入住须知】",
+          "text": ["1.入住时间14:00后，退房时间12:00 ，须提前一周预约"]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "price": 499,
+      "oldPrice": 1288,
+      "title": "平措康桑-睁开眼就看到布达拉宫",
+      "title2": "网红布达拉宫观景房入住1晚",
+      "tag": ["推开窗就能看到布达拉宫的民宿"],
+      "swiperData": [
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%B9%B3%E6%8E%AA01.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%B9%B3%E6%8E%AA02.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%B9%B3%E6%8E%AA03.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%B9%B3%E6%8E%AA04.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%B9%B3%E6%8E%AA05.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%B9%B3%E6%8E%AA06.jpg"
+      ],
+      "order": {
+        "title": "平措康桑观景酒店",
+        "type": "网红布达拉宫观景大床房或网红布达拉宫观景双床房入住1晚",
+        "address": "西藏自治区拉萨市城关区朵森格北路31号",
+        "ad": "拉萨",
+        "time": "2019-6-3至2020-6-27",
+        "price": 499,
+        "checkIn": "2019-6-6至2020-6-30",
+        "bookingStartDate": "2019-6-3",
+        "bookingEndDate": "2020-6-27",
+        "checkInDate": "2019-6-6",
+        "checkOutDate": "2020-6-30"
+      },
+      "info": [
+        {
+          "img": [
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/pingcuo/3_01.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/pingcuo/3_02.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/pingcuo/3_03.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/pingcuo/3_04.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/pingcuo/3_05.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/pingcuo/3_06.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinend/ID3.jpg"
+          ]
+        }
+      ],
+      "contact": {
+        "phone": "16689007608/16689007609",
+        "wechat": "pcksgjld",
+        "landlordPhone": "16689007608"
+      },
+      "notice": [
+        {
+          "tip": "【抢购说明】",
+          "text": [
+            "1.预定有效期2019.6.3至2020.6.27，入住有效期2019.6.6-2020.6.30。",
+            "2.费用包含：平措康桑观景酒店（拉萨布达拉宫店）网红布达拉宫观景房（网红布达拉宫观景大床房、网红布达拉宫观景双床房）入住1晚。",
+            "3.特价商品购买后不设退款，逾期作废，请谨慎购买。",
+            "4.民宿地址：西藏自治区拉萨市城关区朵森格北路31号。"
+          ]
+        },
+        {
+          "tip": "【使用说明】",
+          "text": [
+            "1.用户购买后收到短信通知则视为购买成功，特价商品购买后不设退款，用户需在有效期内使用本商品，特价商品逾期作废。",
+            "2.本商品2019年7月、8月不可使用。",
+            "3.法定节假日及法定节假日前1天使用须加300元/间夜（含藏历法定节假日）；非法定节假日的周五、周六加价100元/间夜；2020年3月20日-4月10日（桃花节）期间加价200元/间夜使用；加价不叠加。",
+            "4.预定需至少提前3天以上，本商品不接受当日预定、更改和取消。",
+            "5.下单手机号是预订及入住唯一凭证，请谨慎保管。",
+            "6.使用有效期至2020年6月30日（含）止。"
+          ]
+        },
+        {
+          "tip": "【入住须知】",
+          "text": [
+            "1.入住时间14:00后，退房时间12:00前。",
+            "2.不接受18岁以下客人在无监护人陪同的情况下入住。",
+            "3.不允许携带宠物。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "price": 398,
+      "oldPrice": 888,
+      "title": "大理小鸟云季苍海高尔夫民宿",
+      "title2": "洱海日出、苍山日落尽收眼底",
+      "tag": ["背靠苍山", "面朝洱海", "邂逅不一样的大理时光"],
+      "swiperData": [
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin05/%E9%A6%96%E9%A1%B5.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E5%A4%A7%E7%90%8601.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E5%A4%A7%E7%90%8603.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E5%A4%A7%E7%90%8604.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E5%A4%A7%E7%90%8605.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E5%A4%A7%E7%90%8606.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E5%A4%A7%E7%90%8608.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E5%A4%A7%E7%90%8609.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E5%A4%A7%E7%90%8610.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin62/1.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid4/2.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid4/3.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid4/4.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid4/5.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid4/6.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid4/7.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid4/8.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid4/9.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid4/10.jpg"
+      ],
+      "order": {
+        "title": "大理小鸟云季苍海高尔夫民宿",
+        "type": "大理小鸟云季苍海高尔夫民宿入住一晚或小鸟旗下任意酒店入住一晚",
+        "address": "大理市大理镇古城区三塔路苍海高尔夫国际社区G户型80栋",
+        "ad": "大理",
+        "time": "2019-6-16至2020-06-30",
+        "price": 398,
+        "checkIn": "2019-6-16至2020-06-30",
+        "bookingStartDate": "2019-6-16",
+        "bookingEndDate": "2020-06-30",
+        "checkInDate": "2019-6-16",
+        "checkOutDate": "2020-06-30"
+      },
+      "info": [
+        {
+          "img": [
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/dali/5_01.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/dali/5_02.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/dali/5_03.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/dali/5_04.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/dali/5_05.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/dali/5_06.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/dali/5_07.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/dali/5_08.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/dali/5_09.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/dali/5_10.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinend/ID4.jpg"
+          ]
+        }
+      ],
+      "contact": {
+        "phone": "15084984856",
+        "wechat": "15084984856",
+        "landlordPhone": "15084984856"
+      },
+      "notice": [
+        {
+          "tip": "【抢购说明】",
+          "text": [
+            "1.预订有效期即日起至2020-06-30，入住有效期即日起至2020-06-30（含）。",
+            "2.大理小鸟云季苍海高尔夫民宿入住一晚或小鸟旗下任意酒店入住一晚。（包括但不限于杭州早安云居酒店、大理双廊玉几台酒店、成都小鸟云季酒店、成都早安云克酒店、北京早安西云阁酒店、江西早安云居酒店、重庆早安旅居酒店、长沙小鸟云季酒店、长沙早安旅居酒店，长沙小鸟亲子铜官窑、厦门鼓浪屿屿岸花客栈等等）其他门店具体使用房型及价差，请联系客服15084984856（微信同号）",
+            "3.特价商品购买后不设退款，逾期作废，请谨慎购买。",
+            "4.民宿地址：大理市大理镇古城区三塔路苍海高尔夫国际社区G户型80栋。"
+          ]
+        },
+        {
+          "tip": "【使用说明】",
+          "text": [
+            "1.用户购买后收到短信通知则视为购买成功，特价商品购买后不设退款。",
+            "2.用户需在有效期内使用本商品，特价商品逾期作废；法定节假日及法定节假日前一天、2020-1-22至2020-1-31期间，需要根据当期价格补差价，享受9折优惠。",
+            "3.购买后需自行与民宿主联系沟通预订，至少需提前1天进行预订，下单手机号是预订及入住唯一凭证，请谨慎保管。",
+            "4.本商品不支持线上改期，如需改期请与民宿主自行沟通。"
+          ]
+        },
+        {
+          "tip": "【入住须知】",
+          "text": [
+            "1.入住时间14:00后，退房时间12:00前。",
+            "2.允许做饭，携带宠物。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "price": 599,
+      "oldPrice": 1388,
+      "title": "伊春西岭宝宇温泉民宿",
+      "title2": "原始森林中的独栋温泉度假民宿",
+      "tag": ["森林氧吧", "森林康养", "亲子度假", "寒地温泉"],
+      "swiperData": [
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin62/yicunnum1.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%AE%9D%E5%AE%8702.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%AE%9D%E5%AE%8704.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%AE%9D%E5%AE%8705.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%AE%9D%E5%AE%8706.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E5%AE%9D%E5%AE%8712.jpg"
+      ],
+      "order": {
+        "title": "伊春西岭宝宇温泉民宿",
+        "type": "入住1晚 按位早餐 按位温泉门票 免费接机/接站服务",
+        "address": "黑龙江省伊春市乌马河区西岭林场",
+        "ad": "伊春",
+        "time": "2019-5-19至2020-5-31",
+        "price": 599,
+        "checkIn": "2019-5-19至2020-5-31",
+        "bookingStartDate": "2019-5-19",
+        "bookingEndDate": "2020-5-31",
+        "checkInDate": "2019-5-19",
+        "checkOutDate": "2020-5-31"
+      },
+      "info": [
+        {
+          "img": [
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yichun/2_01.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yichun/2_02.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yichun/2_03.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yichun/2_04.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yichun/2_05.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yichun/2_06.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/yichun/2_07.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinend/ID5.jpg"
+          ]
+        }
+      ],
+      "contact": {
+        "phone": "13703684098/18645003166",
+        "wechat": "13703684098/18645003166",
+        "landlordPhone": "13703684098"
+      },
+      "notice": [
+        {
+          "tip": "【抢购说明】",
+          "text": [
+            "1.预订有效期2019-5-19至2020-5-31，入住有效期2019-5-19至2020-5-31。",
+            "2.费用包含：入住1晚，按位早餐（可提供免费送早餐服务）按位赠送温泉门票 伊春免费接机/接站服务 迎客果盘 每位送2杯精酿啤酒 每房送一份小兴安岭野菜",
+            "3.特价商品购买后不设退款，逾期作废，请谨慎购买。",
+            "4.正餐折扣8.5折",
+            "5.民宿地址：黑龙江省伊春市乌马河区西岭林场。"
+          ]
+        },
+        {
+          "tip": "【使用说明】",
+          "text": [
+            "1.用户购买后收到短信通知则视为购买成功，特价商品购买后不设退款。",
+            "2.用户需在有效期内使用本商品，特价商品逾期作废；法定节假日不可使用。",
+            "3.用户购买后需自行与民宿主联系沟通预订，至少需提前1天进行预订，下单手机号是预订及入住唯一凭证，请谨慎保管。",
+            "4.本商品不支持线上改期，如需改期请与民宿主自行沟通。",
+            "5.民宿主联系方式：0458-3650888。",
+            "6.房券全年均可使用，不受节假日影响。",
+            "7.加价1400元升级为：独栋2居室，周末加价500；加价2400元升级为：独栋3居室；加床：200元/张，含一早餐。"
+          ]
+        },
+        {
+          "tip": "【入住须知】",
+          "text": [
+            "1.办理入住手续时，须出示所有入住人员居民身份证或其它有关证件。入住时每人必须登记身份证（不是每间房登记一人）。",
+            "2.入住时间当日15:00后，退房时间次日12:00前。",
+            "3.民宿内允许做饭。",
+            "4.民宿内不允许吸烟、聚会、携带宠物、商业拍照，不接待境外人士。",
+            "5.请妥善保管个人物品，如有遗失恕不负责。",
+            "6.请按照约定人数入住。若发现超过约定人数入住者将取消您的入住资格并不退还房费。",
+            "7.为不影响其他客人休息23：00后 至次日 9：00前，请勿在民宿及周边公共区域打牌、麻将、吃喝、大声喧哗等。",
+            "8.请爱护室内用品，如有损坏照价赔偿。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "price": 899,
+      "oldPrice": 2280,
+      "title": "百翠山居",
+      "title2": "13幢临湖别墅 大理石浴缸 ",
+      "tag": ["家庭度假", "朋友聚会", "悦享假日时光"],
+      "swiperData": [
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E7%99%BE%E7%BF%A003.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E7%99%BE%E7%BF%A004.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E7%99%BE%E7%BF%A005.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E7%99%BE%E7%BF%A006.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin/%E7%99%BE%E7%BF%A009.jpg"
+      ],
+      "order": {
+        "title": "百翠山居",
+        "type": "百翠山居（桐乡）临湖别墅房一晚（含双早）",
+        "address": "浙江省嘉兴市桐乡市高桥镇悦容路288号百翠山居",
+        "ad": "嘉兴",
+        "time": "2019-6-19至2019-6-23",
+        "price": 899,
+        "checkIn": "2019-6-19至2019-6-23",
+        "bookingStartDate": "2019-6-19",
+        "bookingEndDate": "2019-6-23",
+        "checkInDate": "2019-6-19",
+        "checkOutDate": "2019-6-23"
+      },
+      "info": [
+        {
+          "img": [
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/baicui/2_01.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/baicui/2_02.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/baicui/2_03.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/baicui/2_04.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E7%99%BE%E7%BF%A0ID62.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/baicui/2_06.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/baicui/2_07.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E7%99%BE%E7%BF%A0ID61.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/20190513douyin/d709d3696ad7a63c84a3726b1015eaf.jpg"
+          ]
+        }
+      ],
+      "contact": {
+        "phone": "15151856906",
+        "wechat": "MLmiaoli",
+        "landlordPhone": "18157368830"
+      },
+      "notice": [
+        {
+          "tip": "【抢购说明】",
+          "text": [
+            "1.抢购时间：2019-6-19至2019-6-23；套餐使用时间：2019-6-19至2019-6-23。",
+            "2.费用包含：百翠山居（桐乡）别墅客房中的一间。",
+            "3.特价商品购买后不设退款，逾期作废，请谨慎购买。",
+            "4.民宿地址：浙江省嘉兴市桐乡市高桥镇悦容路288号百翠山居。"
+          ]
+        },
+        {
+          "tip": "【使用说明】",
+          "text": [
+            "1.899房券:含湖景房1晚+2人早餐+价值160元入园门票+3场免费主题活动，套餐限量500份，售完即止；套餐使用时间：2019年6月18日—2020年3月31日，备注：周末（周五、周六）加价199元/间/晚。",
+            "2.节假日不可用（节假日不可用日期见下）：具体日期视国务院通知而定（九月中秋节、十月国庆节、元旦、春节均不可用）。"
+          ]
+        },
+        {
+          "tip": "【入住须知】",
+          "text": [
+            "1.入住时间14:00后，退房时间12:00前，房间内不允许吸烟、携带宠物。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "price": 59,
+      "oldPrice": 300,
+      "title": "路客精品民宿",
+      "title2": "300元以内房型任选",
+      "tag": ["2折特价", "城市民宿", "ins风", "亲子度假首选"],
+      "swiperData": [
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E5%8C%97%E4%BA%AC%E9%99%A2%E5%AD%90.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E5%8C%97%E4%BA%AC%E9%99%A2%E5%AD%90.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E4%BD%B3%E6%9C%9F%E5%A6%82%E6%A2%A6.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E7%B2%BE%E8%8B%B1%E4%B9%8B%E5%AE%B6.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E6%9E%97%E5%B0%BD%E5%90%AC%E9%9B%A8%E7%9C%A0.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E6%A2%A6%E6%B8%B8%E4%BB%99%E5%A2%83.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E6%B2%90%E5%B2%9B%E5%90%AC%E9%A3%8E.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E5%AE%81%E9%80%B8%E6%B5%B7%E5%AE%BF.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E8%A5%BF%E5%85%B3%E6%95%85%E9%87%8C.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E5%96%9C%E6%9E%97%E8%8B%91.jpg",
+        "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinid7/%E4%BC%8A%E4%BA%BA%E5%A4%95%E5%B2%B8.jpg"
+      ],
+      "order": {
+        "title": "路客精品民宿",
+        "type": "300元以内房型任选",
+        "address": "以实际入住为准",
+        "ad": "--",
+        "time": "2019-12-18",
+        "price": 59,
+        "checkIn": "2019-12-18",
+        "bookingStartDate": "2019-6-6",
+        "bookingEndDate": "2019-12-18",
+        "checkInDate": "2019-6-6",
+        "checkOutDate": "2019-12-18"
+      },
+      "info": [
+        {
+          "img": [
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_01.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_02.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_03.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_04.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_05.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_06.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_07.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_08.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_09.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_10.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_11.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_12.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_13.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_14.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_15.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_16.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_17.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_18.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin60/1_19.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin055/%E8%B7%AF%E5%AE%A2ID71.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinend/ID702.jpg",
+            "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyinend/ID703.jpg"
+          ]
+        }
+      ],
+      "contact": {
+        "phone": "4009999270",
+        "wechat": "mcdulloO",
+        "landlordPhone": "4009999270"
+      },
+      "notice": [
+        {
+          "tip": "【抢购说明】",
+          "text": [
+            "1.预订有效期即日起至2019-12-18，入住有效期即日起至2019-12-18（含）；",
+            "2.费用包含：价值300元以内房型一晚，免费洗漱用品，可做饭洗衣；",
+            "3.费用不含：清洁费、保证金",
+            "4.特价商品购买后不设退款，逾期作废，请谨慎购买；",
+            "5.每个手机号限购一张，请勿重复购买。 "
+          ]
+        },
+        {
+          "tip": "【使用说明】",
+          "text": [
+            "1.用户购买后可以登录“路客精品民宿预订”微信小程序进行预订：打开微信-发现-小程序-搜索“路客精品民宿预订",
+            "2.用户需在有效期内使用本商品，特价商品逾期作废；自购买7天后起生效可用，有效期半年，节假日不可用；",
+            "3.如有任何问题，可在“Locals路客精品民宿”公众号对话框输入“人工”转人工服务在线咨询；"
+          ]
+        },
+        {
+          "tip": "【入住须知】",
+          "text": [
+            "入住时间15:00后，退房时间12:00前，房间内不允许吸烟、携带宠物"
+          ]
+        }
+      ]
+    }
+  ]
+}

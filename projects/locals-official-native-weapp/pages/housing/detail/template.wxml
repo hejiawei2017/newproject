@@ -1,0 +1,447 @@
+<wxs src="../../../wxs/ImageUtils.wxs" module="imageUtils" />
+<wxs src="../../../wxs/DateUtils.wxs" module="dateUtils" />
+
+<template name="main-info">
+  <view class="main-info line-container {{ isFullScreen ? 'iphoneXStyle' : '' }}">
+    <image class="lotel-logo" mode="widthFix" src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/upload/190322/AK4ZX190322104416094.png" />
+    <view class="title">{{ houseInfo.shortTitle || houseInfo.title }}</view>
+    <scroll-view scroll-x class="lotel-tags">
+      <view 
+        wx:for="{{ houseInfo.properties }}"
+        wx:key="index"
+        class="item"
+      >
+        {{ item }}
+      </view>
+    </scroll-view>
+  </view>
+  <view class="main-footer {{ isFullScreen ? 'padding-bottom-100rpx' : '' }} {{ isScroll ? 'active' : '' }} ">
+      <view class="left">
+        <view class="money">{{ averageMoney }}<text wx:if="{{ discountedPrices }}">会员已优惠{{ discountedPrices }}</text></view>
+        <view class="contact-landlord" catch:tap="contactLandlord" data-from="lotel">
+          <image mode="aspectFit" src="{{ charImage }}" />
+          <view>联系管家</view>
+        </view>
+      </view>
+      <view class="right" catchtap="nowBookingClick">立即预订</view>
+    </view>
+</template>
+
+<template name="base-info">
+  <!-- 房源基础信息 -->
+  <view class="section">
+    <view class="base-info-icons">
+      <view class="base-info-icon-item">
+        <image src="https://oss.localhome.cn/localhomeqy/details_home_icon.png"></image>
+        <text>整套{{houseInfo.roomNumber}}居室</text>
+      </view>
+      <view class="base-info-icon-item">
+        <image src="https://oss.localhome.cn/localhomeqy/details_preson_icon.png"></image>
+        <text>最多住{{houseInfo.tenantNumber}}人</text>
+      </view>
+      <view class="base-info-icon-item">
+        <image src="https://oss.localhome.cn/localhomeqy/details_toilet_icon.png"></image>
+        <text>{{!!houseInfo.kitchenNumber ? houseInfo.kitchenNumber : 1}}厨{{houseInfo.toiletNumber}}卫</text>
+      </view>
+      <view class="base-info-icon-item">
+        <image src="https://oss.localhome.cn/localhomeqy/details_bed_icon.png"></image>
+        <text>共{{houseInfo.bedNumber}}张床</text>
+      </view>
+    </view>
+    <view wx:if="{{ isSummerSpecial && !isForeignCity }}" class="main-activity" catch:tap="skipToSummerSpecial">
+      <image src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/tag.png" />
+      <view class="bold">国庆特惠</view>
+      <view>国庆抢8折特惠，长假住精品民宿！</view>
+      <view class="bold flex-grow">></view>
+    </view>
+    <view wx:if="{{ isForeignCity }}" class="main-activity" catch:tap="contactLandlord">
+      <image src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/tag.png" />
+      <view class="bold">预订有礼</view>
+      <view>联系海外度假顾问下单有礼</view>
+      <view class="bold flex-grow">></view>
+    </view>
+  </view>
+</template>
+
+<template name="safeguard-images">
+  <view class="section">
+    <view class="detail-title">8重保障路客会员出行</view>
+    <view class="safeguard-icons">
+        <view class="safeguard-icon-item">
+          <image mode="widthFix" src="https://oss.localhome.cn/new_icon/noroom.png"></image>
+          <text>订贵赔差</text>
+          <text class="safeguard-icon-item-tips">双倍差价赔偿</text>
+        </view>
+        <view class="safeguard-icon-item">
+          <image mode="widthFix" src="https://oss.localhome.cn/new_icon/increase0.png"></image>
+          <text>有房保障</text>
+          <text class="safeguard-icon-item-tips">无房赔首晚房费</text>
+        </view>
+        <view class="safeguard-icon-item">
+          <image mode="widthFix" src="https://oss.localhome.cn/new_icon/cancel0.png"></image>
+          <text>订单保障</text>
+          <text class="safeguard-icon-item-tips">取消赔千元房劵</text>
+        </view>
+        <view class="safeguard-icon-item">
+          <image mode="widthFix" src="https://oss.localhome.cn/new_icon/cleaning0.png"></image>
+          <text>及时清洁</text>
+          <text class="safeguard-icon-item-tips">延迟赔首晚房费</text>
+        </view>
+        <view class="safeguard-icon-item">
+          <image mode="widthFix" src="https://oss.localhome.cn/new_icon/lock0.png"></image>
+          <text>智能门锁</text>
+          <text class="safeguard-icon-item-tips">等待2H赔首晚房费</text>
+        </view>
+        <view class="safeguard-icon-item">
+          <image mode="widthFix" src="https://oss.localhome.cn/new_icon/insurance.png"></image>
+          <text>安全保障</text>
+          <text class="safeguard-icon-item-tips">赠送50万保险</text>
+        </view>
+        <view class="safeguard-icon-item">
+          <image mode="widthFix" src="https://oss.localhome.cn/new_icon/service.png"></image>
+          <text>7*24H客服</text>
+          <text class="safeguard-icon-item-tips">贴心在线客服</text>
+        </view>
+        <view class="safeguard-icon-item">
+          <image mode="widthFix" src="https://oss.localhome.cn/new_icon/housekeeper.png"></image>
+          <text>专职管家</text>
+          <text class="safeguard-icon-item-tips">专属接待服务</text>
+        </view>
+      </view>
+  </view>
+</template>
+
+<template name="featured">
+  <!-- 精选房源介绍 -->
+  <view class="section">
+    <view class="detail-title">精品房源介绍</view>
+    <view class="housing-recommend" catchtap="showDetail">
+      <view id="summary">
+        <flexible-component isOpenRowsTitle="{{true}}">
+          <text slot="rowsTitleContent">{{houseInfo.summary || '无'}}</text>
+        </flexible-component>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="comment">
+  <!-- 评价 -->
+  <view 
+    class="section"
+    catchtap="skipTo"
+    data-type="comment"
+    data-stars="{{houseInfo.stars}}"
+    data-id="{{houseInfo.id}}"
+    data-member-id="{{houseInfo.landlord.userId}}"
+  >
+    <view class="detail-title nav-anchor" id="review">房源评价</view>
+    <view class="review-title">
+      <view class="stars-container">
+        <stars value="{{ houseInfo.stars }}" />
+      </view>
+      <text class="all-review">{{houseInfo.commentStatis}}条评论 {{houseInfo.stars}}分</text>
+    </view>
+    <view wx:if="{{houseInfo.comments.length > 0}}">
+      <view class="review-user-wrapper">
+        <view class="review-user-photo">
+          <image
+            binderror="avatarError"
+            class="photo" 
+            src="{{imageUtils.processImage(houseInfo.comments[0].memberImgPath || defaultAvatar)}}"
+          />
+          <view  class="review-user-info">
+            <view class="review-user-name">{{houseInfo.comments[0].memberName}}</view>
+          </view>
+        </view>
+        <view class="review-user-date">
+          {{dateUtils.setCnYearMonth(houseInfo.comments[0].createTime)}}
+        </view>
+      </view>
+      <view class="review-describe">{{houseInfo.comments[0].comment}}</view> 
+    </view>
+    <view wx:else class="empty-style">无</view>
+  </view>
+</template>
+
+<template name="map">
+  <!-- 地图 -->
+  <view wx:if="{{ !isShowAuth }}" class="section" >
+    <view class="detail-title nav-anchor" id="map">地理位置</view>
+    <map 
+      id="map" 
+      scale="17" 
+      class="map"
+      longitude="{{houseInfo.longitude}}" 
+      latitude="{{houseInfo.latitude}}"
+      markers="{{markers}}"
+      bindtap="onOpenMapPage"
+    >
+      <cover-view bindtap="onOpenMapPage" class="map-mask">
+        <cover-view class="address-wrap">
+          <cover-view class="address-info" wx:if="{{ !isForeignCity }}">
+            <cover-view class="address-city-text">{{houseInfo.cityName || ''}}{{houseInfo.areaName || ''}}</cover-view>
+            <cover-view class="address-text">{{houseInfo.address}}</cover-view>
+          </cover-view>
+          <cover-view class="address-info" wx:if="{{ isForeignCity }}">
+            <cover-view class="address-text">查看地图</cover-view>
+          </cover-view>
+          <cover-image class="address-icon" src="https://oss.localhome.cn/localhomeqy/details_location.png" />
+        </cover-view>
+      </cover-view>
+    </map>
+  </view>
+</template>
+
+<template name="traffic">
+  <!-- 交通 -->
+  <view class="section border-after">
+    <view class="detail-title">交通</view>
+    <view class="housing-recommend">
+      <view>
+        <flexible-component height="{{125}}" isOpenRowsTitle="{{true}}">
+          <text slot="rowsTitleContent">{{houseInfo.navigationInfo || '无'}}</text>
+        </flexible-component>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="facilities">
+  <!-- 设备设施 -->
+  <view class="section">
+    <view class="detail-title nav-anchor" id="facility-menu">
+      <text>服务与设施</text>
+    </view>
+    <view class="facility-icons" >
+      <view 
+        class="facility-icon-item" 
+        wx:for="{{houseFacilitieList}}"
+        wx:for-index="facilitieIndex" 
+        wx:for-item="facilitieItem"
+        wx:key="{{facilitieIndex}}"
+      >
+        <view class="facility-icon-wrapper">
+          <image mode="widthFix" src="{{imageUtils.processImage(facilitieItem.otherValue)}}" />
+        </view>
+        <text>{{facilitieItem.name}}</text>
+      </view>
+      <view 
+        wx:if="{{ houseSourceFacilitieCount > 0 }}"
+        class="facility-icon-item" 
+        bindtap="skipTo" 
+        data-type="facilitie"
+      >
+        <view class="facility-icon-wrapper count">+{{ houseSourceFacilitieCount }}</view>
+        <text>更多</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="select-date">
+  <!-- 预订日期 -->
+  <view class="section">
+    <view class="detail-title">入住时间</view>
+    <view class="draw-date-wrapper" bindtap="bindDateSelectTap">
+      <view class="draw-date-left">
+          <text class="draw-date-tips">入住</text>
+          <view class="draw-date-info">
+            <block wx:if="{{!!searchStartDate}}">
+              <text>{{ drawDate.startDate.date }}</text>
+              <text>{{ drawDate.startDate.week }}</text>
+            </block>
+            <text wx:else>请选择</text>
+          </view>
+      </view>
+      <view class="draw-date-center">
+        <text>{{ checkinDays }}晚</text>
+      </view>
+      <view class="draw-date-right">
+        <text class="draw-date-tips">退房</text>
+        <view class="draw-date-info">
+          <block wx:if="{{!!searchEndDate}}">
+            <text>{{ drawDate.endDate.date }}</text>
+            <text>{{ drawDate.endDate.week }}</text>
+          </block>
+          <text wx:else>请选择</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="rule">
+  <view class="section instructions container" >
+    <view class="detail-title nav-anchor" id="rule">交易规则</view>
+    <view class="info"><text class="bold">闪订入住</text>预订无需等待，支付完成即预订成功，管家将联系你并发送入住指引。</view>
+    <view class="info"><text class="bold">保证金</text>线上收取保证金{{houseInfo.deposit}}元，退房检查无损48小时内原路退回。</view>
+    <view class="info bold" data-type="unsubscribe" catch:tap="skipTo">退订说明</view>
+    <time-line timeLineList="{{ timeLineList }}" showType="left-shaft"/>
+    <view class="blod">管家要求</view>
+    <view class="landlord-request-wrap">
+      <view 
+        class="request-item"
+        wx:for="{{ specialInfoList }}"
+        wx:key="code"
+      >
+        {{ item.name }}
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="forgeign-rule">
+  <view wx:if="{{ tradingRules }}" class="section instructions container">
+    <view class="detail-title">交易规则</view>
+    <view class="info"><text>{{ tradingRules }}</text></view>
+  </view>
+   <view wx:if="{{ checkInRules }}" class="section instructions container">
+    <view class="detail-title">入住须知</view>
+    <view class="info"><text>{{ checkInRules }}</text></view>
+  </view>
+</template>
+
+<template name="facilities-bak">
+  <view class="facilities">
+    <view class="title">服务与设施</view>
+    <block 
+      wx:for="{{ houseSourceFacilitieList }}" 
+      wx:key="index"
+      wx:if="{{ item && item.facilitieList.length > 0 }}" 
+    >
+      <template 
+        is="facility" 
+        data="{{ item }}"
+      />
+    </block>
+  </view>
+</template>
+
+<template name="facility">
+  <view class="facility-info">
+    <view class="title">{{ item.categoryName }}</view>
+    <view class="icons">
+      <view 
+        class="item" 
+        wx:for="{{ item.facilitieList }}" 
+        wx:key="id"
+        wx:for-item="icon"
+      >
+        <image mode="widthFix" src="{{ icon.otherValue }}" />
+        <scroll-view scroll-x class="name">{{ icon.name }}</scroll-view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="house-footer">
+  <view wx:if="{{ !hideShowImage }}" class="service-explain">
+    <view>24小时贴心客服 | 入住无房可获赔付</view>
+    <view>
+      <image mode='widthFix' src="https://oss.localhome.cn/localhomeqy/detail_baozhang.png" />
+      <view>路客安心保障</view>
+    </view>
+  </view>
+  <view class="house-no" style="{{ isFullScreen ? 'margin-bottom: 80rpx' : ''}}">- 房源编号：{{ houseInfo.houseNo }} -</view>
+</template>
+
+<template name="tags">
+  <scroll-view scroll-x="{{true}}">
+    <view class="tab-wrapper">
+      <view class="tab-item" wx:for="{{houseInfo.tags}}" wx:key="id">{{item.tagName}}</view>
+    </view>
+  </scroll-view>
+</template>
+
+<template name="surrounding-house">
+  <view  class="section surrounding-house" catch:tap="skipTo" data-type="recommend">
+    <view class="detail-title nav-anchor" id="surrounding">周边房屋推荐</view>
+  </view>
+</template>
+
+<template name="landlord-intro">
+  <!--房东介绍 -->
+  <view class="section">
+    <view class="detail-title">联系管家</view>
+    <view class="landlord-wrap">
+      <view class="landlord-photo"  data-type="landlord" data-id="{{ houseInfo.assist.userId }}">
+        <image  mode="aspectFill" src="{{imageUtils.processImage(houseInfo.assist.avatar  || defaultAvatar)}}"></image>
+      </view>
+      <view class="landlord-name">
+        <view class="nickName">{{ houseInfo.assist.nickName }} </view>
+        <!-- <view class="label">{{ houseInfo.landlord.label || '自由职业' }}</view> -->
+      </view>
+      <view class="contact-landlord-button" catchtap="contactLandlord">
+        <image mode="widthFix" src="https://oss.localhome.cn/localhomeqy/detail_call_landlord.png" />
+        <text>联系管家</text>
+      </view>
+    </view>
+    <!-- <view class="landlord-describe review-describe" wx:if="{{ houseInfo.landlord.introduce }}" >
+      <view>“{{ houseInfo.landlord.introduce }}”</view>
+      <view class="landlord-more" catch:tap="skipTo" data-type="landlord" data-id="{{ houseInfo.landlord.userId }}">房东详情</view>
+    </view> -->
+  </view>
+</template>
+
+<template name="designer-intro">
+  <!-- 设计师介绍 -->
+  <view class="section designer-intro">
+    <view class="design-wrap">
+      <image
+        class="design-by-image"
+        mode="widthFix" 
+        src="{{ imageUtils.processImage(designByImage) }}"
+      />
+      <view wx:if="{{ isErrorDesignImage }}" class="designer"> {{ houseInfo.designer }}</view>
+      <image
+        wx:else
+        class="design-name"
+        mode="aspectFit"
+        binderror="bindErrorDesignImage"
+        src="{{ imageUtils.processImage(houseInfo.designNameImage) }}"
+      />
+    </view>
+    <view class="designer designer-desc">一房一设计</view>
+    <view class="designer-info">{{houseInfo.designerInfo || '无'}}</view>
+  </view>
+</template>
+
+<template name="picture-house-iamge">
+  <view 
+    wx:if="{{ imageGroup.length > 0 }}"
+    class="section picture-house-iamge"
+  >
+    <view class="detail-title nav-anchor" id="image">参观民宿</view>
+    <view class="picture--container">
+      <template 
+        wx:for="{{ imageGroup }}"
+        wx:key="key"
+        is="picture-wheel" 
+        data="{{ key: item.key, images: item.images }}"
+      />
+    </view>
+    <view class="picture--more" catchtap="skipTo" data-type="morePicture" >查看更多照片{{totalHouseImage}}</view>
+  </view>
+</template>
+
+<template name="picture-wheel">
+  <view 
+    wx:if="{{ images.length > 1 }}"
+    catchtap="skipTo"
+    data-type="morePicture" 
+    data-key="{{ key }}"
+  >
+    <view class="picture--wrap">
+      <view 
+        class="picture--image pic-lose" 
+        wx:for="{{ images }}" 
+        wx:key="id"
+        wx:if="{{ index < 3 }}"
+      >
+        <image lazy-load mode="aspectFill" src="{{ imageUtils.processImage(item.imagePath + '?x-oss-process=image/resize,w_300') }}" />
+      </view>
+    </view>
+    <view class="picture--title">{{ key }}</view>
+  </view>
+</template>

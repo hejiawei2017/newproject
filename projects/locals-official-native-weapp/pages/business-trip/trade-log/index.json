@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText" : "兑换记录",
+  "navigationBarBackgroundColor": "#1C1C1C",
+  "backgroundTextStyle": "light",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#1C1C1C",
+  "usingComponents": {
+    "top-vip-card": "../components/vip-top-card/index"
+  }
+}

@@ -1,0 +1,54 @@
+/* component/zyslider.wxss */
+.container {
+    /*height: 100%;*/
+    width: 100%;
+    position: relative;
+}
+
+.slider-body {
+    height: 10rpx;
+    background-color: #ddd;
+    position: absolute;
+    top: 23rpx;
+}
+
+.body {
+    bottom: 60rpx;
+    background-color: #e84358;
+    z-index: 0.3;
+}
+
+.left {
+    bottom: 58rpx;
+    z-index: 0.1;
+    left: 0;
+    border-radius: 40rpx 0 0 40rpx;
+}
+
+.right {
+    z-index: 0.2;
+    bottom: 62rpx;
+    right: 0;
+    border-radius: 0 40rpx 40rpx 0;
+}
+
+.slider-item {
+    border-radius: 100%;
+    background-color:white;
+    z-index: 2;
+    background: url('https://oss.localhome.cn/new_icon/range-btn.png') no-repeat;
+    background-size: 100% 100%;
+    box-shadow: 0 0 10rpx #cccccc;
+}
+
+.min {
+    position: relative;
+    top: 0rpx;
+    /*left: 100rpx;*/
+}
+
+.max {
+    position: absolute;
+    top: 0rpx;
+    /*left: 600rpx;*/
+}

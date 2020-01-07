@@ -1,0 +1,48 @@
+<wxs src="../../wxs/ImageUtils.wxs" module="imageUtils" />
+<view class="swiper-wrapper" style="background:{{imageBackgroundColor}}">
+    <view class="swiper-operate" wx:if="{{isShowOperateBtn}}">
+        <view wx:if="{{isFavorate}}" class="swiper-operate-btn" bindtap="collection" data-id="{{houseId}}">
+            <image class="image" src="{{heartHot}}" />
+        </view>
+        <view wx:else class="swiper-operate-btn" bindtap="collection" data-id="{{houseId}}">
+            <image class="image" src="{{heart}}" />
+        </view>
+        <view class="share-wrapper" wx:if="{{ isShowShare }}">
+            <button wx:if="{{ !shareNow }}" class="button share" plain="{{ true }}" bindtap="goPoster" />
+            <button wx:else open-type="share" class="button share" plain="{{ true }}" />
+            <image lazy-load="{{ true }}" class="share-icon {{ shareIconAnimate }}" src="{{shareIcon}}"></image>
+            <!-- 分享提示 -->
+            <view class="share-tip">分享有礼</view>
+        </view>
+    </view>
+    <swiper 
+        class="swiper-content" 
+        autoplay="{{autoplay}}" 
+        current="{{ currentIndex }}" 
+        style="height: {{ isAutoHeight ? currentHeigth + 'px' : height }};" 
+        bindchange="_onChangeSwiperCurrent" 
+        skip-hidden-item-layout="true" 
+        circular="true"
+    >
+        <swiper-item 
+            item-id="slideIndex_{{slideIndex}}" 
+            wx:for="{{imgUrls}}" 
+            wx:for-index="slideIndex" 
+            wx:key="slideIndex_{{slideIndex}}" 
+            data-title="{{ titles[slideIndex] }}" 
+            bindtap="hanleSwiperItemClickEvent" 
+            data-index="{{slideIndex}}"
+        >
+            <image hidden="{{ !loadingStatus[slideIndex] }}" lazy-load="{{true}}" binderror="binderror" bindload="loadedImage" data-index="{{slideIndex}}" src="{{imageUtils.processImage(item)}}" class="slide-image image-{{slideIndex}}" mode="{{/*首图采用铺满居中*/ firstImageSetAspectFill && slideIndex === 0 ? 'aspectFill' : imagesMode[slideIndex] ? imagesMode[slideIndex] : 'aspectFit' }}" />
+            <image hidden="{{ loadingStatus[slideIndex] }}" mode="aspectFill" class="slide-image" src="/assets/pic_lose.png" />
+        </swiper-item>
+    </swiper>
+    <view class="swiper-pagination" style="{{ paginationStyle }}" wx:if="{{isShowPagination}}">
+        {{currentIndex+1}}/{{imgUrls.length}}
+    </view>
+    <view wx:if="{{indicatorDots}}" class="indicatorDots" style="{{indicatorDotsColumnStyle}}">
+        <view class="indicatorDots-wrapper" style="{{indicatorDotsRowStyle}}">
+            <view wx:for="{{ imgUrls }}" wx:if="{{ index < 5 }}" wx:key="{{ index }}" class="indicatorDots-item {{ currentIndex % 5 === index ? 'active' : '' }}" style="{{ dotItemStyle }}" />
+        </view>
+    </view>
+</view>

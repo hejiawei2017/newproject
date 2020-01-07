@@ -1,0 +1,9 @@
+<template name="bonusCard">
+    <view class="bonus-card" bindtap="toBalance">
+        <text class="title">我的奖励金总额</text>
+        <view class="content">
+            <text class="text__bottom__small">¥ </text><text class="text__big">{{myBonus}}</text>
+        </view>
+        <text class="des">可累计！可无门槛抵扣房费！快去分享吧！</text>
+    </view>
+</template>

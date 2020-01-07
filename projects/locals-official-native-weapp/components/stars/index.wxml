@@ -1,0 +1,20 @@
+<view class="stars">
+  <image 
+    lazy-load="{{ true }}"
+    mode="scaleToFill"
+    class="star"
+    src="{{ iconImage }}"
+    wx:for="{{ value }}" 
+    wx:key="*this"
+    style="width: {{ size }}rpx; height: {{ size }}rpx"
+  />
+  <image 
+    lazy-load="{{ true }}"
+    mode="scaleToFill" 
+    class="star"
+    src="https://oss.localhome.cn/new_icon/starc1.png"
+    wx:for="{{ maxStars - value }}" 
+    wx:key="*this" 
+    style="width: {{ size }}rpx; height: {{ size }}rpx"
+  />
+</view>

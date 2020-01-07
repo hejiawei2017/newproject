@@ -1,0 +1,56 @@
+
+.poster {
+  box-shadow: 1rpx 1rpx 40rpx rgba(171, 171, 171, 0.3);
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.share_btn {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  height:90rpx;
+  padding:20rpx 0;
+}
+
+.save-button {
+  background-color: #E84358;
+  border-radius: 40rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  width: 48%;
+  color: #fff;
+  overflow: visible;
+  box-shadow: 0 8rpx 13rpx #EB616C;
+}
+
+.save-button::after {
+  border: 0;
+}
+
+.page-container {
+  /* height: 100vh; */
+  padding-bottom: 40rpx
+}
+
+.wait {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 100rpx;
+  width: 100%;
+  font-size: 30rpx;
+  color: #999;
+  text-align: center;
+  z-index: 1;
+}
+.posterImg{
+  width: 100%;
+}
+
+
+
+

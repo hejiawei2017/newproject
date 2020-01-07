@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText" : "精品度假酒店",
+    "usingComponents": {
+      "im-message": "/components/im-message/im-message",
+      "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box",
+      "stars": "/components/stars/index"
+    },
+    "enablePullDownRefresh": true
+  }

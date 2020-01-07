@@ -1,0 +1,31 @@
+function isObject(value) {
+  if (value) {
+    return typeof value === 'object'
+  } else {
+    return false
+  }
+}
+
+function processFloat(value, decimal) {
+  if (!decimal) {
+    decimal = 2;
+  }
+  if (typeof value !== 'number') {
+      throw new Error('value is not number')
+  }
+  if (decimal <= 0) {
+      return Math.round(value)
+  }
+  var multiplier = Math.pow(10, decimal)
+  return Math.round(value * multiplier) / multiplier
+}
+
+function fentoYuan(value) {
+  return parseFloat(value/100).toFixed(2);
+}
+
+module.exports = {
+  isObject: isObject,
+  processFloat: processFloat,
+  fentoYuan: fentoYuan
+}

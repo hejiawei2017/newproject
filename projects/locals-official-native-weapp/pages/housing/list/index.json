@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText" : "民宿列表",
+  "usingComponents": {
+    "swiper-component": "/components/swiper/index",
+    "range-slider-component": "/components/range-slider/range-slider",
+    "amount-control-component": "/components/amount-control/amount-control",
+    "tag-list-component": "/components/taglist/taglist",
+    "im-message": "/components/im-message/im-message",
+    "search-component": "/components/search/search",
+    "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box",
+    "house-card": "/components/house-card/index",
+    "underscore": "/components/underscore/index"
+  },
+  "onReachBottomDistance": 300
+}

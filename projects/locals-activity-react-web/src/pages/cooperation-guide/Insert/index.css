@@ -1,0 +1,122 @@
+.back{
+    font-size: 0;
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .title {
+    padding-top: 161px;
+    font-size: 64px;
+    font-weight: 800;
+    color: #0F0F0F;
+    margin-bottom: 51px;
+  }
+  
+  .sub_title {
+    font-size: 36px;
+    color: #DD3F58;
+    font-weight: 700;
+    margin-top: 30px;
+  }
+  
+  .container {
+    height: 100%;
+    padding: 0 50px;
+    background-color: #fff;
+  }
+  
+  .form_wrapper {
+    margin: 44px 0 0;
+  }
+  
+  .form_item__label {
+    font-family: PingFangSC-Light;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: 0px;
+    font-size: 32px;
+    margin-bottom: 14px;
+      color: #333333;
+  }
+  
+  .form_item__value {
+    margin-bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .form_item__input {
+    flex: 1;
+    outline: none;
+    box-sizing: border-box;
+    padding: 25px 20px;
+    /* padding: 29px 18px; */
+    font-size: 32px;
+  
+      border-radius: 12px;
+      border: solid 2px #e3e3e3;
+  }
+  
+  .form_item__select__wrapper {
+    position: relative;
+  }
+  
+  .form_item__select {
+    width: 48%;
+    line-height: 60px;
+    border-radius: 12px;
+    font-size: 32px;
+  }
+  
+  .form_item__select__real {
+    font-size: 32px;
+  }
+  
+  .wording {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    font-size: 32px;
+    transform: translate3d(0, -60%, 0);
+  }
+  
+  .form_submit {
+    margin: 60px 0;
+    font-size: 36px;
+    padding: 20px 0;
+    font-family: PingFangSC-Medium;
+    background-color: #e73c50;
+    border-radius: 12px;
+    text-align: center;
+    color: #fff;
+    box-sizing: border-box;
+  }
+  
+  .red {
+    color: #e73c50;
+  }
+  
+  .icon{
+    position: absolute;
+    right: 50px;
+    top: 0;
+    width: 149px;
+    height: 149px;
+  }
+  
+  .select {
+     display: flex;
+  }
+
+  .select>div {
+      width: 48%;
+      height: 45px;
+  }
+
+  .select div {
+    font-size: 30px;
+  }

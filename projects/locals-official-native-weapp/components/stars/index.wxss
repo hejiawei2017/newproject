@@ -1,0 +1,28 @@
+.stars {
+    font-size: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.icon-star {
+    background: url(https://oss.localhome.cn/new_icon/star.png) no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.icon-star-purple {
+    background: url(http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/upload/190313/PUXQB190313170627425.png) no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.icon-star1 {
+    background: url(https://oss.localhome.cn/new_icon/starc1.png) no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.star {
+    margin-right: 5rpx;
+}

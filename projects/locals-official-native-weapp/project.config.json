@@ -1,0 +1,652 @@
+{
+	"description": "路客民宿小程序。",
+	"packOptions": {
+		"ignore": [
+			{
+				"type": "suffix",
+				"value": ".scss"
+			}
+		]
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"enhance": false,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.8.1",
+	"appid": "wxdb6b6dc4977e6ef0",
+	"projectname": "locals-official-native-weapp2",
+	"isGameTourist": false,
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 72,
+			"list": [
+				{
+					"id": 1,
+					"name": "聊天列表",
+					"pathName": "pages/im/im",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "民宿详情",
+					"pathName": "pages/housing/detail/index",
+					"query": "houseId=931070309551575045",
+					"scene": 1008
+				},
+				{
+					"id": -1,
+					"name": "全部评论",
+					"pathName": "pages/comment/list/index",
+					"query": "toMemberId=929958907362021386"
+				},
+				{
+					"id": 3,
+					"name": "房东详情页",
+					"pathName": "pages/housing/owner/index",
+					"query": "memberId=929958907378798617",
+					"scene": "1012"
+				},
+				{
+					"id": 4,
+					"name": "支付成功",
+					"pathName": "pages/order/book-pay-success/index",
+					"query": "bookingId=1158281667056123904",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "城市搜索",
+					"pathName": "pages/searcharea/searcharea",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "房源列表",
+					"pathName": "pages/housing/list/index",
+					"query": "selectCityName=米兰",
+					"scene": 1043,
+					"referrerInfo": {}
+				},
+				{
+					"id": 8,
+					"name": "行程详情",
+					"pathName": "pages/trip/detail/index",
+					"query": "bookingId=1055299972550643712",
+					"scene": "1047"
+				},
+				{
+					"id": 8,
+					"name": "orderFlash",
+					"pathName": "pages/order/order",
+					"query": "from=consulting&houseSourceId=931070309551575045&checkinEndDate=1572451200000&checkinStartDate=1572364800000",
+					"scene": 1047
+				},
+				{
+					"id": 12,
+					"name": "房源日历",
+					"pathName": "pages/housing/date-select/date-select",
+					"query": "houseId=1041535899886043137"
+				},
+				{
+					"id": 17,
+					"name": "pois",
+					"pathName": "pages/housing/poi-search/index",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "Q_zz5pe49x5npgUICI8bMhbIQH2d_9pbZTrvfy1vnKs@cr4dev",
+						"shareKey": "rQkWZ6CLdzUo1iM4gIjR6PX_CT1ILC8HNdyZFXWJy_nN1kNMDLQUzXGGDrsNWHIOB93DqxxiYi3NTo6HNm8_yw~~"
+					}
+				},
+				{
+					"id": -1,
+					"name": "keyword",
+					"pathName": "pages/searchkeyword/searchkeyword",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "Q_zz5pe49x5npgUICI8bMhbIQH2d_9pbZTrvfy1vnKs@cr4dev",
+						"shareKey": "rQkWZ6CLdzUo1iM4gIjR6PX_CT1ILC8HNdyZFXWJy_nN1kNMDLQUzXGGDrsNWHIOB93DqxxiYi3NTo6HNm8_yw~~"
+					}
+				},
+				{
+					"id": -1,
+					"name": "邀请有礼",
+					"pathName": "pages/mine/invitation/invitation",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "邀请注册页",
+					"pathName": "pages/mine/invitation/invitation-regign/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "邀请注册页",
+					"pathName": "pages/mine/invitation/invitation-register/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pay error",
+					"pathName": "pages/order/book-pay-failed/index",
+					"query": "bookingId=1042670136955523072"
+				},
+				{
+					"id": 16,
+					"name": "订单详情",
+					"pathName": "pages/trip/detail/index",
+					"query": "bookingId=1158209842489245696",
+					"scene": 1047
+				},
+				{
+					"id": -1,
+					"name": "我的发票",
+					"pathName": "pages/mine/invoice/invoice",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "编辑发票",
+					"pathName": "pages/order/operate-invoice/operate-invoice",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收藏",
+					"pathName": "pages/mine/collect/collect",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "coupon",
+					"pathName": "pages/coupon/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "储值",
+					"pathName": "pages/mine/balance/balance",
+					"query": ""
+				},
+				{
+					"id": 28,
+					"name": "模拟更新",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "充值",
+					"pathName": "pages/mine/top-up/index",
+					"query": ""
+				},
+				{
+					"id": 30,
+					"name": "民宿详情",
+					"pathName": "pages/housing/detail/index",
+					"query": "scene=houseId%3D1053212226451697666",
+					"scene": "1012"
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": "1047"
+				},
+				{
+					"id": -1,
+					"name": "评论",
+					"pathName": "pages/comment/list/index",
+					"query": "houseSourceId=996027097514774528"
+				},
+				{
+					"id": 33,
+					"name": "im content",
+					"pathName": "pages/im/content/content",
+					"query": "groupId=31109000&assistId=1060737762195558401&houseSourceId=931070309568352283&bookingId=1067340987426951168&sessionId=1067340988852363265&landlordHeadUrl=https://oss.localhome.cn/2_161102103504_1ed9c33602334e41b0d4ee150d0fe23e.jpeg",
+					"scene": "1043",
+					"referrerInfo": {}
+				},
+				{
+					"id": 36,
+					"name": "update mobile",
+					"pathName": "pages/settings/change/index",
+					"query": "type=cerNo",
+					"scene": "1047"
+				},
+				{
+					"id": 29,
+					"name": "pages/activity/upgrade29-201907/index",
+					"pathName": "pages/activity/upgrade29-201907/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 39,
+					"name": "房东房源lotel",
+					"pathName": "pages/housing/lotel-housing/index",
+					"query": "memberId=929958907378798617",
+					"scene": "1012"
+				},
+				{
+					"id": 32,
+					"name": "首页 navigateToPath",
+					"pathName": "pages/index/index",
+					"query": "navigateToPath=%2Fpages%2Fhousing%2Flotel%2Findex%3FlotelId%3D1101763545674223618",
+					"scene": 1008
+				},
+				{
+					"id": 33,
+					"name": "首页 navigateToPath web-view",
+					"pathName": "pages/index/index",
+					"query": "navigateToPath=%2Fpages%2Fhousing%2Fdetail%2Findex%3FhouseId%3D931070310646288395",
+					"scene": 1008
+				},
+				{
+					"id": 36,
+					"name": "注册",
+					"pathName": "pages/activity/hand-in-hand-201901/register/index",
+					"query": "name=欧@&phone=17666049233"
+				},
+				{
+					"id": -1,
+					"name": "个人设置",
+					"pathName": "pages/settings/settings",
+					"query": "",
+					"scene": "1012"
+				},
+				{
+					"id": 39,
+					"name": "lotel",
+					"pathName": "pages/housing/lotel/index",
+					"query": "lotelId=1101711780979347458&houseId=1067725870359527426",
+					"scene": null
+				},
+				{
+					"id": 40,
+					"name": "新人红包",
+					"pathName": "pages/activity/new-user-redpacket/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 37,
+					"name": "h5活动页",
+					"pathName": "pages/h5/index",
+					"query": "url=https://i.localhome.cn/v/1906271203348",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新人注册页",
+					"pathName": "pages/activity/new-user-register/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 44,
+					"name": "评论",
+					"pathName": "pages/order/evaluation/evaluation",
+					"query": "bookingId=1102847786309013504",
+					"scene": null
+				},
+				{
+					"id": 45,
+					"name": "民宿详情",
+					"pathName": "pages/housing/detail/index",
+					"query": "houseId=931070414811828277",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "searcharea",
+					"pathName": "pages/searcharea/searcharea",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "领取优惠券",
+					"pathName": "pages/coupon/index",
+					"query": "couponCode=804E4F13C",
+					"scene": null
+				},
+				{
+					"id": 56,
+					"name": "精选栏目",
+					"pathName": "pages/housing/featured-houses/index",
+					"query": "customTagIds=1095954967837675521",
+					"scene": null
+				},
+				{
+					"id": 57,
+					"name": "相册",
+					"pathName": "pages/housing/album/index",
+					"query": "houseId=939000579469873193",
+					"scene": null
+				},
+				{
+					"id": 58,
+					"name": "入住人信息",
+					"pathName": "pages/settings/guestlist/guestlist",
+					"query": "isOrder=1&maxCount=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "map",
+					"pathName": "pages/housing/map/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 47,
+					"name": "29元活动",
+					"pathName": "pages/activity/coupon29-201812/index",
+					"query": "couponCode=804E4F13C",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "59元活动",
+					"pathName": "pages/activity/coupon59-201906/index",
+					"query": "couponCode=804E4F13C",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新红包模块",
+					"pathName": "pages/activity/new-user-redpacket-20190626/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "砍价活动",
+					"pathName": "pages/activity/bargaining/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 51,
+					"name": "暑期助力活动",
+					"pathName": "pages/h5/index",
+					"query": "url=https%3A%2F%2Fi.localhome.cn%2Fv%2F1907291823453%3Ftoken%3DeyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNjYwMjAxNzUyNSIsImNyZWF0ZWQiOjE1NjQwMTk2NTUwNaDcsIm5pY2tu9YW1lIjoiMTY2MD4edaI4abw7MafTc1f3MjU14iLCJpZCI763Ib3jExMTYy005NTA43c2O5ddDMxNj0MxN7zQ5MTMiLCJ4leHAiOjE1NjUzMTU2NTUsInBsYXRmb3JtIjoiQURNSU4iLCJyZWFsbmFtZSI6IjE2NjAyMDE3NTI1In0.a1b0rWI-yX7Iq0JyaMyQXTARqI0a9eWVzXdw52VH7OpWDZUUzfox0k8vh5UWgf_sKCyF6ycTwhQKAbqm9eot1g",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "激活",
+					"pathName": "pages/h5/index",
+					"query": "url=https%3A%2F%2Fi.localhome.cn%2Fv%2F1907291823453%2F%23%2Fpages%2Factivation%2Findex",
+					"scene": null
+				},
+				{
+					"id": 52,
+					"name": "pages/housing/poster/index",
+					"pathName": "pages/housing/poster/index",
+					"query": "price=728&title=『梵溪』赏广州塔小蛮腰/琶洲广交会/珠江新城/地铁口/地铁直达长隆-新年优惠&houseId=1054584039197642752&canvasImg=http://tmp/wxdb6b6dc4977e6ef0.o6zAJs1WkWj7uSIoBREzHGckHGRo.cAoqkQyMeLQyfceb57bde27ca2ccd387c40e8c517073.png&houseImgPath=https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/aai/1545630437409.png",
+					"scene": 1001
+				},
+				{
+					"id": 53,
+					"name": "pages/housing/detail/index",
+					"pathName": "pages/housing/detail/index",
+					"query": "houseId=931070312248512539&parentId=1156034460083679232",
+					"scene": null
+				},
+				{
+					"id": 54,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "navigateToHouseDetailId=1051769221398269952&parentId=1156761627026165760",
+					"scene": null
+				},
+				{
+					"id": 52,
+					"name": "砍价活动",
+					"pathName": "pages/h5/index",
+					"query": "url=act1908011111356%3Fo%3D1158552690862436352%26sui%3D1151442795896795136",
+					"scene": null
+				},
+				{
+					"id": 53,
+					"name": "通过小程序码进入砍价活动",
+					"pathName": "pages/h5/index",
+					"query": "url=act1908011111356%3Fo%3D1158552690862436352%26sui%3D1151442795896795136",
+					"scene": 1012
+				},
+				{
+					"id": 58,
+					"name": "下单支付成功",
+					"pathName": "pages/order/book-pay-success/index",
+					"query": "bookingId=1161612337049751552",
+					"scene": null
+				},
+				{
+					"id": 59,
+					"name": "点击分享链接进入砍价活动",
+					"pathName": "pages/h5/index",
+					"query": "url=act1908011111356%3Fo%3D1162250025251250176%26ci%3D1130763836540284929",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "行程",
+					"pathName": "pages/trip/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员升级",
+					"pathName": "pages/activity/upgrade29-201907/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 56,
+					"name": "pages/activity/invite-friends-201908/home/index",
+					"pathName": "pages/activity/invite-friends-201908/home/index",
+					"query": "parentId=929958907378798632",
+					"scene": 1013
+				},
+				{
+					"id": -1,
+					"name": "pages/mall/index",
+					"pathName": "pages/mall/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 64,
+					"name": "pages/mall/item/item",
+					"pathName": "pages/mall/item/item",
+					"query": "id=8",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mall/pay-success/pay-success",
+					"pathName": "pages/mall/pay-success/pay-success",
+					"query": "type=normal",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/h5/index",
+					"pathName": "pages/h5/index",
+					"query": "url=act1908011111356%3Fo%3D1162250025251250176%26ci%3D1130763836540284929",
+					"scene": null
+				},
+				{
+					"id": 67,
+					"name": "小程序打开砍价活动",
+					"pathName": "pages/h5/index",
+					"query": "url=act1908011111356%3Fo%3D1168420124710821888%26ci%3D1151442795896795136",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "海外民宿活动首尔宣传海报",
+					"pathName": "pages/h5/index",
+					"query": "url=https%3A%2F%2Fi.localhome.cn%2Fv%2F1908291928179%2F%23%2Fmini%3Fchannel%3Dse01",
+					"scene": null
+				},
+				{
+					"id": 69,
+					"name": "广告转化进入中秋活动测试",
+					"pathName": "pages/h5/index",
+					"query": "url=https%3A%2F%2Fi.localhome.cn%2Fv%2F1907191157983%3Fchannel%3Dwxtf&title=中秋出游限时8折，提前开抢！&sku=1077777&platform=1&gdt_vid=wx0ewinbalytptma00&weixinadinfo=20966864.wx0ewinbalytptma00.0.1",
+					"scene": null
+				},
+				{
+					"id": 70,
+					"name": "pages/business-trip/index/index",
+					"pathName": "pages/business-trip/index/index",
+					"query": "channel=pptw",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "channel=pptw",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/activity/upgrade29-201907/index",
+					"pathName": "pages/activity/upgrade29-201907/index",
+					"query": "channel=pptw",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的页面",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/activity/upgrade29-201812/index",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/activity/coupon59-201906/index",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/activity/coupon59-201906/index",
+					"pathName": "pages/activity/coupon59-201906/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/activity/upgrade29-201812/index",
+					"pathName": "pages/activity/upgrade29-201812/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/mine",
+					"pathName": "pages/activity/upgrade29-201907/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "会员权益",
+					"pathName": "pages/mine/member/member",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/h5/index?url=https://i.localhome.cn/v/1907191157984",
+					"pathName": "pages/h5/index?url=https://i.localhome.cn/v/1907191157984",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/h5/index?url=https%3A%2F%2Fi.localhome.cn%2Fv%2F1907191157984",
+					"pathName": "pages/h5/index?url=https%3A%2F%2Fi.localhome.cn%2Fv%2F1907191157984",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/h5/index",
+					"pathName": "pages/h5/index",
+					"query": "url=https://i.localhome.cn/v/1907191157984",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/h5/index",
+					"pathName": "pages/h5/index",
+					"query": "url=https%3A%2F%2Fi.localhome.cn%2Fv%2F1907191157984",
+					"scene": null
+				}
+			]
+		}
+	}
+}

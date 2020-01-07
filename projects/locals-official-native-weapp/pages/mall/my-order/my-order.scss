@@ -1,0 +1,135 @@
+/* pages/mall/my-order/my-order.wxss */
+.page{
+    padding: 30rpx;
+  }
+  .order-card{
+    box-shadow: 0rpx 0rpx 32rpx rgba(215,215,215,0.5);
+    border-radius: 8rpx;
+    padding: 44rpx 30rpx 36rpx 34rpx;
+    margin-bottom: 34rpx;
+  }
+  .title{
+    color: #999999;
+    font-size: 28rpx;
+    font-weight: 500;
+    padding: 0rpx 5rpx 24rpx 5rpx;
+    border-bottom: 2rpx solid #F5F5F5;
+  }
+  .product{
+    display: flex;
+    margin-top: 26rpx;
+    
+  }
+  .product-image{
+    margin-right: 40rpx;
+  }
+  .product-image image {
+    width: 206rpx;
+    height: 206rpx;
+  }
+  .product-name{
+    width: 100%;
+    line-height: 44rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+      overflow:hidden;
+  }
+  .product-name text{
+    font-size: 32rpx;
+    color: #333333;
+    font-weight: bold;
+  }
+  .property{
+    color: #999999;
+    font-size: 26rpx;
+    font-weight: 500;
+    margin-top: 8rpx;
+  }
+  .property>text {
+      display: flex;
+  }
+  .amount{
+    margin-top: 32rpx;
+    align-items: center;
+  }
+  .count{
+    color: #333333;
+    font-size: 26rpx;
+    font-weight: bold;
+  }
+  .money{
+    font-size: 24rpx;
+    color: #E84358;
+    font-weight: 500;
+  }
+  .card-footer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 26rpx;
+  }
+  .footer-tips{
+    font-size: 28rpx;
+    font-weight: 500;
+    color: #333333;
+    padding-left: 5rpx;
+  }
+  .btn-wrapper{
+    height: 52rpx;
+    margin-top: 38rpx;
+    text-align: right;
+  }
+  .btn{
+    width: 252rpx;
+    height: 52rpx;
+    line-height: 52rpx;
+    font-size: 24rpx;
+    font-weight: bold;
+    border-radius: 8rpx;
+    background-color: #E84358;
+    color: #ffffff;
+    border: 0;
+    display: inline-block;
+  }
+  .footer-description{
+    color: #999999;
+    font-size: 24rpx;
+    font-weight: 500;
+    margin-top: 8rpx;
+  }
+  .flex-between {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .addborder {
+      border-bottom: 2rpx solid #F5F5F5;
+      padding-bottom: 34rpx;
+  }
+
+.transportinfo {
+    margin-top: 26rpx;
+    &__lable {
+      font-size: 14px;
+      color: #333;
+    }
+    &__address {
+        font-size: 14px;
+        color: #999;
+        line-height: 20px;
+        margin-top: 32rpx;
+    }
+    &__reciver {
+        font-size: 16px;
+        color: #999;
+        margin-top: 8rpx;
+    }
+    &__hint {
+        color: #E84358;
+        font-size: 12px;
+        margin-top: 28rpx;
+    }
+  }
+  .transportinfo>text {
+      display: flex;
+  }

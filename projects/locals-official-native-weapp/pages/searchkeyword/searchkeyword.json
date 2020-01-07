@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "tag-list": "/components/taglist/taglist",
+        "search": "/components/search/search",
+        "im-message": "/components/im-message/im-message"
+    }
+}

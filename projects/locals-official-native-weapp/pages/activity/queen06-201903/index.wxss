@@ -1,0 +1,238 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 4796rpx;
+  background-image: url(https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/queen/queen_bg_v2.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #f1c4bf;
+}
+.page .checkCouponLabel{
+  margin-top: 1050rpx;
+  position: relative;
+  width: 100%;
+  height: 650rpx;
+}
+.page .checkCouponLabel .entry {
+  width: 534rpx;
+  height: 130rpx;
+  background-image: url(https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/queen/button.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: transparent;
+  animation: tada infinite 1s 1s;
+}
+.page .house-container {
+  height: 1800rpx;
+  position: absolute;
+  top: 1900rpx;
+  left: 0;
+  right: 0;
+  margin: 0 20rpx;
+  background: white;
+}
+.page .house-container .house-tab {
+  display: flex;
+  width: 100%;
+  background: #ef775d;
+  height: 100rpx;
+}
+.page .house-container .house-tab button {
+  width: 180rpx;
+  height: 100rpx;
+  font-size: 30rpx;
+  border-radius: 0;
+  background-color: transparent;
+  color: white;
+  line-height: 100rpx;
+  position: relative;
+}
+.page .house-container .house-tab .active {
+  background-color: #be5883;
+  transform: skewX(-10deg) translateX(10rpx) translateY(-10rpx);
+  height: 110rpx;
+
+}
+.page .house-container .house-tab .active::after {
+  content: "";
+  width: 40rpx;
+  height: 6rpx;
+  background: white;
+  border-radius: 10rpx;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.page .house-container .house-info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.page .house-container .house-info .house {
+  margin-top: 50rpx;
+  width: 324rpx;
+  display: flex;
+  flex-direction: column;
+}
+.page .house-container .house-info .house image {
+  width: 100%;
+  height: 212rpx;
+  border-radius: 12rpx;
+}
+.page .house-container .house-info .house .title {
+  margin-top: 14rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.page .house-container .house-info .house .house-price {
+  width: 324rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+  flex-wrap: nowrap;
+}
+.page .house-container .house-info .house .house-price .label {
+  font-size: 18rpx;
+  color: white;
+  background: #ef775d;
+  line-height: 24rpx;
+  padding: 0 8rpx;
+  border-radius: 7rpx;
+  height: 24rpx;
+  flex-shrink: 1;
+  display: flex;
+}
+.page .house-container .house-info .house .house-price .price {
+  font-weight: bold;
+  color: #ef775d;
+  font-size: 32rpx;
+  flex-shrink: 1;
+  display: flex;
+  align-items: flex-end;
+}
+.page .house-container .house-info .house .house-price .price text {
+  font-size: 22rpx;
+}
+.page .house-container .house-info .house .house-price .standar-price {
+  margin-left: 30rpx;
+  color: #999999;
+  font-size: 20rpx;
+  text-decoration: line-through;
+  flex-shrink: 1;
+  display: flex;
+}
+.page .rule {
+  position: absolute;
+  top: 4000rpx;
+  left: 0;
+  right: 0;
+  font-size: 26rpx;
+  margin: 20rpx;
+  padding: 0 30rpx;
+}
+.page .rule .label {
+  color: #ef775d;
+}
+.page .rule .rule-li {
+  margin-top: 30rpx;
+}
+.page .rule .rule-li .title {
+  margin-top: 10rpx;
+  color: #ef775d;
+}
+.page .rule .rule-li .info {
+  line-height: 40rpx;
+}
+.page .rule .rule-detail {
+  margin-top: 30rpx;
+}
+.page .rule .rule-detail .title {
+  color: #ef775d;
+  margin-bottom: 10rpx;
+}
+.page .rule .rule-detail .text {
+  padding-left: 30rpx;
+  line-height: 40rpx;
+}
+.page .rule .rule-detail .text text {
+  margin-left: -36rpx;
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+  background: #ef775d;
+  text-align: center;
+  line-height: 30rpx;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+  color: white;
+}
+.page .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page .modal .container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  background: #f1c4bf;
+  border-radius: 17rpx;
+  padding: 40rpx;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  position: relative;
+}
+.page .modal .container .close {
+  width: 90rpx;
+  height: 90rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.page .modal .container .title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #ef775d;
+  margin-left: 20rpx;
+}
+.page .modal .container .sub-title {
+  font-size: 24rpx;
+  color: #ef775d;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+.page .modal .container .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+}
+.page .modal .container .content image {
+  width: 460rpx;
+  margin-bottom: 10rpx;
+}
+.page .modal .container .content text {
+  margin: 10rpx 0;
+}
+.page .modal .container .content button {
+  width: 340rpx;
+  height: 78rpx;
+  background-image: url(https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/queen/button02.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: transparent;
+  animation: tada infinite 1s 1s;
+  margin-top: 30rpx;
+}

@@ -1,0 +1,135 @@
+<wxs module="dateFr" src="../../../wxs/mine.wxs"></wxs>
+<wxs module="dateUtils" src="../../../wxs/DateUtils.wxs"></wxs>
+<wxs module="houseUtils" src="../../../wxs/HouseUtils.wxs"></wxs>
+<view class='invoice-choose-btns'>
+  <view class='invoice-choose-btn-block'>
+    <view class="{{activeIndex === '0' ? 'invoice-choose-btn active-btn' : 'invoice-choose-btn'}}" bindtap='hadInvoice' data-type='0'>可开发票</view>
+    <view class="{{activeIndex === '1' ? 'invoice-choose-btn active-btn' : 'invoice-choose-btn'}}" bindtap='hadInvoice' data-type='1'>已开发票</view>
+  </view>
+</view>
+<view class="invoice {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+    <view class="invoice-messa-wrap">
+        <navigator class='invoice-navigator' url="/pages/tipspage/invoiceRules/index">
+          <text class="invoice-messa-tips">退房后3个月内可开发票</text>
+          <image class="icon" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/20190531/tips.png"></image>
+        </navigator>
+        <text class="invoice-messa" bindtap="operateInvoice">抬头管理</text>
+    </view>
+    <view wx:if="{{invoiceData.length > 0 && activeIndex === '0'}}">
+      <view class="invoice-cont" wx:for="{{invoiceData}}" wx:key="{{index}}" bindtap="chooseInvoice" data-index="{{index}}">
+        <view class="invoice-block">
+            <text class="invoice-block-order">订单号：{{item.randomId}}</text>
+            <text class="invoice-block-title">{{item.title}}</text>
+            <view class="invoice-block-time">
+                <text class="invoice-block-checkinDate">入住：{{dateUtils.setTimeDate(item.checkinDate)}}</text>
+                <text>退房：{{dateUtils.setTimeDate(item.realCheckoutDate)}}</text>
+            </view>
+            <view class="invoice-block-cash">
+                <text>可开票金额：</text>              
+                <text class="invoice-block-price">￥{{item.orderPrice}}</text>              
+            </view>
+            <view class="invoice-choose">
+                <image wx:if="{{index === chooseIndex}}" src="https://oss.localhome.cn//localhomeqy/invoice_icon/select.png" />
+                <image wx:else src="https://oss.localhome.cn//localhomeqy/invoice_icon/select2.png" />
+            </view>
+        </view>
+      </view>
+      <text class='invoice-title'>仅显示3个月内可开发票订单</text>
+      <view class="invoice-confirm {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+        <view wx:if="{{invoicePrice > -1}}" bindtap="confirm" class="invoice-confirm-confirm">确认</view>
+        <view wx:else class="invoice-confirm-confirm invoice-confirm-disabled">确认</view>
+      </view>
+    </view>
+    <view wx:if="{{invoiceData.length > 0 && activeIndex === '1'}}">
+      <view class="invoice-cont" wx:for="{{invoiceData}}" wx:key="{{index}}">
+        <view class="invoice-block">
+            <text class="invoice-block-order">订单号：{{item.tripCode}}</text>
+            <text class="invoice-block-title">{{item.title}}</text>
+            <view class="invoice-block-time">
+                <text class="invoice-block-checkinDate">入住：{{dateUtils.setTimeDate(item.checkInDate)}}</text>
+                <text>退房：{{dateUtils.setTimeDate(item.checkOutDate)}}</text>
+            </view>
+            <view class="invoice-block-cash invoice-margin">
+                <text>已开票金额：</text>              
+                <text class="invoice-block-price">￥{{item.invoicePrice}}</text>              
+            </view>
+            <view class='invoice-createTime'>
+              <text>已申请：{{item.createTime}}</text>
+              <text class='invoice-createTime-btn' bindtap='showDetail' data-item='{{item}}'>详情</text>
+            </view>
+        </view>
+      </view>
+      <text wx:if="{{activeIndex === '0'}}" class='invoice-title'>仅显示3个月内可开发票订单</text>
+      <view wx:if="{{activeIndex === '0'}}" class="invoice-confirm">
+        <view wx:if="{{invoicePrice !== -1}}" bindtap="confirm" class="invoice-confirm-confirm">确认</view>
+        <view wx:else class="invoice-confirm-confirm invoice-confirm-disabled">确认</view>
+      </view>
+    </view>
+    <view wx:if="{{ isLoading }}" class="weui-loadmore">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view wx:if="{{ !hasNextPage && invoiceData.length !== 0 && activeIndex === '1'}}" class="weui-loadmore weui-loadmore_line">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">我是有底线的</view>
+    </view>
+    <view wx:if="{{!isLoading && invoiceData.length === 0}}" class="empty-data">
+      <view>
+        <image src="https://oss.localhome.cn/new_icon/fapiao.png" />
+        <view wx:if="{{activeIndex === '0'}}">当前没有待开发票订单</view>
+        <view wx:if="{{activeIndex === '1'}}">暂无开票记录</view>
+      </view>
+    </view>
+    <view wx:if="{{successModal && activeIndex === '1'}}" class='modal' bindtap='closeModal'>
+      <view class='success-modal' catchtap='catchClick'>
+        <view class='success-modal-title'>
+          <image class='invoice-pay-success' src='https://oss.localhome.cn//localhomeqy/invoice_icon/success.png' ></image>
+          <text>申请成功</text>
+        </view>
+        <view class='success-modal-content'>
+          <view class='success-modal-block'>
+            <text class='success-modal-lable'>发票类型</text>
+            <text wx:if="{{invoiceDetail.invoiceType === 1}}">电子普通发票</text>
+            <text wx:if="{{invoiceDetail.invoiceType === 2}}">纸质普通发票</text>
+            <text wx:if="{{invoiceDetail.invoiceType === 3}}">专用发票</text>
+          </view>
+          <view wx:if="{{invoiceDetail.titleName}}" class='success-modal-block'>
+            <text class='success-modal-lable'>发票抬头</text>
+            <text>{{invoiceDetail.titleName}}</text>
+          </view>
+          <view wx:if="{{invoiceDetail.taxCode}}" class='success-modal-block'>
+            <text class='success-modal-lable'>纳税人识别号</text>
+            <text>{{invoiceDetail.taxCode}}</text>
+          </view>
+          <view wx:if="{{invoiceDetail.registeredAddress}}" class='success-modal-block'>
+            <text class='success-modal-lable'>公司注册地址</text>
+            <text>{{invoiceDetail.registeredAddress}}</text>
+          </view>
+          <view wx:if="{{invoiceDetail.depositBank}}" class='success-modal-block'>
+            <text class='success-modal-lable'>开户银行</text>
+            <text>{{invoiceDetail.depositBank}}</text>
+          </view>
+          <view wx:if="{{invoiceDetail.bankAccount}}" class='success-modal-block'>
+            <text class='success-modal-lable'>银行账号</text>
+            <text>{{invoiceDetail.bankAccount}}</text>
+          </view>
+          <view wx:if="{{invoiceDetail.email}}" class='success-modal-block'>
+            <text class='success-modal-lable'>电子邮箱</text>
+            <text>{{invoiceDetail.email}}</text>
+          </view>
+          <view wx:if="{{invoiceDetail.phoneNumber}}" class='success-modal-block'>
+            <text class='success-modal-lable'>联系电话</text>
+            <text>{{invoiceDetail.phoneNumber}}</text>
+          </view>
+          <view class='success-modal-block'>
+            <text class='success-modal-lable'>预计开票时间</text>
+            <text>{{dateUtils.setLaterDate(invoiceDetail.createTime,3)}}前请注意查收</text>
+          </view>
+        </view>
+        <view class='success-modal-btn' bindtap='closeModal'>知道了</view>
+      </view>
+    </view>
+</view>
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

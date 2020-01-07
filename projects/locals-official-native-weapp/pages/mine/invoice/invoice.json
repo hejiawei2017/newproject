@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "发票管理",
+  "usingComponents": {
+    "im-message": "/components/im-message/im-message"
+  }
+}

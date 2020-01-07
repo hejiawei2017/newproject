@@ -1,0 +1,136 @@
+<!-- pages/activity/queen06-201903/invitation.wxml -->
+<view class="page">
+  <view class="queen-record">
+    <view class="record-info">
+      <image class="head-img" src="{{activityData.avatar}}" />
+      <view class="info-text">
+        <view class="text-top">女王分:{{activityData.score}}</view>
+        <view class="text-bottom">还差{{12500 - activityData.score}}分,就能抢女王卡了~</view>
+      </view>
+    </view>
+    <block>
+      <button class="invite-btn" open-type='share' wx:if="{{isMaster && activityData.friend_count < 5}}"></button>
+      <form report-submit='{{true}}'  bindsubmit='receiveGift'>
+        <button class="receive-gift-btn" form-type='submit' wx:if="{{isMaster && activityData.friend_count >= 5 && !received}}"></button>
+      </form>
+      <button class="go-use" wx:if="{{received}}" data-path="/pages/index/index" bindtap='navi'></button>
+    </block>
+    <form report-submit='{{true}}'  bindsubmit='giveGoddessScore'>
+      <button class="give-goddess" wx:if="{{!isMaster}}" form-type='submit'></button>
+    </form>
+    <view class="timing">
+      <view class="luck-container">
+        <image class="luck-image" src="https://oss.localhome.cn/localhomeqy/acitvity29coupon/luck.png"></image>
+        <view class="luck-timing">
+          <text class="luck-strong">{{timingContainer[0][0]}}</text>
+          <text class="luck-strong">{{timingContainer[0][1]}}</text>
+          <text class="luck-label">小时</text>
+          <text class="luck-strong">{{timingContainer[1][0]}}</text>
+          <text class="luck-strong">{{timingContainer[1][1]}}</text>
+          <text class="luck-label">分</text>
+          <text class="luck-strong">{{timingContainer[2][0]}}</text>
+          <text class="luck-strong">{{timingContainer[2][1]}}</text>
+          <text class="luck-label">秒</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="queen-incvited">
+    <text class="title">邀请一名好友，女王分+2500</text>
+    <view class="head-list">
+      <block wx:for="{{[0, 1, 2, 3, 4]}}">
+        <button class="head-wrap" wx:if="{{activityData.friends && activityData.friends[index]}}">
+          <image mode="widthFix" src="{{activityData.friends[index].avatar}}" />
+        </button>
+        <button open-type='share' class="head-wrap" wx:else>
+          <view class="text">＋</view>
+        </button>
+      </block>
+    </view>
+  </view>
+  <view class="house-container">
+    <view class="house-tab" bindtap="changeTab">
+      <button class="{{activeItem==='item1'?'active':''}}" data-type="item1">浪漫情侣</button>
+      <button class="{{activeItem==='item2'?'active':''}}" data-type="item2">闺蜜美宿</button>
+      <button class="{{activeItem==='item3'?'active':''}}" data-type="item3">网红种草</button>
+      <button class="{{activeItem==='item4'?'active':''}}" data-type="item4">萌宠一族</button>
+    </view>
+    <view class="house-info">
+      <view class="house" wx:for="{{currentHouse}}" wx:key="{{item.id}}" bindtap="goHouse" data-house="{{item.id}}">
+        <image src="{{item.img}}" />
+        <text class="title">{{item.title}}</text>
+        <view class="house-price">
+          <text class="label">女王价</text>
+          <view class="price">
+            <text>￥</text> {{item.price}}
+          </view>
+          <text class="standar-price">原价:￥{{item.standardPrice}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="rule">
+    <text class="label">活动时间: 3.8~3.29</text>
+    <view class="rule-li">
+      <view class="title">女王大礼</view>
+      <text class="info">
+                活动期间，每周送出1份女王大礼，中奖用户可兑换价值12500大牌女王护肤组合或等额现金，路客工作人员会在2个工作日内联系中奖者进行兑换。
+            </text>
+    </view>
+
+    <view class="rule-detail">
+      <view class="title">活动规则:</view>
+      <view class="text">
+        <text>1</text> 用户参与活动，即可获得1250元红包福利；
+      </view>
+      <view class="text">
+        <text>2</text> 用户成功邀请5名好友，100元满减券福利以及女王大礼抽奖机会三重福利；
+      </view>
+      <view class="text">
+        <text>3</text> 用户需要在1天时间内完成邀请，过期失效；
+      </view>
+      <view class="text">
+        <text>4</text> 活动不限新老用户
+      </view>
+    </view>
+  </view>
+  <!-- 邀请5位好友后的弹框 -->
+  <view class="modal" wx:if="{{receiveGiftModal}}">
+    <view class="container">
+      <button class='tran-btn' data-close="receiveGiftModal" bindtap='closeModal'>
+        <image mode="widthFix" class='close' src="https://oss.localhome.cn/localhomeqy/queen/close.png"></image>
+      </button>
+      <text class="title">宠爱有加，送你福利</text>
+      <view class="content">
+        <block wx:if="{{!noBlack}}">
+          <image mode="widthFix" src="https://oss.localhome.cn/localhomeqy/queen/quan07.png" />
+          <text>会员卡：在小程序-我的 可查看</text>
+        </block>
+        <image mode="widthFix" src="https://oss.localhome.cn/localhomeqy/queen/quan11.png" />
+        <text>满减劵：在小程序-我的-优惠劵 可查看</text>
+        <image mode="widthFix" src="https://oss.localhome.cn/localhomeqy/queen/quan08.png" />
+        <text>关注“路客精品民宿”微信公众号
+                    回复“我要开奖” 即可查看开奖
+                </text>
+
+        <button bindtap='realReceiveGift'></button>
+      </view>
+    </view>
+  </view>
+      <!--分享后的模态框 -->
+    <view class="modal" wx:if="{{helpSuccessModal}}">
+        <view class="container">
+            <button class='tran-btn' data-close="helpSuccessModal" bindtap='closeModal'>
+              <image mode="widthFix" class='close' src="https://oss.localhome.cn/localhomeqy/queen/close.png"></image>
+            </button>
+            <text class="title">加分成功~ 感谢宠爱~</text>
+            <view class="content">
+                <image mode="widthFix" src="https://oss.localhome.cn/localhomeqy/queen/huazhuangpin.png" />
+                <button class="btn01" data-path="/pages/activity/queen06-201903/index" data-navi="1" bindtap='navi'></button>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 登录 -->
+<auth-drawer-box id="auth-drawer-box" initHide="{{true}}" bind:cancelEvent="_cancelEventFn" />

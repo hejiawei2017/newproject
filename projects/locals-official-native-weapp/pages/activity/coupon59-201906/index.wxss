@@ -1,0 +1,423 @@
+/* pages/activity/coupon29-201812/index.wxss */
+.container {
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #533224;
+  z-index: -2;
+}
+
+.top-image {
+  position: relative;
+  width: 750rpx;
+  height: 800rpx;
+  z-index: 100;
+  margin-bottom: 60rpx;
+  
+}
+
+.des {
+  position: relative;
+  top: 120rpx;
+  overflow: auto;
+}
+
+.rob-btn {
+  height: 95rpx;
+  width: 536rpx;
+  animation: tada infinite 1s 1s; 
+}
+
+.hand {
+  position: relative;
+  top: -180rpx;
+  right: -200rpx;
+  height: 80rpx;
+  width: 76rpx;
+}
+
+.send-des-text {
+  height: 30rpx;
+  width: 340rpx;
+}
+
+.send-des-text2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rpx;
+}
+
+.send-des-text2 .icon-laba {
+  height: 32rpx;
+  width: 42rpx;
+  margin-right: 20rpx;
+}
+
+.send-des-text2-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 500rpx;
+}
+
+.send-des-text2 .des-name {
+  margin-right: 10rpx;
+  font-size: 28rpx;
+  color: #EECCA6;
+}
+
+.send-des-text2 .text {
+  height: 30rpx;
+  width: 320rpx;
+}
+
+/* main */
+.main {
+  position: relative;
+  top: -50rpx;
+}
+
+.dialog .button {
+  position: relative;
+  height: 115rpx;
+  width: 637rpx;
+  top: -170rpx;
+  animation: tada infinite 1s 1s; 
+}
+
+.more-experience {
+  position: relative;
+  top: 150rpx;
+}
+
+.more-experience .dialog-bg {
+  width: 750rpx;
+  height: 1062rpx;
+}
+
+.more-experience .hand {
+  position: absolute;
+  top: 950rpx;
+  right: 60rpx;
+}
+
+.more-fun {
+  position: relative;
+  top: 80rpx;
+}
+
+.more-fun .dialog-bg {
+  width: 750rpx;
+  height: 703rpx;
+}
+
+.more-fun .hand {
+  position: absolute;
+  top: 600rpx;
+  right: 60rpx;
+}
+
+.more-quality {
+  position: relative;
+  top: -20rpx;
+}
+
+.more-quality .dialog-bg {
+  width: 750rpx;
+  height: 793rpx;
+}
+
+.more-quality .hand {
+  position: absolute;
+  top: 680rpx;
+  right: 60rpx;
+}
+
+.rules-block {
+  position: relative;
+  padding: 45rpx;
+  top: -150rpx;
+}
+
+.rules text {
+  margin-bottom: 10rpx;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title text {
+  color: #FFDABE;
+  font-size: 49rpx;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
+}
+
+.title .left-span {
+  flex: 1;
+  height: 1rpx;
+  background-color: #F6C29B;
+}
+
+.title .right-span {
+  flex: 1;
+  height: 1rpx;
+  background-color: #F6C29B;
+}
+
+.rules {
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
+}
+
+.rules text {
+  display: block;
+  color: #FBDCC5;
+  text-align: left;
+  font-size: 26rpx;
+}
+
+.copy-right {
+  color: #DFB4A1;
+  font-size: 20rpx;
+  text-align: left;
+}
+
+
+/* banner */
+.banner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 500rpx;
+  width: 100%;
+}
+.banner-swiper {
+  width: 750rpx;
+  height: 450rpx;
+  z-index: 888;
+}
+
+.banner-swiper .swiper {
+  width: 750rpx;
+  height: 450rpx;
+}
+
+.banner-swiper .swiper .swiper-item {
+  width: 750rpx;
+  height: 450rpx;
+  border-radius: 14rpx;
+}
+
+.banner-swiper image {
+  width: 750rpx;
+  height: 450rpx;
+  border-radius: 10rpx;
+}
+
+.banner-wrapper .banner-indicator {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  height: 67rpx;
+  width: 100%;
+}
+
+.banner-indicator .dot {
+  height: 18rpx;
+  width: 18rpx;
+  margin-left: 6rpx;
+  margin-right: 6rpx;
+  border-radius: 50%;
+  background-color: #825B4B;
+}
+.banner-indicator .dot-active {
+  background-color: #D3C0BA;
+}
+
+
+/* more-fun-swiper */
+.more-fun-swiper {
+  position: absolute;
+  top: 2505rpx;
+  left: 2rpx;
+  width: 680rpx;
+  padding: 10rpx 30rpx;
+  overflow: hidden;
+}
+
+.more-fun-swiper .swiper {
+  height: 400rpx;
+  width: 678rpx;
+}
+
+.more-fun-swiper .swiper .swiper-item {
+  height: 380rpx;
+  width: 560rpx;
+  border-radius: 14rpx;
+}
+
+.more-fun-swiper image {
+  height: 100%;
+  width: 100%;
+  margin: 0 14rpx;
+  border-radius: 14rpx;
+}
+
+/* 弹窗的样式 */
+.pop-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.78);
+  z-index: 9999;
+}
+
+.success-popUp .dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 800rpx;
+  height: 740rpx;
+  text-align: center;
+}
+
+.success-popUpInside {
+  width: 100%;
+  height: 100%;
+}
+
+.success-popUp .btns {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 160rpx;
+}
+
+.success-popUp .check-ticket {
+  height: 55rpx;
+  width: 260rpx;
+  margin-right: 5rpx;
+}
+.success-popUp .invite {
+  position: relative;
+  height: 55rpx;
+  width: 260rpx;
+  margin-left: 5rpx;
+}
+.success-popUp .invite image {
+  height: 100%;
+  width: 100%;
+}
+.success-popUp .invite .popup-button-share {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.fail-popUp .dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 755rpx;
+  height: 680rpx;
+  text-align: center;
+}
+
+.fail-popUpInside {
+  width: 100%;
+  height: 100%;
+}
+
+.fail-popUp .invite {
+  height: 63rpx;
+  width: 348rpx;
+}
+
+.fail-popUp .btns {
+  position: absolute;
+  bottom: 180rpx;
+}
+
+.fail-popUp .popup-button-share {
+  position: absolute;
+  bottom: 0;
+  height: 70rpx;
+  width: 348rpx;
+  opacity: 0;
+}
+
+.dialog-close-btn {
+  position: relative;
+  top: -40rpx;
+  height: 60rpx;
+  width: 58rpx;
+}
+
+.wait-popUp .btns {
+  bottom: 190rpx !important;
+}
+
+.wait-popUp .check-ticket {
+  height: 70rpx;
+  width: 345rpx;
+}
+
+.wait-popUpInside {
+  width: 110%;
+  height: 100%;
+}
+
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%,
+  20% {
+    transform: scale3d(0.95, 0.95, 0.95) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale3d(1.05, 1.05, 1.05) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%,
+  60%,
+  80% {
+    transform: scale3d(1.05, 1.05, 1.05) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}

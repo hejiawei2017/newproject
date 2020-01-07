@@ -1,0 +1,74 @@
+<wxs src="../../../wxs/utils.wxs" module="utils" />
+<view class="wrap" wx:for="{{item.picurls}}" wx:key="{{index}}" >
+    <image class="img" mode="widthFix" src="{{item.url}}" />
+    <view class="tap" wx:if="{{item.touch}}" bindtap="tapPop"></view>
+</view>
+<view style="height:200rpx;"></view>
+<view class="footer {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+    <view class="buy-wrap">
+        <view class="final__price">
+            <button class="final__price__contact" open-type="contact">
+                <image src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/mall/icon_contact.png" class="final__price__contact__icon" />
+                <view class="final__price__contact__text">客服</view>
+            </button>
+            <view class="price" style="font-size:18px;">
+                <text style="font-size:12px">￥<text style="font-size:18px;">{{utils.fentoYuan(item.price)}}</text><text wx:if="{{item.type === 'package'}}">/起</text>
+                </text>
+            </view>
+            <view class="origin-price" style="font-size:18px;">
+                <text style="font-size:12px">￥<text>{{utils.fentoYuan(item.originprice)}}</text>
+                </text>
+            </view>
+        </view>
+        <view class="submit {{item.soldout? 'soldout': ''}}" bindtap="clickBuy">{{item.soldout? '已售罄': '立即购买'}}</view>
+    </view>
+</view>
+<view class="order-tag" bindtap="navToOrder">我的订单</view>
+<picker-view-component visible="{{ filterStatus }}" bind:cancel="toggleFilter">
+    <view class="{{ isFullScreen ? 'full-screen-bottom' : ''}}">
+        <view class="filterwrap">
+            <view class="head">
+                <image mode="aspectFit" class="head__img" src="{{selectProduct? selectProduct.img : item.cover}}" />
+                <view class="head__info">
+                    <view>{{item.sharetitle}}</view>
+                    <view class="head__info__price">
+                        {{selectProduct? '￥'+utils.fentoYuan(selectProduct.price): '￥'+utils.fentoYuan(item.product[0].price)+'~'+utils.fentoYuan(item.product[item.product.length - 1].price)}}
+                    </view>
+                    <view class="head__info__originprice">
+                        {{selectProduct? '￥'+utils.fentoYuan(selectProduct.originprice): '￥'+utils.fentoYuan(item.product[0].originprice)+'~'+utils.fentoYuan(item.product[item.product.length - 1].originprice)}}
+                    </view>
+                </view>
+            </view>
+
+            <view class="selector" wx:for="{{item.selector}}" wx:for-item="selector" wx:for-index="selectorIndex">
+              <view class="selector__title">{{selector.title}}</view>
+              <view class="selector__wrap">
+                <view space="nbsp" 
+                class="selector__item {{itemSelector.active? 'selector__item--select': ''}}" 
+                wx:for="{{selector.item}}" 
+                wx:for-index="itemIndex" 
+                wx:for-item="itemSelector" 
+                data-item="{{itemSelector}}"
+                data-itemIndex="{{itemIndex}}"
+                data-selectorIndex="{{selectorIndex}}"
+                bindtap="selectorClick">{{itemSelector.content}}</view>
+              </view>
+            </view>
+
+            <!-- <view class="standard">规格:</view>
+            <view class="filterwrap__package {{index === select? 'filterwrap--select': ''}}" wx:key="{{index}}" wx:for="{{item.items}}" bindtap="itemClick" data-index="{{index}}" data-itemid="{{item.itemId}}">
+                {{item.title}}
+            </view> -->
+        </view>
+        <view class="submit" bindtap="next">下一步</view>
+    </view>
+</picker-view-component>
+
+<view class="pop" wx:if="{{showPop}}">
+    <view class="panel">
+        <image mode="widthFix" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/mall/21565869153_.pic_hd.jpg" />
+        <view class="panel__tap" bindtap="tapPop"></view>
+    </view>
+</view>
+
+<auth-drawer-box id="auth-drawer-box" initHide="{{true}}" bind:cancelEvent="_cancelEventFn" />

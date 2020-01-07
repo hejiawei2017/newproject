@@ -1,0 +1,132 @@
+<wxs module="imageUtils" src="../../../wxs/ImageUtils.wxs" />
+
+<view class="container">
+    <view class="header-box">
+        <view class="notice">
+            <image class="notice-icon" data-img="noticeIcon" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/up_grade_201907/%E5%96%87%E5%8F%AD%20.png"  lazy-load="true" binderror="" bindload="" />
+              
+            <text class="des">{{notice.buyer}}{{notice.time}}分钟前购买了{{notice.cardType}}升级套餐</text>
+        </view>
+        <image class="bg-image"  data-img='headerImg' binderror='bindeImageError' src="{{ imageUtils.processImage(pageImgs.headerImg) }}" mode="widthFix"/>
+    </view>
+      
+    <view class="card-item">
+        <text class="des__top-right">已累计有{{cardBuyersCount.black}}人购买</text>
+        <image data-img='blackCard' binderror='bindeImageError' src="{{ imageUtils.processImage(pageImgs.blackCard) }}" mode="widthFix"/>
+        <view class="bottom-center-box">
+            <button data-type="black" bindtap="handleClick">立即下单 即刻回本</button>
+            <text class="des__bottom-center">{{ timeCount }}</text>
+        </view>
+    </view>
+    <view class="card-item">
+        <text class="des__top-right">已累计有{{cardBuyersCount.gold}}人购买</text>
+        <image data-img="goldCard" binderror='bindeImageError' src="{{ imageUtils.processImage(pageImgs.goldCard) }}" mode="widthFix"/>
+        <view class="bottom-center-box">
+            <button data-type="gold" bindtap="handleClick">立即下单 即刻回本</button>
+            <text class="des__bottom-center">{{ timeCount }}</text>
+        </view>
+    </view>
+    <view class="card-item">
+        <text class="des__top-right">已累计有{{cardBuyersCount.silver}}人购买</text>
+        <image  data-img="silverCard" binderror='bindeImageError' src="{{ imageUtils.processImage(pageImgs.silverCard) }}" mode="widthFix"/>
+        <view class="bottom-center-box">
+            <button data-type="silver" bindtap="handleClick">立即下单 即刻回本</button>
+            <text class="des__bottom-center">{{ timeCount }}</text>
+        </view>
+    </view>
+
+    <view class="footer-box">
+        <image data-img="guarantees" binderror='bindeImageError' src="{{ imageUtils.processImage(pageImgs.guarantees) }}" mode="widthFix"/>
+    </view>
+    <view class="inviteShow">
+        <view bindtap="longpressShow">
+            <text wx:if="{{showInvite}}" class="inviteText">{{showText}}</text>
+        </view>
+    </view>
+</view>
+
+<!-- 弹框 isShowModle-->
+<view class="modle-wrap" wx:if="{{isShowModle}}" catchtouchmove='false' bindtap="hidePop">
+   <view class="content" catchtap="false">
+        <view class="title">
+            <image src="{{ imageUtils.processImage('https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/up_grade_201907/dialog_title.png') }}" mode="widthFix"/>
+            <text class="title-text">路客会员升级</text>
+        </view>
+        <view class="body">
+            <radio-group name="radio-group" bindchange="radioChange">
+                <label class="card-item">
+                    <radio value="black" style="display:none;"/>
+                    <view class="radio-box {{cardTypeToPay === 'black' && 'radio-box__active'}}"></view>
+                    <view class="radio-des__title radio-des__black">
+                        黑卡会员
+                        <text class="tip">推荐</text>
+                    </view>
+                    <text class="radio-des__gray" wx:if="{{currentCardTipsType === 'black'}}">您已是黑卡会员</text>
+                    <text class="radio-des__gray" wx:else>预计每年可省2000元</text>
+                </label>
+                <view class="line"></view>
+                <label class="card-item">
+                    <radio value="gold" style="display:none;"/>
+                    <view class="radio-box {{cardTypeToPay === 'gold' && 'radio-box__active'}}"></view>
+                    <view class="radio-des__title radio-des__gold">
+                        金卡会员
+                    </view>
+                    <text class="radio-des__gray" wx:if="{{currentCardTipsType === 'gold'}}">您已是金卡会员 推荐升级黑卡</text>
+                    <text class="radio-des__gray" wx:else>预计每年可省1000元</text>
+                </label>
+                <view class="line"></view>
+                <label class="card-item">
+                    <radio value="silver" style="display:none;"/>
+                    <view class="radio-box {{cardTypeToPay === 'silver' && 'radio-box__active'}}"></view>
+                    <view class="radio-des__title radio-des__silver">
+                        银卡会员
+                    </view>
+                    <text class="radio-des__gray" wx:if="{{currentCardTipsType === 'silver'}}">您已是银卡会员 推荐升级黑卡</text>
+                    <text class="radio-des__gray" wx:else>预计每年可省600元</text>
+                </label>
+            </radio-group>
+        </view>
+        <button wx:if="{{userCardType !== 'black'}}"  bindtap='handleClickToPay'>前往支付</button>
+        <button wx:else open-type="share">您已经购买过啦，分享给好友吧！</button>
+        <view class="close" bindtap="hidePop">
+            <image src="{{ imageUtils.processImage('https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/up_grade_201907/Close.png') }}" mode="widthFix"/>
+        </view>
+   </view>
+</view>
+
+<!-- 支付成功弹框 paySuccess -->
+<view class="success-modle" wx:if="{{paySuccess}}" bindtap="hidePaySuccess">
+    <view class="content">
+        <view class="title">
+            <image src="{{ imageUtils.processImage('https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/up_grade_201907/dialog_title.png') }}" mode="widthFix"/>
+            <text class="title-text">升级成功</text>
+        </view>
+        <view wx:if="{{cardTypeToPay==='black'}}">
+            <image data-img="blackCardSuccess" binderror='bindeImageError' src="{{ imageUtils.processImage(pageImgs.blackCardSuccess) }}" mode="widthFix"/>    
+        </view>
+        <view wx:if="{{cardTypeToPay==='gold'}}">
+            <image data-img="goldCardSuccess" binderror='bindeImageError' src="{{ imageUtils.processImage(pageImgs.goldCardSuccess) }}" mode="widthFix"/>
+        </view>
+        <view wx:if="{{cardTypeToPay==='silver'}}">
+            <image data-img="silverCardSuccess" binderror='bindeImageError' src="{{ imageUtils.processImage(pageImgs.silverCardSuccess) }}" mode="widthFix"/>
+        </view>
+        <view class="button-group">
+            <button bindtap="goMine">查看权益</button>
+            <button open-type="share">邀请好友得¥100</button>
+        </view>
+        <view class="close" bindtap="hidePaySuccess">
+            <image src="{{ imageUtils.processImage('https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/up_grade_201907/Close.png') }}" mode="widthFix"/>
+        </view>
+    </view>
+</view>
+
+<!-- 失败弹框 -->
+
+
+<!-- 登录 -->
+<auth-drawer-box 
+    id="auth-drawer-box"
+    initHide="{{ true }}"
+    isCanCancel="{{ true }}"
+    bind:cancelEvent="signInCallback"
+/>

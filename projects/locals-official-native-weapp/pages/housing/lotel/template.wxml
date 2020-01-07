@@ -1,0 +1,327 @@
+<wxs src="../../../wxs/ImageUtils.wxs" module="imageUtils" />
+
+<template name="main-info">
+  <view class="main-info line-container">
+    <super-image class="lotel-logo" mode="widthFix" src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/upload/190313/YAQTO190313165222254.png" />
+    <view class="store-name">{{ lotelInfo.shopName }}</view>
+    <scroll-view class="tags">
+      <view 
+        class="item" 
+        wx:for="{{ lotelInfo.label }}"
+        wx:key="index"
+      >{{ item }}</view>
+    </scroll-view>
+    <view class="comment-container" catch:tap="navigateToAllComment">
+      <view class="comment">
+        <view class="avatars">
+          <image 
+            wx:for="{{ lotelInfo.memberPath }}"
+            wx:if="{{ index < 3 }}" 
+            wx:key="index" 
+            mode="aspectFit" 
+            src="{{ imageUtils.processImage(item || defaultAvatar) }}"
+          />
+        </view>
+        <view><text decode>&nbsp;{{ lotelInfo.starsTotal || 0 }}条评论</text></view>
+      </view>
+      <view class="stars"><text decode>{{ lotelInfo.starsAverage || 0 }}分&nbsp;</text><stars type="2" value="{{ lotelInfo.starsAverage || 0 }}" /></view>
+    </view>
+  </view>
+</template>
+
+<template name="date-container">
+  <view class="line-container">
+    <view class="main-title">出行日期</view>
+    <view class="draw-date-wrapper default-box-shadow" catch:tap="bindDateSelectTap">
+    <view class="draw-date-left">
+        <text class="draw-date-tips">入住</text>
+        <view class="draw-date-info">
+          <block wx:if="{{ searchStartDate }}">
+            <text>{{ drawDate.startDate.date }}</text>
+            <text>{{ drawDate.startDate.week }}</text>
+          </block>
+          <text wx:else>请选择</text>
+        </view>
+    </view>
+    <view class="draw-date-center">
+      <text>{{ checkinDays }}晚</text>
+    </view>
+    <view class="draw-date-right">
+      <text class="draw-date-tips">退房</text>
+      <view class="draw-date-info">
+        <block wx:if="{{ searchEndDate }}">
+          <text>{{ drawDate.endDate.date }}</text>
+          <text>{{ drawDate.endDate.week }}</text>
+        </block>
+        <text wx:else>请选择</text>
+      </view>
+    </view>
+  </view>
+  </view>
+</template>
+
+<template name="filter-house">
+  <view class="filter-house line-container">
+    <view class="main-title">房源推荐</view>
+    <view class="tabs-wrap">
+      <scroll-view scroll-x>
+        <view class="realy-scroll-wrap">
+            <view 
+              wx:for="{{ showProperty }}" 
+              wx:key="{{ item.id }}"
+              class="{{ item.selected ? 'active' : '' }}"
+              data-id="{{ item.id }}"
+              data-is-immediately="{{ true }}"
+              catch:tap="selectTag"
+            >
+              {{ item.name }}
+            </view>
+        </view>
+      </scroll-view>
+      <view class="filter-button" catch:tap="toggleFilterHouse">筛选</view>
+    </view>
+    <view class="houses">
+      <block wx:if="{{ houseList.length }}">
+        <template 
+          wx:for="{{ houseList }}" 
+          wx:key="index" 
+          is="house-item" 
+          data="{{ defaultHouseImage, item, memberCardCode }}" 
+        />
+        <block wx:if="{{ isLoadingHouse }}">
+          <view class="content">
+            <image class="icon-loading" src="/assets/loading2.svg" />
+          </view>
+        </block>
+        <block wx:else>
+          <view 
+            wx:if="{{ hasNextPage }}" 
+            class="show-more" 
+            catch:tap="showMore"
+          >
+            展示更多
+          </view>
+        </block>
+      </block>
+      <view class="house-empty-container" wx:else>
+        <image class="house-empty-image" mode="widthFix" src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/upload/190328/BHBY4190328094250052.png" />
+        <view class="text">未找到符合要求的房型，删个标签试试吧</view>
+        <view class="delete-tags">
+          <view 
+            wx:for="{{ selectedTags }}" 
+            wx:key="{{ item.id }}"
+            data-id="{{ item.id }}"
+            data-is-immediately="{{ true }}"
+            catch:tap="selectTag"
+          >
+            <view class="tag-name">{{ item.name }}</view>
+            <image mode="widthFix" src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/upload/190328/H06Y2190328101429539.png" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="house-item">
+  <view 
+    class="house-item default-box-shadow" 
+    data-house-source-id="{{ item.houseSourceId }}" 
+    catch:tap="navigateToDetail"
+  >
+    <view class="house-image"><image mode='aspectFill' src="{{ imageUtils.processImage(item.imgPath + '?x-oss-process=image/resize,w_320/quality,Q_100' || defaultHouseImage) }}" /></view>
+    <view class="info">
+      <view class="title">
+        <text class="short-title">{{ item.shortTitle || item.title }}</text
+        >
+        <view class="chart" catch:tap="contactLandlord" data-house-source-id="{{ item.houseSourceId }}">
+          <view>咨询</view>
+          <image mode="widthFix" src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/upload/190322/M8CTS190322102008578.png" />
+        </view>
+      </view>
+      <scroll-view scroll-x class="tags">
+        <view 
+          wx:for="{{ item.properties }}"
+          wx:key="index"
+          wx:for-item="propertyName"
+        >
+          {{ propertyName }}
+        </view>
+      </scroll-view>
+      <view class="info-footer">
+        <view class="left">
+          <view class="money">{{ item.price }}</view>
+          <view wx:if="{{ item.cardText }}" class="card {{ memberCardCode }}">
+            <view>{{ item.cardText }}</view>
+          </view>
+        </view>
+        <block wx:if="{{ item.stock === undefined || item.stock > 0 }}">
+          <view 
+            class="booking" 
+            data-house-source-id="{{ item.houseSourceId }}" 
+            catch:tap="nowBookingClick"
+          >
+            预订
+          </view>
+        </block>
+        <block wx:else>
+          <view 
+            class="booking not-booking" 
+          >
+            满房
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="article">
+  <view class="line-container">
+    <view class="article">
+      <view class="title">{{ title }}</view>
+      <view class="default-box-shadow">
+        <flexible-component 
+          height="{{ 85 }}" 
+          lineClamp="{{ 3 }}" 
+          isOpenRowsTitle="{{true}}"
+          showMoreStyle="text-align: right; color: #999999; font-size:40rpx;" 
+          showMoreText="..."
+          isCanClose="{{ false }}"
+          styleType="ellipsis"
+        >
+          <text 
+            space="{{true}}"
+            decode="{{true}}"
+            class="content" 
+            slot="rowsTitleContent"
+          >{{content || '无'}}</text>
+        </flexible-component>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="rule">
+  <view class="line-container">
+    <view class="article rule">
+      <view class="info" catchtap="goToUnsubscribe">
+        <view class="main-title">
+          <view>交易规则</view>
+        </view>
+      </view>
+      <view class="default-box-shadow">
+        <template is="sub-content" data="{{ title: '订单确认', content: '下单后管家会与您联系确认行程计划，发送入住指引' }}" />
+        <template is="sub-content" data="{{ title: '保证金', content: depositContent }}" />
+        <template is="sub-content" data="{{ title: '入住须知', content: lotelInfo.instructionsAdmission }}" />
+        <view class="unsubscribe">
+          <view class="sub-title">退订政策</view>
+        </view>
+        <time-line 
+          activeStyle="color: #8a1353;"
+          timeLineList="{{ timeLineList }}" 
+          currentStep="{{ currentStep }}"
+        />
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="sub-content">
+  <view class="sub-title">{{ title }}</view>
+  <text decode="{{true}}" class="sub-content">{{ content }}</text>
+</template>
+
+<template name="footer">
+  <view class="line-container">
+    <view class="default-box-shadow footer">
+      <view>24小时贴心客服 | 入住无房可获赔付</view>
+      <view>
+        <image 
+          class="baozhang-icon"
+          mode="widthFix" 
+          src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/upload/190313/6L7N0190313193731469.png"
+        />
+        <view>路客安心保障</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="filter-content">
+  <view class="filter-content {{ isFullScreen ? 'padding-bottom-100rpx' : '' }}">
+    <view catch:touchmove="maskTouchMove" class="filter-title"><text>条件筛选</text><text catch:tap="clearSearchTag">清空</text></view>
+    <template is="select-group" data="{{ searchProperty }}" />
+    <view catch:touchmove="maskTouchMove" class="buttons" catch:tap="clickSearch">
+      <view>确定</view>
+    </view>
+  </view>
+</template>
+
+<template name="select-group">
+  <scroll-view class="scroll-select-group" scroll-y="{{true}}">
+    <view wx:for="{{ searchProperty }}" wx:key="index" class="select-group">
+      <view class="title">{{ item.title }}</view>
+      <view class="options">
+        <view
+          wx:for="{{ item.properties }}"
+          wx:key="id"
+          wx:for-item="property"
+          class="item {{ property.selected ? 'active' : '' }}"
+          data-id="{{ property.id }}"
+          data-title="{{ item.title }}"
+          catch:tap="selectTag"
+        >
+          {{ property.name }}
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</template>
+
+<template name="map">
+  <view class="map default-margin" catch:tap="openAddress">
+    <image 
+      mode="widthFix"
+      src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/upload/190313/1U2LY190313171147937.png" 
+    />
+    <view class="adress-content">
+      <scroll-view scroll-x="true">
+        <view class="city">{{ lotelInfo.province + lotelInfo.city + lotelInfo.area }}</view>
+        <view class="adress">{{ lotelInfo.address }}</view>
+      </scroll-view>
+      <image class="right" mode="widthFix" src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/upload/190313/7BRMO190313173154257.png" />
+    </view>
+  </view>
+</template>
+
+<template name="brightSpot">
+  <view class="line-container">
+    <view class="article">
+      <view class="title">{{ title }}</view>
+      <view class="default-box-shadow">
+        <flexible-component 
+          height="{{ 85 }}" 
+          lineClamp="{{ 3 }}" 
+          isOpenRowsTitle="{{true}}"
+          showMoreStyle="text-align: right; color: #999999; font-size:40rpx;" 
+          showMoreText="..."
+          isCanClose="{{ false }}"
+          styleType="ellipsis"
+        >
+          <view 
+            space="{{true}}"
+            decode="{{true}}"
+            class="brightSpotView" 
+            slot="rowsTitleContent"
+            wx:for="{{ content }}"
+            wx:key="id"
+          >
+            <text class="point"> · </text>
+            <view class="brightSpotContent">{{item || '无'}}</view>
+          </view>
+        </flexible-component>
+      </view>
+    </view>
+  </view>
+</template>

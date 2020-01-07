@@ -1,0 +1,12 @@
+<view class="equity-items">
+  <view class="equity-item" wx:for="{{dataList}}" wx:key='id'>
+    <view>
+      <view wx:if="{{item.countNum!==-10}}" class="{{item.countNum===-1 ?'topcount reset':'topcount'}}">
+        {{(item.countNum===-1||item.countNum>10000)?'∞':item.countNum}}
+      </view>
+      <image wx:if="{{!item.isNoRight}}" src="{{item.src}}" />
+      <image wx:elif="{{item.isNoRight}}" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/mine80/lock.png" />
+      <view class="equity-item-tip">{{item.serviceName}}</view>
+    </view>
+  </view>
+</view>

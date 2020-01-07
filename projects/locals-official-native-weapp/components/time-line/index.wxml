@@ -1,0 +1,32 @@
+<view class="time-line">
+    <block wx:for="{{ timeLineList }}" wx:key="id">
+      <block wx:if="{{showType === 'center-shaft'}}">
+        <view class="item">
+          <view class="time-descript">
+            <view class="text">{{ item.timeDescript }}</view>
+            <view class="time-line-dete">{{ item.date }}</view>
+          </view>
+          <view class="dot">
+            <icon class="{{ item.success ? 'icon-success-dot' : 'icon-clock' }}" />
+            <view wx:if="{{ index + 1 < timeLineList.length }}" class="dot-line" />
+          </view>
+          <text class="time-line-descript {{ index < currentStep ? 'before-step' : ''  }} {{ index === currentStep ? 'current-step' : '' }}" style="{{ index === currentStep ? activeStyle : '' }}">{{ item.lineDescript }}</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="item">
+          <view class="left-dot">
+            <icon class="{{ item.success ? 'icon-success-dot' : 'icon-clock' }}" />
+            <view wx:if="{{ index < timeLineList.length }}" class="dot-line" />
+          </view>
+          <view class="left-time-descript">
+            <view class="left-title">{{ item.timeDescript }}<text class="left-title-timehint">{{item.timehint}}</text></view>
+            <view class="left-tips">
+              <view class="left-tag-head {{index > 0 ? 'head-red': ''}}"></view>
+              <view class="left-tag-body {{index > 0 ? 'body-red': ''}}">{{ item.lineDescript }}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+</view>

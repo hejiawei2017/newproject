@@ -1,0 +1,81 @@
+<wxs src="../../../wxs/mine.wxs" module="dateFr" />
+<wxs src="../../../wxs/ImageUtils.wxs" module="imageUtils" />
+  <!-- <view class="fiexd">
+      <search />
+  </view> -->
+  <view class="container">
+     <view class="weui-tab">
+        <view class="weui-navbar">
+            <block>
+                <view data-index="0" class="weui-navbar__item {{(activeIndex == 0) ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                    <view class="weui-navbar__title">喜爱的房子</view>
+                </view>
+                <view data-index="1" class="weui-navbar__item {{(activeIndex == 1) ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                    <view class="weui-navbar__title">喜爱的房东</view>
+                </view>
+            </block>
+        </view>
+        <view class="weui-tab__panel">
+            <form>
+                <view class="weui-tab__content" hidden="{{activeIndex == 1}}">
+                    <view class="house-list-wrap" wx:if="{{collectData.length > 0}}">
+                      <view
+                        wx:for="{{ collectData }}"
+                        wx:for-item="item"
+                        wx:for-index="id"
+                        wx:key="{{ item.id }}"
+                        class="item-wrap"
+                      >
+                        <view class="collect-operate-btn" catchtap="collection" data-id="{{item.houseSourceId}}">
+                          <image src="{{heartHot}}" />
+                        </view>
+                        <house-card item="{{ item }}" />
+                      </view>
+                  </view>
+                  <view wx:else>
+                      <text class="notText">暂无喜爱的房子</text>
+                  </view>
+                  <view wx:if="{{ isLoading }}" class="weui-loadmore">
+                    <view class="weui-loading"></view>
+                    <view class="weui-loadmore__tips">正在加载</view>
+                  </view>
+                  <view wx:if="{{ collectData.length > 0 && !isHasNextPage }}" class="weui-loadmore weui-loadmore_line">
+                    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">我是有底线的</view>
+                  </view>
+                </view>
+                <view class="weui-tab__content weui-tab__content2" hidden="{{activeIndex == 0}}">
+                  <view wx:if="{{landlordData.length > 0}}">
+                    <navigator
+                      url="/pages/housing/owner/index?memberId={{ item.followUserId }}"
+                      class="landlord"
+                      wx:for="{{ landlordData }}"
+                      wx:for-item="item"
+                      wx:for-index="id"
+                      wx:key="{{ item.id }}"
+                    >
+                        <view class="landlord-header">
+                          <image src="{{imageUtils.processImage(item.followUserAvatar ? item.followUserAvatar : defaultAvatar)}}"></image> 
+                        </view>
+                        <view class="landlord-prod">
+                          <view class="landlord-name">
+                            {{item.followUserName}}·
+                            <text>{{item.followUserLabelar ? item.followUserLabelar : '保密'}}</text>
+                          </view>
+                          <view class="landlord-cont">
+                            {{item.followUserIntroduce ? item.followUserIntroduce : '无更多房东介绍'}}
+                          </view>
+                        </view>
+                    </navigator>
+                  </view>
+                  <view wx:else>
+                      <text class="notText">暂无喜爱的房东</text>
+                  </view>
+                </view>
+            </form>
+        </view>
+    </view>
+  </view>
+<im-message
+  id="im-message"
+  noAttached='{{false}}'
+/>

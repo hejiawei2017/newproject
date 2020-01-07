@@ -1,0 +1,18 @@
+<view class="page">
+    <form bindsubmit="formSubmit" report-submit="true">
+        <view class="main-container">
+            <icon class="icon-fail" />
+            <view class="fail-text">支付失败</view>
+            <view class="fail-descript">支付成功后房间才为你保留，请尽快完成支付!</view>
+            <button class="pay" formType="submit" catchtap="pay">继续支付</button>
+        </view>
+        <view class="footer {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+            <button class="left" formType="submit" catchtap="goToIndex">返回首页</button>
+            <button class="right" formType="submit" catchtap="goToOrderDetail">查看订单</button>
+        </view>
+    </form>
+</view>
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

@@ -1,0 +1,22 @@
+
+<import src="/common-template.wxml" />
+<import src="./template.wxml" />
+
+<tabs tabs="{{ tabs }}" isFixed="{{ isFixed }}" bind:tabClick="tabClick" active-index="{{activeIndex}}">
+  <view class="wrap" slot="0">
+    <block wx:if="{{ orderlist.length > 0 }}">
+      <template is="orderList" data='{{dataList:orderlist,config }}' />
+    </block>
+    <block wx:else>
+      <template is="empty-data" data="{{ text: '您无购买记录' }}" />
+    </block>
+  </view>
+  <view class="wrap" slot="1">
+    <block wx:if="{{ claimList.length > 0 }}">
+      <template is="claimList" data='{{ dataList:claimList,config }}' />
+    </block>
+    <block wx:else>
+      <template is="empty-data" data="{{ text: '您无领取记录' }}" />
+    </block>
+  </view>
+</tabs>

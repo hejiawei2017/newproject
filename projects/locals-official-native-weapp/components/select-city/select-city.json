@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "search": "/components/search/search",
+    "tabs": "/components/tabs/index"
+  }
+}

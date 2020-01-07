@@ -1,0 +1,48 @@
+/* pages/housing/facilities/index.wxss */
+.page{
+  padding-bottom: 128rpx;
+  margin: 50rpx 38rpx 0 38rpx;
+}
+.section{
+  position: relative;
+  padding-bottom: 70rpx;
+}
+.detail-title{
+  font-size: 36rpx;
+	color: #484848;
+}
+.facility-icons-title{
+  font-size: 30rpx;
+  color: #484848;
+  margin-top: 60rpx;
+}
+.facility-icons{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 55rpx;
+}
+.facility-icon-item{
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 24rpx;
+  color: #555555;
+  margin-bottom: 60rpx;
+}
+.facility-icon-item image{
+  width: 45rpx;
+  margin-bottom: 20rpx;
+  display: block;
+}
+.facility-icon-item text{
+  width: 90%;
+  height: 20px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}

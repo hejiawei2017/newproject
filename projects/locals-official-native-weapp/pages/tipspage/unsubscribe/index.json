@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText" : "退订政策",
+  "usingComponents": {
+    "time-line": "/components/time-line/index",
+    "im-message": "/components/im-message/im-message"
+  }
+}

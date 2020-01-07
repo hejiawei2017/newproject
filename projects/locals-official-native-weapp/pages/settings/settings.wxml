@@ -1,0 +1,53 @@
+<wxs src="../../wxs/ImageUtils.wxs" module="imageUtils" />
+<wxs module="dateFr" src="../../wxs/mine.wxs"></wxs>
+<view>
+    <!--我的头像、权益-->
+    <view class="user">
+        <view class="message">
+            <view class="message-head" bindtap="chooseImage"  data-type='1'>
+                <image 
+                    wx:if="{{ avatar }}" 
+                    mode="widthFix" 
+                    binderror="binderror"
+                    src="{{imageUtils.processImage(avatar)}}" 
+                />
+                <open-data wx:else type="userAvatarUrl"></open-data>
+            </view>
+            <view class="nickname">
+                {{nickName}}
+                <view class="adite" bindtap="tojump" data-type='nickName'>
+                    <image mode="widthFix" src="https://oss.localhome.cn/new_icon/edit.png" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="change-mes">
+        <view class="HeadPortrait part" bindtap="tojump" data-type="realName" data-block="真实姓名-labelMark">
+            <text class="title">真实姓名</text>
+            <text class="info">{{realName ? realName : '未填写'}}<text class="arrow"></text></text>
+            
+        </view>
+        <view class="HeadPortrait part" bindtap="tojump" data-type="idCard" data-block="身份证号-labelMark">
+            <text class="title">身份证号</text>
+            <text class="info">{{idCard ? idCard : '未填写'}}<text class="arrow"></text></text>
+        </view>
+        <view class="HeadPortrait part" bindtap="tojump" data-type="mobile" data-block="手机号-labelMark">
+            <text class="title">手机号</text>
+            <text class="info">{{mobile ? mobile : '未绑定'}}<text class="arrow"></text></text>
+        </view>
+        <!-- <view class="HeadPortrait part" bindtap="tojump" data-type="birthday" data-block="出生日期-labelMark">
+            <text class="title">出生日期</text>
+            <text class="info">{{birthday ? birthday : '未填写'}}<text class="arrow"></text></text>
+        </view> -->
+        <view class="HeadPortrait part" bindtap="tojump" data-type="email" data-block="电子邮箱-labelMark">
+            <text class="title">电子邮箱</text>
+            <text class="info">{{email ? email : '未填写'}}<text class="arrow"></text></text>
+        </view>
+        <view class="login-out" catch:tap="loginOut">退出登录</view>
+    </view>
+</view>
+
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

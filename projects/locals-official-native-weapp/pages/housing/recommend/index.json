@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "周边民宿推荐",
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "house-card": "/components/house-card/index",
+    "underscore": "/components/underscore/index"
+  }
+}

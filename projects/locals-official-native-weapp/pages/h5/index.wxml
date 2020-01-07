@@ -1,0 +1,5 @@
+<web-view 
+    wx:if="{{ url && visiable }}" 
+    src="{{ url }}"
+    bindmessage="bindmessage"
+></web-view>

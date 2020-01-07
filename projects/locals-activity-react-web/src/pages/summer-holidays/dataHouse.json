@@ -1,0 +1,280 @@
+{
+  "houseSource": [
+    {
+      "dataIndex": "1",
+      "name": "北京胡同院子",
+      "ID": "1041555441308930048",
+      "time": "07-10",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/1T.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/1.jpg",
+      "open": "true"
+    },
+    {
+      "dataIndex": "2",
+      "name": "广州几何空间",
+      "ID": "1112607522150240258",
+      "time": "07-10",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/2T.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/2.jpg",
+      "open": "true"
+    },
+    {
+      "dataIndex": "3",
+      "name": "杭州不足山宿",
+      "ID": "1040027063333818368",
+      "time": "07-10",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/3T.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/3.jpg",
+      "open": "true"
+    },
+    {
+      "dataIndex": "4",
+      "name": "丽江束河元年",
+      "ID": "1067686971415220225",
+      "time": "07-10",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/4T.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/4.jpg",
+      "open": "true"
+    },
+    {
+      "dataIndex": "5",
+      "name": "广州西关故里",
+      "ID": "1024179055881752576",
+      "time": "07-11",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/5T.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/5.jpg"
+    },
+    {
+      "dataIndex": "6",
+      "name": "武汉月下独酌",
+      "ID": "1014530624824020992",
+      "time": "07-11",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/6T.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/6.jpg"
+    },
+    {
+      "dataIndex": "7",
+      "name": "苏州白鹭",
+      "ID": "1101427714551910401",
+      "time": "07-11",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/7T.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/7.jpg"
+    },
+    {
+      "dataIndex": "8",
+      "name": "广州天猫",
+      "ID": "1078586500975775745",
+      "time": "07-11",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/8T.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/8.jpg"
+    },
+    {
+      "dataIndex": "9",
+      "name": "武汉上海邨",
+      "ID": "1059049232099446784",
+      "time": "07-12",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/9T.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/9.jpg"
+    },
+    {
+      "dataIndex": "10",
+      "name": "广州漫威民宿",
+      "ID": "1067991223014670337",
+      "time": "07-12",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/10.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/10.jpg"
+    },
+    {
+      "dataIndex": "11",
+      "name": "厦门心湖尚客堂",
+      "ID": "1050409877664043008",
+      "time": "07-12",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/11.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/11.jpg"
+    },
+    {
+      "dataIndex": "12",
+      "name": "成都蓉城记忆",
+      "ID": "1050685784094937088",
+      "time": "07-12",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/12.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/12.jpg"
+    },
+    {
+      "dataIndex": "13",
+      "name": "青岛艺术之家",
+      "ID": "1045703094613839872",
+      "time": "07-13",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/13.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/13.jpg"
+    },
+    {
+      "dataIndex": "14",
+      "name": "重庆十二社",
+      "ID": "1055726667357097984",
+      "time": "07-13",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/14.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/14.jpg"
+    },
+    {
+      "dataIndex": "15",
+      "name": "哈尔滨达芬奇",
+      "ID": "1057166537735540736",
+      "time": "07-13",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/15.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/15.jpg"
+    },
+    {
+      "dataIndex": "16",
+      "name": "杭州静翕",
+      "ID": "1040026796479614976",
+      "time": "07-13",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/16.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/16.jpg"
+    },
+    {
+      "dataIndex": "17",
+      "name": "广州布达佩斯",
+      "ID": "1060056780860559360",
+      "time": "07-14",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/17.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/17.jpg"
+    },
+    {
+      "dataIndex": "18",
+      "name": "西安向阳日子",
+      "ID": "1057154967877980160",
+      "time": "07-14",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/18.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/18.jpg"
+    },
+    {
+      "dataIndex": "19",
+      "name": "长沙暖居",
+      "ID": "1003530017388236800",
+      "time": "07-14",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/19.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/19.jpg"
+    },
+    {
+      "dataIndex": "20",
+      "name": "三亚旅行意义",
+      "ID": "931070414828605451",
+      "time": "07-14",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/20.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/20.jpg"
+    },
+    {
+      "dataIndex": "21",
+      "name": "武汉筑梦",
+      "ID": "1014611513868292096",
+      "time": "07-15",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/21.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/21.jpg"
+    },
+    {
+      "dataIndex": "22",
+      "name": "南京暖色拼盘城",
+      "ID": "976066886797758464",
+      "time": "07-15",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/22.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/22.jpg"
+    },
+    {
+      "dataIndex": "23",
+      "name": "上海美式特调",
+      "ID": "931070311900385313",
+      "time": "07-15",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/23.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/23.jpg"
+    },
+    {
+      "dataIndex": "24",
+      "name": "西安花田驿",
+      "ID": "1029271048144556032",
+      "time": "07-15",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/24.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/24.jpg"
+    },
+    {
+      "dataIndex": "25",
+      "name": "北京胡同院子",
+      "ID": "1041555441308930048",
+      "time": "07-16",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/25.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/25.jpg"
+    },
+    {
+      "dataIndex": "26",
+      "name": "广州西关故里",
+      "ID": "1024179055881752576",
+      "time": "07-16",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/26.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/26.jpg"
+    },
+    {
+      "dataIndex": "27",
+      "name": "成都蓉城记忆",
+      "ID": "1050685784094937088",
+      "time": "07-16",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/27.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/27.jpg"
+    },
+    {
+      "dataIndex": "28",
+      "name": "杭州不足山宿",
+      "ID": "1040027063333818368",
+      "time": "07-16",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/28.png",
+      "innerImg": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/28.jpg"
+    }
+  ],
+  "houseTicket": [
+    {
+      "dataIndex": "1",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/1.png",
+      "ID": "4FEBA8E49"
+    },
+    {
+      "dataIndex": "2",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/2.png",
+      "ID": "A908A64C6"
+    },
+    {
+      "dataIndex": "3",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/3.png",
+      "ID": "20208F51D"
+    },
+    {
+      "dataIndex": "4",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/4.png",
+      "ID": "20208F51D"
+    },
+    {
+      "dataIndex": "5",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/5.png",
+      "ID": "4FEBA8E49"
+    },
+    {
+      "dataIndex": "6",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/6.png",
+      "ID": "A908A64C6"
+    },
+    {
+      "dataIndex": "7",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/7z.png",
+      "ID": "20208F51D"
+    },
+    {
+      "dataIndex": "8",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/8z.png",
+      "ID": "20208F51D"
+    },
+    {
+      "dataIndex": "9",
+      "imgUrl": "https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/summer-holidays/9z.png",
+      "ID": "20208F51D"
+    }
+  ],
+  "lastResult": ""
+}

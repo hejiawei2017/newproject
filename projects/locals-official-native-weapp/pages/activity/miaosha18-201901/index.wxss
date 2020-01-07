@@ -1,0 +1,63 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 80rpx 40rpx;
+  align-items: center;
+  background-color: #ee7447;
+  color: #fff;
+  font-size: 24rpx;
+  height: 100vh;
+}
+.main image {
+  width: 100%;
+  border-radius: 9rpx;
+}
+.main .title {
+  margin-top: 20rpx;
+  align-self: flex-start;
+  background: url('https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/miaosha/pic2.png') no-repeat;
+  background-size: 100% ;
+  font-size: 30rpx;
+  height: 100rpx;
+  width: 120rpx;
+  display: flex;
+  align-items: flex-end;
+}
+.main .rule {
+  line-height: 45rpx;
+  padding: 20rpx 0;
+}
+.main .rule .tips {
+  margin-top: 40rpx;
+}
+.main button {
+  margin-top: 100rpx;
+  width: 70%;
+  border-radius: 30px;
+  color: #e8465a;
+  box-shadow: 0 0 4rpx #e8465a;
+  animation: tada infinite 1s 1s;
+}
+@keyframes tada {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  10%,
+  20% {
+    transform: scale3d(0.95, 0.95, 0.95) rotate3d(0, 0, 1, -3deg);
+  }
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale3d(1.05, 1.05, 1.05) rotate3d(0, 0, 1, 3deg);
+  }
+  40%,
+  60%,
+  80% {
+    transform: scale3d(1.05, 1.05, 1.05) rotate3d(0, 0, 1, -3deg);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}

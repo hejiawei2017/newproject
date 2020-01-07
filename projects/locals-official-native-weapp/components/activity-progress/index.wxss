@@ -1,0 +1,52 @@
+.progress-container {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.progress-container,
+.progress-container view,
+.progress-container text {
+    box-sizing: border-box;
+}
+
+.progress {
+    width: 100%;
+    border: 2rpx solid;
+}
+
+.progress-bar-text {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 22rpx;
+    line-height: 1;
+    margin-top: 9rpx;
+    font-size: 22rpx;
+    font-weight: 300;
+    color: #e95520;
+    position: relative;
+}
+
+.min-text {
+    width: 40rpx;
+    height: 100%;
+}
+
+.max-text {
+    width: 70rpx;
+    height: 100%;
+}
+
+.curr-text {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 20%;
+    text-align: center;
+}

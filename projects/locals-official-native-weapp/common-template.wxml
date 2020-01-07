@@ -1,0 +1,10 @@
+<!-- 公共 template -->
+
+<template name="empty-data">
+  <view class="empty-data" >
+    <view>
+      <image lazy-load="{{ true }}" src="https://oss.localhome.cn/new_icon/youhuiquan.png" />
+      <view>{{ text }}</view>
+    </view>
+  </view>
+</template>

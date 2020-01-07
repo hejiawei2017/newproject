@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "会员权益",
+  "usingComponents": {
+    "tabs": "/components/menber-tabs/menber-tabs",
+    "tabsInner": "/components/menber-tabs/tab-inner/tab-inner"
+  }
+}

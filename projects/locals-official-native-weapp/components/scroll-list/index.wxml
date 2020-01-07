@@ -1,0 +1,10 @@
+<view class="scroll-list-container">
+    <swiper class="swiper" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" vertical="{{vertical}}" display-multiple-items="{{displayMultipleItems}}">
+        <swiper-item wx:for="{{list}}" wx:key="index" class="scroll-item">
+            <image src="{{item.image}}" class="scroll-item-image" />
+            <view class="name">{{item.name}}</view>
+            <view>通过活动获得</view>
+            <view class="prize">{{item.prize}}</view>
+        </swiper-item>
+    </swiper>
+</view>

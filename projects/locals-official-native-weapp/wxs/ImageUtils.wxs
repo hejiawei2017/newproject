@@ -1,0 +1,69 @@
+function processImage(imgPath, ossParams = '?x-oss-process=image/resize,w_600/quality,Q_100') {
+  if (imgPath) {
+    // 修正window的路径的正斜杠
+    imgPath = imgPath.replace("/\\/g", "\/")
+
+    // 判断是否ali oss
+    if (imgPath.indexOf('aliyuncs.com') !== -1 && imgPath.indexOf('?x-oss-process') === -1) {
+      return encodeURI(imgPath + ossParams)
+    }
+
+    // http图片路径直接返回不用处理
+    if (imgPath.indexOf('http') != -1) {
+      return encodeURI(imgPath)
+    }
+    // 处理cdn路径
+    if (imgPath.indexOf('/UploadFiles/') != -1) {
+      return encodeURI("http://f.localhome.cn" + imgPath)
+    }
+    // 处理cdn路径
+    if (imgPath.indexOf('/upload/') != -1) {
+      return encodeURI("http://f.localhome.cn" + imgPath)
+    }
+    // 图片设施
+    if (imgPath.indexOf('/Content/') != -1) {
+      return encodeURI("http://app.localhome.cn" + imgPath)
+    }
+    // 如果file开头,本地文件,跳过处理
+    if (imgPath.indexOf('file') != -1) {
+      return imgPath
+    }
+    // 签名图
+    if (imgPath.indexOf('/temp/') != -1) {
+      var newPath = encodeURI("http://qy.localhome.com.cn/locals" + imgPath)
+      return newPath
+    }
+    // 新服务图片URL
+    return encodeURI("http://120.76.204.105" + imgPath)
+  }
+  return ''
+}
+
+function processImageArray (images, keyName, urlExtend = '') {
+  var newArray = [];
+  var _keyName = keyName || 'imagePath';
+  var _images = images || [];
+  for (var i = 0; i < _images.length; i++) {
+    newArray.push(processImage(_images[i][_keyName] + urlExtend))
+  }
+  return newArray
+}
+
+function syncFetchImage(url) {
+  var randow = Math.random() * 100;
+  if (url.indexOf('?') === -1) {
+    url += '?v=' + randow;
+  } else {
+    url += '&v=' + randow;
+  }
+  
+  return url
+}
+
+var imageUtils = {
+  syncFetchImage: syncFetchImage,
+  processImage: processImage,
+  processImageArray: processImageArray
+}
+
+module.exports = imageUtils

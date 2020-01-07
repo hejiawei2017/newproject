@@ -1,0 +1,73 @@
+<view class="container">
+	<view class="main">
+
+		<view class="main-info">
+			<text class="send-status">发送成功</text>
+
+			<image
+				class="email-icon"
+				src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561533035875email-icon.png"/>
+
+			<text class="email-account">meiyuan.chen@localhome.cn</text>
+			<text class="send-des">
+				已向您的邮箱发送了验证邮件，路客只验证您的邮箱有效性，验证成功将可获得商务旅客特权。打开该邮件点击“激活”即可。
+			</text>
+
+			<text 
+				catch:tap="routeToVerify"
+				class="redo-link">
+				没有收到邮件，我要重新填写
+			</text>
+		</view>
+
+		<image
+			class="server-title"
+			src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561533595752server-title.png"/>
+
+		<view class="features-row">
+			<view class="des-feature">
+				<image
+					class="feature-icon"
+					src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561518223155des-icon1.png"/>
+				<text class="feature-text">现场接待</text>
+				<text class="times-text">2次/年</text>
+			</view>
+			
+			<view class="des-feature">
+				<image
+					class="feature-icon"
+					src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561518224584des-icon2.png"/>
+				<text class="feature-text">延迟退房</text>
+				<text class="times-text">2次/年</text>
+			</view>
+			
+			<view class="des-feature">
+				<image
+					class="feature-icon"
+					src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561518227702des-icon3.png"/>
+				<text class="feature-text">行李寄存</text>
+				<text class="times-text">2次/年</text>
+			</view>
+			
+			<view class="des-feature">
+				<image
+					class="feature-icon"
+					src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561523156767des-icon4.png"/>
+				<text class="feature-text">9.6折优惠券</text>
+				<text class="times-text">1次/年</text>
+			</view>
+		</view>
+
+		<text class="des-more-service">更多服务·敬请期待</text>
+
+		<view class="vip-card-wrapper">
+			<image 
+				class="vip-card"
+				src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561477412840vip-card.png" />
+			<view
+				bind:tap="routeToVip"
+				class="click-btn"></view>
+		</view>
+	</view>
+
+</view>

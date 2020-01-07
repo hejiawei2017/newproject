@@ -1,0 +1,47 @@
+<!-- pages/housing/poster/index.wxml -->
+<import src="./template.wxml" />
+<view class="page">
+    <View class="poster-container">
+        <canvas canvas-id="poster" class="poster" style="width: {{posterWidth}}px; height: {{posterHeight}}px;" binderror="onDrawError" />
+        <text class="wait">
+            正在生成中，请稍等...
+            <text style="display: block">生成进度 {{progress}}%</text>
+        </text>
+    </View>
+    <view class="button-wrap">
+        <button open-type="share">转发好友</button>
+        <button class="save-button" bindtap="saveToAlbum">保存图片</button>
+    </view>
+    <!-- <view class="tips">
+        <text class="title">分享成功立送5元，最多可得30元</text>
+        <text class="content">
+            奖励在小程序-我的-余额查看
+            新用户通过您的分享查看房源，即为分享成功
+            奖金为路客储值金，用于抵扣房费，不可提现
+        </text>
+    </view> -->
+    <view class="bonus-box">
+        <view class="title">
+            <text class="left-line"></text>
+            <text class="title-text">分享好友！一起赚奖金！</text>
+            <text class="right-line"></text>
+        </view>
+        <!-- <text class="scroll-notice">{{notice.content}}</text> -->
+        <template is="bonusCard" data="{{myBonus}}"></template>
+        <panel title="奖励及规则">
+            <view class="bonus-intro">
+                <view class="bonus-text">1.首次参与分享有礼活动时，累计分享3位新用户并全部注册成功后，发放3元奖金至您的余额（我的-我的钱包-余额），之后每多分享1位新用户可多得1元奖金，每个自然月最多累计奖励100元。</view>
+                <view class="bonus-text">2.余额内的储值金可无门槛抵扣房费。</view>
+            </view>
+        </panel>
+        <panel title="邀请好友">
+            <view>
+                <cell wx:for="{{bonusShareDetail}}" wx:key="{{index}}" avatar="{{item.avatar}}" name="{{item.nici_name}}" dateTime="{{item.create_time}}" content="{{item.nick_name}}通过我的分享注册并领取了100元新人红包"></cell>
+            </view>
+            <view wx:if="{{hasMoreShareDetail}}" class="show-more-btn" bindtap="showMoreDetail">
+                查看更多
+            </view>
+            <view class="show-more-btn" wx:if="{{!hasMoreShareDetail}}">暂无更多</view>
+        </panel>
+    </view>
+</view>

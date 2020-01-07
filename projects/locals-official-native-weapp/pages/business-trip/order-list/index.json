@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText" : "订单选择",
+  "navigationBarBackgroundColor": "#1C1C1C",
+  "backgroundTextStyle": "light",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#1C1C1C",
+  "usingComponents": {
+    "top-vip-card": "../components/vip-top-card/index",
+    "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box"
+  }
+}

@@ -1,0 +1,11 @@
+<view bindtap="checkAuthor" style="height: 100%">
+    <slot></slot>
+</view>
+<view class="save-panel" catchtap="cancelPick" wx:if="{{showPermissonDialog}}">  
+    <view class="wrap">
+        <text class="content">{{permissionDesc}}</text>
+        <button class="btn" open-type="openSetting" bindopensetting="hander">
+            <view class="yes">重新授权</view>
+        </button>
+    </view>
+</view>

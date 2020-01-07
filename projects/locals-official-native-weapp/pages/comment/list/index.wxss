@@ -1,0 +1,111 @@
+/* pages/comment/list/index.wxss */
+.page{
+  height: 100vh;
+}
+.section{
+  position: relative;
+  padding: 30rpx 30rpx 35rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 7rpx 21rpx 0rpx rgba(0, 0, 0, 0.05);
+  border-radius:10rpx;
+  margin-top:20rpx; 
+}
+.review-title{
+  height: 40rpx;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 50rpx 30rpx 40rpx 30rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size:48rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+}
+.review-title text{
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+.comment-container {
+  height: 100%;
+  padding: 130rpx 30rpx 80rpx;
+  background: #f5f6f8;
+}
+.review-star{
+  display: flex;
+  align-items: flex-start;
+}
+.review-star image{
+  width: 21rpx;
+  height: 19rpx;
+  margin-right: 6rpx;
+}
+.review-star image:last-child{
+  margin-right: 0;
+}
+.all-review{
+  font-size: 30rpx;
+	color: #e84358;
+}
+.review-user-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.review-user-photo{
+  width: 70%;
+  display: flex;
+  align-items: center;
+}
+.review-user-date{
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+.review-user-name{
+  width: 320rpx;
+  font-size: 32rpx;
+  line-height: 43rpx;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.review-user-photo super-image image{
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+}
+.review-user-info{
+  margin-left: 20rpx;
+}
+.review-describe{
+	font-size: 28rpx;
+	color: #555555;
+  margin-top: 30rpx;
+  font-weight: 300;
+}
+.review-reply{
+  position: relative;
+  margin-top: 20rpx;
+  background:rgba(245,246,248,1);
+  border-radius:10rpx;
+  font-size:26rpx;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  padding: 30rpx 18rpx 25rpx;
+}
+.review-reply-angle{
+  position: absolute;
+  top: -20rpx;
+  left: 40rpx;
+  width: 0;
+  height: 0;
+  border: 10rpx solid;
+  border-color: transparent transparent rgba(245,246,248,1);
+}

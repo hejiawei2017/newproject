@@ -1,0 +1,258 @@
+page{
+    width:100%;
+    background: #fff
+}
+/* .fiexd{
+  width:100%;
+  height:55px;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index:1000;
+} */
+.container{
+  align-items:stretch;
+  /* margin-top:80rpx; */
+}
+.container .weui-navbar{
+  background: #fff;
+  position: fixed;
+  z-index: 1000;
+  top:0;
+  left:0;
+}
+.item-wrap {
+  position: relative;
+}
+.house-list-wrap {
+  margin-top:50rpx;
+}
+.container .weui-navbar__item.weui-bar__item_on {
+  color: #e84358;
+}
+.img{
+  width:100%;
+  max-height:230px;
+  border-radius:10rpx;
+}
+.book-house-content{
+  background: #fff;
+  padding:20rpx 20rpx 10rpx 20rpx;
+  margin-bottom:20rpx;
+}
+.house-img{
+  width:100%;
+}
+.collect{
+    padding: 0 5%;
+    width: 90%;
+}
+
+.divContent {
+    padding:10rpx 0 20rpx 0;
+}
+.divImage{
+  position:relative;
+}
+.master-img{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius:100rpx;
+    position:absolute;
+    bottom:-60rpx;
+    right:30rpx;
+    border:2px solid #fff;
+}
+
+.title{
+    color: #252525;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin:0 0 25rpx;
+    display: block;
+}
+
+.detail,.describe{
+    margin-top: 15rpx;
+    font-weight: 500;
+    font-size: 12px;
+    height:auto;
+    line-height:normal;
+}
+
+.name{
+    float: right;
+    margin-right: 66rpx;
+    font-size: 12px;
+    color:#7a7a7a;
+}
+
+.style{
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    float: right;
+    border-radius: 10rpx;
+    border: solid white 0px;
+    background-color: #F8B62B;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    line-height: 40rpx;
+}
+.content{
+    padding: 15px;
+    margin-top: 10px;
+    background: #fff;
+    position: relative;
+    border-bottom:1px solid #eee;
+  }
+  .details{
+    display: flex;
+  }
+  .details-label{
+    font-size:14px;
+    line-height:18px;
+  }
+  .details-label view{
+    display:inline-block;
+    color: #e84358;
+    margin-right:10px;
+    font-size:14px;
+    line-height:18px;
+  }
+  .collect-operate-btn{
+    width:40rpx;
+    height:39rpx;
+    position: absolute;
+    z-index: 999;
+    top:30rpx;
+    right:66rpx;
+  }
+  .collect-operate-btn image {
+    width:100%;
+    height:100%;
+    display:block;
+  }
+    
+  .detail-left{
+    width: 80%;
+  }
+  .describe{
+    font-family: PingFangSC-Medium;
+	  font-size: 14px;
+	  font-weight: 600;
+	  font-stretch: normal;
+	  line-height: 18px;
+	  letter-spacing: 1px;
+    color: #484848;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .detail-right{
+    width: 24%;
+    position: relative;
+  }
+  .info{
+    display: flex;
+    font-size: 12px;
+  }
+  .amount{
+	  font-family: PingFangSC-Light;
+	  font-size: 14px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  line-height: 24px;
+	  letter-spacing: 1px;
+	  color: #555555;
+  }
+  .price{
+    font-size: 14px;
+  }
+  .space{
+    margin-left:18rpx;
+  }
+  .recommend{
+    align-items: center;
+  }
+  .icon-collection{
+    width: 12px;
+    height: 12px;
+  }
+  .recommend-num{
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .portrait-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 10;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .portrait-image image{
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .notText{
+    padding:20%;
+    display:block;
+    text-align:center;
+    font-size:16px;
+    color:#888;
+  }
+    
+  .weui-tab__content2{
+    background: #fff;
+  }
+  .landlord{
+    padding: 15px;
+    display: flex;
+    border-bottom:1px solid #eee;
+  }
+  .landlord-header{
+    overflow: hidden;
+    z-index: 10;
+    flex:1;
+    position: relative;
+  }
+  .landlord-header image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .landlord-prod{
+    flex:4
+  }
+  .landlord-name{
+    font-size:18px;
+    line-height:36px;
+    color: #484848;
+  }
+  .landlord-cont{
+    font-family: PingFangSC-Light;
+	  font-size: 14px;
+	  font-weight: normal;
+	  font-stretch: normal;
+	  letter-spacing: 1px;
+    color: #555555;
+    display:block;
+    display:-webkit-box;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }

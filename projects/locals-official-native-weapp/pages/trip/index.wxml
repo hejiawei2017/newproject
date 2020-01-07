@@ -1,0 +1,40 @@
+<import src="./trips.wxml" />
+<view class="page">
+  <tabs tabs="{{ tabs }}" isFixed="{{ isFixed }}" bind:tabClick="tabClick">
+    <view class="wrap" slot="0">
+      <template 
+        wx:if="{{isLogin}}"
+        is="trips" 
+        data="{{ isUpperLoading, list: haveInHeadList, isLoading, isHasNextPage, activeIndex, countDownList, nowTime }}" 
+      />
+      <template is="nologin" wx:else></template>
+    </view>
+    <view class="wrap" slot="1">
+      <template 
+        wx:if="{{isLogin}}"
+        is="trips" 
+        data="{{ isUpperLoading, list: completedList, isLoading, isHasNextPage, activeIndex }}" 
+      />
+      <template is="nologin" wx:else></template>
+    </view>
+    <view class="wrap" slot="2">
+      <template 
+        wx:if="{{isLogin}}"
+        is="trips" 
+        data="{{ isUpperLoading, list: closedList, isLoading, isHasNextPage, activeIndex }}" 
+      />
+      <template is="nologin" wx:else></template>
+    </view>
+  </tabs>
+</view>
+
+<auth-drawer-box 
+    id="auth-drawer-box"
+    initHide="{{true}}"
+    isCanCancel="{{true}}"
+    bind:cancelEvent="_cancelEventFn"
+/>
+<im-message
+  id="im-message"
+  noAttached='{{false}}'
+/>

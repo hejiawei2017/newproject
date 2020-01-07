@@ -1,0 +1,200 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    background-color: #1C1C1C;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40rpx;
+}
+
+.section .title {
+    display: block;
+}
+
+.need-service .title {
+    height: 76rpx;
+    width: 578rpx;
+}
+
+.disabled .title {
+    height: 74rpx;
+    width: 298rpx;
+}
+
+.none-list .title {
+    height: 78rpx;
+    width: 338rpx;
+}
+
+.trade .title {
+    height: 78rpx;
+    width: 258rpx;
+}
+
+.order-card {
+    position: relative;
+    width: 700rpx;
+    padding: 20rpx;
+    background-color: #fff;
+    box-shadow: 0rpx 2rpx 10rpx 0rpx rgba(0, 0, 0, 0.1);
+    border-radius: 10rpx;
+}
+
+.order-no {
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #966541;
+}
+
+.order-content {
+    display: flex;
+    flex-direction: row;
+    margin-top: 16rpx;
+}
+
+.order-content .thumb {
+    height: 215rpx;
+    min-width: 250rpx;
+    margin-right: 20rpx;
+    border-radius: 24rpx;
+}
+
+.order-content .room-title {
+    display: block;
+    display: -webkit-box;
+    margin-bottom: 10rpx;
+    font-size: 30rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: normal !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.order-content .order-time {
+    display: block;
+    font-size: 24rpx;
+    font-family: SourceHanSansCN-Normal;
+    font-weight: 400;
+    color: rgba(158, 158, 158, 1);
+}
+
+.join-btn {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    width: 160rpx;
+    height: 40rpx;
+    color: #fff;
+    background: linear-gradient(180deg, rgba(210, 159, 117, 1) 0%, rgba(117, 70, 37, 1) 100%);
+    box-shadow: 0rpx 2rpx 6rpx 0rpx rgba(55, 88, 119, 0.37);
+    border-radius: 24rpx;
+    font-size: 22rpx;
+    font-weight: bold;
+    line-height: 40rpx;
+    text-align: center;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20rpx;
+    font-size: 28rpx;
+}
+
+.form-item-key {
+    margin-bottom: 15rpx;
+    font-size: 32rpx;
+    font-weight: 500;
+    color: #966541;
+}
+
+.form-mark {
+    /* position: relative; */
+    /* padding: 28rpx; */
+    /* height: 222rpx; */
+    padding: 20rpx;
+    width: 100%;
+    background-color: #F3F3F3;
+    box-sizing: border-box;
+}
+
+.server-picker {
+    position: relative;
+    height: 80rpx;
+    width: 350rpx;
+}
+.date-picker {
+    position: relative;
+    height: 80rpx;
+    width: 350rpx;
+}
+.server-picker image {
+    position: absolute;
+    height: 80rpx;
+    width: 350rpx;
+}
+.date-picker image {
+    position: absolute;
+    height: 80rpx;
+    width: 350rpx;
+}
+.server-picker .picker-text {
+    position: relative;
+    margin-left: 20rpx;
+    line-height: 80rpx;
+    z-index: 222;
+}
+.server-type-pick {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.server-type-pick .remain-text {
+    margin-left: 18rpx;
+    color: #9E9E9E;
+    font-size: 24rpx;
+}
+
+.date-picker .picker-text {
+    position: relative;
+    margin-left: 20rpx;
+    line-height: 80rpx;
+    z-index: 222;
+}
+
+.form-des {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.submit-btn {
+    width: 324rpx;
+    height: 60rpx;
+    color: #fff;
+    background: linear-gradient(180deg, rgba(210, 159, 117, 1) 0%, rgba(117, 70, 37, 1) 100%);
+    box-shadow: 0rpx 2rpx 6rpx 0rpx rgba(55, 88, 119, 0.37);
+    border-radius: 38rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    line-height: 60rpx;
+    text-align: center;
+}
+
+.submit-des {
+    font-size: 22rpx;
+    font-weight: 300;
+    line-height: 1;
+    color: rgba(158, 158, 158, 1);
+}

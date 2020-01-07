@@ -1,0 +1,200 @@
+<import src="./template.wxml" />
+<!-- stop-scroll 样式解决了弹出框滚动影响页面滚动的bug -->
+<view class="container {{rightsShowFlag? 'stop-scroll' : ''}}">
+	<view>
+		<image
+			class="top-image"
+			src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561461723543top-image.png" 
+		/>
+	</view>
+	<view class="main {{!isCashVip ? 'no-business' : ''}}">
+		<view class="des-card">
+			<image
+				class="des-card-bg"
+				src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561523886783card-bg.png"
+			/>
+
+			<view class="des-card-header">
+				<view class="card-title">
+					<!-- 认证icon -->
+					<image
+						wx:if="{{isCashVip}}"
+						class="card-title-icon"
+						src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561474091668cert-icon.png" />
+					<image
+						wx:if="{{!isCashVip}}"
+						class="card-title-icon"
+						src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561522719920uncert-icon.png" />
+					<!-- 认证icon -->
+
+					<text class="card-title-text">商务旅客</text>
+
+					<!-- 是否认证标志 -->
+					<image
+						wx:if="{{isCashVip}}"
+						class="card-cert-mark"
+						src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561474106675cert-text-icon.png" />
+					<image
+						wx:if="{{!isCashVip}}"
+						class="card-cert-mark"
+						src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561522930907uncert-text-icon.png" />
+					<!-- 是否认证标志 -->
+				</view>
+
+				<view 
+					wx:if="{{isCashVip}}"
+					catch:tap="routeToExchangeLog"
+					class="exchange-log-btn">
+					兑换记录>
+				</view>
+
+				<view 
+					wx:if="{{!isCashVip}}"
+					catch:tap="showRightsIntro"
+					class="exchange-log-btn">
+					权益介绍>
+				</view>
+
+				<view class="header-bottom-line"></view>
+			</view>
+
+			<view class="des-card-body">
+				<view class="des-feature">
+					<image
+						class="feature-icon"
+						src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561518223155des-icon1.png"/>
+					<text class="feature-text">现场接待</text>
+					<text 
+						wx:if="{{!isCashVip}}" 
+						class="times-text">2次/年</text>
+					<text 
+						wx:if="{{isCashVip}}" 
+						class="times-text times-text__light">剩余{{serviceMap['现场接待'] || 0}}次</text>
+				</view>
+				<view class="des-feature">
+					<image
+						class="feature-icon"
+						src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561518224584des-icon2.png"/>
+					<text class="feature-text">延迟退房</text>
+					<text 
+						wx:if="{{!isCashVip}}" 
+						class="times-text">2次/年</text>
+					<text 
+						wx:if="{{isCashVip}}" 
+						class="times-text times-text__light">剩余{{serviceMap['延迟退房'] || 0}}次</text>
+				</view>
+				<view class="des-feature">
+					<image
+						class="feature-icon"
+						src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561518227702des-icon3.png"/>
+					<text class="feature-text">行李寄存</text>
+					<text 
+						wx:if="{{!isCashVip}}" 
+						class="times-text">2次/年</text>
+					<text 
+						wx:if="{{isCashVip}}" 
+						class="times-text times-text__light">剩余{{serviceMap['行李寄存'] || 0}}次</text>
+				</view>
+				<view
+					class="des-feature">
+					<image
+						class="feature-icon"
+						src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561523156767des-icon4.png"/>
+					<text class="feature-text">9.6折优惠券</text>
+					<text 
+						wx:if="{{!isCashVip}}" 
+						class="times-text">1次/年</text>
+					<text 
+						wx:if="{{isCashVip}}" 
+						class="times-text times-text__light">已领取</text>
+				</view>
+			</view>
+
+			<view 
+				catch:tap="routeToTrade"
+				wx:if="{{isCashVip}}"
+				class="trade-btn">
+				<text>点击兑换</text>
+			</view>
+
+			<view 
+				wx:if="{{!isCashVip}}"
+				class="join-btn-wrapper">
+				<view 
+					bindtap="routeToVerify"
+					class="trade-btn">
+					<text>立即认证</text>
+				</view>
+				<text class="des-more-service">更多服务·敬请期待</text>
+			</view>
+
+			<!-- <image
+				class="trade-btn"
+				src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561518992398trade-btn.png"/> -->
+		</view>
+
+		<view class="vip-card-wrapper">
+			<image 
+				class="vip-card"
+				src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/locals_1561477412840vip-card.png" />
+			<view
+				bindtap="routeToVip"
+				class="click-btn"></view>
+		</view>
+
+		<view class="section">
+			<image
+				class="section-title"
+				src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561520085691title-one.png" />
+			
+			<image 
+				class="feature-icons"
+				src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561520492255room-features.png" />
+
+		</view>
+
+		<view class="section">
+			<image
+				class="section-title"
+				src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561520198036title-two.png" 
+			/>
+
+			<view class="room-list">
+				<view
+					catchtap="goRoomDetail"
+					class="room-card"
+					data-self="{{ item }}"
+					wx:if="{{ roomsList.length }}"
+					wx:for="{{ roomsList }}"
+					wx:key="{{ item.id }}">
+					<view class="room-card-body">
+						<image
+							lazy-load="{{true}}"
+							class="room-cover"
+							src="{{item.houseImages[0].imagePath}}"/>
+
+						<view class="room-info">
+							<text class="room-title">{{item.title}}</text>
+							<view class="room-price">
+								<image 
+									class="price-icon"
+									src="https://oss.localhome.cn/localhomeqy/glod-card.png"/>
+								
+								<text class="price-text">¥{{item.standardPrice}}</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view>
+				<button class="show-more-btn" bindtap="routeToHousingList">查看更多</button>
+			</view>
+		</view>
+	</view>
+</view>
+<template is="rightsIntro" data="{{ rightsShowFlag }}" />
+
+<auth-drawer-box
+    id="auth-drawer-box"
+    bind:cancelEvent="_cancelEventFn"
+/>

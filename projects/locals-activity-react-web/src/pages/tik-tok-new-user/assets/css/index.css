@@ -1,0 +1,284 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.tik-tok-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    font-size: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: url(https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/tik-tok-new-user/main-bg.png) no-repeat;
+    background-size: 100%;
+    position: absolute;
+    line-height: 1;
+}
+
+.header {
+    width: 100%;
+    padding-top: 16px;
+    text-align: center;
+}
+
+
+.header-title1 {
+    width: 100%;
+    color: #fff;
+    font-size: 56px;
+    height: 68px;
+}
+
+.header-title2 {
+    width: 100%;
+    color: rgb(250, 225, 112);
+    font-size: 110px;
+    font-weight: bold;
+    height: 136px;
+    letter-spacing: 10px;
+}
+
+.header-title3 {
+    width: 100%;
+    color: rgb(250, 225, 112);
+    font-size: 28px;
+    height: 30px;
+}
+
+.red-packet {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-end;
+    align-content: flex-end;
+    width: 487px;
+    height: 865px;
+    margin-top: 22px;
+    overflow: hidden;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/tik-tok-new-user/red-packet.png") no-repeat;
+    background-size: 100%;
+}
+
+.coin-icon {
+    position: absolute;
+    top: 1029px;
+    right: 105px;
+    width: 167px;
+    height: 115px;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/tik-tok-new-user/coin.png") no-repeat;
+    background-size: 100%;
+}
+
+.red-packet > * {
+    width: 100%;
+}
+
+.explain {
+    position: absolute;
+    top: 1147px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: rgb(192, 86, 9);
+    font-size: 30px;
+}
+
+.input-field, .verification-code {
+    width: 100%;
+    height: 72px;
+    margin: 0 9% 4% 9%;
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    font-size: 32px;
+}
+
+.verification-code-field {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+    height: 72px;
+    margin: 0 9% 8% 9%;
+    padding-right: 20px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    font-size: 32px;
+    background-color: #fff;
+}
+
+.verification-code {
+    display: inline-block;
+    flex-grow: 1;
+    height: 100%;
+    margin: 0;
+    border: none;
+}
+
+.count-down {
+    display: inline-block;
+    width: 138px;
+    height: 44px;
+    line-height: 44px;
+    font-size: 32px;
+    flex: 0 0 138px;
+    color: #f00;
+    text-align: center;
+    border: 1px solid #f00; /*no*/
+    border-radius: 3px; /*no*/
+}
+
+.verification-btn {
+    display: inline-block;
+    width: 138px;
+    height: 44px;
+    flex: 0 0 138px;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/tik-tok-new-user/verification-btn.png") no-repeat;
+    background-size: 100%;
+}
+
+.receive-btn {
+    width: 100%;
+    height: 93px;
+    margin: 0 8% 22% 8%;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/tik-tok-new-user/receive-btn.png") no-repeat;
+    background-size: 100%;
+}
+
+.tip-dialog {
+    position: fixed;
+    width: 344px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px 63px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 25px;
+    font-family: SourceHanSansCN-Bold;
+    font-weight: bold;
+    line-height: 37px;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: normal;
+    text-overflow: ellipsis;
+    z-index: 100;
+}
+
+.mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.loading {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+.success-dialog {
+    position: absolute;
+    width: 540px;
+    height: 520px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/tik-tok-new-user/dialog-bg.png") no-repeat;
+    background-size: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.copy-btn {
+    width: 313px;
+    height: 92px;
+    margin: 0 113px 0 113px;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/tik-tok-new-user/copy-btn.png") no-repeat;
+    background-size: 100%;
+}
+
+.success-dialog-title {
+    padding: 30px 0;
+}
+
+.success-dialog-title > .title {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    font-size: 40px;
+    letter-spacing: 8px;
+    color: rgb(250, 225, 112);
+    text-align: center;
+}
+
+.success-dialog-content {
+    width: 100%;
+    padding: 0 30px;
+    height: 250px;
+    line-height: 37px;
+    font-size: 24px;
+    font-family: SourceHanSansCN-Normal;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: 2px;
+}
+
+.close-btn {
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: -675px;
+    margin: auto;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/tik-tok-new-user/close-btn.png") no-repeat;
+    background-size: 100%;
+}
+
+/*兼容适配 iPhone X,XS,XS Max */
+@media only screen
+and (min-device-width: 375px)
+and (min-device-height: 812px)
+and (-webkit-device-pixel-ratio: 3) {
+    .red-packet {
+        width: 610px;
+        height: 1042px;
+        margin: 22px auto 0 auto;
+    }
+
+    .coin-icon {
+        top: 1188px;
+        right: 12px;
+        width: 258px;
+        height: 177px;
+    }
+
+    .explain {
+        top: 1363px;
+    }
+}

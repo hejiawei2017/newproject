@@ -1,0 +1,27 @@
+<!-- pages/order/guest-details/index.wxml -->
+<wxs src="../../../wxs/OrderUtils.wxs" module="orderUtils" />
+<view class="container">
+  <view class="title-container">
+    <text class="title">入住人 {{guaranteeSlipList.length}} 人</text>
+  </view>
+  <view class="content-container">
+    <view class="content-item" wx:for="{{guaranteeSlipList}}" wx:key="id">
+      <view class="user-mate">
+        <text class="user-mate-text">{{item.name}} {{item.cardNo}}</text>
+      </view>
+      <view class="status-container" wx:if="{{!!item.policyNo}}">
+        <text class="status-normal">已投保</text>
+        <text class="status-highlight" data-download-url="{{item.downLoadUrl}}" data-policy="{{item.policyNo}}" bind:tap="openPolicy">查看保单</text>
+      </view>
+      <view class="status-container" wx:else>
+        <text class="status-highlight">{{orderUtils.getPolicyMessage(item)}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="insurance-tips" wx:if="{{!isForeignCity}}">
+    <view class="insurance-tips-left">
+      <text>50万住宿意外险</text>
+    </view>
+    <view class="insurance-tips-right">Locals路客为以上入住人购买入住旅客意外伤害保险，最高赔付50万元</view>
+  </view>
+</view>

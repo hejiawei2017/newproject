@@ -1,0 +1,220 @@
+.dialog-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.dialog-mask {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.rule-dialog {
+    width: 100%;
+    height: 1158px;
+    top: 100px;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/rule-bg.png") no-repeat;
+    background-size: 100%;
+}
+
+.success-dialog {
+    width: 641px;
+    height: 761px;
+    top: 218px;
+    margin: 0 auto;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/success-dialog-bg.png") no-repeat;
+    background-size: 100%;
+}
+
+.error-dialog {
+    width: 641px;
+    height: 453px;
+    top: 368px;
+    margin: 0 auto;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/err-dialog-bg.png") no-repeat;
+    background-size: 100%;
+}
+
+.success-dialog + .close-btn-row {
+    top: 1007px;
+}
+
+.error-dialog + .close-btn-row {
+    top: 849px;
+}
+
+.close-btn-row {
+    position: absolute;
+    left: 0;
+    top: 1206px;
+    width: 100%;
+}
+
+.close-btn {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/close-btn.png") no-repeat;
+    background-size: 100%;
+}
+
+.dialog-content {
+    display: inline-block;
+    padding: 189px 51px 0 90px;
+    width: 100%;
+    height: 100%;
+    font-size: 29px;
+    font-family: SourceHanSansCN-Heavy;
+    font-weight: 800;
+    color: rgba(83, 51, 1, 1);
+}
+
+
+.rule {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.12em;
+    line-height: 42px;
+    position: relative;
+}
+
+.rule::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: -55px;
+    top: 0;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/circle.png") no-repeat;
+    background-size: 100%;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    margin: 4px 0;
+    font-size: 12px; /*no*/
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+}
+
+.rule:nth-of-type(1)::before {
+    content: "1";
+}
+
+.rule:nth-of-type(2)::before {
+    content: "2";
+}
+
+.rule:nth-of-type(3)::before {
+    content: "3";
+}
+
+.rule:nth-of-type(4)::before {
+    content: "4";
+}
+
+.rule:nth-of-type(5)::before {
+    content: "5";
+}
+
+.rule:nth-of-type(6)::before {
+    content: "6";
+}
+
+.rule:nth-of-type(7)::before {
+    content: "7";
+}
+
+.rule:nth-of-type(8)::before {
+    content: "8";
+}
+
+.rule:nth-of-type(9)::before {
+    content: "9";
+}
+
+.share-btn-row {
+    width: 100%;
+    height: 110px;
+    margin-top: 745px;
+    padding: 0 17px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.success-dialog > .share-btn-row {
+    margin-top: 507px;
+}
+
+.share-friend-btn, .save-btn, .join-in-btn, .view-btn {
+    width: 292px;
+    height: 100%;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/share-friend-btn.png") no-repeat;
+    background-size: 100%;
+}
+
+.save-btn {
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/save-poster-btn.png") no-repeat;
+    background-size: 100%;
+}
+
+.join-in-btn {
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/join-in-btn.png") no-repeat;
+    background-size: 100%;
+}
+
+.view-btn {
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/view-red-packet.png") no-repeat;
+    background-size: 100%;
+}
+
+.error-dialog-content {
+    width: 100%;
+    font-size: 42px;
+    font-family: SourceHanSansCN-Heavy;
+    font-weight: 800;
+    color: rgba(67, 67, 67, 1);
+    margin: 0 auto;
+    padding: 183px 125px 41px 125px;
+    text-align: center;
+    letter-spacing: 0.15em;
+}
+
+.error-join-in-btn {
+    width: 362px;
+    height: 100%;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/error-join-in-btn.png") no-repeat;
+    background-size: 100%;
+    margin: 0 145px;
+}
+
+.success-content {
+    width: 100%;
+    font-size: 38px;
+    line-height: 45px;
+    font-family: SourceHanSansCN-Medium;
+    font-weight: 500;
+    color: rgba(255, 254, 254, 1);
+    padding: 55px 100px 0 100px;
+    text-align: center;
+    letter-spacing: 0.1em;
+}
+
+.locals-qr-code {
+    width: 137px;
+    height: 137px;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/locals-qr-code.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 532px;
+    left: 476px;
+}

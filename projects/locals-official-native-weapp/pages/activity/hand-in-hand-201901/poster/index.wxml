@@ -1,0 +1,8 @@
+<scroll-view class="page-container" scrollY="{{true}}">
+  <!-- poster -->
+  <view class="poster">
+    <poster id="poster" />
+  </view>
+  <!-- banner -->
+  <button class="save-button" bindtap="saveToAlbum">保存图片</button>
+</scroll-view>

@@ -1,0 +1,11 @@
+$textColor: rgba(137, 99, 187, 0.507);
+
+.container {
+    background: #000;
+    height: 100vh;
+    &__test {
+        font-size: 38px;
+        color: $textColor;
+    }
+}
+

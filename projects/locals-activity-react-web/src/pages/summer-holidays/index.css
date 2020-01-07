@@ -1,0 +1,1020 @@
+#app {
+    /* font-family: Georgia, sans-serif; */
+    text-align: center;
+    position: relative;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+button,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.homePage {
+    padding: 10px 20px;
+}
+
+.fixedBox {
+    position: absolute;
+    left: -4px;
+    top: 437px;
+    height: 210px;
+    width: 103px;
+}
+
+.fixedBox .fixedBoxItem {
+    width: 103px;
+    height: 92px;
+}
+
+.fixedBox .fixedBoxItem img {
+    width: 103px;
+    height: 92px;
+}
+
+.pageBox {
+    width: 100%;
+    height: 580px;
+    /*margin-bottom: 69px;*/
+    position: relative;
+}
+
+.pageBox .headBoxImage {
+    /* width: 100%; */
+    height: 580px;
+    display: block;
+}
+
+.pageBox .showRules {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 18px 30px;
+    font-size: 20px;
+    background: #000;
+    color: #fff;
+}
+
+/* .panic_section {} */
+.panicTitle {
+    margin-bottom: 28px;
+}
+
+.weightTitle {
+    width: 100%;
+    font-weight: bold;
+    font-size: 40px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+    color: rgba(250, 115, 103, 1);
+}
+
+.weightTitle .line {
+    flex: 0 1 38px;
+    height: 2px;
+    display: block;
+    background: rgba(250, 115, 103, 1);
+}
+
+.weightTitle .mainTitle {
+    height: 35px;
+    font-size: 36px;
+    font-family: SourceHanSansCN-Bold;
+    font-weight: bold;
+    color: rgba(250, 115, 103, 1);
+    line-height: 35px;
+    flex-shrink: 0;
+}
+
+.subTitle {
+    height: 24px;
+    font-size: 24px;
+    font-family: SourceHanSansCN-Normal;
+    font-weight: 400;
+    color: rgba(117, 117, 117, 1);
+    line-height: 24px;
+}
+
+/* .panic_section .weightTitle {
+    font-weight: bold;
+    font-size: 40px;
+} */
+
+.panic_section .renderImage {
+    display: flex;
+    /* justify-content: space-; */
+    overflow-x: auto;
+    margin-bottom: 88px;
+}
+
+.panic_section .renderImage .headBox {
+    flex: 0 0 300px;
+    height: 485px;
+    margin-right: 10px;
+    position: relative;
+    font-size: 0;
+}
+
+.panic_section .renderImage .headBox .topBar {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 22px;
+}
+
+.panic_section .renderImage .headBox .topBar .top,
+.num {
+    width: 65px;
+    height: 32px;
+    font-family: SourceHanSansCN-Heavy;
+    font-weight: 800;
+    background: #fff;
+}
+
+.panic_section .renderImage .headBox .topBar .top {
+    background: rgba(250, 115, 103, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.panic_section .renderImage .headBox .bottomBar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 0 0 20px 0;
+}
+
+.panic_section .renderImage .headBox .bottomBar .hotelTitle {
+    width: 267px;
+    height: 42px;
+    background: rgba(0, 0, 0, 1);
+    opacity: 0.6;
+    border-radius: 21px;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.panic_section .renderImage .headBox .bottomBar .hotelTime {
+    width: 233px;
+    height: 24px;
+    font-size: 24px;
+    font-family: SourceHanSansCN-Heavy;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 1);
+    line-height: 38px;
+    margin-bottom: 10px;
+}
+
+.panic_section .renderImage .headBox .bottomBar .hotelPrice span {
+    display: inline-block;
+    width: 120px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 24px;
+    font-family: SourceHanSansCN-Light;
+    background: #fff;
+}
+
+.panic_section .renderImage .headBox .bottomBar .hotelPrice span:last-child {
+    background: #fa7367;
+    color: #fff;
+}
+
+.panic_section .renderImage .headBox .headBoxImage {
+    width: 100%;
+    height: 485px;
+}
+
+.panic_section .panic_ticket {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* height: 600px;*/
+    overflow-y: auto;
+}
+
+.panic_section .panic_ticket .headBox {
+    width: 100%;
+    height: 162px;
+    margin-bottom: 21px;
+    display: flex;
+    /* background-image: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/boost51/%E7%9F%A2%E9%87%8F%E6%99%BA%E8%83%BD%E5%AF%B9%E8%B1%A1.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: center right; */
+    position: relative;
+    /* border: 1px solid #FA7367; */
+}
+
+.panic_section .panic_ticket .headBox .cutPriceIcon {
+    width: 74px;
+    height: 47px;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'SourceHanSansCN-Bold';
+    font-weight: bold;
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    background-image: url('https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/boost51/%E5%9B%BE%E5%B1%82%2018%20%E6%8B%B7%E8%B4%9D.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.panic_section .panic_ticket .headBox .headBoxImage {
+    height: 100%;
+    flex: 5;
+}
+
+.panic_section .panic_ticket .headBox .ticketDes {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.panic_section .panic_ticket .headBox .ticketDes .city {
+    font-family: 'SourceHanSansCN-Heavy';
+    color: #757575;
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.panic_section .panic_ticket .headBox .ticketDes .count {
+    font-family: 'SourceHanSansCN-Heavy';
+    color: #fa7367;
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.panic_section .panic_ticket .headBox .ticketDes .remian {
+    font-family: 'SourceHanSansCN-Heavy';
+    color: #b6b6b6;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.panic_section .panic_ticket .headBox .ticketDes .buy_btn {
+    width: 145px;
+    height: 40px;
+    background: rgba(250, 115, 103, 1);
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+.panic_section .ticket_container {
+    display: flex;
+}
+
+.panic_section .ticket_item {
+    flex: 1;
+    height: 57px;
+    line-height: 57px;
+    background: rgba(239, 239, 239, 1);
+    color: #000;
+}
+
+.panic_section .ticket_item.active {
+    background: #fa7367;
+    color: #fff;
+}
+
+.tab_bar {
+    display: flex;
+    width: 94%;
+    margin: 0 auto;
+}
+
+.tab_bar .tab_item {
+    padding: 10px 40px;
+    width: 50%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+.tab_bar .tab_item:last-child {
+    border-left: none;
+}
+
+.tab_section {
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.tab_card {
+    display: flex;
+}
+
+.tab_card .tab_card_item {
+    padding: 6px 10px;
+    flex: 1;
+    /* flex: 0 0 167px; */
+    /* width: 167px; */
+    font-family: 'SourceHanSansCN-Medium';
+    height: 64px;
+    font-size: 30px;
+    font-weight: 500;
+    background: rgba(239, 239, 239, 1);
+}
+
+.tab_card .tab_card_item.active {
+    background: rgba(250, 115, 103, 1);
+    color: #fff;
+}
+
+.result_section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.result_section .result_item {
+    width: 50%;
+}
+
+.jumpReturn {
+    height: 80px;
+    width: 100%;
+}
+
+.jumpReturn .returnArrow {
+    position: absolute;
+    left: 20px;
+    top: 29px;
+    display: flex;
+    height: 32px;
+    width: 32px;
+}
+
+.countdown {
+    font-size: 16px;
+}
+
+.shareBox {
+    position: relative;
+}
+
+.shareBox .headBoxImage {
+    width: 100%;
+    height: 600px;
+    display: block;
+}
+
+.shareBox .returnArrow {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    display: flex;
+    height: 32px;
+    width: 32px;
+}
+
+.shareBox .show0riginBtn {
+    position: absolute;
+    bottom: 10%;
+    right: 10px;
+    height: 70px;
+    width: 210px;
+    border-radius: 100px;
+    font-size: 24px;
+    background: #fff;
+    color: #000;
+}
+
+.shareBox .descrption {
+    position: absolute;
+    bottom: 10%;
+    left: 20px;
+    color: #fff;
+    text-align: left;
+}
+
+.shareBox .descrption .houseTitle {
+    font-size: 40px;
+}
+
+.share_display_section {
+    padding: 40px 60px 0 60px;
+}
+
+.share_dec_section {
+    display: flex;
+}
+
+.share_dec_section .head_img {
+    flex: 0 0 180px;
+    height: 180px;
+    display: block;
+}
+
+.share_dec_section .head_img img {
+    width: 180px;
+    height: 180px;
+    border-radius: 15px;
+}
+
+.share_dec_section .status_title {
+    flex: 1;
+    text-align: left;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.share_dec_section .status_title img {
+    display: block;
+    height: 104px;
+    margin-bottom: 10px;
+}
+
+.share_dec_section .status_title .countTime {
+    display: flex;
+    font-size: 30px;
+}
+
+/* .share_dec_section .status_title .countTime .countTitle{
+    font-size: 
+} */
+
+.share_dec_section .status_title .countTime .countTimeCard {
+    margin-left: 20px;
+    flex: 2;
+    background: rgb(229, 229, 229);
+    display: inline-block;
+    text-align: center;
+}
+
+.sceneShare .share_dec_section .status_title {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.sceneShare .share_dec_section .status_title .status_title_info {
+    width: 400px;
+    height: 34px;
+    font-size: 36px;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(54, 54, 54, 1);
+    line-height: 36px;
+}
+
+.sceneShare .share_dec_section .house_title {
+    /* width:351px; */
+    height: 46px;
+    font-size: 47px;
+    font-family: SourceHanSansCN-Bold;
+    font-weight: bold;
+    font-style: italic;
+    color: rgba(232, 96, 84, 1);
+    line-height: 54px;
+}
+
+.share_btn_section {
+    width: 100%;
+    margin: 20px auto 0;
+    border-radius: 10px;
+    display: flex;
+}
+
+.help_btn_section {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+    border-radius: 10px;
+    display: flex;
+}
+
+.help_btn_section button {
+    /* width:300px;
+    height:80px;
+    background:rgba(250,115,103,1);
+    box-shadow:0px 5px 7px 0px rgba(234,90,77,0.64);
+    border-radius:10px; */
+    font-size: 30px;
+    line-height: normal;
+    flex: 1;
+    justify-content: space-between;
+    border: 1px solid #000;
+    margin-right: 10px;
+}
+
+.sceneShare .help_btn_section button {
+    width: 300px;
+    height: 80px;
+    background: rgba(250, 115, 103, 1);
+    box-shadow: 0px 5px 7px 0px rgba(234, 90, 77, 0.64);
+    border-radius: 10px;
+    border: none;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    /* font-size: 30px;
+    line-height: normal;
+    flex: 1;
+    justify-content: space-between;
+    border: 1px solid #000;
+    margin-right: 10px; */
+}
+
+.share_btn_section button {
+    width: 100%;
+    height: 100%;
+}
+
+.share_btn_section button img {
+    width: 102%;
+    height: 100%;
+    margin-left: -5px;
+    font-size: 30px;
+    line-height: normal;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.friend_section {
+    margin-top: 10px;
+}
+
+.friend_section .friend_title {
+    display: flex;
+    width: 100%;
+}
+
+.friend_section .renderImage {
+    display: flex;
+    flex-flow: row wrap;
+    overflow-x: auto;
+    padding: 20px 0;
+}
+
+.friend_section .renderImage .headBox {
+    width: 92px;
+    flex: 0 0 92px;
+    margin-right: 10px;
+    font-size: 0;
+}
+
+.friend_section .renderImage .headBox .headBoxImage {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+}
+
+.friend_section .renderImage .headBox .nickName {
+    margin-top: 10px;
+    font-size: 24px;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+}
+
+.rank_section {
+}
+
+.rank_section .rank_title {
+    display: flex;
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+.rank_section .rank_text {
+    height: 29px;
+    font-size: 26px;
+    font-family: SourceHanSansCN-Normal;
+    font-weight: 400;
+    color: rgba(63, 63, 63, 1);
+    line-height: 38px;
+}
+
+.rank_section .ranking_header {
+    display: flex;
+}
+
+.rank_section .ranking_header .table_header {
+    font-size: 24px;
+    flex: 1;
+    padding: 30px 0;
+}
+
+.rankTable {
+    width: 90%;
+    margin: 40px auto 20px;
+    box-shadow: 0px 10px 21px 0px rgba(206, 179, 177, 0.64);
+    padding: 20px 40px;
+}
+
+.rankTable .ranking_header {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rankTable .ranking_header .table_header:first-child {
+    font-size: 24px;
+    flex: 3;
+    padding: 30px 0;
+}
+
+.rankTable .ranking_header .table_header {
+    font-size: 24px;
+    flex: 2;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.rankTable .ranking_header .table_header:first-child {
+    text-align: left;
+}
+
+.rankTable .ranking_header .table_header:last-child {
+    text-align: right;
+}
+
+.rankTable .ranking_header .table_name,
+.table_item {
+    font-size: 24px;
+    padding: 30px 0;
+}
+
+.rankTable .ranking_header .table_item:last-child {
+    text-align: right;
+}
+
+.rankTable .ranking_header .table_name {
+    flex: 3;
+    display: flex;
+    justify-content: left;
+    align-content: center;
+    align-items: center;
+}
+
+.rankTable .ranking_header .table_name .avator {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-right: 10px;
+    position: relative;
+}
+
+.rankTable .ranking_header .table_name .winner {
+    width: 100%;
+    height: 100%;
+    border-radius: 0%;
+    position: absolute;
+    top: -60%;
+    left: 0;
+}
+
+.rankTable .ranking_header .table_name .avator img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: block;
+}
+
+.rankTable .ranking_header .table_item {
+    flex: 2;
+}
+
+.model {
+    width: 500px;
+    height: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    z-index: 310;
+}
+
+.model.error {
+    z-index: 310;
+    background-color: transparent;
+    height: 360px;
+    width: 600px;
+}
+
+.model.error .bg {
+    width: 100%;
+    height: 360px;
+}
+
+.model.error .model_text {
+    font-size: 28px;
+    width: 100%;
+    height: 360px;
+    text-align: left;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    padding: 20px;
+    position: absolute;
+}
+
+.model.panic {
+    width: 496px;
+    height: 384px;
+    background-color: transparent;
+}
+
+.model.panic .bg {
+    width: 496px;
+    height: 384px;
+}
+
+.model.panic .model_text {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    width: 467px;
+    height: 93px;
+    margin-left: -233.5px;
+    z-index: 310;
+}
+
+.model.panic .model_text img {
+    width: 467px;
+    height: 93px;
+}
+
+.model.rule {
+    width: 616px;
+    height: 607px;
+    padding: 0 31px;
+    background-color: transparent;
+}
+
+.model.rule .model_text {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    padding: 0 31px;
+}
+
+.model.rule .bg {
+    width: 616px;
+    height: 607px;
+}
+
+.model.rule .auto_dialog {
+    height: 400px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.model.resultSuc {
+    width: 616px;
+    height: 690px;
+}
+
+.model.resultSuc .resultList {
+    font-size: 28px;
+    padding-top: 30px;
+}
+
+.model.resultSuc .resultSucBox {
+    width: 616px;
+    height: 607px;
+    /* height: 287px; */
+    position: absolute;
+}
+
+.model.resultSuc.lastResult {
+    width: 616px;
+    height: 287px;
+}
+
+.model.resultSuc.lastResult .resultSucBox {
+    width: 616px;
+    height: 287px;
+    position: absolute;
+}
+
+.model.resultSuc.lastResult .resultSucBox .bg {
+    width: 616px;
+    height: 287px;
+}
+
+.model.resultSuc .model_text {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    width: 467px;
+    height: 93px;
+    margin-left: -233.5px;
+    z-index: 310;
+}
+
+.model.resultSuc .result-content {
+    position: absolute;
+    top: 54px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 500px;
+    height: calc(100% - 54px);
+    z-index: 310;
+    text-align: center;
+}
+
+.result-tip {
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 16px;
+}
+
+.model.resultSuc .model_text img {
+    width: 467px;
+    height: 93px;
+}
+
+.model.resultNo {
+    width: 616px;
+    height: 287px;
+    background: transparent;
+}
+
+.model .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.model.resultNo .bg {
+    width: 616px;
+    height: 287px;
+}
+
+.model.resultSuc .bg {
+    width: 616px;
+    height: 607px;
+}
+
+.model.rule .model_text {
+    padding-top: 117px;
+}
+
+.modelImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.modelInfo {
+    width: 100%;
+}
+
+.modelTitle {
+    font-size: 36px;
+    color: #cbb27b;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.backBtn {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    margin-left: -20px;
+    z-index: 310;
+}
+
+.ruleTips {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 300;
+}
+
+.active_text {
+    font-size: 26px;
+    font-family: 'SourceHanSansCN-Medium';
+    font-weight: 500;
+    color: rgba(232, 96, 84, 1);
+    line-height: 38px;
+}
+
+.mt30 {
+    margin-top: 30px;
+}
+
+.house-mask::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    background: url('../../assets/house-mask.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.error-text {
+    width: 100%;
+    text-align: center;
+}
+
+.error-text > div {
+    width: 100%;
+}

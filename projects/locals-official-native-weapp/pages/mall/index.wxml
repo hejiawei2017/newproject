@@ -1,0 +1,12 @@
+<!--pages/mall/index.wxml-->
+<view class="container">
+    <view class="container__test" bindtap="nav">套餐</view>
+    <view class="container__test" bindtap="nav1">月饼</view>
+    <view class="container__test" bindtap="nav2">茶叶</view>
+    <view class="container__test" bindtap="nav4">订单</view>
+</view>
+
+<auth-drawer-box 
+    id="auth-drawer-box"
+    bind:cancelEvent="_cancelEventFn"
+/>

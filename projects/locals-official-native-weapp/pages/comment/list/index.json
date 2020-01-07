@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText" : "民宿评论",
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "im-message": "/components/im-message/im-message",
+    "stars": "/components/stars/index",
+    "super-image": "/components/super-image/index",
+    "underscore": "/components/underscore/index",
+    "flexible-component": "/components/flexible-text/index"
+  }
+}

@@ -1,0 +1,16 @@
+<!--pages/activity/miaosha/index.wxml-->
+<view class="main">
+    <image src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/test/zhuhai.jpeg" mode="widthFix" />
+    <view class="title">秒杀须知</view>
+    <view class="rule">
+        <view >1、成功秒杀后，在“路客精品民宿预定”小程序--我的优惠劵可查看房晚劵</view>
+         <view >2、路客工作人员会在三个工作日内外联系用户进行预定指引</view>
+         <view class="tips">活动最终解释权归路客所有</view>
+    </view>
+    <button wx:if="{{!isHave}}"  bindtap='doOrder'>{{buttonText}}</button>
+    <button wx:if="{{isHave}}"  open-type="share">您已经购买过啦，分享给好友吧！</button>
+</view>
+<auth-drawer-box 
+    id="auth-drawer-box"
+    bind:cancelEvent="_cancelEventFn"
+/>

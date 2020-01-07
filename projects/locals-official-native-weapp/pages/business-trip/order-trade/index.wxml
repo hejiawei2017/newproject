@@ -1,0 +1,90 @@
+<view class="page">
+	<view class="container">
+		<top-vip-card />
+
+		<!-- 权益兑换 -->
+		<view>
+			<view class="trade section">
+				<image 
+					class="title"
+					src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561975857855trade-title.png" />
+
+				<view class="order-card">
+					<text class="order-no">订单号: {{houeseData.randomId}}</text>
+					<view class="order-content">
+						<image
+							class="thumb"
+							src="{{houeseData.imgPath}}" />
+						<view class="order-info">
+							<text class="room-title">{{houeseData.title || '--'}}</text>
+							<text class="order-time">预订日期: {{houeseData.createTime || '--'}}</text>
+							<text class="order-time">入住日期: {{houeseData.checkinDate || '--'}}</text>
+							<text class="order-time">退房日期: {{houeseData.checkoutDate || '--'}}</text>
+						</view>
+					</view>
+					<view class="join-btn">待入住</view>
+					<view class="trade-form">
+						<view class="form-item">
+							<text class="form-item-key">服务类型</text>
+							<view class="server-type-pick">
+								<picker 
+									class="server-picker"
+									bindchange="bindServeChange" 
+									value="{{serverChoosed}}" 
+									range="{{serverType}}"
+									range-key="serviceName"
+								>
+									<image
+										src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1562037837222select-form.png" />
+									<view class="picker-text">
+										{{serverType[serverChoosed].serviceName}}
+									</view>
+								</picker>
+								<view class="remain-text">剩余{{serverType[serverChoosed].count}}次</view>
+							</view>
+						</view>
+						<view class="form-item">
+							<text class="form-item-key">服务日期</text>
+							<view>
+								<picker 
+									class="date-picker"
+									start="{{startDate}}"
+									end="{{endDate}}"
+									mode="date"
+									bindchange="bindDateChange" 
+									value="{{serverChoosed}}" 
+									range="{{serverType}}"
+								>
+									<image
+										src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1562037832829date-form.png" />
+									<view class="picker-text">
+										{{serverDate}}
+									</view>
+								</picker>
+							</view>
+						</view>
+						<view class="form-item">
+							<text class="form-item-key">备注</text>
+							<textarea
+								bindinput="bindRemarkChange"
+								class="form-mark"
+								placeholder="请输入给管家的留言" />
+
+						</view>
+						<view class="form-des">
+							<view
+								bindtap="bindSubmit"
+								class="submit-btn"
+							>
+								提交
+							</view>
+							<text class="submit-des">
+								提交后管家将与您联系为您提供服务
+							</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

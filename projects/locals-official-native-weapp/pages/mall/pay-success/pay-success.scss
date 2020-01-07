@@ -1,0 +1,161 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+}
+
+.icon__state {
+    width: 112rpx;
+    height: 112rpx;
+    margin: 134rpx auto 28rpx auto;
+}
+
+.state__desc {
+    font-size: 18px;
+    margin: 0 auto;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+.price {
+    text-align: center;
+    font-size: 32rpx;
+    color: #E84358;
+    margin-bottom: 30rpx;
+    margin-top: 3rpx;
+}
+
+.goodsinfo {
+    text-align: center;
+    font-size: 26rpx;
+    color: #333;
+}
+
+.button-wrap {
+    display: flex;
+    margin-top: 64rpx;
+    margin-bottom: 102rpx;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    width: 262rpx;
+    height: 88rpx;
+    border-radius: 8rpx;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 88rpx;
+    text-align: center;
+
+}
+
+.order {
+    border: solid 2rpx #E84358;
+    color: #E84358;
+}
+
+.back {
+    background: #E84358;
+    color: #fff;
+}
+
+.grey__more {
+    width: 12rpx;
+    height: 20rpx;
+    margin-left: 4rpx;
+  }
+
+.gift {
+    margin-left: 34rpx;
+    border: none;
+    background: #E84358;
+    color: #fff;
+}
+
+.another-gift {
+    margin: 0 30rpx;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 22rpx;
+    height: 76rpx;
+    background: rgba(232, 67, 88, 0.0646);
+    width: 90%;
+    &__icong {
+        width: 36rpx;
+        height: 36rpx;
+    }
+    &__text {
+        margin-left: 54rpx;
+        font-size: 28rpx;
+        color: rgba(51, 51, 51, 1);
+    }
+    &__more {
+        position: absolute;
+        right: 22rpx;
+        align-self: center;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+
+.info-wrap {
+    background: rgba(255, 254, 255, 1);
+    box-shadow: 0rpx 6rpx 32rpx 0rpx rgba(215, 215, 215, 0.5);
+    border-radius: 8rpx;
+    padding: 20rpx 0 26rpx 0;
+    margin: 0 30rpx;
+    width: 90%;
+}
+
+.infotext {
+    font-size: 14px;
+    color: #333;
+    padding-left: 42rpx;
+    display: flex;
+}
+
+.city {
+    color: #999999;
+    margin-bottom: 14rpx;
+}
+
+.street {
+    margin-bottom: 14rpx;
+}
+
+.decoration {
+    display: flex;
+    align-items: center;
+}
+
+.dashline {
+    flex: 1;
+    border-top: #F5F5F5 2rpx dashed;
+    margin: 32rpx;
+
+}
+
+.decoration .leftdot {
+    border-radius: 0 10rpx 10rpx 0;
+    width: 10rpx;
+    height: 20rpx;
+    background: #F5F5F5;
+}
+
+.decoration .rightdot {
+    border-radius: 10rpx 0 0 10rpx;
+    width: 10rpx;
+    height: 20rpx;
+    background: #F5F5F5;
+}
+
+.transport {
+    color: #E84358;
+    padding: 0 42rpx;
+    font-size: 14px;
+}

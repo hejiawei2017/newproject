@@ -1,0 +1,16 @@
+.rollsmsg-container {
+  background-color: black;
+  opacity: 0.4;
+  border-radius: 30px;
+}
+.rollsmsg-item {
+  color: white;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  padding-left: 10px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

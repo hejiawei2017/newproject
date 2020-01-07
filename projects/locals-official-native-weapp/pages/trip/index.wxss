@@ -1,0 +1,238 @@
+/* pages/trip/index.wxss */
+.page{
+  padding: 0px 0 0 0;
+}
+.red{
+  color: #d20019;
+}
+.trips__list {
+  padding-right: 20rpx;
+}
+.trip-wrapper{
+  padding: 0 40rpx 0 0;
+}
+.trip-title{
+  display: flex;
+  align-items: center;
+  color: #484848;
+}
+.trip-time{
+  font-weight: 600;
+  font-size: 38rpx;
+}
+.tirp-checkin{
+  font-size:15px;
+  color:rgb(85,85,85);
+  margin-left:26rpx;
+  color: #555555;
+  font-weight: 400;
+}
+.trip-check{
+  font-size:24rpx;
+  letter-spacing: 1rpx;
+  color: #484848;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.trip-name{
+  font-size:30rpx;
+  margin: 0rpx 0 13rpx 0;
+  line-height:54rpx;
+  color: #484848;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.trip-name-two-line{
+  font-size:30rpx;
+  margin: 0rpx 0 13rpx 0;
+  line-height:54rpx;
+  color: #484848;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+}
+.trip-status{
+  display: flex;
+  font-size: 24rpx;
+  flex-grow: 1;
+}
+.trip-evaluate{
+  color: #e84358;
+  font-size: 26rpx;
+  text-align: right;
+  flex-grow: 1;
+  text-decoration-line: underline;
+}
+.trip-evaluate-no{
+  color: #666666;
+  font-size: 26rpx;
+  text-align: right;
+  flex-grow: 1;
+}
+.trip-box{
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px rgba(34,35,39,0.1);
+  margin: 40rpx 0 0rpx 0;
+  padding:30rpx 0;
+  border-radius: 14rpx;
+}
+.trip-label{
+  padding:0 30rpx;
+}
+.trip-image{
+    width: 100%;
+    height: 270rpx;
+    overflow: hidden;
+    padding:0 30rpx;
+    box-sizing: border-box;
+}
+.trip-image image{
+  width: 100%;
+  height: 100%;
+}
+.trip-describe{
+  font-size: 24rpx;
+  font-weight: 300;
+  line-height:18px;
+  margin: 30rpx 0 0 0;
+  padding:0 80rpx 0 30rpx;
+  position: relative;
+  box-sizing: border-box;
+  padding-right:107rpx;
+}
+.describe-icon{
+  width:37rpx;
+  height:37rpx;
+  position: absolute;
+  top:50%;
+  right:38rpx;
+  transform: translateY(-50%);
+}
+.trip-address{
+  margin-top: 5px;
+  font-size: 14px;
+  color: #d7505c;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+}
+.address-icon{
+  width:15px;
+  height:17px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.simplify-container .trip-box-wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin:0;
+  padding: 30rpx 30rpx 20rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.simplify-container .trip-box .trip-image {
+  width: 300rpx;
+  height: 180rpx;
+  padding: 0;
+}
+
+.simplify-container .trip-box .trip-text {
+  padding-top: 20rpx;
+  width: 220rpx;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.simplify-container .trip-box .trip-text .trip-name {
+  line-height: 36rpx;
+  margin-top: 20rpx;
+}
+
+.movable-area, .movable-area-sm {
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px rgba(34,35,39,0.1);
+  margin: 40rpx 0 0rpx 0;
+  width: 614rpx;
+  height: 310rpx;
+  overflow-x: hidden;
+  border-radius: 14rpx;
+}
+
+.movable-area-sm, .movable-area-sm .movable-view, .movable-area-sm .trip-del {
+  height: 230rpx;
+}
+
+.movable-area-sm .bargain-view-btn-sm {
+  display: none;
+}
+
+.movable-view{
+  margin:0;
+  padding:0;
+  box-shadow:none;
+  border-radius: 14rpx;
+  width:740rpx;
+  height:310rpx;
+}
+.movable-view .trip-text{
+  position: absolute;
+  left: 360rpx;
+}
+.trip-del{
+  position: absolute;
+  top: 0;
+  border-top-right-radius:14rpx;
+  border-bottom-right-radius:14rpx;
+  right: 0;
+  vertical-align: top;
+  width: 123rpx;
+  height: 310rpx;
+  background-color: #E84358;
+}
+.trip-del image{
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.bargain-btn, .bargain-view-btn {
+    width: 100%;
+    height: 70rpx;
+    margin-top:20rpx;
+    background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/bargain-btn-w289.png") no-repeat;
+    background-size: 100%;
+}
+
+.bargain-view-btn {
+  background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/bargain-view-btn-w289.png") no-repeat;
+  background-size: 100%;
+}
+
+.bargain-view-btn-sm{
+  width: 554rpx;
+  height: 60rpx;
+  margin: 0 30rpx 20rpx 30rpx;
+  background: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/bargain-view-btn-w277.png") no-repeat;
+  background-size: 100%;
+}
+.empty-data .no-login-btn{
+  margin: 50rpx auto;
+  width:166rpx;
+  height:58rpx;
+  border:1rpx solid rgba(232,67,88,1);
+  border-radius:7rpx;
+  font-size:28rpx;
+  color:rgba(232,67,88,1);
+  line-height:58rpx;
+  text-align: center;
+}

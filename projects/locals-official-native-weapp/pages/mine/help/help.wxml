@@ -1,0 +1,8 @@
+<!--pages/info/help/help.wxml-->
+<view class="help">
+    <text class="text">您可以直接在公众号发问，我们提供即时在线服务解决你的问题。</text>
+</view>
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

@@ -1,0 +1,71 @@
+.app {
+  font-family: Georgia, sans-serif;
+  text-align: center;
+  position: relative;
+}
+.index {
+  background: url('https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/gjh/bg002.jpg')
+    no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 2721px;
+  background-size: 100% 2721px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.upgradeCom {
+  height: 290px;
+  width: 90%;
+  margin-left: 5%;
+  position: absolute;
+  bottom: 500px;
+  display: flex;
+}
+.upgrade{
+  width: 32%;
+  height: 290px;
+  margin: 0 1%;
+}
+.model {
+  width: 750px;
+  height: 470px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modelImg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.modelInfo {
+  width: 100%;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.modelTitle {
+  font-size: 36px;
+  color: #cbb27b;
+  display: block;
+  margin-bottom: 30px;
+}
+.__info {
+  display: block;
+  width: 100%;
+  font-size: 32px;
+  color: #ffffff;
+}
+.backBtn {
+  width: 490px;
+  height: 70px;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+}

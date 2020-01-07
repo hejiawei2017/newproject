@@ -1,0 +1,9 @@
+.container {
+  background: #000;
+  height: 100vh;
+}
+
+.container__test {
+  font-size: 38px;
+  color: rgba(137, 99, 187, 0.507);
+}

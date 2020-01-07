@@ -1,0 +1,321 @@
+<wxs src="../../wxs/ImageUtils.wxs" module="imageUtils" />
+<wxs src="../../wxs/HouseUtils.wxs" module="houseUtils" />
+<wxs src="../../wxs/DateUtils.wxs" module="dateUtils" />
+<wxs src="../../wxs/utils.wxs" module="utils" />
+
+<template name="house-info">
+  <view class="container">
+    <view class="house-info">
+      <view class="left pic-lose">
+        <image mode="aspectFill" src="{{ imageUtils.processImage(bookingRequest.houseImage + '?x-oss-process=image/resize,w_200/quality,Q_100') }}" />
+      </view>
+      <view class="right">
+        <view class="house-title">{{ bookingRequest.title }}</view>
+        <view class='params-info'>{{bookingRequest.roomNumber}}房{{bookingRequest.tenantNumber}}人{{bookingRequest.bedNumber}}床{{(bookingRequest.publicToiletNumber || 0) + bookingRequest.toiletNumber}}卫</view>
+      </view>
+    </view>
+    <view wx:if="{{ bookingRequest.preferentialAmountTotal > 0 }}" class="main-activity">
+      <image mode="widthFix" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/huoicon.png" />
+      <view>此单划算，一共为你节省{{ bookingRequest.preferentialAmountTotal }}元！</view>
+    </view>
+  </view>
+</template>
+
+<template name="checkin-container">
+    <view class="checkin-container container" catchtap="bindDateSelectTap">
+      <view class="title">入离日期</view>
+      <view class="data-text">
+        {{ dateUtils.setMonthDay(checkinStartDate) }}至{{ dateUtils.setMonthDay(checkinEndDate) }} 共{{ checkinDays }}晚
+      </view>
+    </view>
+</template>
+
+<template name="instructions">
+  <view class="container">
+    <view class="title">预订须知</view>
+    <view class="instructions-item">
+      <image class="attention"
+       mode="aspectFill" src="https://oss.localhome.cn/localhomeqy/order-attention.png" />
+       <view class="article">如需发票可在退房后在我的发票中申请。</view>
+    </view>
+    <view class="instructions-item">
+      <image class="attention"
+       mode="aspectFill" src="https://oss.localhome.cn/localhomeqy/order-attention.png" />
+       <view class="article">预订代表您同意<text catch:tap="toUnsubscribe">《退订政策》</text>、<text catch:tap="toRules">《房屋守则》</text>和<text catch:tap="toInsurance">《住宿旅客意外伤害保险》</text>相关规则</view>
+    </view>
+  </view>
+</template>
+
+<template name="fee">
+    <view class="container">
+        <view class="title">
+          订单费用
+          <text class="right-title black">￥{{ bookingRequest.originalPrice }}</text>
+        </view>
+        <view class="dynamic-list">
+            <view class="item space-between">
+                <text class="key">房费<text wx:if="{{ bookingRequest.clearPrice > 0 }}">(含清洁费)</text></text>
+                <text>￥{{ bookingRequest.totalRoomPrice }}</text>
+            </view>
+            <view wx:if="{{ bookingRequest.memberBagPrice > 0 }}" class="item space-between">
+                <view class="key">会员升级</view>
+                <text>￥{{ bookingRequest.memberBagPrice }} </text>
+            </view>
+            <view wx:if="{{ bookingRequest.preferentialAmount > 0 }}" class="item space-between">
+                <text class="key">优惠减免</text>
+                <text>-￥{{ bookingRequest.preferentialAmount }}</text>
+            </view>
+            <view wx:if="{{ bookingRequest.deposit > 0 }}" class="item space-between">
+                <view class="key">保证金<icon catchtap="showDepositTip" class="icon-gantan" /></view>
+                <text>￥{{ bookingRequest.deposit }}</text>
+            </view>
+            <view wx:if="{{ bookingRequest.servicePrice > 0 }}" class="item space-between">
+                <view class="key">预订服务费<icon catchtap="showServiceTip" class="icon-gantan" /></view>
+                <text>￥{{ bookingRequest.servicePrice }}/次</text>
+            </view>
+            <view wx:if="{{ bookingRequest.invoiceServicePrice > 0 }}" class="item space-between">
+                <view class="key">发票服务费<icon catchtap="showInvoiceTip" class="icon-gantan" /></view>
+                <text>￥{{ bookingRequest.invoiceServicePrice }}</text>
+            </view>
+        </view>
+    </view> 
+</template>
+
+<template name="fee-detail">
+    <view class="container">
+        <view class="title">
+          订单费用
+          <text class="right-title black">￥{{ bookingRequest.originalPrice }}</text>
+        </view>
+        <view class="dynamic-list">
+            <view wx:for="{{ bookingRequest.nightPrices }}" wx:key="checkinDate" class="item space-between">
+                <text class="key">{{ item.checkinDate }}</text>
+                <text>￥{{ item.price }}/晚</text>
+            </view>
+            <view wx:if="{{ bookingRequest.clearPrice > 0 }}" class="item space-between">
+                <view class="key">清洁费</view>
+                <text>￥{{ bookingRequest.clearPrice }}/次</text>
+            </view>
+            <view wx:if="{{ bookingRequest.memberBagPrice > 0 }}" class="item space-between">
+                <view class="key">会员升级</view>
+                <text>￥{{ bookingRequest.memberBagPrice }} </text>
+            </view>
+            <view wx:if="{{ true }}" class="item space-between">
+                <text class="key">住宿意外险(赠送)</text>
+                <text class="flex-right">￥0</text>
+                <text class="del-price">￥{{ accidentAmountTotal }}</text>
+            </view>
+            <!-- 区分显示选择了推荐升级会员的折扣还是原始的当前会员折扣  -->
+            <!-- 选择了推荐会员且折扣是有值的 -->
+            <view wx:if="{{ selectedBuyVipId && recommendBuy && bookingRequest.discountAmount > 0 }}" class="item space-between">
+              <image class="card-image" mode="aspectFill" src="{{ recommendBuy.image }}" />
+              <text class="key">
+                <text>{{ houseUtils.getMemberCardCouon(recommendBuy.memberCardCode) }}</text></text>
+              <text>{{ houseUtils.getMemberCardPrice(bookingRequest.discountAmount) }}</text>
+            </view>
+            <view wx:elif="{{memberCard && memberCard.memberCardName && bookingRequest.discountAmount > 0}}" class="item space-between">
+                <image class="card-image" mode="aspectFill" src="{{ memberCard.image }}" />
+                <text class="key">
+                  <text>{{ houseUtils.getMemberCardCouon(memberCard.memberCardCode) }}</text></text>
+                <text>{{ houseUtils.getMemberCardPrice(bookingRequest.discountAmount) }}</text>
+            </view>
+            <view wx:if="{{ bookingRequest.couponAmount > 0 }}" class="item space-between">
+                <text class="key">{{ selectCoupon.coupon.couponName }}</text>
+                <text>-￥{{ bookingRequest.couponAmount }}</text>
+            </view>
+            <view wx:if="{{ bookingRequest.deposit > 0 }}" class="item space-between">
+                <view class="key">保证金(可退)<icon catchtap="showDepositTip" class="icon-gantan" /></view>
+                <text>￥{{ bookingRequest.deposit }}</text>
+            </view>
+        </view>
+    </view> 
+</template>
+
+<template name="tenant-container">
+    <view class="container">
+      <view class="title">
+        <text decode="{{true}}">最多入住&nbsp;&nbsp;{{bookingRequest.tenantNumber}}人</text>
+        <text class="right-title" catchtap="addGuest">添加入住人</text>
+      </view>
+      <view wx:if="{{ guestList && guestList.length > 0 }}" class="tags-wrap">
+        <view
+          class="item"
+          wx:for="{{ guestList }}"
+          wx:key="{{ item.guestId }}"
+        >
+          <view class="name">{{ item.name }}</view>
+          <view 
+            class="del-button"
+            data-id="{{ item.guestId }}"
+            catchtap="removeGuest"
+          >×</view>
+        </view>
+      </view>
+      <view class="insurance-text"><image class="iconbaoxian" mode="aspectFill" src="https://oss.localhome.cn/localhomeqy/iconbaoxian.png" /><text class="bold">住宿意外险</text>：赠送入住人，预订后可补，限时免费</view>
+    </view>
+</template>
+
+<template name="discount-container">
+  <view class="discount-container">
+    <view class="left">
+      <block wx:if="{{ selectedBuyVipId && recommendBuy }}">
+        <image class="card-image" mode="aspectFill" src="{{ recommendBuy.image }}" />
+        购买{{ recommendBuy.memberCardName }}会员房费{{ utils.processFloat(recommendBuy.discount * 10, 1) }}折
+      </block>
+      <block wx:else>
+        <image class="card-image" mode="aspectFill" src="{{ memberCard.image }}" />
+        {{ memberCard.discountText }}
+      </block>
+    </view>
+    <view
+      wx:if="{{ selectedBuyVipId && recommendBuy && bookingRequest.discountAmount > 0 }}"
+      class="right"
+    >-¥{{bookingRequest.discountAmount}}</view>
+    <!-- <view 
+      wx:elif="{{ memberCard.memberCardCode === 'NORMAL' }}"
+      class="right red"
+    >推荐升级</view> -->
+  </view>
+</template>
+
+<template name="coupon-container">
+    <!-- 给了特别优惠后不能选择优惠券 -->
+    <view class="coupon container">
+      <template is="discount-container" data="{{ memberCard, bookingRequest, selectedBuyVipId, recommendBuy }}" />
+      <view bind:tap="doSelectCoupon" class="title coupon-container">
+        <!-- 选择了优化券的效果 -->
+        <block wx:if="{{ !clickedNotUseCoupoon && bookingRequest.couponAmount > 0 && selectCoupon }}">
+          <view class="container-left">
+              <text class="coupon__title">优惠券<text class="coupon__name">{{ selectCoupon.coupon.couponName }}</text></text>
+          </view>
+          <view class="flex">
+              <text class="coupon-money">-¥{{ bookingRequest.couponAmount }}</text>
+              <image mode="widthFix" class="align-self-center order-right" src="https://oss.localhome.cn/localhomeqy/order-right.png" />
+          </view>
+        </block>
+        <!-- 没选择了优化券的效果 -->
+        <block wx:else>
+          <view class="container-left">
+              <text class="coupon__title">优惠券</text>
+          </view>
+          <view class="flex" wx:if="{{ !specialRoomPriceFlag }}">
+              <text wx:if="{{ couponList.length === 0 }}" class="coupon-money no-coupon">暂无可用</text>
+              <text wx:else class="coupon-money money">{{ couponList.length }}张</text>
+              <image mode="widthFix" class="align-self-center order-right" src="https://oss.localhome.cn/localhomeqy/order-right.png" />
+          </view>
+          <view class="flex" wx:else>
+            <image mode="widthFix" class="align-self-center order-right" src="https://oss.localhome.cn/localhomeqy/order-right.png" />
+          </view>
+        </block>
+      </view>
+      <view class="coupon-waring-text" wx:if="{{ isExcludeMemberDiscount }}">
+        此优惠券不可与会员折扣同时使用。
+      </view>
+      <view class="coupon-waring-text" wx:elif="{{ specialRoomPriceFlag }}">
+        管家已发送优惠，会员折扣和优惠券不可同时使用。
+      </view>
+      <!-- 不可连续预订使用优惠券 -->
+      <view class="coupon-waring-text" wx:elif="{{ !bookingRequest.canUseCouponList }}">
+        {{ bookingRequest.cantUseCouponListMsg || '不可使用优惠券' }}
+      </view>
+    </view>
+</template>
+
+<template name="cash-container">
+  <view wx:if="{{ bookingRequest.cashBalance > 0 }}" class="container cash-container">
+    <view class="cash-wrap">
+      <view class="use-cash">储值支付<icon catchtap="toggleData" data-key="isShowUseCashTip" class="icon-gantan" /></view>
+      <view class="button">
+        <text class="stored-money">余额：¥{{ bookingRequest.cashBalance }}</text>
+        <switch color="#e84358" disabled="{{ !canUseCash }}" bindchange="switchUseStoredMoney"/>
+      </view>
+    </view>
+    <view class="descript">
+        {{ specialRoomPriceFlag ? '管家特别优惠不可使用' : ''  }}
+        {{ consumptionOfGold ? '此预订入住退房后反现订单金额1%' : '' }}<icon wx:if="{{ isHasCompliment }}" catchtap="showStoredMoneyTip" class="icon-gantan" /></view>
+  </view>
+</template>
+
+<template name="useCashTip">
+    <scroll-view scroll-y="{{true}}" class="use-cash-tip">
+      1、什么是储值，如何获得储值？
+      储值账户是会员的消费账户，消费金即您个人账户中当前显示的金额。账户消费金可通过充值、入住返现、线下消费退款及其他赠送或补偿的金额获得。
+
+      2、储值如何使用？
+      会员账户消费金仅可用于预订路客民宿，提交订单时，选择使用储值即可抵扣订单金额，不可抵扣保证金。消费金设有效期，不可提现，不可转移、不可转赠。
+
+      3、如何查询我的储值余额？
+      您可在微信公众号、APP钱包的个人中心中查看您的账户余额。
+
+      4、使用储值消费是否可开发票？
+      使用储值账户消费时，可与订单实际支付金额一同开具发票。赠送储值及其他并非您实际支付过的部分不开发票。
+
+      5、使用储值消费的订单取消后，资金是否退还？
+      根据预订业务取消政策，支持退款的订单，如预订时使用了储值，在取消订单后也将会退还对应的资金到您的储值账户。
+    </scroll-view>
+</template>
+
+<template name="bargain">
+    <image mode="widthFix" class="bargain-content"
+           src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/bargaining/bargain-dialog-bg.png"/>
+</template>
+
+<template name="buy-vip-container">
+  <view class="vip__wrap {{ isShowBuyVip ? 'show-buy-vip' : '' }}  {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+    <view class="vip__wrap-left" catch:tap="toggleData" data-key="isShowBuyVipList">
+      <view>
+        <image class="card-image" mode="aspectFill" src="{{ recommendBuy.image }}" />
+        <!-- 与会员折扣排斥则不显示折扣的信息 -->
+        升级{{ recommendBuy.memberCardName }}会员<block wx:if="{{ !isExcludeMemberDiscount && !specialRoomPriceFlag && bookingRequest.canUseCouponList }}">，本单立省{{ recommendBuy.memberDiscounts }}元</block>
+        <image class="show-detail" mode="aspectFill" src="https://oss.localhome.cn/localhomeqy/show_detail.png" />
+      </view>
+      <view wx:if="{{ !selectedBuyVipId }}">{{ recommendBuy.recommendDesc }}</view>
+      <view wx:else>购买成功立即生效，不可退款</view>
+    </view>
+    <view class="vip__wrap-right">
+      <switch 
+        checked="{{ selectedBuyVipId === recommendBuy.buyId }}"
+        color="#e84358"
+        bindchange="switchBuyVip"
+      />
+    </view>
+    <view class="vip__close" catch:tap="toggleData" data-title="关闭会员升级" data-key="isShowBuyVip">×</view>
+  </view>
+  <view 
+    class="vip-image-wrap {{ !isShowBuyVip ? 'show-buy-image' : '' }} {{ isFullScreen ? 'full-screen-bottom' : ''}}"
+    catch:tap="toggleData" data-key="isShowBuyVip"
+  >
+    <image mode="widthFix" src="https://oss.localhome.cn/localhomeqy/order-vip.png" />
+  </view>
+</template>
+
+<template name="buy-vip-list">
+  <view class="{{ isFullScreen ? 'full-screen-bottom' : ''}}">
+    <view class="vip-list__wrap">
+      <view catch:tap="toggleData" data-key="isShowBuyVipList"><image src="//oss.localhome.cn/localhomeqy/order_xiala.png" /></view>
+      <view class="title">会员升级享礼遇</view>
+      <view class="vip-list__list">
+        <view 
+          wx:for="{{ buyVipList }}"
+          wx:key="{{ item.buyId }}"
+          data-buy-id="{{ item.buyId }}"
+          data-member-card-code="{{ item.memberCardCode }}"
+          catch:tap="selectBuyVip"
+          class="vip-list__item"
+        >
+          <view class="vip-icon">
+            <view class="{{ selectedBuyVipId === item.buyId ? 'icon-select' : 'icon-un-select' }}" />
+          </view>
+          <view class="vip-list__info">
+            <view class="vip-info__title">
+              <!-- 与会员折扣排斥则不显示折扣的信息 -->
+              <text>升级{{ item.memberCardName }}会员<block wx:if="{{ !isExcludeMemberDiscount && !specialRoomPriceFlag && bookingRequest.canUseCouponList }}">，本单立省{{ item.memberDiscounts }}元</block></text>
+              <text class="money">{{ item.money }}</text>
+            </view>
+            <view class="vip-info__descript">{{ item.description }}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

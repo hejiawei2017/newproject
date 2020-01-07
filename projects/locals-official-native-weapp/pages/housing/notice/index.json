@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "入住须知",
+  "usingComponents": {
+    "im-message": "/components/im-message/im-message"
+  }
+}

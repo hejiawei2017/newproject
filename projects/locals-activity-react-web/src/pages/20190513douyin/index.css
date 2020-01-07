@@ -1,0 +1,1210 @@
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+#root {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  background-color: #ffffff;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+input::-webkit-input-placeholder {
+  color: #acacac;
+}
+input input::-webkit-input-placeholder {
+  color: #acacac;
+}
+
+/* ----------------------- houseInfo ----------------------------- */
+.houseInfo {
+  min-height: 340px;
+  background: rgba(255, 255, 255, 1);
+  padding: 0px 0px;
+  border-bottom: 18px solid #f4f4f4;
+}
+
+.priceCon{
+  width:100%;
+  height:103px;
+  background:#E73E51;
+  color:white;
+  position:relative
+}
+
+.new_priceInfo{
+  padding-left:10px;
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:400px;
+  height:103px;
+  line-height:103px;
+}
+
+.new_nowPrice{
+  font-family: PingFangSC-Regular;
+  font-weight:600;
+  height:103px;
+  line-height:103px;
+  font-size:70px;
+  /* position: relative;
+  top: 8px; */
+}
+ 
+.new_nowPrice .money-dot{
+  font-size:30px;
+}
+
+.new_oldPrice{
+   font-size:22px;
+   position:relative;
+   left:10px;
+   top:-4px;
+   text-decoration:line-through;
+   
+}
+.new_lessTime{
+  font-size:27px;
+  display:block;
+  text-align:right;
+}
+.new_timeInfo{
+  position:absolute;
+  right:10px;
+  top:10px;
+  font-size:25px;
+  text-align:center;
+  font-family: PingFangSC-Regular;
+}
+.timePancel{
+  font-size:22px;
+  margin-top:5px;
+}
+.timePancel span.timePoit{
+  background:white;
+  font-size:24px;
+  font-weight:600;
+  color:rgba(67,67,67,1);
+  line-height:34px;
+  color:#434343;
+  border-radius:3px;
+  padding:3px 5px;
+  width:16px;
+ 
+}
+
+.timePancel  span{
+   margin-left:2px;
+   display:inline-block;
+
+}
+
+.price {
+  height: 71px;
+  line-height: 71px;
+  position: relative;
+
+}
+.priceNum {
+  width: 115px;
+  height: 71px;
+  font-size: 42px;
+  font-family: PingFangSC-Regular;
+  font-weight: bold;
+  color: rgba(231, 62, 81, 1);
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  transform: translateY(-50%);
+}
+.priceIcon {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 150px;
+  transform: translateY(-50%);
+  height: 25px;
+  line-height: 25px;
+  font-size: 18px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 30px;
+  background-color: #d64c65;
+  text-align: center;
+  padding:2px 10px;
+}
+.lessTime {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 130px;
+  height: 45px;
+  font-size: 32px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(67, 67, 67, 1);
+  line-height: 45px;
+}
+.timeInfo {
+  height: 42px;
+  line-height: 71px;
+  position: relative;
+}
+.oldPrice {
+  vertical-align: top;
+  width: 168px;
+  height: 42px;
+  font-size: 29px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(174, 174, 174, 1);
+  line-height: 41px;
+}
+.time {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 42px;
+  line-height: 42px;
+  vertical-align: top;
+}
+.time .timeBlack {
+  width: 27px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  background: rgba(67, 67, 67, 1);
+  border-radius: 3px;
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+  margin: 0 2px;
+}
+.time .timeText {
+  font-size: 24px;
+  margin: 0 2px;
+  color: rgba(67, 67, 67, 0.8);
+}
+.title {
+  font-size: 38px;
+  font-weight: 600;
+  color:#434343;;
+  margin-top: 18px;
+  /* margin-bottom: 27px; */
+  padding:0px 18px;
+  padding-bottom:0px;
+}
+.title2{
+    font-weight: 400
+}
+
+.title p + p{
+  margin-top: 10px;
+}
+.houseDetail .tips {
+  padding: 0px 18px;
+  color:#434343;
+  margin-top: 10px;
+}
+.houseDetail .tips span {
+  font-size: 38px;
+  display: inline-block;
+  text-align: center;
+
+}
+.infoImage{
+  width: 100%;
+}
+
+/* ----------------------- houseIntro ----------------------------- */
+.houseIntro {
+  height: 109px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 2px 0px 0px rgba(229, 229, 229, 0.5);
+  text-align: center;
+}
+.houseIntro .intro {
+  height: 45px;
+  font-size: 33px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(67, 67, 67, 1);
+  line-height: 45px;
+  display: inline-block;
+  margin: 0 55px;
+  margin-top: 27px;
+  position: relative;
+  vertical-align: top;
+}
+.houseIntro .choose {
+  display: block;
+  text-align: center;
+  height: 5px;
+}
+.houseIntro .choose p {
+  width: 36px;
+  height: 5px;
+  vertical-align: top;
+  display: inline-block;
+  background-color: #d64c65;
+  border-radius: 5px;
+}
+
+.bottomBtns {
+  border-top: 1px solid rgba(210, 210, 210, 1);
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #ffffff;
+  overflow: hidden;
+  text-align: center;
+}
+.leftBtns {
+  width: 50%;
+  display: inline-block;
+}
+.rightBtns {
+  width: 50%;
+  display: inline-block;
+  background-color: #e73e51;
+  height: 100px;
+  font-size: 33px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 100px;
+  vertical-align: top;
+}
+.rightBtns.isOver{
+  background-color: #CCC;
+}
+.leftBtn {
+  width: 49%;
+  display: inline-block;
+  margin-top: 20px;
+}
+.lineBtn {
+  border-right: 1px solid rgba(229, 229, 229, 0.5);
+}
+.leftBtn img {
+  width: 34px;
+  height: 31px;
+}
+.leftBtn span {
+  display: block;
+  font-size: 22px;
+}
+
+/* ----------------------- introDetail ----------------------------- */
+.introDetail {
+  padding: 36px 27px;
+  padding-bottom: 100px;
+}
+.introDetail .introBlock {
+  margin-bottom: 10px;
+}
+.introDetail .infoTip {
+  font-size: 29px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 1);
+  line-height: 41px;
+  margin-bottom: 10px;
+}
+.introDetail .infoText {
+  font-size: 25px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(107, 107, 107, 1);
+  line-height: 48px;
+}
+.introDetail .canClick {
+  border-bottom: 1px solid #6b6b6b;
+}
+.introDetail .infoImg {
+  margin: 5px 0;
+}
+
+/* ----------------------- contactModal ----------------------------- */
+.contactModal {
+  position: fixed;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.contactModal .contact {
+  position: fixed;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  width: 587px;
+  height: 418px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 18px;
+  text-align: center;
+}
+.contactModal .contact img {
+  position: absolute;
+  top: -60px;
+  right: 0;
+  width: 45px;
+  height: 45px;
+}
+.contactModal .contactTip {
+  display: inline-block;
+  width: 371px;
+  height: 72px;
+  background: rgba(231, 62, 81, 1);
+  border-radius: 44px;
+  margin: 45px 0 36px;
+  font-size: 38px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  line-height: 72px;
+}
+.contactModal .contactTitle {
+  font-size: 33px;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: rgba(231, 62, 81, 1);
+  line-height: 45px;
+}
+.contactModal .contactText {
+  font-size: 33px;
+  color: rgba(67, 67, 67, 1);
+  line-height: 45px;
+}
+.contactModal span {
+  display: inline-block;
+  width: 356px;
+  height: 1px;
+  background: rgba(216, 216, 216, 1);
+}
+
+/* ----------------------- inquire ----------------------------- */
+.inquire {
+  text-align: center;
+}
+.inquire .inquireFrom {
+  display: inline-block;
+  width: 92%;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 15px 36px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+  margin: 27px 4%;
+}
+.inquire .inquireTitle {
+  font-size: 33px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(67, 67, 67, 1);
+  line-height: 45px;
+  margin: 27px 0;
+}
+.inquireInput1 {
+  border-radius: 4px;
+  border: 2px solid rgba(67, 67, 67, 0.3);
+  width: 641px;
+  height: 98px;
+  margin-bottom: 18px;
+  font-size: 29px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #000000;
+  line-height: 41px;
+  padding: 0;
+  padding-left: 10px;
+}
+.inquireInput2 {
+  width: 655px;
+  height: 98px;
+  text-align: left;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+.inquireInput2 input {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border: 2px solid rgba(67, 67, 67, 0.3);
+  width: 432px;
+  height: 98px;
+  margin-bottom: 18px;
+  font-size: 29px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #000000;
+  line-height: 41px;
+  padding: 0;
+  padding-left: 10px;
+}
+.inquireInput1::-webkit-input-placeholder {
+  color: #acacac;
+}
+.inquireInput2 input::-webkit-input-placeholder {
+  color: #acacac;
+}
+.inquireInput2 span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  border-top: 2px solid rgba(67, 67, 67, 0.3);
+  border-bottom: 2px solid rgba(67, 67, 67, 0.3);
+  border-right: 2px solid rgba(67, 67, 67, 0.3);
+  width: 205px;
+  line-height: 98px;
+  height: 98px;
+  padding: 0;
+  vertical-align: top;
+  font-size: 29px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(172, 172, 172, 1);
+}
+.inquire .seach {
+  width: 641px;
+  height: 98px;
+  background: rgba(231, 62, 81, 1);
+  border-radius: 4px;
+  font-size: 33px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  line-height: 98px;
+  display: inline-block;
+  margin-bottom: 27px;
+}
+
+/* ----------------------- orderList ----------------------------- */
+.orderList .orders {
+  display: inline-block;
+  width: 92%;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 15px 36px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+  margin: 27px 4%;
+}
+.orders .orderTitle {
+  position: relative;
+  margin: 27px 27px 0 18px;
+  font-size: 38px;
+  font-weight: 600;
+  color: rgba(67, 67, 67, 1);
+  line-height: 53px;
+}
+.orders .orderTitle .address {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  vertical-align: top;
+}
+.orders .orderTitle .address img {
+  width: 18px;
+  height: 27px;
+  display: inline-block;
+}
+.orders .orderTitle .address span {
+  font-size: 33px;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: rgba(140, 140, 140, 1);
+  line-height: 45px;
+  margin-left: 10px;
+}
+.orderList .type {
+  margin-left: 18px;
+  font-size: 22px;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: rgba(99, 99, 99, 1);
+  line-height: 30px;
+}
+.orderList .price {
+  margin-top: 43px;
+  height: 53px;
+  line-height: 53px;
+  margin-left: 18px;
+  font-size: 38px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(231, 62, 81, 1);
+  line-height: 53px;
+}
+.orderList .price span {
+  height: 53px;
+  vertical-align: top;
+  line-height: 53px;
+  font-size: 22px;
+  display: inline-block;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: rgba(99, 99, 99, 1);
+}
+.orderList .orderNo {
+  position: relative;
+  margin-left: 18px;
+  margin-bottom: 27px;
+  font-size: 22px;
+  font-family: PingFangSC-Thin;
+  font-weight: 100;
+  color: rgba(99, 99, 99, 1);
+  line-height: 30px;
+  height: 54px;
+}
+.orderList .orderNo span {
+  position: absolute;
+  bottom: 0;
+}
+.orderList .orderNo .orderBtn {
+  display: inline-block;
+  width: 172px;
+  height: 54px;
+  background: rgba(231, 62, 81, 1);
+  border-radius: 32px;
+  position: absolute;
+  right: 27px;
+  font-size: 25px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  line-height: 54px;
+  text-align: center;
+}
+
+/* ----------------------- complete ----------------------------- */
+.complete {
+  padding-bottom: 200px;
+}
+.complete .orderInfo {
+  display: inline-block;
+  width: 92%;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 15px 36px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+  margin: 27px 4% 0;
+}
+.complete .orderInfo > div {
+  padding: 27px 18px;
+}
+.complete .orderInfo p {
+  font-size: 25px;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: rgba(99, 99, 99, 1);
+  margin: 5px;
+}
+.complete .orderInfo .completeTitle {
+  font-size: 38px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(67, 67, 67, 1);
+}
+.complete .orderInfo .completeType {
+  font-size: 22px;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: rgba(99, 99, 99, 1);
+}
+.wayOfUse {
+  display: inline-block;
+  width: 92%;
+  background: rgba(255, 255, 255, 1);
+  margin: 27px 4% 0;
+}
+.wayOfUse p {
+  font-size: 25px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(107, 107, 107, 1);
+  line-height: 48px;
+}
+.wayOfUse .wayOfUseTitle {
+  text-align: center;
+  font-size: 38px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(67, 67, 67, 1);
+  margin-bottom: 10px;
+}
+.backIndex {
+  width: 641px;
+  height: 98px;
+  background: rgba(231, 62, 81, 1);
+  border-radius: 4px;
+  font-size: 33px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  line-height: 98px;
+  text-align: center;
+  position: fixed;
+  bottom: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.complete .modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6)
+}
+.complete .modal .payStatus{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 500px;
+  height: 280px;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #ffffff;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.complete .modal .payStatus .textTip{
+  text-align: center;
+  font-size: 34px;
+  font-weight: 600;
+  margin-top: 40px;
+  height: 100px;
+}
+.complete .modal .payStatus .tipBtn{
+  font-size: 32px;
+  width: 80%;
+  height: 80px;
+  line-height: 80px;
+  background-color: rgba(231,62,81,1);
+  color: white;
+  border-radius: 4px;
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform: translate(-50%,0%);
+
+}
+
+.complete .modal .payStatus.success{
+   height: 340px;
+   width: 600px;
+}
+.complete .modal .payStatus.success .minshow{
+   font-weight:400;
+   font-size: 30px;
+}
+.complete .modal .payStatus.success .tipBtn{
+   
+
+}
+.complete .modal .payStatus.fail{
+
+}
+
+.complete .modal .payModal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 500px;
+  height: 150px;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.complete .modal .payModal p{
+  font-size: 30px;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.topImgCon{
+  height: 285px;
+  background-image: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin59/sawtooth.png");
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  background-size: contain;
+  position: relative;
+}
+.topImgCon img{
+  width: 160px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: inline-block;
+  text-align: center;
+}
+.nodata-tip{
+  text-align:'center';
+  margin-top:100px;
+  font-size: 30px;
+}
+/* ----------------------- order ----------------------------- */
+.order {
+  padding-bottom: 165px;
+}
+
+.order .onePick{
+  font-size: 20px;
+  color: #e73e51;
+
+}
+.order .orderInfo {
+  display: inline-block;
+  width: 92%;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 15px 36px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+  margin: 27px 4% 0;
+}
+.order .orderInfo > div {
+  padding: 27px 18px;
+}
+.order .orderInfo p {
+  font-size: 25px;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: rgba(99, 99, 99, 1);
+  margin: 5px;
+}
+.order .orderInfo .orderTitle {
+  font-size: 38px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(67, 67, 67, 1);
+}
+.order .orderInfo .orderType {
+  font-size: 22px;
+  font-family: PingFangSC-Light;
+  font-weight: 300;
+  color: rgba(99, 99, 99, 1);
+}
+.order .orderInfo .orderNum {
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(67, 67, 67, 1);
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(216, 216, 216, 1);
+}
+.order .orderInfo .orderCount {
+  height: 50px;
+  line-height: 50px;
+  font-size: 33px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(67, 67, 67, 1);
+  position: relative;
+  margin-top: 20px;
+}
+.order .orderInfo .truePrice {
+  font-size: 33px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(99, 99, 99, 1);
+  text-align: right;
+  margin-top: 27px;
+}
+.order .orderInfo .truePrice span {
+  color: #e73e51;
+}
+.order .orderInfo .orderCount .count {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 33px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(67, 67, 67, 1);
+  width: 200px;
+  height: 49px;
+  border-radius: 1px;
+  border: 1px solid rgba(217, 217, 217, 1);
+  text-align: center;
+}
+
+.order .orderInfo .hideBtn .count {
+  border: 0px;
+  width: 135px;
+}
+.order .orderInfo .hideBtn p{
+   display: none!important;
+}
+.order .orderInfo .hideBtn span{
+  border: 0px!important;
+  
+}
+
+.order .orderInfo .orderCount .count p {
+  width: 27%;
+  height: 49px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.order .orderInfo .orderCount .count img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+}
+.order .orderInfo .orderCount .count span {
+  vertical-align: top;
+  width: 44%;
+  border-left: 1px solid rgba(217, 217, 217, 1);
+  border-right: 1px solid rgba(217, 217, 217, 1);
+  display: inline-block;
+  text-align: center;
+}
+.order .orderInfo .orderTip {
+  text-align: center;
+  font-size: 33px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(67, 67, 67, 1);
+  margin-bottom: 30px;
+}
+.order .orderInfo input {
+  height: 98px;
+  width: 96%;
+  border-radius: 4px;
+  border: 2px solid rgba(67, 67, 67, 0.3);
+  font-size: 29px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgb(99, 99, 99);
+  line-height: 98px;
+  margin-bottom: 18px;
+  padding: 0 2%;
+}
+.order .orderInfo .pay {
+  height: 98px;
+  background: rgba(231, 62, 81, 1);
+  border-radius: 4px;
+  width: 100%;
+  font-size: 33px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  line-height: 98px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.order .modal,
+.orderList .modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6)
+}
+.order .modal .errModal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 500px;
+  height: 200px;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.order .modal .errModal p{
+  font-size: 36px;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.orderList .modal .payModal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 500px;
+  height: 150px;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.orderList .modal .payModal p{
+  font-size: 30px;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+/* ----------------------- lookReason ----------------------------- */
+.lookReason{
+  text-align: center;
+}
+.lookReason .header img{
+  width:118px;
+  margin-top:30px; 
+}
+.lookReason .errorPayStateTip{
+  font-size: 38px;
+  color: #434343;
+  margin-top: 18px;
+}
+.lookReason  .error-reason{
+  width: 94%;
+  margin: 0 auto;
+  color: #434343;
+  font-size:29px;
+  margin-top:37px;
+  padding-top:37px;
+  border-top:1px solid #D8D8D8;
+  padding-bottom:37px;
+}
+.lookReason  .error-refund-reason{
+   font-size: 26px;
+   padding: 20px 37px;
+   background:rgba(248,248,248,1);
+   color: #959595;
+   text-align: left;
+   padding-top: 10px;
+}
+.lookReason .body-con{
+   text-align: center;
+}
+.lookReason .body-con img{
+  width:215px;
+  height:215px;
+  margin-top: 76px;
+}
+.lookReason .body-con img ~ P{
+  margin: 0 auto;
+  margin-top:18px;
+  font-size: 29px;
+  width: 70%;
+}
+.lookReason .gobackhome {
+  margin: 0 auto;
+  background:rgba(231,62,81,1);
+  border-radius:4px;
+  color: white;
+  font-size: 33px;
+  display: block;
+  height: 98px;
+  line-height: 98px;
+  text-decoration: none;
+  margin-top: 80px;
+  width: 90%;
+}
+
+.lookReason .sawtooth{
+   height: 40px;
+   background: rgba(248,248,248,1);
+   background-image: url("https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/douyin59/sawtooth.png");
+   background-repeat: repeat-x;
+   background-position: left bottom;
+  
+}
+/* ----------------------- shopContainer ----------------------------- */
+.shop-container{
+ 
+}
+.shop-container .top-img-con{
+  position: relative;
+ 
+ 
+}
+.shop-container .top-img{
+  width: 100%;
+  height: 417px;
+  object-fit: cover;
+}
+.shop-container .top-cover{
+
+  background:linear-gradient(rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%);
+  position: absolute;
+  left: 0px;
+  top: 70%;
+  width: 100%;
+  height: 30%;
+  z-index : 1px;
+}
+.shop-container .top-tip{
+  position:absolute;
+  left: 27px;
+  bottom: 36px;
+  color: white;
+  font-size: 54px;
+  z-index : 2px;
+}
+.shop-container .middle-tip{
+   font-size: 30px;
+   padding: 27px;
+   font-weight: 600;
+   color: #434343;
+  
+}
+
+
+.head-contact{
+   margin-top: -16px;
+    padding:58px 77px;
+}
+.middle-head{
+  display:inline-block;
+  width:40%;
+  float:left;
+}
+.middle-head img{
+  width: 150px;
+  height: 150px;
+  /* border: 2px dotted #434343; */
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.middle-head-tip{
+  width:172px;
+  height:54px;
+  line-height:54px;
+  background:rgba(231,62,81,1);
+  border-radius:32px;
+  font-family:PingFangSC-Semibold;
+  font-weight:600;
+ 
+}
+.middle-head-tip p{
+text-align:center;
+ color:#FFFFFF;
+  
+}
+.middle-contact{
+  display:inline-block;
+  width: 60%;
+  float:right;
+}
+.contact-left,.contact-right{
+  width:330px;
+  height: 100px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 15px 36px 0px rgba(0,0,0,0.06);
+  border-radius:50px;
+  text-align: center;
+  font-size: 25px;
+  color: #636363;
+  right:5px;
+  position:relative;
+}
+.contact-right{
+  margin-top:22px;
+
+}
+.contact-top{
+  padding-top:16px;
+
+}
+.contact-bottom{
+  font-weight: 600;
+}
+
+.contact-bottom img{
+ width: 29px;
+ position: relative;
+ top:6px;
+ left: -3px;
+}
+.middel-details{
+
+  text-align:center;
+}
+.middel-details header{
+  color: #434343;
+  font-size: 33px;
+  font-weight: 600;
+}
+
+.middel-details p{
+  font-size: 29px;
+  color: #000000;
+  margin-top:12px;
+}
+
+.bottom-tip{
+  padding-left: 27px; 
+  color: #E73E51;
+  font-size: 25px;
+  margin-top: 27px;
+}
+
+.bottom-footer {
+ text-align: center;
+ padding:0px 20px;
+}
+.bottom-footer img{
+  width: 100%;
+  margin-top:27px;
+}
+
+.jumpItem {
+  text-align: center;
+  padding:0px 20px;
+ }
+ .jumpItem img{
+   width: 100%;
+   margin-top:18px;
+ }
+
+.bottom-goparty{
+  margin-top:27px;
+  padding:0px 20px;
+  position:relative;
+}
+
+.bottom-goparty-btn{
+  height:50px;
+  position:absolute;
+  left:50%;
+  width:100%;
+  width:226px;
+  height:54px;
+  z-index:2;
+  transform: translate(-50%,-50%);
+  top:63%;
+}
+.bottom-goparty img{
+  width:100%;
+  height:226px;
+  object-fit:cover;
+}

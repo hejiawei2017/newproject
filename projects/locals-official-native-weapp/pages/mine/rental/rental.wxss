@@ -1,0 +1,28 @@
+/* pages/mine/rental/rental.wxss */
+.rental{
+  padding:30rpx 40rpx;
+}
+.search{
+  display:flex;
+}
+.searchText{
+  flex:3;
+  border:1px solid #ccc;
+  border-radius:3px;
+  padding:8px 0;
+}
+.searchText input{
+  font-size:14px;
+  vertical-align: middle;
+}
+.searchText icon{
+  vertical-align: middle;
+  float:left;
+  margin-left:4px;
+}
+.weui-select{
+  flex:1;
+}
+.weui-select option{
+  font-size:14px;
+}

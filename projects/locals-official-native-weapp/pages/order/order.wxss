@@ -1,0 +1,772 @@
+.page {
+    padding: 0 0 280rpx 0;
+}
+.container {
+  padding: 50rpx 0;
+  margin: 0 50rpx;
+  border-bottom: 1px solid rgba(51,51,51, 0.11);
+}
+.container > .title {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+}
+.container > .title > .right-title {
+  color: #E84358;
+}
+.container:first-child {
+  padding-top: 20rpx;
+}
+.container:last-child {
+  border: none;
+}
+.black {
+  color: #333333 !important;
+}
+/** house-info **/
+.house-info {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.house-info .left {
+  width:160rpx;
+  height:100rpx;
+  border-radius:4px;
+  overflow: hidden;
+}
+.house-info .left image {
+  width: 100%;
+  height: 100%;
+}
+
+.house-info .right {
+  margin-left: 23rpx; 
+  width: 453rpx;
+}
+.house-info .right .house-title {
+  width: 100%;
+  margin-top: 7px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 32rpx;
+  font-size:32rpx;
+  line-height: 32rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:bold;
+  color:rgba(72,72,72,1);
+}
+.house-info .right .params-info {
+  margin-top: 22rpx;
+  height: 24rpx;
+  font-size:24rpx;
+  line-height: 24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+
+.stars-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-right: 6rpx;
+  height: 18rpx;
+}
+/** house-info  **/
+
+/* 日期模块 */
+.checkin-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.checkin-container .data-text {
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(232,67,88,1);
+}
+/* 日期模块 */
+
+/* 入住人模块  */
+.tags-wrap {
+  margin-top: 10rpx;
+  display: flex;
+  flex-flow: row wrap;
+}
+.tags-wrap .item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 59rpx;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 7rpx 21rpx 0px rgba(0, 0, 0, 0.06);
+  border-radius:10rpx;
+  padding: 0 0 0 20rpx;
+  margin: 19rpx 40rpx 0 0;
+}
+.tags-wrap .item .name {
+  white-space: normal;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  color:rgba(51,51,51,1);
+}
+.tags-wrap .item .del-button {
+  font-size: 24rpx;
+  padding: 0 20rpx 0 26rpx;
+  color: #999999;
+}
+.insurance-text {
+  display: block;
+  margin-top: 70rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height:42rpx;
+}
+.insurance-text .iconbaoxian {
+  display: inline-block;
+  width:20rpx;
+  height:24rpx;
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+.insurance-text .bold {
+  font-weight: bold;
+}
+/* 入住人模块  */
+
+/* 优惠券模块 */
+.discount-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+}
+.discount-container .left {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  color:rgba(51,51,51,1);
+}
+.card-image {
+  width:19rpx;
+  height:29rpx;
+  margin-right: 10rpx;
+}
+.discount-container .right {
+  color: rgba(51,51,51,1);
+}
+.discount-container .right.red {
+  color:rgba(232,67,88,1);
+}
+.coupon-container {
+  margin-top: 45rpx;
+}
+.order-right {
+  width:12rpx;
+  height:20rpx;
+}
+.container .container-left .coupon__title {
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  color:rgba(51,51,51,1);
+}
+
+.coupon__title .coupon__name {
+  margin-left: 26rpx;
+  font-size:30rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+.coupon-money {
+    align-self: center;
+    margin-right: 10rpx;
+    font-weight: 300;
+}
+.no-coupon {
+    font-size: 26rpx;
+    color: #cccccc;
+}
+.coupon-waring-text {
+  background:rgba(232,67,88,0.1);
+  border:1px solid rgba(232,67,88,1);
+  border-radius:10rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(232,67,88,1);
+  padding: 14rpx 26rpx;
+  margin-top: 29rpx;
+}
+/* 优惠券模块 */
+
+.dynamic-list {
+    margin: 0 0 0 0;
+}
+.space-between {
+    justify-content: space-between;
+}
+.dynamic-list .item {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top:36rpx;
+    font-size:24rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(51,51,51,1);
+}
+.dynamic-list .item .center {
+    text-align: center;
+}
+.dynamic-list .item .index {
+    flex-basis: 140rpx;
+}
+.dynamic-list .item .personal {
+    height: 70rpx;
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    justify-self: flex-start;
+}
+.dynamic-list .item .write {
+    flex-grow: 1;
+    justify-self: flex-start;
+    color: #e84358;
+}
+.dynamic-list .item .personal .name {
+    flex-basis: 140rpx;
+}
+.dynamic-list .item .personal .cardNo {
+    flex-grow: 1;
+}
+.dynamic-list .item .key {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex: 1;
+}
+.icon-gantan {
+    width: 28rpx;
+    height: 28rpx;
+    margin-left: 10rpx;
+}
+.dynamic-list .item .description {
+    flex-grow: 1;
+}
+.dynamic-list .item .remove {
+    align-self: center;
+    text-decoration: underline;
+	font-size: 24rpx;
+	line-height: 42rpx;
+	letter-spacing: 1px;
+	color: #e84358;
+}
+.dynamic-list .order-container {
+    font-size: 32rpx;
+    margin-top: 10rpx 0;
+}
+.dynamic-list .order-container .key {
+    font-weight: 400;
+}
+.flex {
+    display: flex;
+}
+.align-self-center {
+    align-self: center;
+}
+.del-price {
+  text-decoration: line-through;
+  font-size:20rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(204,204,204,1);
+}
+.flex-right {
+    flex-grow: 1;
+    text-align: right;
+    padding-right: 20rpx;
+}
+.money {
+   color: #e84358;
+}
+.total-money {
+    color: #e84358;
+}
+/* 储蓄支付模块 */
+.cash-wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.cash-wrap .use-cash, .cash-wrap .stored-money {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  font-size:24rpx;
+  line-height: 24rpx;
+  font-family:PingFangSC-Regular;
+  color:rgba(51,51,51,1);
+  margin-right: 20rpx;
+}
+.cash-wrap .button {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.cash-container .descript {
+  font-size:20rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(153,153,153,1);
+}
+
+/* 储蓄支付模块 */
+
+/** 微信原生switch组件  **/
+/* 开启后效果 */
+.wx-switch-input{
+    width:40px !important;
+    height:22px !important;
+}
+/* 椭圆框 */
+.wx-switch-input::before{
+    width:42px !important;
+    height: 22px !important;
+}
+/* 按钮 */
+.wx-switch-input::after{
+    width: 20px !important;
+    height: 20px !important;
+}
+/* 底部模块 */
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 30rpx 50rpx 20rpx 50rpx;
+  z-index: 10001;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.footer-left {
+  flex-shrink: 0;
+  width: 396rpx;
+  overflow: hidden;
+}
+.footer-left .footer-price{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+  line-height: 45rpx;
+}
+.footer-left .total {
+  font-size:32rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+}
+.footer-left .use-strored-money {
+  padding-left: 10rpx;
+  letter-spacing: 0px;
+  font-size: 22rpx;
+  font-weight: 300;
+  color: #999999;
+  white-space: nowrap;
+}
+.footer-left .price-detail {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.footer-left .price-detail .text {
+  align-self: flex-end;
+  margin-left: 10rpx;
+  font-size: 22rpx;
+  font-family:PingFangSC-Regular;
+  color:rgba(232,67,88,1);
+}
+.footer-left .descript {
+  font-size:20rpx;
+  line-height: 20rpx;
+  margin-top: 15rpx;
+  font-family:PingFangSC-Regular;
+  color:rgba(153,153,153,1);
+}
+.footer-right{
+  flex-shrink: 0;
+  width:250rpx;
+  height:88rpx;
+  background:rgba(232,67,88,1);
+  border-radius:6rpx;
+  line-height: 88rpx;
+  font-size: 28rpx;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+}
+/* 底部模块 */
+
+/* 金额详情模块 */
+.price-detail-container {
+  margin: 34rpx 0 130rpx 0;
+  max-height: 60vh;
+}
+.show-detail {
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 11rpx;
+  transition: transform 0.2s ease;
+}
+.show-detail-active {
+  transform: rotate(180deg);
+}
+/* 金额详情模块 */
+
+.minus-color {
+    color: #e84358;
+}
+
+.container-left {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.container-left text:nth-of-type(1) {
+    font-size: 28rpx;
+    font-weight: 400;
+}
+
+.container-left text:nth-of-type(2) {
+    font-size: 24rpx;
+	font-weight: 300;
+	letter-spacing: 1px;
+    color: #555555;
+    margin-top: -2px;
+}
+
+.default-container {
+	position: relative;
+	margin: 22px 0 10px 0;
+	padding: 0 50rpx;
+}
+
+.default-container .label {
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 188rpx;
+	height: 33rpx;
+	padding-left: 6rpx;
+	background-color: white;
+	font-size: 24rpx;
+	font-weight: 300;
+	line-height: 43rpx;
+	letter-spacing: 1px;
+	color: #333333;
+	text-align: center;
+	line-height: 33rpx;
+}
+
+.default-container::before {
+	content: '';
+	display: block;
+	height: 1px;
+	width: 100%;
+	background-color: #e5e5e5;
+}
+
+.privileges {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	padding: 30rpx 30rpx 0 30rpx;
+}
+
+.privileges__title {
+    margin: 40rpx auto 30rpx auto;
+    text-align: center;
+}
+
+.privileges__title view:nth-of-type(1) {
+    font-size: 30rpx;
+    font-weight: 400;
+}
+
+.privileges__title view:nth-of-type(2) {
+    font-size: 22rpx;
+    margin-top: 10rpx;
+    font-weight: 200;
+    color: #999999;
+}
+
+.privileges .item {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+}
+
+.privileges .item  .item__icon {
+    height: 60rpx;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.privileges .item  .item__icon icon {
+    width: 37rpx;
+    height: 37rpx;
+}
+
+.icon-insurance1 {
+    width: 30rpx !important;
+    height: 39rpx !important;
+}
+
+.privileges .item text {
+    text-align: center;
+}
+
+.privileges .item text:nth-child(2) {
+	font-size: 22rpx;
+	font-weight: 400;
+	letter-spacing: 0px;
+	color: #333333;
+}
+
+.privileges .item text:nth-child(3) {
+	margin-top: 13rpx;
+	font-size: 18rpx;
+	font-weight: 300;
+	letter-spacing: 0px;
+	color: #333333;
+	opacity: 0.5;
+}
+.default {
+    justify-content: center !important;
+    margin-bottom: 20rpx;
+}
+.default .item {
+	margin-right: 40rpx;
+}
+.default .item:last-child {
+	margin-right: 0;
+}
+.use-cash-tip {
+    max-height: 600rpx;
+    padding: 3rpx 10rpx;
+    white-space: pre-wrap;
+    box-sizing: border-box;
+}
+.attention {
+  width: 20rpx;
+  height: 20rpx;
+}
+/* 预订须知模块 */
+.instructions-item {
+  display: flex;
+  align-items: center;
+  margin-top: 35rpx;
+}
+.instructions-item .article {
+  flex: 1;
+  margin-left: 18rpx;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+}
+/* 预订须知模块 */
+
+/* 购买会员模块 */
+.vip-image-wrap {
+  position: fixed;
+  z-index: 10000;
+  bottom: 0;
+  left: 0;
+  margin-bottom: 130rpx;
+  padding: 0 0 30rpx 0;
+  transition: all 0.5s ease;
+  transform: translateX(-100%);
+}
+.vip-image-wrap image {
+  width: 94rpx;
+  height: 50rpx;
+}
+.vip__wrap {
+  position: fixed;
+  z-index: 10000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  margin-bottom: 130rpx;
+  height: 102rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  padding: 0 50rpx 30rpx 50rpx;
+  transition: all 0.5s ease;
+  transform: translateX(-100%);
+}
+.show-buy-vip {
+  transform: translateX(0);
+}
+.show-buy-image {
+  transform: translateX(0);
+}
+.vip__close {
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  padding: 4rpx 10rpx 30rpx 15rpx;
+  color: #999999;
+  font-size: 34rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+}
+.vip__wrap-left view:first-child {
+  display: flex;
+  align-items: center;
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  color:rgba(51,51,51,1);
+}
+.vip__wrap-left view:last-child {
+  font-size:20rpx;
+  font-family:PingFangSC-Regular;
+  color:rgba(153,153,153,1);
+}
+.vip-list__wrap {
+  height: auto;
+  padding: 0 27rpx 150rpx 27rpx;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: stretch;
+}
+.vip-list__wrap > view:first-child {
+  padding: 28rpx 0;
+  display: flex;
+  justify-content: center;
+}
+.vip-list__wrap view:first-child image {
+  width: 20rpx;
+  height: 12rpx;
+}
+.vip-list__wrap .title {
+  font-size:28rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+  text-align: center;
+}
+.vip-list__item {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 30rpx 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.vip-list__item:last-child {
+  border-bottom: none;
+}
+.vip-icon {
+  padding: 6rpx 26rpx 0 0;
+}
+.icon-un-select {
+  width: 28rpx;
+  height: 28rpx;
+  background: url('https://oss.localhome.cn/localhomeqy/guest-select2.png') no-repeat;
+  background-size: 100%;
+}
+.icon-select {
+  width: 28rpx;
+  height: 28rpx;
+  background: url('https://oss.localhome.cn/localhomeqy/guest-select.png') no-repeat;
+  background-size: 100%;
+}
+.vip-list__info .vip-info__title {
+  display: flex;
+  justify-content: space-between;
+  font-size:26rpx;
+  font-family:PingFangSC-Medium;
+  font-weight:bold;
+  color:rgba(51,51,51,1);
+}
+.vip-list__info .vip-info__title .money::before {
+  content: '￥';
+  font-size: 18rpx;
+}
+.vip-list__info .vip-info__title .money {
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight: 400;
+  color:rgba(232,67,88,1);
+}
+.vip-info__descript {
+  margin-top:14rpx;
+  font-size:22rpx;
+  line-height: 33rpx;
+  font-family:PingFangSC-Regular;
+  color:rgba(153,153,153,1);
+}
+/* 购买会员模块 */
+/* 夏季活动 will delete */
+.main-activity {
+  margin-top: 46rpx;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 21rpx 23rpx;
+  border-radius:5rpx;
+  background: url(https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/xiaji-bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.main-activity > image {
+  width:22rpx;
+  height:27rpx;
+}
+.main-activity > view:nth-of-type(1) {
+  margin-left: 16rpx;
+}
+.main-activity > view:nth-of-type(2) {
+  margin-left: 37rpx;
+}
+.main-activity > view {
+  color: #E84358;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+}
+.main-activity > view.bold {
+  font-family: PingFangSC-Semibold;
+  font-size: 26rpx;
+}
+.flex-grow {
+  flex-grow: 1;
+  text-align: right;
+}
+/* 夏季活动 will delete */

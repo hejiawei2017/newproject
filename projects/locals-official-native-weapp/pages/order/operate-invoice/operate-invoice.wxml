@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="addmore {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+    <view class="addButton" catchtap="addInvoice">新增发票抬头</view>
+    <view class="addButton2" bindtap='getWechatInvoice'>获取微信发票抬头</view>
+  </view>
+  <view class="invoice-wrap">
+    <view class="invoice-item" wx:for="{{ listData }}" wx:key="{{ index }}">
+      <movableArea 
+        listData="{{item}}" 
+        x="{{item.x}}" 
+        index="{{index}}" 
+        AreaWidth="690rpx"
+        AreaHeight="100rpx"
+        ViewWidth="915rpx"
+        ViewHeight="100rpx"
+        bind:updataMovable='onUpdataMovable'
+        >
+        <view class="checkbox" bindtap="checkboxChange" wx:if="{{isFromOrder}}" data-index="{{index}}">
+          <image src="https://oss.localhome.cn/new_icon/agree1.png" wx:if="{{checked === index}}" />
+          <image src="https://oss.localhome.cn/new_icon/agree.png" wx:else/>
+        </view>
+        <view class="name" catch:tap="setX0">
+          <text wx:if="{{item.invoiceType === 3}}" class="invoiceType specialInvoice">专票</text>
+          <text wx:else class="invoiceType">普票</text>
+          <text data-value="{{index}}" class="invoiceName" catch:tap="updateInvoice" data-item="{{ item }}">{{item.titleName}}</text>
+        </view>
+        <view class="btn">
+          <view class="change" catch:tap="delInvoice" data-item="{{ item }}">
+            <image src='https://oss.localhome.cn//localhomeqy/invoice_icon/ashbin.png'></image>
+          </view>
+          <text class='change-line'></text>
+          <view class="change" catch:tap="updateInvoice" data-item="{{ item }}" >
+            <image src='https://oss.localhome.cn//localhomeqy/invoice_icon/write.png'></image>
+          </view>
+        </view>
+      </movableArea>
+    </view>
+    <view wx:if="{{ listData.length === 0 }}" class="empty-data">
+      <view>
+        <image src="https://oss.localhome.cn/new_icon/fapiao.png" />
+        <view>暂无发票抬头</view>
+      </view>
+    </view>
+  </view>
+</view>
+<im-message id="im-message" noAttached='{{false}}' />

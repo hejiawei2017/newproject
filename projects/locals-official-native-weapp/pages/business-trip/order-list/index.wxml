@@ -1,0 +1,84 @@
+<view class="page">
+	<view class="container">
+		<top-vip-card />
+
+		<view>
+			<view class="need-service section">
+				<image 
+					class="title"
+					src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561964905795selected-title.png" />
+				<view 
+					wx:if="{{orderValidList.length}}"
+					class="order-list">
+					<view 
+						wx:for="{{orderValidList}}"
+						wx:key="{{item.id}}"
+						catch:tap="chooseOrder"
+						data-item="{{item}}"
+						class="order-card">
+						<text class="order-no">订单号: {{item.randomId}}</text>
+						<view class="order-content">
+							<image
+								class="thumb"
+								src="{{item.imgPath}}" />
+							<view class="order-info">
+								<text class="room-title">{{item.title}}</text>
+								<text class="order-time">预订日期: {{item.createTime}}</text>
+								<text class="order-time">入住日期: {{item.checkinDate}}</text>
+								<text class="order-time">退房日期: {{item.checkoutDate}}</text>
+							</view>
+						</view>
+						<view class="join-btn">{{ orderStatusMap[item.orderStatus] }}</view>
+					</view>
+				</view>
+				<view
+					wx:else
+					class="no-data">
+					<image 
+						src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561964902410none-title.png" />
+				</view>
+			</view>
+
+			<view class="disabled section">
+				<image 
+					class="title"
+					src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561964908612un-selected-title.png" />
+
+				<view
+					wx:if="{{orderDisableList.length}}"
+					class="order-list">
+					<view
+						wx:for="{{orderDisableList}}"
+						wx:key="{{item.id}}"
+						class="order-card">
+						<text class="order-no">订单号: {{item.randomId}}</text>
+						<view class="order-content">
+							<image
+								class="thumb"
+								src="{{item.imgPath}}" />
+							<view class="order-info">
+								<text class="room-title">{{item.title}}</text>
+								<text class="order-time">预订日期: {{item.createTime}}</text>
+								<text class="order-time">入住日期: {{item.checkinDate}}</text>
+								<text class="order-time">退房日期: {{item.checkoutDate}}</text>
+							</view>
+							<text class="disbale-des">*该房源不可使用</text>
+						</view>
+						<view class="join-btn">{{ orderStatusMap[item.orderStatus] }}</view>
+					</view>
+				</view>
+				<view
+					wx:else
+					class="no-data">
+					<image 
+						src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/locals_1561964902410none-title.png" />
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<auth-drawer-box
+    id="auth-drawer-box"
+    bind:cancelEvent="_cancelEventFn"
+/>

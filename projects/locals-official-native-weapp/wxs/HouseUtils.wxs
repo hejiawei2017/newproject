@@ -1,0 +1,286 @@
+var houseUtils = {
+
+  getHouseType: function (houseType) {
+    switch (houseType) {
+      case '0101':
+        return '整套房子'
+      case '0102':
+        return '独立房间'
+      case '0103':
+        return '合住房间'
+      case '0104':
+        return '独立套房'
+    }
+    return ''
+  },
+  getHouseStar: function(houseStar) {
+    switch (houseStar) {
+      case 5:
+        return [0, 1, 2, 3, 4]
+      case 4:
+        return [0, 1, 2, 3]
+      case 3:
+        return [0, 1, 2]
+      case 2:
+        return [0, 1]
+      case 1:
+        return [0]
+    }
+    return []
+  },
+  getMobile: function(mobile) {
+    if (mobile && mobile.length == 11) {
+      mobile = mobile.substring(0, 3) + '***' + mobile.substring(6, 11)
+    }
+    return mobile
+  },
+  getHousePriceByDate: function(price, day) {
+    return price * day
+  },
+  getHousePayPrice: function (price, day, coupon) {
+    var couponamount = 0
+    if (coupon && coupon.faceValue) {
+      couponamount = coupon.faceValue
+    }
+    var price = price * day - couponamount
+    return price < 0 ? 0 : price
+  },
+  getOrderStatus: function(status) {
+    switch(status) {
+      case '1100':
+        return '已删除'
+      case '1102':
+        return '待付款'
+      case '1101':
+        return '咨询'
+      case '1105':
+        return '退款中'
+      case '1106':
+        return '已取消'
+      case '1104':
+        return '已完成'
+      case '1109':
+        return '已关闭'
+      case '1201':
+        return '待支付'
+      case '1210':
+        return '拒绝预订'
+      case '1207':
+        return '待入住' 
+      case '1208':
+        return '入住中' 
+    }
+    return ''
+  },
+  getOrderDetailStatus: function (status) {
+    switch (status) {
+      case 1102:
+        return '等待支付中'
+      case 1103:
+        return '预订已付'
+      case 1107:
+        return '你已成功预订'
+      case 1104:
+        return '你的入住之旅已结束'
+      case 1105:
+        return '已取消'
+      case 1106:
+      case 1109:
+        return '退款已完成'
+      case 1111:
+        return '待确认'
+    }
+  },
+  getOrderButtonStatus: function (status) {
+    switch (status) {
+      case 1102:
+        return '支付'
+      case 1103:
+        return '再次预订'
+      case 1107:
+        return '再次预订'
+      case 1104:
+        return '再次预订'
+      case 1105:
+        return '再次预订'
+      case 1106:
+      case 1109:
+        return '再次预订'
+      case 1111:
+        return '再次预订'
+    }
+  },
+  getCouponPrice: function(coupon) {
+    if (coupon && coupon.faceValue) {
+      return coupon.faceValue
+    }
+    return '0.00'
+  },
+  getCouponLabel: function (coupon) {
+    if (coupon && coupon.faceValue) {
+      return '-¥ ' + coupon.faceValue
+    }
+    return '请选择优惠券'
+  },
+  getMemberCardPrice: function (discountAmount) {
+    if (!discountAmount || discountAmount <= 0) {
+      return '暂无优惠'
+    }
+    return '-¥ ' + discountAmount
+  },
+  getMemberCardImage: function(cardCode) {
+    switch(cardCode) {
+      case 'NORMAL':
+        return 'https://oss.localhome.cn/new_icon/normal.png'
+      case 'SILVER':
+        return 'https://oss.localhome.cn/new_icon/silver.png'
+      case 'GOLD':
+        return 'https://oss.localhome.cn/new_icon/gold.png'
+      case 'BLACK':
+        return 'https://oss.localhome.cn/new_icon/black.png'
+    }
+    return 'https://oss.localhome.cn/new_icon/normal.png'
+  },
+  getMemberCardName: function (cardCode) {
+    switch (cardCode) {
+      case 'NORMAL':
+        return '普卡会员'
+      case 'SILVER':
+        return '银卡会员'
+      case 'GOLD':
+        return '金卡会员'
+      case 'BLACK':
+        return '黑卡会员'
+    }
+    return '普卡会员'
+  },
+  getMemberCardNameV2: function (cardCode) {
+    switch (cardCode) {
+      case 'NORMAL':
+        return '普卡'
+      case 'SILVER':
+        return '银卡'
+      case 'GOLD':
+        return '金卡'
+      case 'BLACK':
+        return '黑卡'
+    }
+    return '普卡'
+  },
+  getMemberDiscount: function (cardCode) {
+    switch (cardCode) {
+      case 'NORMAL':
+        return ''
+      case 'SILVER':
+        return '9.6折'
+      case 'GOLD':
+        return '9.2折'
+      case 'BLACK':
+        return '8.8折'
+    }
+    return ''
+  },
+  getMemberCardCouon: function (cardCode) {
+    switch (cardCode) {
+      case 'NORMAL':
+        return '普卡优惠'
+      case 'SILVER':
+        return '银卡会员优惠（9.6折）'
+      case 'GOLD':
+        return '金卡会员优惠（9.2折）'
+      case 'BLACK':
+        return '黑卡会员优惠（8.8折）'
+    }
+    return '普卡优惠'
+  },
+  getMemberLevel: function(memberCard) {
+    if (!memberCard) {
+      return 0
+    }
+    if (memberCard.memberCardCode == 'NORMAL') {
+      return Math.min(Math.max(memberCard.addUpBookCount / 2, memberCard.addUpBookDay / 5) * 100, 100)
+    } else if (memberCard.memberCardCode == 'SILVER') {
+      return Math.min(Math.max(memberCard.addUpBookCount / 5, memberCard.addUpBookDay / 20) * 100, 100)
+    } else if (memberCard.memberCardCode == 'GOLD') {
+      return Math.min(Math.max(memberCard.addUpBookCount / 15, memberCard.addUpBookDay / 50) * 100, 100)
+    } else {
+      return 100
+    }
+  },
+  getMemberUpDay: function (memberCard) {
+    if (!memberCard) {
+      return 0
+    }
+    if (memberCard.memberCardCode == 'NORMAL') {
+      return 5
+    } else if (memberCard.memberCardCode == 'SILVER') {
+      return 20
+    } else if (memberCard.memberCardCode == 'GOLD') {
+      return 50
+    } else {
+      return 0
+    }
+  },
+  getNormalLevel: function (memberCard) {
+    if (!memberCard) {
+      return 0
+    }
+    if (memberCard.memberCardCode == 'NORMAL') {
+      return Math.min(Math.max(memberCard.addUpBookCount / 2, memberCard.addUpBookDay / 5) * 100, 100)
+    } else {
+      return 100
+    }
+  },
+  getSilverLevel: function (memberCard) {
+    if (!memberCard) {
+      return 0
+    }
+    if (memberCard.memberCardCode == 'NORMAL') {
+      return 0
+    } else if (memberCard.memberCardCode == 'SILVER') {
+      return Math.min(Math.max(memberCard.addUpBookCount / 5, memberCard.addUpBookDay / 20) * 100, 100)
+    } else {
+      return 100
+    }
+  },
+  getGoldLevel: function (memberCard) {
+    if (!memberCard) {
+      return 0
+    }
+    if (memberCard.memberCardCode == 'NORMAL') {
+      return 0
+    } else if (memberCard.memberCardCode == 'SILVER') {
+      return 0
+    } if (memberCard.memberCardCode == 'GOLD') {
+      return Math.min(Math.max(memberCard.addUpBookCount / 15, memberCard.addUpBookDay / 50) * 100, 100)
+    } else {
+      return 100
+    }
+  },
+  formatPrice: function (price) {
+    if (price) {
+      if ('' == price || isNaN(price)) { 
+        return ''
+      }
+      var sign = price.indexOf("-") > 0 ? '-' : '';
+      var cents = price.indexOf(".") > 0 ? price.substr(price.indexOf(".")) : ''
+      cents = cents.length > 1 ? cents : ''
+      price = price.indexOf(".") > 0 ? price.substring(0, (price.indexOf("."))) : price
+      if ('' == cents) { 
+        if (price.length > 1 && '0' == price.substr(0, 1)) { 
+          return ''
+        } 
+      } else { 
+        if (price.length > 1 && '0' == price.substr(0, 1)) { 
+          return ''
+        } 
+      }
+     
+      for (var i = 0; i < Math.floor((price.length - (1 + i)) / 3); i++) {
+        price = price.substring(0, price.length - (4 * i + 3)) + ',' + price.substring(price.length - (4 * i + 3))
+      }
+      return (sign + price + cents);
+    }
+  }
+}
+module.exports = houseUtils

@@ -1,0 +1,27 @@
+<view class="coupon1 {{ isGray ? 'gray' : '' }}" catchtap="useCoupon">
+  <image class="coupon__tips" wx:if="{{item.isNewCoupon && !isGray}}" src="http://oss.localhome.cn//localhomeqy/coupon/coupon_hover.png"  />
+  <view class="coupon_img">
+    <image src="http://oss.localhome.cn//localhomeqy/newcoupon/pic{{ !isGray ? '1' : '2' }}.png"/>
+    <view class="coupon1__price">
+      <view class="coupon1__money" wx:if="{{item.couponType !== 2 }}">
+        <text class="unit">￥</text>
+        <text class="money">{{ item.money }}</text>
+      </view>
+      <view class="coupon1__money" wx:else="{{item.couponType === 2 }}">
+        <text class="money">{{ item.money }}</text>
+        <text class="unit">折</text>
+      </view>
+      <view class="couponTypeName">{{ item.couponTypeName }}</view>
+    </view>
+  </view>
+  <view class="coupon_content">
+    <view class="tips">{{item.coupon.couponName}}</view>
+    <view wx:if="{{!isGray}}" class="remark">{{item.coupon.useRestrictionType===1 ? '不可和会员折扣同时使用' : '可和会员折扣同时使用'}}</view>
+    <view wx:if="{{isOrder && isGray}}" class="remark">不可使用说明:{{item.remark}}</view>
+    <view class="time">
+      <text>有效期{{ item.startTime }}-{{ item.endTime }}</text>
+      <view class="rule" catch:tap="goToUseRules">使用规则<image lazy-load="{{ true }}" wx:if="{{ !isGray }}" class="icon" src="http://oss.localhome.cn/upload/181221/KPXNF181221115530071.png" /><image lazy-load="{{ true }}" wx:else class="icon" src="http://oss.localhome.cn/upload/181221/9WGES181221115547724.png" /></view>
+      <view wx:if="{{!isOrder && !isGray}}" class="btn" catch:tap="skipTo" data-item="{{item}}">立即使用</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+<import src="./card.wxml" />
+
+<template name="trips">
+    <view class="page">
+        <view class="trips__list">
+            <vertical-step-component
+                wx:for="{{ list }}"
+                wx:key="{{ item.bookingId }}"
+                wx:if="{{list.length > 0}}"
+                isHollow="{{ item.isCancelOrder }}"
+            >
+                <template 
+                    is="{{ item.isCancelOrder ? 'simplify' : 'complete' }}" 
+                    wx:key="{{ item.id }}" 
+                    data="{{ item, countDownList, nowTime, index }}"
+                />
+            </vertical-step-component>
+        </view>
+        <view wx:if="{{!list.length}}" class="empty-data">
+            <view>
+                <image src="https://oss.localhome.cn/new_icon/travel.png" />
+                <view>您暂时还没有任何行程</view>
+                <view catchtap="goToHouseLise" class="no-loadmore">开启您的行程</view>
+            </view>
+        </view>
+        <view wx:if="{{ isLoading }}" class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载...</view>
+        </view>
+        
+        <underscore wx:if="{{ list.length && !isHasNextPage[activeIndex] }}" overflow="{{ true }}" />
+    </view>
+</template>
+
+<template name="nologin">
+    <view class="page">
+        <view class="empty-data">
+            <view>
+                <image src="https://oss.localhome.cn/new_icon/travel.png" />
+                <view>登录后才能查看行程</view>
+                <view catchtap="goLogin" class="no-login-btn">登录/注册</view>
+            </view>
+        </view>
+    </view>
+</template>>

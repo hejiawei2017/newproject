@@ -1,0 +1,254 @@
+{
+  "players": [
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/c1WiazSmaKbiaHbexfH2Q8yOc7VxxQTx371aX8YG8TfnT4MwWkOq9eiadeypWyWOHGZB0icNbWeoZBiaDed9lsnvrYg/132",
+      "name": "Tina-萬麗",
+      "bargainingAmount": "999元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/aWu9bsldH2tibvk0M8p0XYaNfzW8S1TgPAQ4QJTKibltibnrFwZuw0lBGboP2K3LFYSJ0lw9raELmTFYvYvib09Feg/132",
+      "name": "黄瑰琼Amy",
+      "bargainingAmount": "243元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eozlUrKicenvYplv2ylVbKXic4RvMUyX9PJ561D9zESsfYgyIY3op65LBWddLnTjEnX4fZnicsialZUSQ/132",
+      "name": "周鸿志",
+      "bargainingAmount": "654元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/nLKIZdx0SOSKmAAde9x1wnT4NVUib2uxic9pQzIlfib4FYYJMQWwWwcDHan3QVUzNIgWquVqo5iaczfQPFz9B62icFA/132",
+      "name": "VIC",
+      "bargainingAmount": "143元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ5elIjrOyvJTGpRWekZCmmESXSWAmtTeS2VNCsxyibO1FicV0myAViczf9jvMvraCvPic29wIJzV7kBw/132",
+      "name": "Benny",
+      "bargainingAmount": "122元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJyAdGm1jmxqxmu2fnGDGibp3fDCib7YiaWtejTs9ld0v9oibXiapn5tBhW3PLQmHItqNCBicVjLuqrE8bA/132",
+      "name": "S.K",
+      "bargainingAmount": "787元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKB1n0BXmt3qKEe0goK7b6z7UQ31WoiaEygs2FYLOMiaKDoktIJiavWYlLtPTZuVNStAnpNR4qLh4HlQ/132",
+      "name": "海涛",
+      "bargainingAmount": "145元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ6XdrzmoGVOgEB32GSBTDmgu6Tp9TXRbmeq9NDf0oX7CAe8D34kzxdBVpicibASeogn9G0nT7Z65VQ/132",
+      "name": "苑伟",
+      "bargainingAmount": "161元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eozlUrKicenvYplv2ylVbKXic4RvMUyX9PJ561D9zESsfYgyIY3op65LBWddLnTjEnX4fZnicsialZUSQ/132",
+      "name": "周鸿志",
+      "bargainingAmount": "299元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqRVef7ANpYkf7wuLy23tic802mzHSdb01ibtFk886XX3YJIaYArzzib9S7UBibGMKiayZcPmdZlchm2qA/132",
+      "name": "爱米妈妈",
+      "bargainingAmount": "164元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoCwZzXxbeoAyicJD7lhMXbQicMJ1HIH1OEmibtyRY5dPfoANun8oElHtsHpUeV3VlYDdqaz5lJBYPmw/132",
+      "name": "佐大罗",
+      "bargainingAmount": "197元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/nLKIZdx0SOSKmAAde9x1wnT4NVUib2uxic9pQzIlfib4FYYJMQWwWwcDHan3QVUzNIgWquVqo5iaczfQPFz9B62icFA/132",
+      "name": "VIC",
+      "bargainingAmount": "234元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/ic0xXzbicWGo57OMVFM4Ne63lkOlFdjUicSQdVXJjqgk7PZEqbxoTicic3ibniauFsLgT9AbfEl4LctQ7Y2SAWYLrwQ8Q/132",
+      "name": "渔人码头",
+      "bargainingAmount": "免单"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/U0kgOeficEmgzF8SSovuBS25VEibIHRcgUmKF6LotpWAoG3D0TUDhAicC1fuRkuFgBNWU7v8yKm44IR7Hjcl32DQg/132",
+      "name": "灿若云霞",
+      "bargainingAmount": "232元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/WPtGnofABQ9j1QeOupnQtGUfP7pSXNDmHj3xjIJbpCEKliaOpggITDPIiaiaCFbCOia6foxDoWFQicwjzQHXmpcS36Q/132",
+      "name": "卧龙",
+      "bargainingAmount": "129元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/oMWNuowMHMHStpvEyJ27OHvMV7ncxNibegDUkg0F3CmBdcjAyl0icZG9H3oMk5vtGY19VgdG130PbgDDrmCas65Q/132",
+      "name": "贺翠珠(Cuizhu)",
+      "bargainingAmount": "免单"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoKiaUID2xruIeaMol9gwIpPYdXB8uJIId6lAPtFbiatQict95YbxRicoYlZCiaVbyCqlWDVf5CaHvy1cA/132",
+      "name": "左右",
+      "bargainingAmount": "443元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/KHQBfck8YNjH92SSn6GRwgsK4OsVMZpDmt7YJb5zz3BlrtJqCJADPGNUWbsoe1V0enc7RricASWKAlKmBXStXpA/132",
+      "name": "Eva",
+      "bargainingAmount": "132元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJB6kaR6vXGPibe72qJHkMPYK4pAfluZvJKjMwWCK6ZzhXcmu5ic1OwmVicgMu281jIPYBMPB6Zrlicwg/132",
+      "name": "知足常乐",
+      "bargainingAmount": "454元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/yA2JNWVpkkTHFBn5Y3XOciaNlX4zcYb8vbPoUfS7l6KKKP1jv8rftu42fIwC0KxBH1wEydKslXZUCEkBxiayiciaOA/132",
+      "name": "Guo.L",
+      "bargainingAmount": "313元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/FIvl6uib6D884L6gWqCNUrJAbrTzINxwIUhusgqibRMHXdU4xk7h0eTFgpD1EXJyMYODwVNWRwicic0oibj9BgROicVQ/132",
+      "name": "leon",
+      "bargainingAmount": "341元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epc4nHtzpCwROLUkkmibP6lSfo7KvtZ5icibqndbTXicGAqj7r0X5g3jc7nEDcSg2NnqaCuxO0iaTK8ibAA/132",
+      "name": "Helen荷淋",
+      "bargainingAmount": "478元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoHhjCfjpicq5PuNmnvI8Yexp4L2ITwhg7w8uysrE3BDwuXVtic9WafcINR1kIZztbcvLWG4zvZaskQ/132",
+      "name": "Eric",
+      "bargainingAmount": "354元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/6F3wibuaCfbcBIMAKaNtl7bwOvPlWmjMJ9LamJ4EJlR24lKBBt2sJ9jETKcniaHkLauXWNko3MsViaOScmoQenFOQ/132",
+      "name": "Chan",
+      "bargainingAmount": "267元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/sFwbrBE5ujNaFEXMzQFN2bN5KlZeDket1nglanXciayUQ0sXFxicYeYnJMFM7owlqIeHUZOb7AHPfvS36tUibvpqw/132",
+      "name": "李佳",
+      "bargainingAmount": "156元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epvc6IemJhXpv9ROQuDDjOibLVVibiaic5tdgdOeY7Uwk3tWzibG4frdCKHXjUdasO9PGD6KDVUTKKqHJw/132",
+      "name": "小雪雪",
+      "bargainingAmount": "342元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTI1kWNqhn4bEPHAUfMB74UyTicVvAtAR9OvialSrKNMJRV7rowFzDBicCqiczyEPNI6H7icU5zgznUHj9g/132",
+      "name": "李强",
+      "bargainingAmount": "427元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJUqvktkiaB0plQcG9ibYOsww7YjD2q1HqzOR15rJPxDXPkfk8MVxYOhyDka8YhLyVcDqWDReIHDT3g/132",
+      "name": "LS陈珍珍",
+      "bargainingAmount": "476元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erlW9qUrctdNs2fdPwF2Qicn12VjE1W0m6zSHkyZtyAUBJNibUASH5Mia3njkLHMZXCcsc2FibvOPIbvw/132",
+      "name": "钟雪峰",
+      "bargainingAmount": "329元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erl1BlA9AykvjaL6XSII9PtQnGu3OA2PbPY1zcwQDFxpsP8WF2zKO7ozkcgjJmXQVuC9yI3t8KU0g/132",
+      "name": "海阔天空",
+      "bargainingAmount": "412元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/vnj7yicmyzrFw53J1l7jCs8asaugfKkg0wrGYrj8Prf4YNnbKIXd6VgFMicjVIbQDRJJFdoC6SzzQjuIHtpHp44Q/132",
+      "name": "苹果      杏仁",
+      "bargainingAmount": "245元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoL8fGCzvoGkkBnCcGPScUIdyNBx8SC2pIrQQDPOeM2J34ficlOPgI5icibCxiaQYSDUxliak3g7BSZDibg/132",
+      "name": "walker",
+      "bargainingAmount": "368元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/fpsBBtD9nT6YGXnU4ngozrwdSBIekCuEPmQRKW6zRicCNgpzYj6rQ8WzAGm7q5tPFib2g33Jnib6yyXg4Y2CzxOicQ/132",
+      "name": "且行 且珍惜",
+      "bargainingAmount": "免单"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erpibmnQlOJhiaH1OibTZF4oBYvjSvMwFws77BibrdPDXyic9d1MBhQ1SCjyoDibqQKTBQ1VkCtmJfBVKsw/132",
+      "name": "Martin",
+      "bargainingAmount": "19元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoWrjZdVaSMTxm39x7ANwDfiayKqtw40AhI7urfqKRk96ic3iaYPxtzoeoyu7ibg1N41fZIfWEXnMcEEQ/132",
+      "name": "肉嘟嘟の小短腿",
+      "bargainingAmount": "238元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Egp26bRdPpLicgdvavn8AobAYqBIX765OcAFgvqSAl8f4kknxMHbh4ictyRZzFUR1b2PraKVhnI2IAice0V6e7Rsw/132",
+      "name": "张妮",
+      "bargainingAmount": "456元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Qd92MUY1JXe7PqenHzk88YmbsGnMXicMpic6wtRq9zQicCB8PBWR4TWSxlLpDjC0Ig2epWmDQU7L6jFO7sfzWvWsQ/132",
+      "name": "Z,m",
+      "bargainingAmount": "367元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/BnicV5libicsHdiamLEiaCcias93Fjfwp2UjATHmXwD9cxPPBZbOGwVrG5EicE7OjcLHD1Q930MZDN7Rialq2PTuBLoiaNw/132",
+      "name": "钟俊芳",
+      "bargainingAmount": "378元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epFyCELpVg2fJ8oHBVxOegK7icsTkpdrN23dia92j2xyEueUHXhDQicv5Vs2ecEacsPKDg1lRwGp05mw/132",
+      "name": "秦雷",
+      "bargainingAmount": "298元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/PTmic6OAqKiaiaeZYGmshXAoKofBTgRYlharxaJrricviabheWv1DlBiciaOmRaS1voKWLpibbTpuvWyvvHMVreY4cJjicQ/132",
+      "name": "渐渐不见",
+      "bargainingAmount": "免单"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/6nwhmVyMVObLpqGDicoWyIyc2SJuWHibic4SBTrqHt8RU45ibeP9yDz9fTTQ49icUEp5ajbHBfEQm9giaHlfq6QQokaw/132",
+      "name": "Allen",
+      "bargainingAmount": "443元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/ro8ALJAlzJCqzeH0rCamd0g6Svib7pPgj3T2uCof8DHKxrkWLhCCS2lLOVx1KemIgRsEzeAMS1B3QZvKaibJttrA/132",
+      "name": "邱倩",
+      "bargainingAmount": "210元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKSVUUTGbZZsWzFDDsVZTTTV2d7lU7iaev9D9Qexz6XhicPibObwt7dSO1P8EEgaco4gOkbNJ16iaD7YQ/132",
+      "name": "诗和远方",
+      "bargainingAmount": "441元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/icGenP3cbiaCLRpBeZ4SKMC1TB2Sll0zttKFObDT6LMlVKUe0CHiaqaaDlibaXZtlp4kmhU0I7AicUXs8Tfpn1S2Xpg/132",
+      "name": "咚咕",
+      "bargainingAmount": "250元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/xlAP9JIOT8sYhKFKw3pXoOv1ozLfcick9YOyM5fib7vO60ibotDle2iaDGramKFSoYicLrLY7icdNSPSWFLSJyCsw9lg/132",
+      "name": "空间",
+      "bargainingAmount": "319元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIOhzZKJsjY5DIFjsVPc7uPDqQacxpjBYXwry9P5fUm5wcJLDSr44kcgwGs3LAx9NLcdYz57Ygb9A/132",
+      "name": "郑俊",
+      "bargainingAmount": "232元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJ4IzXnwmj2O1BB6Om08eKIiaqWdhxicERAHy6xA8RzrCcPGVISsdWbmnafxEXghdY62xibJzHAGGXSQ/132",
+      "name": "阿琪",
+      "bargainingAmount": "643元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKqd9qajEmHWHMe6tO1Yn1aFmasSwxVibJIribkxKRNFEIMLYMQuNEaQxic9DUjJBib0BNLqY1s0Tun7g/132",
+      "name": "7哥",
+      "bargainingAmount": "314元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/Z597OOSoUkeibu90ZZDfHUPdM8ibnnhhBcf3VfzuETmWzfgpQmGklgbicKshGB5Uj7r37VZKiaucmRhkkNKDLoVesQ/132",
+      "name": "呢喃",
+      "bargainingAmount": "221元"
+    },
+    {
+      "avatarUrl": "https://wx.qlogo.cn/mmopen/vi_32/1lvonDfUoBSriaQyqPBwOs5lr0AJJBaHmjpmrArL30SJOgdflQrjMoPUldLfF2JBwEiaibYdNUhmyUOEltWJjag0g/132",
+      "name": "罗雅云",
+      "bargainingAmount": "438元"
+    }
+  ]
+}

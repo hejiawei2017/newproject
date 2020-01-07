@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText" : "订单详情",
+  "usingComponents": {
+    "im-message": "/components/im-message/im-message",
+    "time-line": "/components/time-line/index",
+    "stars": "/components/stars/index"
+  },
+  "enablePullDownRefresh": true
+}

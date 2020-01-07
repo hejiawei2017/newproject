@@ -1,0 +1,16 @@
+<view class="sort-container">
+    <view 
+        wx:for="{{ list }}" 
+        class="{{ selected.key === item.key && selected.value === item.value ? 'on' : '' }}" 
+        data-item="{{ item }}"
+        wx:key="id"
+        catchtap="selected"
+    >
+        {{ item.label }}
+    </view>
+</view>
+
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

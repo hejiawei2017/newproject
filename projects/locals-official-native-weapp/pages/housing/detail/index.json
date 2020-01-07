@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "民宿详情",
+  "usingComponents": {
+    "swiper-component": "/components/swiper/index",
+    "flexible-component": "/components/flexible-text/index",
+    "im-message": "/components/im-message/im-message",
+    "time-line": "/components/time-line/index",
+    "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box",
+    "stars": "/components/stars/index",
+    "canvas-share-img": "/components/canvas-share-img/canvas-share-img",
+    "modal": "/components/modal/index",
+    "super-image": "/components/super-image/index",
+    "notice-cell": "./components/notice-cell/index"
+  },
+  "enablePullDownRefresh": false
+}

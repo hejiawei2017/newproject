@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box",
+    "underscore": "/components/underscore/index"
+  },
+  "enablePullDownRefresh": true
+}

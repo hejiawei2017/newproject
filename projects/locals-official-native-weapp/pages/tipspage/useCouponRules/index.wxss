@@ -1,0 +1,27 @@
+.page {
+  padding: 40rpx;
+}
+
+.paragraph {
+  display: flex;
+  margin-bottom: 30rpx;
+}
+
+.paragraph view:nth-of-type(1) {
+  flex-basis: 40rpx;
+	height: 40rpx;
+  line-height: 40rpx;
+	border-radius: 6rpx;
+	background-color: #e84358;
+	box-shadow: 0 10rpx 10rpx -2rpx rgba(232, 67, 88, 0.32);
+  color: white;
+  font-size: 30rpx;
+  text-align: center;
+  margin-right: 20rpx; 
+}
+
+.paragraph view:nth-of-type(2) {
+  flex: 1 0;
+  font-size: 30rpx;
+  color: #484848;
+}

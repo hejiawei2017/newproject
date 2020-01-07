@@ -1,0 +1,14 @@
+<scroll-view class="page-container" scrollY="{{true}}">
+  <!-- poster -->
+  <view class="poster">
+    <poster
+      id="poster"
+      poster-original-width="{{1242}}"
+      poster-original-height="{{1722}}"
+      watermark-horizontal-padding="{{15}}"
+      watermark-vertical-padding="{{15}}"
+    />
+  </view>
+  <!-- banner -->
+  <button class="save-button" bindtap="saveToAlbum">保存图片</button>
+</scroll-view>

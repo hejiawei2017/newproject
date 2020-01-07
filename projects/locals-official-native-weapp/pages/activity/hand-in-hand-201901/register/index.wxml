@@ -1,0 +1,60 @@
+<scroll-view scrollY="{{true}}">
+  <!-- banner -->
+  <view class="banner">
+    <image
+      class="banner-image"
+      src="https://oss.localhome.cn/localhomeqy/hand_in_hand/banner3.png"
+      mode="aspectFill"
+    />
+  </view>
+  <!-- friend -->
+  <view class="friend">
+    <text class="friend-text">您的好友</text> <text class="friend-strong">{{name}}{{'\n'}}</text>
+    <text class="friend-text">送你</text> <text class="friend-price">300元</text> <text class="friend-text">住房优惠券</text>
+  </view>
+  <!-- coupon -->
+  <view class="coupon">
+    <image class="coupon-image" src="https://oss.localhome.cn/localhomeqy/hand_in_hand/coupon300.png"></image>
+  </view>
+  <!-- form -->
+  <view class="form">
+    <view class="input-box">
+        <image src="https://oss.localhome.cn/new_icon/phone00@2x.png" class="phone" />
+        <text class="text">手机号</text>
+        <input cursor-spacing="200" type="text" placeholder="请输入手机号" maxlength="11" data-name="phone" bindinput="changeInput"/>
+    </view>
+    <view class="input-box">
+        <image src="https://oss.localhome.cn/new_icon/identity00@2x.png" class="identity" />
+        <text class="text">验证码</text>
+        <input cursor-spacing="150" type="text" placeholder="请输入短信验证码" maxlength="8" data-name="code" bindinput="changeInput"/>
+        <button type="default" class="getCode" bindtap="getCode">{{overTime != '60' ? overTime + '秒':'获取验证码'}}</button>
+    </view>
+    <view class="button-box">
+        <button type="warn" class="login" bindtap="receiveCoupons">领取优惠券</button>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="success-modal" hidden="{{modalHidden}}">
+  <view class="success-modal-container">
+    <view class="success-modal-wrap">
+      <image class="modal-coupon-image" src="https://oss.localhome.cn/localhomeqy/hand_in_hand/coupon3000.png"></image>
+      <view class="content-container">
+        <text class="title">注册成功{{'\n'}}</text>
+        <text class="content">优惠券已送达到你的账号</text>
+      </view>
+      <navigator url="/pages/mine/mine" hover-class="navigator-hover" open-type="switchTab" class="tap-look-button">点击查看</navigator>
+    </view>
+    <button class="success-modal-close" bindtap="closeSuccessModal"><image class="modal-close-image" src="https://oss.localhome.cn/localhomeqy/hand_in_hand/shutdown.png"></image></button>
+  </view>
+</view>
+
+<!-- 登录框 -->
+<auth-drawer-box 
+    id="auth-drawer-box"
+    initHide="{{ true }}"
+    bindMobile="{{ false }}"
+    bind:cancelEvent="signInCallback"
+/>
+
+

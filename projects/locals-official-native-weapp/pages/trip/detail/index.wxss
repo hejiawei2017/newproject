@@ -1,0 +1,390 @@
+.page {
+  padding: 26rpx 40rpx 240rpx 40rpx;
+}
+
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.text {
+  font-size:28rpx;
+  font-weight:300;
+  line-height:54rpx;
+  letter-spacing:1rpx;
+  color:#000000;
+}
+
+.container {
+  padding: 36rpx 0;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.8);
+}
+
+.container .title {
+  font-size: 36rpx;
+  line-height: 54rpx;
+  letter-spacing: 1rpx;
+  font-weight: 400;
+  color: #484848;
+}
+
+.container .info {
+  display: flex;
+  margin-top: 15rpx; 
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-size: 28rpx;
+  font-weight: 300;
+	line-height: 54rpx;
+	letter-spacing: 1rpx;
+	color: #000000;
+}
+
+.container .column {
+  flex-flow: column nowrap;
+}
+
+.container .column {
+  flex-flow: column nowrap;
+}
+
+.container .info .item {
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  justify-content: space-between;
+  margin: 5rpx 0;
+}
+
+.no-padding-top {
+  padding-top: 0;
+}
+
+/** house-info **/
+.house-info {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-top: 40rpx;
+}
+
+.house-info .left {
+  flex-basis: 377rpx;
+}
+
+.house-info .right {
+  flex-basis: 216rpx;
+}
+
+.house-info .right image {
+  width: 216rpx;
+	height: 148rpx;
+  background: url(https://oss.localhome.cn/logo.png) no-repeat;
+  background-size: 100% 100%;
+	border-radius: 8rpx;
+}
+
+.house-info .left .title {
+  font-weight: 400;
+  line-height: 44rpx;
+  font-size: 36rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  color: #333333;
+}
+
+.house-info .left .number-info {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+	font-size: 22rpx;
+  font-weight: 100;
+	color: #555555;
+}
+.house-info .left .star {
+  margin-top: -6rpx;
+  margin-right: 5rpx;
+}
+.house-info .left .tenant-info {
+  margin-left: 5rpx;
+  margin-right: 10rpx;
+}
+
+.comment-statis {
+  padding-left: 10rpx;
+}
+
+.landlords .info image {
+  margin-top: 15rpx;
+  width: 30rpx;
+  height: 28rpx;
+}
+
+.check-in-password {
+  font-weight: 300;
+}
+
+.check-in {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.check-in .check-in-date {
+  font-size: 24rpx;
+}
+
+.check-in .check-in-date .date {
+  font-size: 36rpx;
+}
+
+.check-in .check-in-date .date text {
+  font-size: 24rpx;
+}
+
+.check-in .days {
+  padding: 4rpx 20rpx;
+  line-height: 24rpx;
+  font-size: 24rpx;
+	border-radius: 16px;
+  border: solid 1px #666666;
+  text-align: center;
+  align-self: center;
+}
+
+.check-in-person .person-count {
+  float: right;
+  color: #e84358;
+}
+
+.minus-color {
+  color: #e84358;
+}
+
+.insurance {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 53rpx;
+	height: 126rpx;
+	border-radius: 10rpx;
+  border: solid 2rpx #e4e4e4;
+  font-size: 24rpx;
+	line-height: 42rpx;
+	letter-spacing: 1rpx;
+  color: #000000;
+  font-weight: 300;
+}
+
+.insurance image {
+  width: 35rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+
+.insurance text {
+  width: 569rpx;
+  font-size: 22rpx;
+	line-height: 42rpx;
+	letter-spacing: 1rpx;
+}
+
+.fee {
+  font-weight: 300;
+}
+
+.total-fee .total {
+  float: right;
+}
+
+.cancel-order-button {
+  font-weight: 300;
+  margin: 0 auto;
+  width: 369rpx;
+	height: 80rpx;
+	border-radius: 40rpx;
+  border: solid 1px #e84358;
+	font-size: 28rpx;
+	line-height: 80rpx;
+	letter-spacing: 1px;
+  color: #e84358;
+  text-align: center;
+}
+.cannot-refund {
+  display: flex;
+  padding: 32rpx 60rpx;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  border-radius: 10px;
+	border: dashed 1px #e6e6e6;
+  text-align: left;
+  font-size: 24rpx;
+	line-height: 42rpx;
+	letter-spacing: 1rpx;
+	color: #e84358;
+}
+.cannot-refund .text {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.cannot-refund .contact {
+  display: block;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #e84358;
+  color: #fff;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  align-self:center;
+  margin: 0;
+}
+.refunding {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx 0 32rpx 32rpx;
+  border-radius: 10px;
+	border: dashed 1px #e6e6e6;
+}
+.refunding-text {
+  flex-flow: column nowrap;
+  font-size: 24rpx;
+	line-height: 42rpx;
+	letter-spacing: 1rpx;
+  color: #e84358;
+  text-align: left;
+}
+/** footer **/
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  padding: 30rpx 33rpx 20rpx 33rpx;
+  z-index: 100;
+  box-shadow: 0 0 40rpx rgb(238, 238, 238);
+}
+.footer-left{
+  font-size: 30rpx;
+  color: #333333;
+}
+.footer-left .footer-price{
+  color: #484848;
+  font-weight: 300;
+  line-height: 24rpx;
+}
+.footer-left .footer-price .total {
+    font-size: 30rpx;
+    font-weight: 600;
+	letter-spacing: 1px;
+	color: #333333;
+}
+.footer-left .descript {
+  font-size: 22rpx;
+	font-weight: 300;
+	letter-spacing: 1px;
+	color: #999999;
+}
+.footer-right{
+	background-color: #e84358;
+	border-radius: 12rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+}
+.overplus-time {
+  padding-left: 10rpx;
+  font-size: 24rpx;
+}
+.icon-gantan {
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 10rpx;
+  margin-top: -2rpx;
+}
+.del-price {
+  text-decoration: line-through;
+  letter-spacing: 1px;
+  color: #999999;
+}
+
+.flex-right {
+  flex-grow: 1;
+  text-align: right;
+  padding-right: 20rpx;
+}
+.menu-point{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/*交易规则*/
+.rule-section{
+  padding-top:60rpx;
+  padding-bottom:70rpx;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.8);
+}
+.rule-title{
+  font-size:36rpx;
+  line-height:54rpx;
+  letter-spacing:1rpx;
+  font-weight:400;
+  color:#484848;
+}
+.rule-info{
+  display:flex;
+  align-items:center;
+  margin-top:15rpx;
+  font-size:28rpx;
+  line-height:54rpx;
+  letter-spacing:1rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #484848;
+}
+.rule-wrapper{
+  font-weight:300;
+  font-size:24rpx;
+  margin-bottom:60rpx;
+  color:#333;
+}
+
+.use-strored-money {
+  padding-left: 10rpx;
+  letter-spacing: 0px;
+  font-size: 22rpx;
+  font-weight: 300;
+  color: #999999;
+}
+.stars-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-right: 6rpx;
+  height: 18rpx;
+}
+.price0{
+  margin-top: 10rpx;
+}
+.price0 .rule-wrapper{
+  margin-bottom:0
+}

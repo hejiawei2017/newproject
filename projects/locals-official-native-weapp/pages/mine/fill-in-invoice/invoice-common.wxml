@@ -1,0 +1,29 @@
+<template name="invoiceCommon">
+  <view class='invoiceCommon'>
+    <view class='invoice-tem-lable invoice-line'>
+      <text class='invoice-tem-title'>抬头类型</text>
+      <text class='invoice-tem-content' wx:if="{{invoiceTitleData.titleType == 1}}">普通发票（个人）</text>
+      <text class='invoice-tem-content' wx:if="{{invoiceTitleData.titleType == 2}}">普通发票（公司）</text>
+    </view>
+    <view class='invoice-tem-lable invoice-line'>
+      <text class='invoice-tem-title'>发票抬头</text>
+      <text class='invoice-tem-content'>{{invoiceTitleData.titleName}}</text>
+    </view>
+    <view wx:if="{{invoiceTitleData.titleType == 2}}" class='invoice-tem-lable invoice-line'>
+      <text class='invoice-tem-title'>纳税人识别号</text>
+      <text class='invoice-tem-content'>{{invoiceTitleData.taxCode}}</text>
+    </view>
+    <view class='invoice-tem-lable invoice-line'>
+      <text class='invoice-tem-title'>收票邮箱</text>
+      <text class='invoice-tem-content'>{{invoiceTitleData.email}}</text>
+    </view>
+    <view class='invoice-tem-lable invoice-line'>
+      <text class='invoice-tem-title'>通知手机</text>
+      <text class='invoice-tem-content'>{{invoiceTitleData.phoneNumber}}</text>
+    </view>
+    <view class='invoice-tem-lable'>
+      <text class='invoice-tem-title'>开票金额</text>
+      <text class='invoice-tem-content'>¥{{invoiceData.invoicePrice}}(含{{invoiceData.invoiceServicePrice}}元发票服务费)</text>
+    </view>
+  </view>
+</template>

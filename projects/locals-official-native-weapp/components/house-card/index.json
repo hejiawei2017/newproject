@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "stars": "/components/stars/index",
+    "super-image": "/components/super-image/index",
+    "swiper": "/components/swiper/index"
+  }
+}

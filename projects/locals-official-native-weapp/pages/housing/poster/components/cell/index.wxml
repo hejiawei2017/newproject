@@ -1,0 +1,20 @@
+<view class="cell">
+    <view class="cell--left">
+        <image src="{{avatar}}" mode="aspectFit" />
+    </view>
+      
+    <view class="cell--center">
+        <view class="content">
+            {{content}}
+        </view>       
+    </view>
+    <view class="cell--right">
+        <view class="time">
+            {{date}}
+        </view> 
+        <view class="time">
+            {{time}}
+        </view>
+    </view>
+      
+</view>

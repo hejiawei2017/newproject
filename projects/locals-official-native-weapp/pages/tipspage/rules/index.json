@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "房屋守则",
+  "usingComponents": {
+    "im-message": "/components/im-message/im-message"
+  }
+}

@@ -1,0 +1,68 @@
+<view class="page">
+  <map 
+    id="map" 
+    scale="{{ scaleCount }}" 
+    markers="{{ markers }}" 
+    circles="{{ circles }}"
+    longitude="{{ presentLongitude }}" 
+    latitude="{{ presentLatitude }}" 
+    bindmarkertap="markertap" 
+    bindcallouttap="markertap"
+    bindupdated="bindupdated"
+    bindregionchange="bindregionchange"
+    show-location
+  >
+    <cover-view catchtap="clickButton" data-type="location" class="button_location">
+      <cover-image src="/assets/map-icon/icon.png" />
+    </cover-view>
+    <cover-view catchtap="clickButton" data-type="refresh" class="button_refresh">
+      <cover-image src="/assets/map-icon/icon2.png" />
+    </cover-view>
+    <cover-view class="map__header">
+      <cover-view class="house-count-info"> </cover-view>
+      <cover-view class="tabs">
+        <cover-view class="tab" catch:tap="openPoisSearch">
+          <cover-view class="title">{{ poiName || '位置' }}</cover-view>
+          <cover-image class="triangle" src="http://oss.localhome.cn/upload/181210/706YD181210162542906.png" />
+        </cover-view>
+        <cover-view class="tab" catch:tap="openScreenSearch">
+          <cover-view class="{{ changeTimes > 0 ? 'active' : '' }}">筛选<block wx:if="{{ changeTimes }}">∙{{ changeTimes }}</block></cover-view>
+          <cover-image class="triangle" src="http://oss.localhome.cn/upload/181210/706YD181210162542906.png" />
+        </cover-view>
+      </cover-view>
+    </cover-view>
+    <cover-view
+      class="map__houses"
+      hidden="{{ isHiddenHouse }}"
+    >
+      <cover-view catch:tap="clickArrow" data-type="last" class="left button-wrap">
+        <!-- <cover-image class= "image" src="/assets/map-icon/left.png" /> -->
+      </cover-view>
+      <cover-view
+        class="houses__item"
+        catch:tap="selectHouse"
+      >
+        <cover-view class="house-image-wrap">
+          <cover-image class="house-image" src="{{ item.houseImages[0]['imagePath'] || defaultHouseImage  }}" />
+          <cover-view class="house-image-mate" wx:if="{{item.booked}}">{{checkDate}}无房</cover-view>
+        </cover-view>
+        <cover-view class="house-info">
+          <cover-view class="info-title">{{ item.title }}</cover-view>
+          <cover-view class="info-params">
+            <cover-view class="params-stars"><cover-image class="star" wx:for="{{ item.stars }}" wx:key="*this" src="/assets/star.png" /><cover-image class="star" wx:for="{{ 5 - item.stars }}" wx:key="*this" src="/assets/starc1.png" /><cover-view>{{ item.commentStatis }}</cover-view></cover-view>
+            <cover-view class="params-number">{{ item.tenantTotal }}人·{{ item.roomNumber }}室·{{ item.bedNumber }}床·{{(item.publicToiletNumber || 0) + item.toiletNumber }}卫</cover-view>
+          </cover-view>
+          <cover-view class="info-price">{{ '¥ ' + item.standardPrice || '***' }}/每晚</cover-view>
+        </cover-view>
+      </cover-view>
+      <cover-view catch:tap="clickArrow" data-type="next" class="right button-wrap">
+        <!-- <cover-image class="image" src="/assets/map-icon/right.png" /> -->
+      </cover-view>
+    </cover-view>
+    <cover-image hidden="{{ isHiddenCenterPoint }}" class="center-point" src="/assets/housing/location-red.png" />
+  </map>
+</view>
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

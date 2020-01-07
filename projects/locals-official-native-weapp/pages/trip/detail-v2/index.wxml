@@ -1,0 +1,279 @@
+<!--pages/trip/detail-v2/index.wxml-->
+<wxs src="../../../wxs/DateUtils.wxs" module="dateUtils" />
+<wxs src="../../../wxs/ImageUtils.wxs" module="imageUtils" />
+<wxs src="../../../wxs/OrderUtils.wxs" module="orderUtils" />
+
+<view class="page">
+  <form bindsubmit="formSubmit" report-submit="true">
+    <view class="header">
+      <image class="header-image-bg" src="https://oss.localhome.cn//localhomeqy/mini/v2/{{bookingDetail.orderStatus === '1104' ? 'dindan_bg2' : 'dindan_bg1'}}.png"></image>
+      <view class="order-info">
+        <view class="order-no">
+          <view>
+            <text>订单号：{{ bookingDetail.bookingNumber }}</text>
+            <text style="margin-left: 20rpx;" wx:if="{{bookingDetail.bookingDate}}">({{ bookingDetail.bookingDate }}下单)</text>
+          </view>
+          <button class="order-cancel" formType="submit" wx:if="{{isShowCancelOrder || (isShowRefundOrder && currentStep < 2)}}" catch:tap="handleCancelOrder">取消订单</button>
+        </view>
+        <view class="order-status">{{barTitle}}</view>
+        <view class="order-check">{{ orderUtils.getPaymentTips(bookingDetail, refundPrice) }}</view>
+      </view>
+    </view>
+    <view class="container">
+      <!-- 消息 -->
+      <view class="section">
+        <view class="message-wrapper">
+          <view class="message-photo">
+            <image src="{{houseDetail.assist.avatar ? houseDetail.assist.avatar : 'https://oss.localhome.cn/logo.png'}}"></image>
+          </view>
+          <view class="message-frame">
+            <text>{{orderUtils.getOrderStatusMessage(bookingDetail.orderStatus)}}</text>
+            <view class="triangle" />
+          </view>
+          <view class="message-btn" catchtap="contactLoadlords">
+            <image src="https://oss.localhome.cn//localhomeqy/mini/v2/lianxi_icon2.png"></image>
+            <button formType="submit" class="text">消息</button>
+          </view>
+        </view>
+        <view class="message-grid" wx:if="{{ !isForeignCity }}">
+          <view
+            wx:for="{{orderUtils.getTipsGridBtns(bookingDetail.orderStatus)}}"
+            wx:key="query" data-query="{{item.query}}" catchtap="goToHelpPage"
+            style="{{item.style ? item.style : ''}}"
+            >{{item.label}}</view>
+        </view>
+      </view>
+      <!-- 房源信息 -->
+      <view class="section">
+        <view class="house-wrapper">
+          <view class="comment-wrapper" wx:if="{{bookingDetail.canComment}}">
+            <text>送你一张20元优惠券</text>
+            <view class="comment-btn" catchtap="goToComment">立即领取</view>
+          </view>
+          <view class="flex" style="margin-bottom: 20rpx;" catchtap="goToHouseDetail">
+            <view class="house-image">
+              <image src="{{ imageUtils.processImage(houseDetail.houseImages[0].imagePath) }}"></image>
+            </view>
+            <view class="house-title">{{ houseDetail.title }}</view>
+          </view>
+          <view class="house-address" catchtap="onOpenMapPage" wx:if="{{ !isForeignCity }}">
+            <view class="house-address-text {{!isCurrentCheckIn ? 'house-ellipsis' : ''}}" style="width: {{isCurrentCheckIn ? '580rpx' : '364rpx'}};">{{currentDateStr}}{{ address }}</view>
+            <view class="house-map">
+              <text wx:if="{{!isCurrentCheckIn}}" class="house-address-tips">（门牌号入住当日可见）</text>
+              <image src="https://oss.localhome.cn//localhomeqy/mini/v2/daohang.png"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 入住时间 -->
+      <view class="section">
+        <view class="checkin-wrapper">
+          <view class="checkin-date">
+            <view class="checkin-date-title">入住日期/时间</view>
+            <view class="checkin-date-time">
+              <text>{{ dateUtils.setMonthDay(bookingDetail.checkinDate) || '' }}</text>
+              <text>下午3点后</text>
+            </view>
+          </view>
+          <view class="checkin-count">{{days || 0}}晚</view>
+          <view class="checkin-date">
+            <view class="checkin-date-title">退房日期/时间</view>
+            <view class="checkin-date-time">
+              <text>{{ dateUtils.setMonthDay(bookingDetail.checkoutDate) }}</text>
+              <text>中午12点前</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 入住人数 -->
+      <view
+        class="section"
+        wx:if="{{ guaranteeSlipList && guaranteeSlipList.length > 0 }}">
+        <view class="guest-wrapper">
+          <view class="guest-title">入住{{ guaranteeSlipList.length }}人</view>
+          <view
+            class="guest-info"
+            wx:for="{{ guaranteeSlipList }}"
+            wx:key="id"
+            wx:if="{{index < 2}}"
+          >
+            <view class="guest-card">
+              <text>{{ item.name }}</text>
+              <text>{{ item.cardNo }}</text>
+            </view>
+
+            <view class="status-container" wx:if="{{!!item.policyNo}}">
+              <text class="status-normal">已投保</text>
+              <text
+              class="status-highlight"
+              data-download-url="{{item.downLoadUrl}}"
+              data-policy="{{item.policyNo}}"
+              bind:tap="openPolicy"
+              >查看保单</text>
+            </view>
+            <view class="status-container" wx:else>
+              <text class="status-highlight-fail">{{orderUtils.getPolicyMessage(item)}}</text>
+            </view>
+          </view>
+          <view class="guest-btn" catchtap="goToGuestDetail">查看明细</view>
+          <view class="insurance-tips" wx:if="{{ !isForeignCity }}">
+            <view class="insurance-tips-left">
+              <text>50万住宿意外险</text>
+            </view>
+            <view class="insurance-tips-right">Locals路客为以上入住人购买入住旅客意外伤害保险，最高赔付50万元</view>
+          </view>
+        </view>
+      </view>
+      <!-- 费用 -->
+      <view class="section">
+        <view class="order-cost-wrapper">
+          <view class="cost-title">
+            <text>费用</text>
+            <text>共计 <text class="symbol">¥</text>{{ isUseStoredMoney && payTotalPrice === 0 ? bookingDetail.originalPrice : payTotalPrice }}</text>
+          </view>
+          <view class="cost-row">
+            <text class="cost-row-label">{{ days || 0 }}晚房费</text>
+            <text class="cost-price"><text class="symbol">¥</text>{{ bookingDetail.roomPrice }}</text>
+          </view>
+          <view class="cost-row">
+            <view class="flex">
+              <text class="cost-row-label">保证金</text>
+              <block wx:if="{{bookingDetail.deposit > 0}}">
+                <text class="cost-tips">退房后24小时内原路退回</text>
+                <image
+                catchtap="showDepositTip"
+                class="attention-icons"
+                src="https://oss.localhome.cn/localhomeqy/order-attention.png"></image>
+              </block>
+              <text wx:else class="cost-tips">(已免)</text>
+            </view>
+            <text class="cost-price"><text class="symbol">¥</text>{{ bookingDetail.deposit }}</text>
+          </view>
+          <view catchtap="goToPriceDetail" class="cost-btn">查看明细</view>
+        </view>
+      </view>
+      <!-- 入住须知 -->
+      <view class="section" wx:if="{{!isForeignCity}}">
+        <view class="explain-wrapper">
+          <view class="explain-title">入住须知</view>
+          <view class="explain-rules">
+            <block wx:for="{{specialInfoList}}" wx:key="code">
+              <view class="explain-rules-item">
+                <image
+                wx:if="{{item.code !== '00001' && item.code !== '00002'}}"
+                class="explain-rules-icon"
+                src="https://oss.localhome.cn//localhomeqy/mini/v2/{{item.consent ? 'allow' : 'reject'}}.png"></image>
+                <text class="explain-rules-text">{{item.name}}</text>
+              </view>
+            </block>
+          </view>
+          <view class="explain-menu" catch:tap="goToRule">
+            <text>房屋守则</text>
+            <image src="https://oss.localhome.cn//localhomeqy/mine/gray_more%402x.png"></image>
+          </view>
+          <view class="explain-menu" catchtap="goToUnsubscribe">
+            <text>退订政策</text>
+            <image src="https://oss.localhome.cn//localhomeqy/mine/gray_more%402x.png"></image>
+          </view>
+          <navigator hover-class="none" bind:tap="gioFn" class="explain-menu" url="/pages/tipspage/invoiceRules/index">
+            <text>发票指南</text>
+            <image src="https://oss.localhome.cn//localhomeqy/mine/gray_more%402x.png"></image>
+          </navigator>
+        </view>
+      </view>
+      <view wx:if="{{ isForeignCity }}">
+        <view class="section">
+          <view wx:if="{{ OrderTradingRules }}" class="explain-wrapper">
+            <view class="explain-title">交易规则</view>
+            <view class="explain-rules-text">{{ OrderTradingRules }}</view>
+          </view>
+        </view>
+        <view class="section">
+          <view wx:if="{{ OrderCheckInRules }}" class="explain-wrapper">
+            <view class="explain-title">入住须知</view>
+            <view class="explain-rules-text">{{ OrderCheckInRules }}</view>
+          </view>
+        </view>
+      </view>
+      <!-- 商城入口 -->
+      <view class="section" catchtap="goToLifeMini" wx:if="{{!isForeignCity && bookingDetail.orderStatus !== '1102'}}">
+        <image
+        class="mall-image"
+        src="https://oss.localhome.cn//localhomeqy/mini/v2/locals.png"></image>
+      </view>
+    </view>
+  </form>
+
+
+  <view class="footer {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+
+    <!-- 删除订单弹框 -->
+    <view wx:if="{{showToastGridBtns}}" class="toast-grid-btns">
+      <view class="btns-wrapper">
+        <view class="toast-grid-btns-item" catchtap="delTrip">删除订单</view>
+      </view>
+      <view class="toast-grid-triangle" />
+    </view>
+    <view wx:if="{{showToastGridBtns}}" catchtap="switchToastGridBtns" class="toast-grid-background" />
+
+    <view wx:if="{{bookingDetail.orderStatus === '1104' || bookingDetail.orderStatus === '1106' || bookingDetail.orderStatus === '1109'}}" class="extend-btn" catchtap="switchToastGridBtns">
+      <image src="https://oss.localhome.cn//localhomeqy/mini/v2/more2.png"></image>
+    </view>
+    <view class="flex">
+      <button
+    wx:for="{{orderUtils.getOperateBtns(bookingDetail)}}"
+    wx:key="{{item.btnEventName}}"
+    class="footer-btn {{item.isBg ? 'solid-btn' : 'hollow-btn'}}" 
+    data-type="{{item.btnEventName}}"
+    catchtap="handleFooterGirdBtnEvent"
+    >{{item.btnText}}</button>
+    </view>
+  </view>
+
+  <form bindsubmit="nowBooking" wx:if="{{ displayPay }}" report-submit="true">
+    <view class="pay-footer {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+      <view class="pay-footer-left">
+        <view class="pay-footer-price">
+          <text 
+            wx:if="{{ isUseStoredMoney && payTotalPrice === 0 }}" 
+            class="total">储值抵扣¥{{ bookingDetail.originalPrice }}
+          </text>
+          <block wx:else>
+            <view class="total"><text style="font-size: 24rpx;">￥</text>{{ payTotalPrice }}</view>
+            <view class="pay-footer-discount" wx:if="{{ preferentialAmount > 0 }}">已优惠¥{{ preferentialAmount }}</view>
+            <view 
+              class="pay-footer-discount" 
+              wx:if="{{ bookingDetail.useCash && bookingDetail.useCashMoney > 0 }}">已用储值¥{{ bookingDetail.useCashMoney }}</view>
+          </block> 
+        </view>
+        <view class="descript">
+          <block wx:if="{{ bookingDetail.deposit > 0 }}">
+            <text>¥{{bookingDetail.deposit}}保证金可退</text>
+          </block>
+          <view class="price-detail" catchtap="goToPriceDetail">
+            <view class="text">明细</view>
+            <image 
+              class="show-detail" 
+              mode="aspectFill" 
+              src="https://oss.localhome.cn//localhomeqy/mini/v2/xiala2.png" 
+            />
+          </view>
+        </view>
+      </view>
+
+      <button 
+        loading="{{ loading }}" 
+        class="pay-footer-right" 
+        formType="submit">去支付</button>
+    </view>
+  </form>
+</view>
+<auth-drawer-box
+  id="auth-drawer-box"
+  initHide="{{true}}"
+  bind:cancelEvent="_cancelEventFn"
+/>
+<im-message
+  id="im-message"
+  noAttached='{{false}}'
+/>

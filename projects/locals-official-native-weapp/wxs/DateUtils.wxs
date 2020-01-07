@@ -1,0 +1,137 @@
+var dateUtils = {
+  getWeekByDate: function (date) {
+    return date.getDay()
+  },
+  dateDiff: function (sDate, eDate) {
+    var sdate = getDate(sDate)
+    var edate = getDate(eDate)
+    var y = Math.abs(edate.getFullYear() - sdate.getFullYear());
+    var m = Math.abs(edate.getMonth() - sdate.getMonth());
+    var d = Math.abs(edate.getDate() - sdate.getDate());
+    // 如果年月日都相等，那肯定是同一天
+    if (y === 0 && m === 0 && d === 0) {
+        return '今天';
+    } else {
+    // 否则今天算一天，然后计算从明天的0点到结束的日期共经过多少个"24小时"
+    // 向下取整，最后加1天，就是真正的从开始日期到结束日期过了几天
+        var last = getDate(sdate.getFullYear(), sdate.getMonth(), sdate.getDate(), 0, 0, 0)
+        var diff = Math.floor((edate - last) / 1000 / 60 / 60 / 24);
+        if(diff === 0){
+          return '今天'
+        }else{
+          return  diff + '天后';
+        }
+    }
+  },
+  getDatePrice: function (date) {
+    if (!date.class) {
+      return ''
+    } else if (date.class.indexOf('unavailable') != -1) {
+      return ''
+    } else if (date.day <= 0) {
+      return ''
+    }
+    return '¥' + date.roomPrice
+  },
+  setTimeDate: function (time) {
+    if (!time) return '';
+    var date = getDate(time);
+    var M = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var d = date.getDate();
+
+    if (M < 10) M = "0" + M;
+    if (y < 10) d = "0" + y;
+    if (d < 10) d = "0" + d;
+    return y + "/" + M + "/" + d ;
+  },
+  setMonthDayDate: function (time, flag = '.', tensDigit = false ) {
+    var date = getDate(time)
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+    if (tensDigit) {
+      month = month.toString().length > 1 ? month : '0' + month
+    }
+    day = day.toString().length > 1 ? day : '0' + day
+    return month + flag + day
+  },
+  setCharMonthDayDate: function (time) {
+    var date = getDate(time)
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+
+    return month + '月' + day + '日'
+  },
+  setYearMonthDay: function (time) {
+    if (typeof time !== 'number') {
+      return false
+    }
+    var date = getDate(time)
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    month = month.toString().length > 1 ? month : '0' + month
+    var day = date.getDate()
+    day = day.toString().length > 1 ? day : '0' + day
+    return year + '-' + month + '-' + day
+  },
+  setMonthDay: function (time) {
+    if (!time) {
+      return '***';
+    }
+    var date = getDate(time)
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+
+    return month + '月' + day + '日'
+  },
+  setDay: function (time) {
+    var date = getDate(time)
+    var week = ['日', '一', '二', '三', '四', '五', '六']
+    var weekIndex = date.getDay()
+    return '周' + week[weekIndex]
+  },
+  setCnYearMonth: function(time) {
+    if (typeof time !== 'number') {
+      return false
+    }
+    var date = getDate(time)
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    month = month.toString().length > 1 ? month : '0' + month
+    return year + '年' + month + '月'
+  },
+  // 获取x天后的时间
+  setLaterDate: function(time,day) {
+    if (!time) return '';
+    var date = getDate(time).getTime() + 86400000 * parseInt(day || 0)
+    return dateUtils.setYearMonthDay(date)
+  },
+  setChineseDate: function (time) {
+    var date = getDate(time)
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+
+    return year + '年' + month + '月' + day + '日'
+  },
+  setFormatTime: function (time) {
+    if (typeof time !== 'number') {
+      return false
+    }
+    var date = getDate(time)
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    month = month.toString().length > 1 ? month : '0' + month
+    var day = date.getDate()
+    day = day.toString().length > 1 ? day : '0' + day
+    var hour = date.getHours();
+    hour = hour.toString().length > 1 ? hour : '0' + hour
+    var minute = date.getMinutes();
+    minute = minute.toString().length > 1 ? minute : '0' + minute
+    var second = date.getSeconds();
+    second = second.toString().length > 1 ? second : '0' + second
+
+    return   year + '-' + month + '-' + day + ' '+hour+':'+minute+':'+second
+  },
+}
+module.exports = dateUtils

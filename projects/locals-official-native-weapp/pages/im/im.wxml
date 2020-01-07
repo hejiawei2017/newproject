@@ -1,0 +1,65 @@
+<!--pages/im/im.wxml-->
+<view class="im-page">
+  <view class='im-list' wx:if="{{ conversations !== null && conversations.length > 0 }}">
+    <view class='item' wx:for="{{ conversations }}" wx:key="id">
+      <view class="dot" wx:if="{{ item.unReadCount > 0 }}"></view>
+      <view class="item-img" 
+        bindtap="imLink" 
+        data-groupid="{{item.groupId}}"
+        data-checkinDate="{{item.assistantId}}" 
+        data-housesourceid="{{item.houseSourceId}}" 
+        data-bookingid="{{item.orderId}}" 
+        data-sessionid="{{item.id}}" 
+        data-landlordheadurl="{{item.assistantHeadUrl || defaultAvatar}}"
+      >
+        <image 
+          mode="aspectFill" 
+          src='{{item.avatar}}' 
+          binderror="avatarError" 
+          data-id="{{item.id}}" 
+        />
+      </view>
+      <view class='item-info' bindtap="imLink" data-groupid="{{item.groupId}}" data-assistid="{{item.assistantId}}" data-housesourceid="{{item.houseSourceId}}" data-bookingid="{{item.orderId}}" data-sessionid="{{item.id}}" data-landlordheadurl="{{item.assistantHeadUrl || defaultAvatar}}">
+        <view class='name'>
+          <text class="landlordName">{{item.assistantName}}</text>
+          <text class="lastMessageTime">{{item.lastMessageTimeTxt}}</text>
+        </view>
+        <view class='message'>
+          {{item.lastMessage}}
+        </view>
+        <view class="houseSourceTitle">
+          {{item.title}}
+        </view>
+        <view class='date'>
+          <text class="orderStatus">{{item.orderStatusTxt}}·</text>
+          <text>{{item.checkInDateTxt}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='empty-data' wx:if="{{ !conversations || !conversations.length }}">
+    <view wx:if="{{isLogin}}">
+      <image src="https://oss.localhome.cn/new_icon/no-message.png" />
+      <view>您没有收到任何消息</view>
+    </view>
+    <view wx:else>
+      <image src="https://oss.localhome.cn/new_icon/no-message.png" />
+      <view>登录后才能查看消息</view>
+      <view catchtap="goLogin" class="no-login-btn">登录/注册</view>
+    </view>
+  </view>
+  <view wx:if="{{ isLoadingMore }}" class="weui-loadmore">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载...</view>
+  </view>
+  
+  <underscore wx:if="{{ !hasNextPage }}" overflow />
+</view>
+<auth-drawer-box 
+    id="auth-drawer-box"
+    isCanCancel="{{true}}"
+    initHide="{{true}}"
+    bind:cancelEvent="_cancelEventFn"
+/>
+
+

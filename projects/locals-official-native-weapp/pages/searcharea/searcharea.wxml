@@ -1,0 +1,15 @@
+<view>
+  <select-city
+    data="{{city}}"
+    heatCity="{{ heatCity }}"
+    foreignData="{{ foreignCity }}"
+    bind:detail="getDetail"
+    bind:goToCurrentLocal="goToCurrentLocal"
+    search="{{value}}"
+    initSelectTab="{{ activeTabNumber }}"
+  />
+</view>
+<im-message
+  id="im-message"
+  noAttached='{{false}}'
+/>

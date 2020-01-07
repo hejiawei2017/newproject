@@ -1,0 +1,9 @@
+<template name="invoiceCharge">
+    <view class="form-box end">
+        <text class="h2">支付费用</text>
+        <view class="form-item">
+            <text>服务费</text>
+            <text>(开票金额的6%，可报销)<text class="money">￥6.00</text></text>
+        </view>
+    </view>
+</template>

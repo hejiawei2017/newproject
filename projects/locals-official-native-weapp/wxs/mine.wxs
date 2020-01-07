@@ -1,0 +1,139 @@
+var DateFr = {
+  invoiceStatus: function(n) {
+    switch (n) {
+      case 0:
+        return '待开票'
+      case 1:
+        return '已开票'
+      case 2:
+        return '待寄送'
+      case 3:
+        return '已寄送'
+      case 4:
+        return '已失效'
+      case 5:
+        return '待支付'
+    }
+    return ''
+  },
+  getDate: function (time) {
+
+    if (!time) return '';
+    time = time.replace('.0', '')
+    var date = getDate(time);
+    var M = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var d = date.getDate();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    if (M < 10) M = "0" + M;
+    if (y < 10) d = "0" + y;
+    if (d < 10) d = "0" + d;
+    if (h < 10) d = "0" + h;
+    if (m < 10) d = "0" + m;
+    if (s < 10) d = "0" + s;
+    return y + "-" + M + "-" + d + " " + h + ":" + m + ":" + s;
+  },
+  getDateReplace: function(time){
+    time = time.replace('.0', '')
+    return time
+  },
+  getNewDate: function (time,splits) {
+    time = parseInt(time,10);
+    if (!time) return '';
+
+    var date = getDate(time);
+    var M = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var d = date.getDate();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+
+    if (M < 10) M = "0" + M;
+    if (y < 10) d = "0" + y;
+    if (d < 10) d = "0" + d;
+    if (h < 10) d = "0" + h;
+    if (m < 10) d = "0" + m;
+    if (s < 10) d = "0" + s;
+    return y + splits + M + splits + d;
+  },
+  invoiceType: function(n){
+    switch (n) {
+      case 1:
+        return '电子发票'
+      case 2:
+        return '纸质发票'
+      case 3:
+        return '专用发票'
+    }
+    return ''
+  },
+  cardType: function(n){
+    switch (n) {
+      case '01':
+        return '身份证'
+      case '02':
+        return 'Passport'
+      case '03':
+        return '港澳回乡证'
+      case '04':
+        return '台胞证'
+      case '05':
+        return '驾驶证'
+      case '06':
+        return '港澳回乡证或台胞证'
+      case '07':
+        return '临时身份证'
+      case '99':
+        return '其他'
+    }
+    return ''
+  },
+  processImageArray: function(images) {
+    var newArray = []
+    for (var i = 0; i < images.length; i++) {
+      newArray.push(processImage(images[i].imgPath))
+    }
+    return newArray
+  },
+  memberCode: function(n){
+    switch (n){
+      case 'NORMAL':
+        return '普卡会员'
+      case 'SILVER':
+        return '银卡会员'
+      case 'GOLD':
+        return '金卡会员'
+      case 'BLACK':
+        return '黑卡会员'
+    }
+    return ''
+  },
+  percent: function(n){
+    switch (n){
+      case 'NORMAL':
+        return '25'
+      case 'SILVER':
+        return '50'
+      case 'GOLD':
+        return '75'
+      case 'BLACK':
+        return '100'
+    }
+    return ''
+  }
+}
+
+module.exports = {
+  invoiceStatus: DateFr.invoiceStatus,
+  getDate: DateFr.getDate,
+  getDateReplace: DateFr.getDateReplace,
+  getNewDate: DateFr.getNewDate,
+  invoiceType: DateFr.invoiceType,
+  cardType: DateFr.cardType,
+  processImageArray: DateFr.processImageArray,
+  memberCode: DateFr.memberCode,
+  percent: DateFr.percent
+}

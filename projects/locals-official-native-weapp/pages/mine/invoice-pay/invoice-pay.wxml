@@ -1,0 +1,62 @@
+<wxs module="dateUtils" src="../../../wxs/DateUtils.wxs"></wxs>
+<view class='invoice-pay'>
+  <view class='invoice-pay-info'>
+    <view class='invoice-pay-num'>
+      <text class='invoice-pay-small'>￥</text>
+      <text>{{invoiceServicePrice}}</text>
+    </view>
+    <view class='invoice-pay-tip'>支付成功后预计开票时间：{{dateUtils.setLaterDate(nowDate,3)}} 前</view>
+  </view>
+  <view class="invoice-pay-btn {{ isFullScreen ? 'full-screen-bottom' : ''}}" bindtap='doPay'>
+    <text> 确认支付</text>
+  </view>
+  <view wx:if="{{successModal}}" class='modal'>
+    <view class='success-modal'>
+      <view class='success-modal-title'>
+        <image class='invoice-pay-success' src='https://oss.localhome.cn//localhomeqy/invoice_icon/success.png' ></image>
+        <text>申请成功</text>
+      </view>
+      <view class='success-modal-content'>
+        <view class='success-modal-block'>
+          <text class='success-modal-lable'>发票类型</text>
+          <text wx:if="{{invoiceData.invoiceType === 1}}">电子普通发票</text>
+          <text wx:if="{{invoiceData.invoiceType === 2}}">纸质普通发票</text>
+          <text wx:if="{{invoiceData.invoiceType === 3}}">专用发票</text>
+        </view>
+        <view wx:if="{{invoiceData.titleName}}" class='success-modal-block'>
+          <text class='success-modal-lable'>发票抬头</text>
+          <text>{{invoiceData.titleName}}</text>
+        </view>
+        <view wx:if="{{invoiceData.taxCode}}" class='success-modal-block'>
+          <text class='success-modal-lable'>纳税人识别号</text>
+          <text>{{invoiceData.taxCode}}</text>
+        </view>
+        <view wx:if="{{invoiceData.registeredAddress}}" class='success-modal-block'>
+          <text class='success-modal-lable'>公司注册地址</text>
+          <text>{{invoiceData.registeredAddress}}</text>
+        </view>
+        <view wx:if="{{invoiceData.depositBank}}" class='success-modal-block'>
+          <text class='success-modal-lable'>开户银行</text>
+          <text>{{invoiceData.depositBank}}</text>
+        </view>
+        <view wx:if="{{invoiceData.bankAccount}}" class='success-modal-block'>
+          <text class='success-modal-lable'>银行账号</text>
+          <text>{{invoiceData.bankAccount}}</text>
+        </view>
+        <view wx:if="{{invoiceData.email}}" class='success-modal-block'>
+          <text class='success-modal-lable'>电子邮箱</text>
+          <text>{{invoiceData.email}}</text>
+        </view>
+        <view wx:if="{{invoiceData.phoneNumber}}" class='success-modal-block'>
+          <text class='success-modal-lable'>联系电话</text>
+          <text>{{invoiceData.phoneNumber}}</text>
+        </view>
+        <view class='success-modal-block'>
+          <text class='success-modal-lable'>预计开票时间</text>
+          <text>{{dateUtils.setLaterDate(nowDate,3)}}前请注意查收</text>
+        </view>
+      </view>
+      <view class='success-modal-btn' bindtap='jumpToList'>知道了</view>
+    </view>
+  </view>
+</view>

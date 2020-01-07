@@ -1,0 +1,3 @@
+.movable-area {
+  overflow-x: hidden;
+}

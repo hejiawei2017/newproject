@@ -1,0 +1,70 @@
+<import src="./template.wxml" />
+<scroll-view scrollY="{{true}}">
+    <!-- banner -->
+    <view class="banner">
+        <image class="banner-image" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/invite_friends/banner.png" mode="aspectFill" />
+        <view class="rules" bindtap="showRules">活动规则</view>
+    </view>
+    <!-- coupon -->
+    <view class="bonus">
+        <view class="bonus-item">
+            <view class="bonus-item--title">自己得到</view>
+            <image class="bonus-item--img" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/invite_friends/1yuan_bonus.png"></image>
+        </view>
+        <view class="bonus-item">
+            <view class="bonus-item--title">朋友得到</view>
+            <image class="bonus-item--img" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/invite_friends/100yuan_bonus.png"></image>
+        </view>
+    </view>
+    <!-- 邀请/海报 -->
+    <view class="invite-button-group">
+        <view class="invite-button-item">
+            <button class="invite-button" open-type="share">邀请好友</button>
+        </view>
+        <view class="invite-button-item">
+            <navigator class="invite-button" url="/pages/activity/invite-friends-201908/poster/index" hover-class="navigator-hover" open-type="navigate">
+                转发朋友圈
+            </navigator>
+        </view>
+    </view>
+    <view class="bonus-box" hover-class="none" hover-stop-propagation="false">
+        <template is="bonusCard" data="{{myBonus}}"></template>
+        <panel title="邀请好友">
+            <view>
+                <cell wx:for="{{bonusShareDetail}}" wx:key="{{index}}" avatar="{{item.avatar}}" name="{{item.nici_name}}" dateTime="{{item.create_time}}" content="{{item.nick_name}}通过我的分享注册并领取了100元新人红包"></cell>
+            </view>
+            <view wx:if="{{hasMoreShareDetail}}" class="show-more-btn" bindtap="showMoreDetail">
+                查看更多
+            </view>
+            <!-- 空记录 -->
+            <view class="record-empty" wx:if="{{!count}}">
+                <text class="record-list-total">暂无更多</text>
+            </view>
+        </panel>
+    </view>
+</scroll-view>
+<modal class="modal" frameStyle="width: 90%" visible="{{ isShowInviteFriendsRules }}" hideCancel="{{ true }}" okText="我知道了" data-key="isShowInviteFriendsRules" bind:confirm="hideRules">
+    <panel title="邀请好友">
+        <view class="rules-content">
+            <text>
+                1.用户通过邀请好友转发活动页面或生成海报，每成功邀请一位好友注册可获得1元奖金奖励，现金将以储值的方式返还至您的路客账户的余额，好友获得100元新人红包（内含2*50元立减券）；\t
+                2.好友需完成注册，双方方可获得优惠券；每成功邀请一位好友注册，会在邀请好友的列表中出现；\t
+                3.首次参与邀请有礼活动时，需累计分享三位新用户并全部注册成功后，方可发放3元奖金至您的余额（我的-我的钱包-余额）并同步显示在上方的奖励金总额处，之后每多分享1位新用户可多得1元奖金，每月最多累计奖励100元。\t
+                4.余额内的储值金可抵扣房费，可累积使用；\t
+                5.本活动与房源详情页的分享有礼活动为同一活动，规则共享；\t
+            </text>
+            <text class="title">50元立减券规则如下：</text>
+            <text>
+                1.可抵扣入住房费，不抵扣清洁费、保证金等其他费用；\t
+                2.不可与其他优惠叠加使用，仅限本人预订本人入住使用，使用后取消订单不可退回不可兑现；\t
+                3.可与路客会员折扣同时使用；\t
+                4.仅限会员线上支付是抵扣部分金额，抵扣部分不开发票；\t
+                5.预定及入住有效期为自领取之日起3个月；\t
+                6.节假日通用；\t
+                <text class="title">*本活动最终解释权归北京路客互联网科技有限公司所有</text>
+            </text>
+        </view>
+    </panel>
+</modal>
+<!-- 登录框 -->
+<auth-drawer-box id="auth-drawer-box" bind:cancelEvent="signInCallback" />

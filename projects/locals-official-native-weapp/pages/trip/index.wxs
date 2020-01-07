@@ -1,0 +1,10 @@
+function processLocation (countryCode, cityName) {
+    if (countryCode === '86') {
+        return cityName.substring(0, cityName.length - 3).toUpperCase() + ',CHINA'
+    }
+    return cityName
+}
+
+module.exports = {
+    processLocation: processLocation
+}

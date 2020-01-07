@@ -1,0 +1,107 @@
+.balance {
+    padding: 40rpx;
+    font-family: 'PingFangSC-Regular';
+}
+
+.balance-header {
+    position: absolute;
+    box-sizing: border-box;
+    left: 40rpx;
+    right: 40rpx;
+    border-radius: 15rpx;
+    box-shadow: 0px 8rpx 28rpx 0px rgba(50, 48, 49, 0.14);
+    padding: 40rpx;
+    text-align: center;
+    background-image: url('https://oss.localhome.cn/new_icon/balance-bg.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+}
+
+.balance-header view:first-child {
+    font-size: 32rpx;
+    color: #484848;
+}
+
+.balance-header view:nth-of-type(2) {
+    margin-top: 20rpx;
+    font-family: 'PingFangSC-Semibold';
+    font-size: 46rpx;
+    line-height: 46rpx;
+    color: #e84358;
+}
+
+.balance-header view:nth-of-type(2)::first-letter {
+    font-size: 24rpx;
+    vertical-align: super;
+    padding-right: 10rpx;
+}
+
+.balance-header view:nth-of-type(3) {
+    margin-top: 24rpx;
+    font-size: 26rpx;
+    color: #333333;
+}
+
+.balance-header view:nth-of-type(4) {
+    margin: 0 auto;
+    margin-top: 36rpx;
+    width: 160rpx;
+    height: 46rpx;
+	background-color: #ffffff;
+	box-shadow: 0px 8rpx 28rpx 0px 
+		rgba(50, 48, 49, 0.14);
+    border-radius: 23rpx;
+    color: #e84358;
+    font-size: 24rpx;
+    line-height: 46rpx;
+}
+
+.momey {
+    color: #e84358;
+}
+
+.balance .list {
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
+    top: 340rpx;
+    bottom: 0;
+    background: white;
+}
+
+.balance .list .list__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rpx 40rpx;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.list__item .item__descript view:nth-of-type(1) {
+    font-size: 30rpx;
+    color: #333333;
+}
+
+.list__item .item__descript view:nth-of-type(2) {
+    font-size: 24rpx;
+    color: #999999;
+}
+
+.list__item .item__momey {
+    font-size: 30rpx;
+}
+
+.list__item .item__momey::first-letter {
+    padding-right: 8rpx;
+}
+
+.list__item .item__momey.plus {
+    color: #e84358;
+}
+
+.list__item .item__momey.minus {
+    color: #333333;
+}

@@ -1,0 +1,32 @@
+<!-- 权益介绍 -->
+<template name='rightsIntro'>
+    <view wx:if="{{rightsShowFlag}}">
+        <view class="mark"></view>
+        <view class="dialog-body">
+            <view class="content">
+                <text class="sub-title">权益介绍</text>
+                <text>1.现场接待：管家现场接待宾客入住；</text>
+                <text>2.延迟退房：延迟退房至当天下午两点；</text>
+                <text>3.行李寄存：推荐行李寄存点；</text>
+                <text>4.免费保洁：入住期间免费保洁1次；</text>
+                <text>5.黑卡88折：黑卡会员1年有效期，入住可享房费8.8折优惠；</text>
+                <text>6.返现1%：订单完成后，可返现房费订单金额的1%，费用返至储值；</text>
+                <text>7.￥1000房费立减券：5张200元房费立减优惠券；</text>
+                <text class="sub-title">200元房费立减优惠券详细规则</text>
+                <text>1.可抵扣入住首晚房费，不抵扣清洁费、保证金等其他费用；</text>
+                <text>不可与其它优惠券叠加使用，仅限本人预订本人入住使用，使用后取消订单不可退回不可兑现；</text>
+                <text>2.与路客会员折扣相互排斥不可同时使用；</text>
+                <text>3.限会员线上支付时抵扣部分金额，抵扣部分不开发票；</text>
+                <text>
+                    4.券面显示的有效期，为预订时可选择入住的时间范围。例如券面有效期为：2018.12.01-2018.12.31，则需选择入住时间为2018.12.01- 2018.12.31期间的有效房晚方可享受优惠。
+                </text>
+                <text>5.连续入住订单最多可使用2张优惠券。</text>
+                <text>*权益解释权归路客所有，具体详情可咨询管家</text>
+            </view>
+            <view>
+                <button class="btn" bindtap="closeRightsIntro">知道了</button>
+            </view>
+        </view>
+    </view>
+</template>
+<!-- end 权益介绍 -->

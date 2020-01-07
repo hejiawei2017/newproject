@@ -1,0 +1,43 @@
+.page{
+  padding: 0 40rpx;
+}
+.row{
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+  white-space: pre-wrap;
+  text-align: justify;
+}
+.btn {
+  border: 1px solid #eee;
+  background: #E84358;
+  font-size: 30rpx;
+  color: white;
+  border-radius: 10rpx;
+  margin: 0;
+  text-align: center;
+  padding: 0;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10rpx;
+  width: 670rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.unsub-full-screen-bottom{
+  margin-bottom: 70rpx;
+}
+
+.des-title {
+  font-weight: bold;
+  color: #333;
+  font-size: 32rpx;
+  margin: 20rpx 0;
+}
+
+.des-text {
+  color: #666;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  margin-bottom: 15rpx;
+}

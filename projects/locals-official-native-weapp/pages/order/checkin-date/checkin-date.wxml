@@ -1,0 +1,12 @@
+<!--pages/dateSelect/dateSelect.wxml-->
+<view>
+    <select-date
+        bind:getRangeDate="getRangeDate"
+        startDate="{{ checkInDate }}"
+        endDate="{{ checkOutDate }}"
+    />
+</view>
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

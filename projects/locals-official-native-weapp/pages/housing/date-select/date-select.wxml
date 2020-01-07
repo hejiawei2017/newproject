@@ -1,0 +1,10 @@
+<view>
+    <select-date
+        bind:getRangeDate="getRangeDate"
+        calendars="{{ calendars }}"
+    />
+</view>
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

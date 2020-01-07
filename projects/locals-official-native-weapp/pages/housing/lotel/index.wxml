@@ -1,0 +1,54 @@
+<wxs src="../../../wxs/ImageUtils.wxs" module="imageUtils" />
+<wxs src="../../../wxs/DateUtils.wxs" module="dateUtils" />
+<import src="./template.wxml" />
+
+<view>
+  <!-- 铺满的容器 -->
+  <view class="main-container">
+    <swiper-component
+      shareNow
+      imgUrls="{{imageUtils.processImageArray(lotelInfo.photoUrls)}}"
+      height="{{'83vh'}}"
+      isPreviewImage="true"
+      isFavorate="{{ isFavorate }}"
+      houseInfo="{{ houseInfo }}"
+      houseId="{{ houseId }}"
+      isShowOperateBtn="true"
+      isShowPagination="true"
+      firstImageSetAspectFill="true"
+      paginationStyle="bottom: 165rpx"
+      bind:collectioned="collectioned"
+    />
+    <template is="main-info" data='{{ lotelInfo, defaultAvatar }}' />
+  </view>
+  <template is="map" data="{{ lotelInfo }}" />
+  <template is="brightSpot" data="{{ title: '亮点', content: lotelInfo.brightSpot }}" />
+  <template is="date-container" data="{{ searchStartDate, searchEndDate, checkinDays, drawDate }}" />
+  <template is="filter-house" data="{{ selectedTags, searchTagCount, showProperty, defaultHouseImage, houseList, isLoadingHouse, hasNextPage, memberCardCode, cardImage }}" />
+  <template is="article" data="{{ title: '房源介绍', content: lotelInfo.introduce }}" />
+  <template is="article" data="{{ title: '周边', content: lotelInfo.peripheralIntroduction }}" />
+  <template is="article" data="{{ title: '交通', content: lotelInfo.trafficIntroduction }}" />
+  <template is="rule" data="{{ lotelInfo, timeLineList, currentStep, depositContent }}" />
+  <template is="footer" />
+  <picker-view-component
+    visible="{{ filterStatus }}"
+    bind:cancel="toggleFilterHouse"
+  >
+    <template is="filter-content" data="{{ isFullScreen, searchProperty }}" />
+  </picker-view-component>
+</view>
+
+<im-message
+    id="im-message"
+/>
+
+<auth-drawer-box 
+    id="auth-drawer-box"
+    initHide="true"
+    isCanCancel="{{ true }}"
+    bind:cancelEvent="signInCallback"
+/>
+<canvas-share-img
+  bind:canvasOver="onCanvasOver"
+  imageUrl="{{lotelInfo.photoUrls[0].imagePath}}"
+/>

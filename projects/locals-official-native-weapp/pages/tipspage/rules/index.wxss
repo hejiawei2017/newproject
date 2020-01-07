@@ -1,0 +1,9 @@
+.page{
+  padding: 0 40rpx;
+}
+.row{
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+  white-space: pre-wrap;
+  text-align: justify;
+}

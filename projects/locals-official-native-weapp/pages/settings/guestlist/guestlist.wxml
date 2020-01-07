@@ -1,0 +1,47 @@
+<wxs module="dateFr" src="../../../wxs/mine.wxs"></wxs>
+<view class="guestlist">
+    <view class="list" style="{{ isFullScreen ? 'margin-bottom: 50rpx' : ''}}">
+        <block
+            wx:if="{{ list && list.length > 0 }}"
+        >
+            <view 
+                class="guest-item"
+                wx:for="{{list}}"
+                wx:key="guestId"
+            >
+                <view 
+                    class="checkbox" 
+                    bindtap="checkboxChange" 
+                    wx:if="{{isOrder}}" 
+                    data-guest-id="{{ item.guestId }}"
+                >
+                    <image wx:if="{{ !item.checked }}" src="https://oss.localhome.cn/localhomeqy/guest-select2.png" />
+                    <image wx:else src="https://oss.localhome.cn/localhomeqy/guest-select.png" />
+                </view>
+                <view class="cont">
+                    <view class="name">{{item.name}}</view>
+                    <view class="cer">{{dateFr.cardType(item.cardType)}}<text class="value">{{item.cardNo}}</text></view>
+                    <view class="birth">手机号<text class="value">{{item.phone}}</text></view>
+                </view>
+                <view class="buttons">
+                    <view class="button-update" catchtap="navigateToAdd" data-id="{{item.guestId}}">
+                        <image mode="scaleToFill" src="https://oss.localhome.cn/localhomeqy/guest-write.png" />
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view wx:else class="empty-info" catch:tap="addmay">
+            <image class="empty-image" mode="widthFix" src="https://oss.localhome.cn/localhomeqy/empty-guest.png" />
+            <view class="empty-text">暂无入住人信息，快去<text>添加</text></view>
+        </view>
+    </view>
+    <view wx:if="{{isOrder}}" class="footer-container {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+        <button class="jump-add" type="default" bindtap="addmay">添加入住人</button>
+        <button formType="submit" type="warn" bindtap="confirmGuests">确定</button>
+    </view>
+</view>
+<image src="https://oss.localhome.cn/localhomeqy/guest-select.png" class="none" />
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

@@ -1,0 +1,23 @@
+<view class='tags-container'>
+    <view class='tags-hearder' wx:if="{{title !== ''}}">
+      <view class='tags-title'>{{title}}</view>
+      <view class='right-header'>
+        <slot name="right"></slot>
+      </view>
+    </view>
+    <view class='tags-list'>
+        <view wx:if="{{ loadingText && loading }}">
+            {{ loadingText }}
+        </view>
+        <block wx:else>
+          <view
+            catchtap="clickTag"
+            wx:for="{{list}}"
+            wx:key="{{index}}"
+            data-item="{{ item }}"
+          >
+              {{item.name ? item.name : item}}
+          </view>
+        </block>
+    </view>
+</view>

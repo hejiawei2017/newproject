@@ -1,0 +1,72 @@
+<!-- pages/activity/queen06-201903/index.wxml -->
+<view class="page">
+    <label class="checkCouponLabel">
+      <button class="entry tade" bindtap="checkCoupon"></button>
+    </label>
+    <view class="house-container">
+        <view class="house-tab" bindtap="changeTab">
+            <button class="{{activeItem==='item1'?'active':''}}" data-type="item1">浪漫情侣</button>
+            <button class="{{activeItem==='item2'?'active':''}}" data-type="item2">闺蜜美宿</button>
+            <button class="{{activeItem==='item3'?'active':''}}" data-type="item3">网红种草</button>
+            <button class="{{activeItem==='item4'?'active':''}}" data-type="item4">萌宠一族</button>
+        </view>
+        <view class="house-info">
+            <view class="house" wx:for="{{currentHouse}}" wx:key="{{item.id}}" bindtap="goHouse" data-house="{{item.id}}">
+                <image src="{{item.img}}" />
+                <text class="title">{{item.title}}</text>
+                <view class="house-price">
+                    <text class="label">女王价</text>
+                    <view class="price">
+                        <text>￥</text>
+                        {{item.price}}
+                    </view>
+                    <text class="standar-price">原价:￥{{item.standardPrice}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="rule">
+        <text class="label">活动时间: 3.8~3.29</text>
+        <view class="rule-li">
+            <view class="title">女王大礼</view>
+            <text class="info">
+                活动期间，每周送出1份女王大礼，中奖用户可兑换价值12500大牌女王护肤组合或等额现金，路客工作人员会在2个工作日内联系中奖者进行兑换。
+            </text>
+        </view>
+        <view class="rule-detail">
+            <view class="title">活动规则:</view>
+            <view class="text">
+                <text>1</text>
+                用户参与活动，即可获得1250元红包福利；
+            </view>
+            <view class="text">
+                <text>2</text>
+                用户成功邀请5名好友，100元满减券福利以及女王大礼抽奖机会三重福利；
+            </view>
+            <view class="text">
+                <text>3</text>
+                用户需要在1天时间内完成邀请，过期失效；
+            </view>
+            <view class="text">
+                <text>4</text>
+                活动不限新老用户
+            </view>
+        </view>
+    </view>
+    <view class="modal" wx:if="{{showCoupon}}">
+        <view class="container">
+            <image class="close" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/queen/close.png" bindtap="clothModal" />
+            <view class="title">女神~你来了</view>
+            <view class="sub-title">送你1250元红包福利</view>
+            <view class="content">
+                <image mode="widthFix" src="https://oss.localhome.cn/localhomeqy/queen/quan03.png" />
+                <image mode="widthFix" src="https://oss.localhome.cn/localhomeqy/queen/quan04.png" />
+                <image mode="widthFix" src="https://oss.localhome.cn/localhomeqy/queen/quan05.png" />
+                <image mode="widthFix" src="https://oss.localhome.cn/localhomeqy/queen/quan06.png" />
+                <button bindtap="goInvitation"></button>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 登录 -->
+<auth-drawer-box id="auth-drawer-box" initHide="{{true}}" bind:cancelEvent="_cancelEventFn" />

@@ -1,0 +1,22 @@
+<!--pages/housing/facilities/index.wxml-->
+<wxs src="../../../wxs/ImageUtils.wxs" module="imageUtils" />
+<view class="page">
+    <view class="section">
+      <!-- <view class="detail-title">服务与设施</view> -->
+      <view>
+        <block wx:for="{{houseSourceFacilitieList}}" wx:key="{{index}}" wx:if="{{item.facilitieList.length > 0}}">
+          <view class="facility-icons-title">{{item.categoryName}}</view>
+          <view class="facility-icons" >
+            <view class="facility-icon-item" 
+            wx:for="{{item.facilitieList}}"
+            wx:for-index="facilitieIndex" 
+            wx:for-item="facilitieItem"
+            wx:key="{{facilitieIndex}}">
+              <image mode="widthFix" src="{{imageUtils.processImage(facilitieItem.otherValue)}}"></image>
+              <text>{{facilitieItem.name}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+</view>

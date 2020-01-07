@@ -1,0 +1,22 @@
+<view class="page">
+    <view class="container">
+        <super-image 
+            class="success" 
+            src="http://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/upload/190218/BJHR9190218142732089.png" 
+        />
+        <view class="title">点评成功</view>
+        <view class="descript">20元优惠券已送达您的账户。</view>
+        <super-image 
+            class='coupon50' 
+            src='https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com/localhomeqy/comment-coupon.png'
+        />
+    </view>
+    <view class="footer {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+        <view class="footer-left" data-path="coupon" catchtap="navigateToPath">查看优惠券</view>
+        <view class="footer-right" data-path="index" catchtap="navigateToPath">返回首页</view>
+    </view>
+</view>
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

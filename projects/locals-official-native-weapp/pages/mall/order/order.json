@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText" : "填写订单",
+  "usingComponents": {
+    "permission": "/components/permission/index",
+    "activity-progress": "/components/activity-progress/index"
+  }
+}

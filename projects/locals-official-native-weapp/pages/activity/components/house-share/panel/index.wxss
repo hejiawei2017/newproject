@@ -1,0 +1,39 @@
+.panel {
+    margin: 30rpx 0;
+    box-sizing: border-box;
+}
+.panel .panel--header {
+    text-align: center;
+}
+
+.panel .panel--header .title {
+    display: inline-block;
+    width: auto;
+    font-size:36rpx;
+    font-weight:500;
+    color:rgba(253,129,117,1);
+    line-height:54rpx;
+    position: relative;
+}
+
+.panel .panel--header .title::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 27rpx;
+    left: -40rpx;
+    width:24rpx;
+    height:2rpx;
+    background: #FEAA99;
+}
+
+.panel .panel--header .title::after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 27rpx;
+    right: -40rpx;
+    width:24rpx;
+    height:2rpx;
+    background: #FEAA99;
+}

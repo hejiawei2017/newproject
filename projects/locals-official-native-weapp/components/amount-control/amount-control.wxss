@@ -1,0 +1,75 @@
+/*主容器*/  
+.stepper {  
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: space-between;
+}  
+.stepper .text {
+    font-size: 30rpx;
+}
+.stepper .control {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    font-size: 28rpx;
+    width: 261rpx;
+	height: 50rpx;
+	background-color: #f6f6f6;
+    border-radius: 25rpx;
+    padding: 1rpx 5rpx;
+    
+}
+/*加号和减号*/  
+.stepper .control .text {
+    line-height: 52rpx;  
+    text-align: center;
+}  
+/*数值*/  
+.stepper .control .number {
+    height: 52rpx; 
+    flex-grow: 1;
+    flex-basis: 60rpx; 
+    text-align: center;  
+    font-size: 28rpx;
+    color: #484848;
+}  
+/* 按钮 */
+.stepper .control .button {
+    flex-basis: 44rpx;
+    height: 44rpx;
+    line-height: 44rpx;
+    border-radius: 100%;
+    font-size: 28rpx;
+	letter-spacing: 1rpx;
+    color: #484848;
+    box-shadow: 0 0 10rpx rgb(187, 187, 187);
+}
+
+.stepper .control .minus-normal {
+    width: 44rpx;
+    height: 44rpx;
+    background: url(https://oss.localhome.cn/new_icon/minus1.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.stepper .control .minus-disabled {
+    width: 44rpx;
+    height: 44rpx;
+    background: url(https://oss.localhome.cn/new_icon/minus2.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.stepper .control .plus-normal {
+    width: 44rpx;
+    height: 44rpx;
+    background: url(https://oss.localhome.cn/new_icon/plus1.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.stepper .control .plus-disabled {
+    width: 44rpx;
+    height: 44rpx;
+    background: url(https://oss.localhome.cn/new_icon/plus2.png) no-repeat;
+    background-size: 100% 100%;
+}

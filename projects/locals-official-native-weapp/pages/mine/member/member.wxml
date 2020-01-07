@@ -1,0 +1,56 @@
+<view class="container">
+  <view class="container-inner">
+    <image class="top-bg" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/mine80/inner-bg.png" />
+    <view class="top">
+      <view class="up-rule">会员升级规则</view>
+      <view class="container-tab">
+        <view class="tabs-inner">
+          <tabs tabs="{{ tabs }}" isFixed="{{ false }}" bind:tabClick="tabClick" class="tabs">
+            <view class="wrap" slot="0">
+              <tabsInner hidden="{{activeIndex!=0}}" title='{{"最近一年内累计预订房晚>5或累计订单>2"}}' dataList='{{dataList}}'></tabsInner>
+            </view>
+            <view class="wrap" slot="1">
+              <tabsInner hidden="{{activeIndex!=1}}" title='{{"最近一年内累计预订房晚>20或累计订单>5"}}' dataList='{{dataList}}'></tabsInner>
+            </view>
+            <view class="wrap" slot="2">
+              <tabsInner hidden="{{activeIndex!=2}}" title='{{"最近一年内累计预订房晚>50或累计订单>15"}}' dataList='{{dataList}}'></tabsInner>
+            </view>
+          </tabs>
+        </view>
+      </view>
+    </view>
+    <view class="bottom">
+      <view class="bottom-inner">
+        <view class="bottom-heard">权益说明</view>
+        <view>
+          <view class="tips">权益介绍</view>
+          <view class="right-msg">1.现场接待：管家现场接待宾客入住；</view>
+          <view class="right-msg">2.延迟退房：延迟退房至当天下午两点；</view>
+          <view class="right-msg">3.行李寄存：推荐行李寄存点；</view>
+          <view class="right-msg">4.免费保洁：入住期间免费保洁1次；</view>
+          <view class="right-msg">5.折扣优惠：黑卡会员享受预订8.8折预订优惠；金卡会员享受9.2折预订优惠；银卡会员享受9.6折优惠</view>
+          <view class="right-msg">6.专属管家：24小时专属管家服务；</view>
+          <view class="right-msg">7.生日红包：生日当天可获得生日红包；</view>
+          <view class="right-msg">8.欢迎水果：入住当天享受欢迎水果，可联系管家使用</view>
+        </view>
+        <view>
+          <view class="tips">权益使用</view>
+          <view class="right-msg">1.点击【我的】-【点击兑换】按钮；</view>
+          <view class="right-msg">2.选择要使用权益的订单，仅限带入住的订单可选；</view>
+          <view class="right-msg">3.选择日期，仅限入住期间可选；</view>
+          <view class="right-msg">4.点击提交即可。</view>
+        </view>
+        <view>
+          <view class="tips">权益说明</view>
+          <view class="right-msg">1.会员权益包随会员等级变更而变更，会员升级可累加权益，如银卡升级金卡，银卡行李寄存还剩1次，则升级金卡后累计5次；</view>
+          <view class="right-msg">
+            2.会员降级回收原等级权益，不累计等级权益，发放低等级权益，如金卡降级银卡，金卡行李寄存还剩1次，则降级银卡后累计还是2次；
+          </view>
+          <view class="right-msg">3.会员权益包每人每种仅限派发1次；</view>
+          <view class="right-msg">4.会员到期后权益回收。</view>
+        </view>
+        <view class="bottom-footer">*本活动解释权归北京路客互联网科技有限公司所有</view>
+      </view>
+    </view>
+  </view>
+</view>

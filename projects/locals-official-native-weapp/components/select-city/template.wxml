@@ -1,0 +1,71 @@
+<wxs src="config.wxs" module="config" />
+
+<template name="china-area">
+  <block wx:if="{{list.length != 0 }}">
+    <scroll-view
+      class="list-scroll {{config.search?'top':''}}"
+      scroll-y="true"
+      scroll-into-view="{{jumpNum}}"
+      scroll-with-animation="{{ config.animation }}"
+    >
+      <!-- 我的位置  -->
+      <view wx:if="{{currentCity}}">
+        <view class='list-title'>当前</view>
+        <view class='list-horizontal relative'>
+          <view class='local-info'>
+            <icon class='icon-location' />
+            <view class='local-info-text' catchtap="goToCurrentLocal">
+              <view class='local-name'>{{ localName }}</view>
+              <view class='address'>{{ address }}</view>
+            </view>
+          </view>
+          <view class='absolute-right list-name' data-detail="{{currentCity}}" catchtap='locationMt'>
+            {{currentCity}}
+          </view>
+        </view>
+      </view>
+      <view id="{{'index'+index}}" wx:for="{{list}}" wx:key="key">
+        <view class='list-title'>{{item.title}}</view>
+        <view class='list-item {{index === 0 && config.horizontal && item.type === "hot" ? "list-horizontal" : ""}}'>
+          <view class='list-name {{ item.type !== "hot" && idx === 0 ? "no-margin-top" : "" }} {{(idx + 1) % 4 === 0 ? "no-margin-right" : ""}}' wx:for="{{item.item}}" wx:for-item="city" wx:for-index="idx" wx:key="city" data-detail="{{city}}" catchtap='detailMt'>
+            {{city.name}}
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view
+      class="list-right-wrapper list-right-wrapper-{{ area }} {{ isFullScreen ? 'bottom90rpx' : '' }}"
+      catchtouchmove="touchMoveIndex_{{ area }}"
+      catchtouchend="touchLeave"
+    >
+      <view
+        class="right-item {{ currentItem === index ? 'right-selected' : '' }}"
+        wx:for="{{rightArr}}"
+        wx:key="rightArr"
+        data-id="{{index}}"
+        data-area="{{ area }}"
+        catchtap='jumpMt'
+      >
+        {{rightArr[index]}}
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='nodata'>没有搜索到相关的数据哦</view>
+  </block>
+</template>
+
+<template name="foreign-area">
+  <view class="foreign__wrap">
+    <view 
+      wx:if="{{ foreignCity.length > 0 }}"
+      wx:for="{{ foreignCity }}"
+      wx:key="id"
+      class="foreign__list_item"
+      catch:tap="detailMt"
+      data-detail="{{item}}"
+    >
+      {{ item.name }}
+    </view>
+  </view>
+</template>

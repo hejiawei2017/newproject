@@ -1,0 +1,36 @@
+<wxs src="../../wxs/ImageUtils.wxs" module="imageUtils" />
+<wxs src="../../wxs/HouseUtils.wxs" module="houseUtils" />
+<import src="./template.wxml" />
+
+<view
+  catchtap="goToDetail"
+  class="content"
+>
+  <view class="like-wrap" catchtap="collection" data-id="{{ item.id }}">
+    <icon wx:if="{{ isShowCollection }}" class="{{ isFav ? 'icon-like-on' : 'icon-like-off' }}"  />
+  </view>
+  <view class="house-image">
+    <swiper 
+      imgUrls="{{imageUtils.processImageArray(item.houseImages, 'imagePath', '?x-oss-process=image/resize,w_700/quality,Q_100')}}"
+      mode="aspectFill" 
+      height="400rpx"
+      lazyLoad="{{ true }}"
+      indicatorDots="true"
+      indicatorDotsColumnStyle="bottom: 8rpx;"
+      dotItemStyle="margin-right: 8rpx;"
+    />
+    <!-- will delete  -->
+    <image wx:if="{{ isSummerSpecial && !isForeignCity }}" mode="aspectFill" class="xiaji-icon" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/guoqingtehui.png" />
+    <image wx:if="{{ isForeignCity }}" mode="aspectFill" class="xiaji-icon" src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/foreignTips.png" />
+      
+    <!-- will delete -->
+    <view class='bookedView' wx:if="{{item.booked}}">
+      <view class="bookedImg">当前日期无房</view>
+      <!-- <image src='https://oss.localhome.cn//localhomeqy/swiper/booked.png'></image> -->
+    </view>
+  </view>
+  <template 
+    is="{{ !isForeignCity ? 'house-info' : 'foreign-house-info' }}" 
+    data="{{ isForeignCity, haveCity, summerSpecialText, isSummerSpecial, isHasLogin, hideDesignImage, designByImage, designImage, item, cardText, memberCardInfo, houseSourceType, standardPrice, originPrice }}"
+  />
+</view>

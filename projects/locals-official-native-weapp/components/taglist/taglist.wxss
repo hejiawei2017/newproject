@@ -1,0 +1,23 @@
+.tags-container {
+  color: rgb(95, 95, 95);
+  font-size: 36rpx;
+}
+.tags-container .tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.tags-container .tags-list view {
+  background: rgb(248, 248, 248);
+  color: black;
+  padding: 5rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 14px;
+  margin: 0 10rpx 20rpx 10rpx;
+}
+.tags-hearder {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  font-size: 12px;
+}

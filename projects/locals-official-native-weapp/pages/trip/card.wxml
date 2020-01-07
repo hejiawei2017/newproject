@@ -1,0 +1,109 @@
+<wxs src="../../wxs/DateUtils.wxs" module="dateUtils" />
+<wxs src="../../wxs/ImageUtils.wxs" module="imageUtils" />
+<wxs src="../../wxs/HouseUtils.wxs" module="houseUtils" />
+
+<template name="complete">
+    <view catchtap="toDetails"
+          data-id="{{ item.bookingId }}"
+          data-status="{{ item.orderStatus }}"
+          hover-class="none"
+    >
+        <view class="trip-title">
+            <view class="trip-time">
+                {{item.cityName}}
+            </view>
+            <text wx:if="{{item.orderStatus === '1207' || item.orderStatus === '1107'}}"
+                  class="tirp-checkin"
+            >{{ dateUtils.dateDiff(nowTime, item.checkinDate) }}入住
+            </text>
+            <text wx:else class="tirp-checkin"
+            >{{ houseUtils.getOrderStatus(item.orderStatus) }}
+            </text>
+        </view>
+        <view class="trip-box">
+            <view class="trip-label">
+                <view class="trip-check">
+                    {{dateUtils.setTimeDate(item.checkinDate)}}-{{dateUtils.setTimeDate(item.checkoutDate)}}
+                </view>
+                <view class="trip-name">{{item.title}}</view>
+            </view>
+            <view class="trip-image">
+                <image mode="aspectFill"
+                       src="{{ imageUtils.processImage(item.imgPaths[0], '?x-oss-process=image/resize,w_600/quality,Q_100') }}">
+                </image>
+            </view>
+            <view class="trip-label"
+                  wx:if="{{item.orderStatus === '1207' || item.orderStatus === '1208' || item.orderStatus === '1107' || item.orderStatus === '1103'}}">
+                <!--订单状态在“待入住”、“入住中”、“预订已付”,且“当前时间”小于“开始砍价赢免单的截止时间”时，显示砍价活动的开始按钮-->
+                <view wx:if="{{item.bargainBtnType === 1}}" class="bargain-btn"
+                      data-id="{{ item.bookingId }}" catchtap="startBargain">
+                </view>
+                <view wx:if="{{item.bargainBtnType === 2}}" class="bargain-view-btn"
+                      data-id="{{ item.bookingId }}" catchtap="viewBargain">
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<template name="simplify">
+    <view
+      catchtap="toDetails"
+      data-id="{{ item.bookingId }}"
+      data-status="{{ item.orderStatus }}"
+      hover-class="none"
+      class="simplify-container"
+    >
+        <view class="trip-title">
+            <view class="trip-time">
+                {{item.cityName}}
+            </view>
+            <text class="tirp-checkin">{{ houseUtils.getOrderStatus(item.orderStatus) }}</text>
+            <view
+                wx:if="{{ item.canComment }}"
+                class="trip-evaluate"
+                data-bookingid="{{item.bookingId}}"
+                catchtap="evaluate"
+            >点评后可获20元优惠券</view>
+            <view
+                wx:if="{{item.orderStatus == '1104' && !item.canComment }}" class="trip-evaluate-no"
+            >已点评</view>
+        </view>
+        <view class="{{item.orderStatus === '1104' && item.bargainBtnType === 2?'movable-area':'movable-area-sm'}}">
+            <movableArea
+                    listData="{{item}}"
+                    x="{{item.x}}"
+                    index="{{index}}"
+                    AreaWidth="614rpx"
+                    ViewWidth="740rpx"
+                    AreaHeight="{{item.orderStatus === '1104' && item.bargainBtnType === 2?'310rpx':'230rpx'}}"
+                    ViewHeight="{{item.orderStatus === '1104' && item.bargainBtnType === 2?'310rpx':'230rpx'}}"
+                    bind:updataMovable='onUpdataMovable'
+            >
+                <view class="trip-box movable-view">
+                    <view class="trip-box-wrap">
+                        <view class="trip-image">
+                            <image mode="aspectFill"
+                                   src="{{ imageUtils.processImage(item.imgPaths[0], '?x-oss-process=image/resize,w_300/quality,Q_100') }}"></image>
+                        </view>
+                        <view class="trip-text">
+                            <view class="trip-check">
+                                {{dateUtils.setTimeDate(item.checkinDate)}}-{{dateUtils.setMonthDayDate(item.checkoutDate,
+                                '/', true)}}
+                            </view>
+                            <view class="trip-name-two-line">{{item.title}}</view>
+                        </view>
+                        <view class="trip-del" catchtap="delTrip" data-id="{{item.bookingId}}" data-index="{{index}}">
+                            <image src="https://oss.localhome.cn//localhomeqy/invoice_icon/ashbin.png"/>
+                        </view>
+                    </view>
+                    <!--参与了砍价活动的订单，显示“查看活动进度”按钮-->
+                    <view class="bargain-view-btn-sm"
+                          data-id="{{ item.bookingId }}"
+                          catchtap="viewBargain">
+                    </view>
+                </view>
+            </movableArea>
+        </view>
+    </view>
+</template>

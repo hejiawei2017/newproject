@@ -1,0 +1,18 @@
+<view class="tab-inner">
+  <view class="tab-item">
+    <view class="head">
+      <span></span>
+      等级条件
+    </view>
+    <view class="tip">{{title}}</view>
+  </view>
+  <view class="tab-item">
+    <view class="head">
+      <span></span>
+      等级特权
+    </view>
+    <view class="menber-right-container">
+      <menber-rgiht dataList="{{dataList}}"></menber-rgiht>
+    </view>
+  </view>
+</view>

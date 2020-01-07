@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText" : "我的优惠券",
+  "usingComponents": {
+    "im-message": "/components/im-message/im-message",
+    "tabs": "/components/tabs/index",
+    "coupon": "/components/coupon-card/index",
+    "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box",
+    "underscore": "/components/underscore/index"
+  },
+  "enablePullDownRefresh": true
+}

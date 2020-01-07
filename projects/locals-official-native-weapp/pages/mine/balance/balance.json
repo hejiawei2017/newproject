@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "余额",
+    "usingComponents": {
+        "im-message": "/components/im-message/im-message",
+        "search":"/components/search/search",
+        "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box"
+    }
+}

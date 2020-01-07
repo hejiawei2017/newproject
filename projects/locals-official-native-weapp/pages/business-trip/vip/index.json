@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText" : "商务VIP",
+  "navigationBarBackgroundColor": "#1C1C1C",
+  "backgroundTextStyle": "light",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#1C1C1C",
+  "usingComponents": {
+    "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box",
+    "tab": "../components/tab/index"
+  }
+}

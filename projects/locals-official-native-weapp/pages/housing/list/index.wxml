@@ -1,0 +1,181 @@
+<wxs src="../../../wxs/ImageUtils.wxs" module="imageUtils" />
+<wxs src="../../../wxs/DateUtils.wxs" module="dateUtils" />
+<!-- 搜索栏 -->
+<view id="houseHeader" animation="{{ headerAnimationData }}" class="house-header">
+  <block>
+    <search-component
+      value="{{ keyword }}" 
+      catchtap="bindSearchKeyword"
+      bind:input="inputTyping"
+      bind:clean="cleanInput"
+      class='search' 
+      disabled="{{ true }}"
+      isShowMap="{{ !isForeignCity }}"
+      placeholder="关键字/位置/景点"
+    />
+  </block>
+  <view class="search-type-warp {{ isForeignCity ? 'space-around' : '' }}">
+    <view 
+      class='item' 
+      catchtap='bindDateSelectTap'
+      wx:if="{{ searchStartDate || searchEndDate }}"
+    >
+        {{ dateUtils.setMonthDayDate(searchStartDate) }}-{{ dateUtils.setMonthDayDate(searchEndDate) }}
+    </view>
+    <view class='item' catchtap='openSortSearch'>{{ sortLabel }}</view>
+    <view wx:if="{{ !isForeignCity }}" class='item scope' catchtap='openPoisSearch'>{{ poiName }}</view>
+    <view
+      class="item {{ changeTimes > 0 ? 'active' : '' }}" 
+      catchtap='openScreenSearch'
+    >筛选<block wx:if="{{ changeTimes }}">∙{{ changeTimes }}</block></view>
+  </view>
+  <view class="navbar-view">
+    <view class="{{ showTagImg && !showMoreTag ? 'navbar-content' : 'navbar-content backWhite'}}">
+      <scroll-view wx:if="{{ !isForeignCity }}" scroll-x="true" class="navbar">
+        <view 
+          wx:if="{{ showMainTag || !item.isMain }}" 
+          wx:for="{{navTabs}}" 
+          wx:key="id"
+          class="navbar-tab-item {{ showTagImg && !showMoreTag ? 'transparent' : ''}} {{ item.selected ? 'active' : ''}} {{ !showTagImg && item.isMain ? 'main-style' : '' }}" 
+          data-category-type="{{ item.categoryType }}"
+          data-id="{{ item.id }}"
+          data-key="{{ index }}"
+          data-label="{{ item.label }}"
+          data-title="{{ item.label }}"
+          data-code="{{ item.code }}"
+          bindtap="swichNav"
+        >
+          <image wx:if="{{ item.isMain }}" class="hot-image" mode="aspectFill" src="https://oss.localhome.cn//localhomeqy/tag.png" />
+          {{item.label}}
+        </view>
+      </scroll-view>
+      <view class="styleTag navbar-tab-item {{ navTabs && showTagImg && !showMoreTag ? 'transparent' : ''}} {{isChooseTags ? 'styleTagActive':''}}" wx:if="{{ !isForeignCity}}" bindtap="showMoreTagFn">
+        <text>风格特色</text>
+        <image class="tagMore" wx:if="{{showTagImg && !isChooseTags}}" src="{{showMoreTag ? 'https://oss.localhome.cn//localhomeqy/houselist/3.png' : 'https://oss.localhome.cn//localhomeqy/houselist/3x.png'}}"></image>
+        <image class="tagMore" wx:elif="{{!showTagImg && isChooseTags}}" src="{{showMoreTag ? 'https://oss.localhome.cn//localhomeqy/houselist/2.png' : 'https://oss.localhome.cn//localhomeqy/houselist/2x.png'}}"></image>
+        <image class="tagMore" wx:else src="{{showMoreTag ? 'https://oss.localhome.cn//localhomeqy/houselist/1.png' : 'https://oss.localhome.cn//localhomeqy/houselist/1x.png'}}"></image>
+      </view> 
+      <view class="moreStyleTags" wx:if="{{showMoreTag}}">
+        <view 
+          wx:for="{{styleTags}}" 
+          wx:key="id"
+          class="navbar-tab-style {{ item.selected ? 'navbar-active' : ''}}" 
+          data-category-type="{{ item.categoryType }}"
+          data-id="{{ item.id }}"
+          data-key="{{ index }}"
+          data-label="{{ item.label }}"
+          data-title="{{ item.label }}"
+          data-code="{{ item.code }}"
+          bindtap="swichStyles"
+        >
+          {{item.label}}
+        </view>
+        <view class="TagsButs">
+          <view class="cleanTags" bindtap="cleanTags">清空</view>
+          <view class="goSearch" bindtap="goSearch">搜索房源</view>
+        </view>
+      </view>
+    </view>
+    <!-- 标签图片 -->
+    <view class="showtagMainImg" animation="{{ tagAnimationData }}">
+      <view class="tagMainImg {{ showTagImg && !showMoreTag && tagBgImg? 'height380' : 'height0'}}">
+        <image src="{{imageUtils.processImage(tagBgImg)}}" mode="aspectFill"></image>
+        <view class="tagMainImg-text" wx:if="{{showTagImg && !showMoreTag }}">
+          <text class="tagMainImg-label">{{tagBgLabel}}</text>
+          <text>{{tagBgDescribe}}</text>
+        </view>
+        <view class="shadow" wx:if="{{showTagImg && !showMoreTag }}"></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="blurModal" catchtouchmove="true" bind:tap="showMoreTagFn" wx:if="{{showMoreTag}}"></view>
+<!-- 列表信息 -->
+<view
+  class="page-scroll-view"
+>
+  <!-- 占位高度, 简化做法，只判断是否有navTabs -->
+  <view wx:if="{{ showTagImg }}" class="height550rpx"></view>
+  <view wx:elif="{{ !showTagImg }}" class="{{ !isForeignCity && navTabs.length > 0 ? 'height250rpx' : 'height180rpx' }}"></view>
+  <view wx:if="{{ isUpperLoading }}" class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">下拉刷新</view>
+  </view>
+  <!-- 侧滑栏 -->
+    <view wx:if="{{ !isLoading && ( isRequestError || emptyHouse ) }}" class="error-container">
+      <block wx:if="{{ isRequestError }}">
+        <view class="empty-house-list">
+          <icon class="icon-error" />
+          <text>网络不稳定</text>
+        </view>
+      </block>
+      <block wx:elif="{{ emptyHouse }}">
+        <view class="empty-house-list">
+          <icon class="icon-error" />
+          <text>非常抱歉，没有找到您所需要的房源</text>
+        </view>
+        <view wx:if="{{ houseList.length > 0 }}" class="recommend-text">推荐当前所在地优秀房源</view>
+      </block>
+    </view>
+
+    <view 
+      wx:if="{{ houseList.length }}"
+      wx:for="{{ houseList }}"
+      wx:key="{{ item.id }}"
+    >
+      <house-card 
+        item="{{ item }}"
+        isFav="{{ item.isFav }}"
+        isForeignCity="{{ item.isForeignCity }}"
+        haveCity="{{ cityName && cityName !== '海外民宿' ? true : false }}"
+        houseSourceType="{{ item.houseSourceType === 2 ? 'LOTEL' : 'NORMAL' }}"
+        isHasLogin="{{ isHasLogin }}"
+        isShowCardInfo="{{ true }}"
+        isShowCollection="{{ true }}" 
+        bind:login="bindlogin" 
+        bind:collection="bindCollection"
+      />
+      <block wx:if="{{ index === 1 }}">
+        <view wx:if="{{ !isHasClickScreenSearch }}" class="ad ad4" data-position="ad" catchtap="openListAd">
+        </view>
+      </block>
+      <block wx:if="{{ index === 2 }}">
+        <view wx:if="{{ !isHasClickScreenSearch }}" class="ad ad1" data-position="ad" catchtap="openScreenSearch">
+          <text>{{ ad1Text }}</text>
+        </view>
+      </block>
+      <block wx:if="{{ index === 6 && !isForeignCity}}">
+        <view wx:if="{{ !isHasClickScopeSearch }}" class="ad ad2" data-position="ad" catchtap='openPoisSearch'>
+          <text>{{ ad2Text }}</text>
+        </view>
+      </block>
+      <block wx:if="{{ index === 10 && !isForeignCity}}">
+        <view wx:if="{{ !isHasClickKeyword && !inputVal }}" class="ad ad3" data-position="ad" catchtap='bindSearchKeyword'>
+          <text>{{ ad3Text }}</text>
+        </view>
+      </block>
+    </view>
+    <block wx:if="{{ houseList.length > 0 && !emptyHouse }}">
+      <underscore wx:if="{{ !isHasNextPage }}" />
+      <view class="weui-loadmore" wx:else>
+        <view wx:if="{{ isLoading }}" class="weui-loading" />
+        <view class="weui-loadmore__tips">{{  isLoading ? '正在加载' : '上拉继续加载' }}</view>
+      </view>
+    </block>
+    <block wx:elif="{{ isLoading }}">
+      <view class="weui-loadmore">
+        <view class="weui-loading" />
+        <view class="weui-loadmore__tips">加载中</view>
+      </view>
+    </block>
+</view>
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>
+<auth-drawer-box 
+    id="auth-drawer-box"
+    initHide="true"
+    isCanCancel="{{ true }}"
+    bind:cancelEvent="signInCallback"
+/>

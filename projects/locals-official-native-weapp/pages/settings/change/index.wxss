@@ -1,0 +1,79 @@
+page{
+}
+.text{
+    padding:0 40rpx ;
+}
+.text text{
+    font-size:14px;
+    color:#999;
+    text-align: center;
+    line-height:50rpx;
+}
+.msg{
+    font-family: 'PingFangSC-Regular';
+    margin-top: 40rpx;
+    font-size:18px;
+    white-space: pre;
+    letter-spacing: 1px;
+	  color: #484848;
+}
+.inp{
+  margin-top: 60rpx;
+    width:98%;
+    font-size:14px;
+    line-height:32px;
+    border-bottom: 2rpx solid rgba(51, 51, 51, 0.1);
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    font-size: 17px;
+    font-family: 'PingFangSC-Regular';
+    letter-spacing: 1px;
+    color: #484848;
+}
+.inp text{
+  font-size: 13px;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+.saving{
+    padding:0 40rpx;
+    margin-top:143rpx;
+}
+.saving button{
+    height: 80rpx;
+    width:100%;
+    font-size:16px;
+    background: #e84358;
+    color:#fff;
+    letter-spacing: 32rpx;
+}
+
+.verify-code {
+    display: flex;
+    flex-flow: row nowrap; 
+    justify-content: space-between; 
+}
+
+.verify-code input {
+    flex: 1 0 60%;
+}
+
+.verify-code .verify-code-button {
+    flex: 1 0 30%;
+    font-size: 24rpx;
+    background: #e84358;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.member-code {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20rpx;
+    font-size: 28rpx;
+    color: #707070;
+    text-align: center;
+}

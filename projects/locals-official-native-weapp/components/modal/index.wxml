@@ -1,0 +1,67 @@
+<block wx:if="{{ !isUsingCover }}">
+  <view
+    wx:if="{{ visible }}"
+    class="modal {{ animation ? 'opacity-empty' : '' }}"
+    animation="{{ animationData }}"
+  >
+    <view
+      class='modal__mask'
+      catch:touchmove="maskTouchMove"
+      catch:tap="_bindcancel"
+    />
+    <view
+      wx:if="{{ visible }}"
+      class="modal__frame"
+      style="{{ frameStyle }}"
+      catch:touchmove="maskTouchMove"
+    >
+      <view class="modal__title" wx:if="{{ title }}">{{ title }}</view>
+      <view class="modal__content"><slot></slot></view>  
+      <view class="modal__bottons" wx:if="{{ !hideCancel || !hideOk }}">
+        <view
+          wx:if="{{ !hideCancel }}"
+          class="modal__botton modal__botton_cancel"
+          catchtap="_bindcancel" 
+        >{{ cancelText }}</view>
+        <view
+          wx:if="{{ !hideOk }}"
+          class="modal__botton modal__botton_ok"
+          catchtap="_bindconfirm"
+        >{{ okText }}</view>
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <cover-view
+    wx:if="{{ visible }}"
+    class="modal modal__cover-view"
+  >
+    <cover-view
+      class='modal__mask'
+      catch:touchmove="maskTouchMove"
+      catch:tap="_bindcancel"
+    />
+    <cover-view
+      wx:if="{{ !visible }}"
+      class="modal__frame"
+      style="{{ frameStyle }}"
+      catch:touchmove="maskTouchMove"
+    >
+      <cover-view class="modal__title" wx:if="{{ title }}">{{ title }}</cover-view>
+      <cover-view class="modal__content"><slot></slot></cover-view>  
+      <cover-view class="modal__bottons">
+        <view
+          wx:if="{{ !hideCancel }}"
+          class="modal__botton modal__botton_cancel"
+          catchtap="_bindcancel" 
+        >{{ cancelText }}</view>
+        <view
+          wx:if="{{ !hideOk }}"
+          class="modal__botton modal__botton_ok"
+          catchtap="_bindconfirm"
+        >{{ okText }}</view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+</block>

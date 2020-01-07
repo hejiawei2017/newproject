@@ -1,0 +1,44 @@
+<import src="./invoice-type.wxml" />
+<import src="./invoice-common.wxml" />
+<import src="./invoice-dedicated.wxml" />
+<view class='fillin-invoice'>
+  <view class='fillin-invoice-navbar' bindtap='jumpToAdd'>
+    <text>新增发票抬头</text>
+  </view>
+  <view wx:if="{{!showDetail}}" class='fillin-invoice-common'>
+    <block wx:for="{{listData}}" wx:key="{{index}}">
+      <view class='fillin-invoice-block' bindtap='chooseInvoiceId' data-data='{{item}}'>
+        <text class='invoiceType specialty-invoice' wx:if="{{item.invoiceType === 3}}">专票</text>
+        <text class='invoiceType' wx:else>普票</text>
+        <text class='fillin-invoice-title'>{{item.titleName}}</text>
+        <view class='fillin-invoice-btns'>
+          <image wx:if="{{invoiceTitleData.id === item.id}}" src="https://oss.localhome.cn//localhomeqy/invoice_icon/select.png" />
+          <image wx:else src="https://oss.localhome.cn//localhomeqy/invoice_icon/select2.png" />
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{!listData || listData.length === 0}}" class='noListData'>暂无发票抬头，请新增发票抬头！</view>
+  </view>
+  <view wx:if="{{showDetail}}">
+    <view class='fillin-invoice-common' bindtap='changeInvoice'>
+      <view class='fillin-invoice-block'>
+        <text class='invoiceType specialty-invoice' wx:if="{{invoiceTitleData.invoiceType === 3}}">专票</text>
+        <text class='invoiceType' wx:else>普票</text>
+        <text class='fillin-invoice-title'>{{invoiceTitleData.titleName}}</text>
+        <view class='fillin-invoice-btns'>
+          <image src="https://oss.localhome.cn//localhomeqy/invoice_icon/select.png" />
+        </view>
+      </view>
+    </view>
+    <template wx:if="{{invoiceTitleData.invoiceType === 1}}" is="invoiceCommon" data="{{invoiceData,invoiceTitleData}}" />
+    <template wx:if="{{invoiceTitleData.invoiceType === 3}}" is="invoiceDedicated" data="{{invoiceData,invoiceTitleData}}" />
+  </view>
+  <view class="invoice-confirm {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+    <view class="invoice-confirm-cash">
+        <text class="invoice-confirm-tip">服务费(总额6%)</text>
+        <text class="">￥{{invoiceData.invoiceServicePrice}}</text>
+    </view>
+    <view wx:if="{{invoiceTitleData && invoiceTitleData.id}}" bindtap="confirm" class="invoice-confirm-confirm">确认</view>
+    <view wx:else class="invoice-confirm-confirm nochoose">确认</view>
+  </view>
+</view>

@@ -1,0 +1,46 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.modal .mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.modal .modal-view {
+  position: absolute;
+  min-width: 60%;
+  min-height: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  /* background: white; */
+  z-index: 10;
+  /* border-radius: 10px; */
+}
+
+.modal .modal-view .close {
+  position: absolute;
+  box-sizing: border-box;
+  width: 72px;
+  height: 72px;
+  line-height: 62px;
+  left: 50%;
+  bottom: -130px;
+  transform: translateX(-50%);
+  border: 2px solid white;
+  border-radius: 100%;
+  color: white;
+  font-size: 50px;
+  text-align: center;
+}

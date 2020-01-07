@@ -1,0 +1,71 @@
+<import src="./template.wxml" />
+<view class="page">
+  <template is="float-tabs" data="{{ tabs, isShowTab }}" />
+  <template is="subscript" data="{{ isFollow }}" />
+  <view class="landlord-info">
+    <super-image 
+      binderror="avatarError" 
+      data-type="landlord-avatar" 
+      defaultImage="{{ defaultAvatar }}"
+      mode="aspectFill" 
+      class="avatar" 
+      src="{{ houseOwner.avatar }}" 
+    />
+    <view class="name">{{ houseOwner.name || '房东' }} | {{ houseOwner.label || '自由职业' }}</view>
+    <view class="certification">
+      <view>已实名认证</view>
+      <super-image src="http://oss.localhome.cn/upload/190108/B5UXN190108170423904.png" />
+    </view>
+    <view class="comment-container" catch:tap="navigateToAllComment">
+      <view class="score">
+        <view>
+          <view>{{ avgPoint }}</view>
+          <view>分</view>
+        </view>
+        <stars value="{{ avgPoint }}" />
+      </view>
+      <view class="comment-count">
+        <view class="count"><text>{{ numbersOfComment }}条</text><text>点评</text></view>
+        <super-image class="arrow" src="http://oss.localhome.cn/upload/190108/XHH3Y190108173043330.png" />
+      </view>
+    </view>
+    <view class="introduce" wx:if="{{ houseOwner.introduce }}">
+      {{ houseOwner.introduce }}
+    </view>
+  </view>
+  <view wx:if="{{ houseList && houseList.length }}" class="container house-container">
+    <view class="title">可预订房源 {{ houseCount }}</view>
+    <template 
+      wx:for="{{ houseList }}" 
+      wx:key="{{ item.id }}"
+      wx:item="item"
+      is="house-info"
+      data="{{ item, defaultHouseImage }}"
+    />
+  </view>
+  <view class="container comment-list-container">
+    <view class="title" catch:tap="navigateToAllComment">
+      <view>{{ avgPoint }}分 | {{ numbersOfComment }}条评论</view>
+      <stars value="{{ avgPoint }}" />
+    </view>
+    <template 
+      wx:for="{{ comments }}" 
+      wx:key="{{ item.id }}"
+      wx:item="item"
+      is="comment-info"
+      data="{{ item, defaultAvatar }}"
+    />
+  </view>
+</view>
+
+<auth-drawer-box 
+    id="auth-drawer-box"
+    initHide="{{ true }}"
+    isCanCancel="{{ true }}"
+    bind:cancelEvent="signInCallback"
+/>
+
+<im-message
+    id="im-message"
+    noAttached='{{false}}'
+/>

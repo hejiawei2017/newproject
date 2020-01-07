@@ -1,0 +1,83 @@
+<template name="emailConsigneeInfo">
+    <view class="form-box">
+        <text class="h2">收件信息</text>
+        <view class="form-item">
+            <text>电子邮件</text>
+            <input type="text" placeholder="必填，接收电子发票的邮箱" data-type="email" value="{{email}}" bindinput="changeData"/>
+        </view>
+        <view class="form-item">
+            <text>联系电话</text>
+            <input type="number" placeholder="必填，接收发票通知的手机号" data-type="phoneNumber" value="{{phoneNumber}}" bindinput="changeData"/>
+        </view>
+    </view>
+</template>
+
+<template name="paperyConsigneeInfo">
+    <view class="form-box">
+        <text class="h2">收件信息</text>
+        <view class="form-item">
+            <text>收件人姓名</text>
+            <input type="text" placeholder="必填，接收发票通知的姓名" data-type="username" value="{{username}}" bindinput="changeData"/>
+        </view>
+        <view class="form-item">
+            <text>电子邮箱</text>
+            <input type="text" placeholder="选填，接收电子发票的邮箱" data-type="email" value="{{email}}" bindinput="changeData"/>
+        </view>
+        <view class="form-item">
+            <text>联系电话</text>
+            <input type="number" placeholder="必填，接收发票通知的手机号" data-type="phoneNumber" value="{{phoneNumber}}" bindinput="changeData"/>
+        </view>
+        <view class="form-item">
+            <text>所在地区</text>
+            <input type="text" placeholder="选填，省/市/区" />
+        </view>
+        <view class="form-item">
+            <text>详细地址</text>
+            <input type="text" placeholder="必填，寄送的详细地址" data-type="address" value="{{address}}" bindinput="changeData"/>
+        </view>
+    </view>
+</template>
+
+<template name="specialConsigneeInfo">
+    <view class="form-box">
+        <text class="h2">收件信息</text>
+        <view class="form-item">
+            <text>收件人姓名</text>
+            <input type="text" placeholder="必填，接收发票通知的姓名" data-type="username" value="{{username}}" bindinput="changeData"/>
+        </view>
+        <view class="form-item">
+            <text>联系电话</text>
+            <input type="number" placeholder="必填，接收发票通知的手机号" data-type="phoneNumber" value="{{phoneNumber}}" bindinput="changeData"/>
+        </view>
+        <view class="form-item">
+            <text>详细地址</text>
+            <input type="text" placeholder="必填，寄送的详细地址" data-type="address" value="{{address}}" bindinput="changeData"/>
+        </view>
+    </view>
+</template>
+
+<template name="specialinvoiceContent">
+    <view class="form-box">
+        <view class="form-item">
+            <text>发票内容</text>
+            <text>住宿服务费</text>
+        </view>
+    </view>
+</template>
+
+<template name="invoiceContent">
+    <view class="form-box">
+        <view class="form-item">
+            <text>发票内容</text>
+            <text>住宿服务费</text>
+        </view>
+        <view class="form-item">
+            <text>发票金额</text>
+            <text>(含服务费，可报销)<text class="money">￥106.00</text></text>
+        </view>
+        <view class="form-item">
+            <text>备注</text>
+            <input type="text" placeholder="选填，若您有额外的要求" />
+        </view>
+    </view>
+</template>

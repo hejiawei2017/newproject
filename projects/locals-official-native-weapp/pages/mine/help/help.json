@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "帮助",
+  "usingComponents": {
+    "im-message": "/components/im-message/im-message"
+  }
+}

@@ -1,0 +1,80 @@
+<wxs src="../../wxs/DateUtils.wxs" module="dateUtils" />
+
+<view hidden="{{ !isShowView }}" class="wrap {{ isFullScreen ? 'padding-bottom-100rpx' : '' }}">
+    <view class='date-select-container'>
+        <view class="layout-flex row layout-header">
+            <view class='start-date' >
+                <text clsas='date-text'>入住日期</text>
+                <view class='date'>
+                    <text class='date-color' wx:if="{{ startDate }}">{{ dateUtils.setCharMonthDayDate(startDate) }} </text>
+                </view>
+            </view>
+            
+                <text class="days">{{ checkinDays || 0 }}晚</text>
+            
+            <view class='end-date'>
+                <text clsas='date-text'>退房日期</text>
+                <view class='date'>
+                    <text class='date-color' wx:if="{{ endDate }}">{{ dateUtils.setCharMonthDayDate(endDate) }} </text>
+                </view>
+            </view>
+        </view>
+        <view class="layout-flex row week-container">
+            <text class="date-week" style="width:{{systemInfo.windowWidth/7-10}}px;height:20px" wx:for="{{weekStr}}" wx:key="{{index}}" >
+                 <text>{{item}}</text>
+            </text>
+        </view>
+    </view>
+    <view style="margin-top:112px"></view>
+    <view class="month-item" wx:for="{{dateList}}" wx:key="{{dateItem.id}}" wx:for-item="dateItem">
+        <view class="date-year-month">{{dateItem.year}}年{{dateItem.month}}月</view>
+        <view class="layout-flex row border-bottom">
+            <view
+                class="date-day {{item.class}}"
+                style="flex-basis:{{systemInfo.windowWidth/7-10}}px;height:{{systemInfo.windowWidth/7-10}}px;"
+                data-year="{{dateItem.year}}"
+                data-month="{{dateItem.month}}"
+                data-day="{{item.day}}"
+                data-id="{{item.id}}"
+                data-stock="{{item.stock}}"
+                data-is-open="{{item.isOpen}}"
+                data-ban="{{item.ban}}"
+                data-is-padding="{{item.isPadding}}"
+                data-room-price="{{item.roomPrice}}"
+                catchtap="onPressDate"
+                wx:for="{{dateItem.days}}" wx:key="{{item.id}}"
+                hover-class="hover"
+            >
+                <text class="{{ item.special && !isShowCaledarDetail ? 'special' : ''}}" style="color:{{ !isShowCaledarDetail && calendarData[item.id] && startDate !== item.id && endDate !== item.id ? calendarData[item.id].time_color : ''}}">
+                    <block wx:if="{{ isShowCaledarDetail }}">{{ !item.isPadding ? item.day : '' }}</block>
+                    <block wx:else>{{ 
+                        !item.isPadding ? 
+                            startDate === item.id ? 
+                                item.day 
+                                : endDate === item.id ? 
+                                    '退房' 
+                                    : item.day 
+                            : '' 
+                    }}</block>
+                </text>
+                <text wx:if="{{ !isShowCaledarDetail && calendarData[item.id] }}" class="room-price">
+                  <text style="color:{{startDate !== item.id && endDate !== item.id ? calendarData[item.id].color : ''}}">{{calendarData[item.id].show_name}}</text>
+                </text>
+                <text  wx:if="{{ isShowCaledarDetail }}" class="room-price">
+                    <block wx:if="{{ item.roomPrice > 0 }}">{{ 
+                        item.stock < 1 || !item.isOpen
+                            ? '无房'
+                            : item.roomPrice > 0 ? '¥' + item.roomPrice : '' 
+                    }}</block>
+                    <block wx:elif="{{ startDate === item.id }}">入住</block>
+                    <block wx:elif="{{ endDate === item.id }}">退房</block>
+                </text>
+            </view>
+        </view>
+    </view>
+    <form bindsubmit="submit">
+        <view class="footer {{ isFullScreen ? 'full-screen-bottom' : ''}}">
+        <button formType="submit">保存</button>
+        </view>
+    </form>
+</view>

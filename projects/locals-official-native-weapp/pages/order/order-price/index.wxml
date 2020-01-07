@@ -1,0 +1,96 @@
+<!--pages/order/order-price/index.wxml-->
+<wxs src="../../../wxs/HouseUtils.wxs" module="houseUtils" />
+<wxs src="../../../wxs/DateUtils.wxs" module="dateUtils" />
+
+<view class="page">
+  <view class="section">
+    <view class="title">费用</view>
+    <view class="row">
+      <text class="label">房费{{nightPrices.length}}晚</text>
+      <text class="price"><text class="symbol">¥</text>{{ roomPrice }}</text>
+    </view>
+    <view 
+    class="date-price" 
+    wx:for="{{ nightPrices }}" 
+    wx:key="checkinDate"
+    >
+      <text>{{ dateUtils.setChineseDate(item.checkinDate) }}</text>
+      <text><text class="symbol">¥</text>{{ item.price }} x 1</text>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{clearPrice > 0 || deposit > 0 || buyMemberBagPrice > 0 }}">
+    <view class="title">其他</view>
+    <view class="row" wx:if="{{ clearPrice > 0 }}">
+      <view class="flex">
+        <text class="label">清洁费</text>
+        <image 
+        catchtap="showClearTip"
+        class="icons"  
+        src="https://oss.localhome.cn/localhomeqy/order-attention.png"></image>
+      </view>
+      <text class="price"><text class="symbol">¥</text>{{ clearPrice }}/次</text>
+    </view>
+    <view class="row" wx:if="{{ deposit > 0 }}">
+      <view class="flex">
+        <text class="label">保证金</text>
+        <text class="tips">退房后24小时内原路退回</text>
+        <image 
+        catchtap="showDepositTip"
+        class="icons"  
+        src="https://oss.localhome.cn/localhomeqy/order-attention.png"></image>
+      </view>
+      <text class="price"><text class="symbol">¥</text>{{ deposit }}</text>
+    </view>
+    <view class="row" wx:if="{{ buyMemberBagPrice > 0 }}">
+      <text class="label">{{buyMemberBagText}}</text>
+      <text class="price">
+        <text class="symbol">¥</text>{{ buyMemberBagPrice }}
+      </text>
+    </view>
+    <!-- <view class="row">
+      <view class="flex">
+        <text class="label">50万住宿意外险</text>
+        <image 
+        catchtap="toInsurance"
+        class="icons"  
+        src="https://oss.localhome.cn/localhomeqy/order-attention.png"></image>
+      </view>
+      <view>
+        <text class="price-delete"><text class="symbol">¥</text>{{ accidentAmountTotal }}</text>
+        <text class="price price-color"><text class="symbol">¥</text>0</text>
+      </view>
+    </view> -->
+  </view>
+
+  <view class="section" wx:if="{{ couponAmount > 0 || discountAmount > 0 }}">
+    <view class="title">优惠</view>
+    <view class="row" wx:if="{{ couponAmount > 0 }}">
+      <text class="label">{{ couponName }}</text>
+      <text 
+        class="price price-color"
+        ><text class="symbol">-¥</text>{{ couponAmount }}
+      </text>
+    </view>
+    <view 
+      class="row" 
+      wx:if="{{ discountAmount > 0 }}"
+    >
+      <text class="label">{{ buyMemberBagCode ? houseUtils.getMemberCardCouon(buyMemberBagCode) : houseUtils.getMemberCardCouon(memberBagCode)}}</text>
+      <text class="price price-color"><text class="symbol">-¥</text>{{discountAmount}}</text>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{useCash && useCashMoney > 0}}">
+    <view class="title">储值支付</view>
+    <view class="row">
+      <text class="label">使用储值余额支付</text>
+      <text class="price price-color"><text class="symbol">-¥</text>{{useCashMoney}}</text>
+    </view>
+  </view>
+
+  <view class="footer">
+    <text class="footer-label">线上支付</text>
+    <text class="footer-price"><text class="symbol">¥</text>{{payTotalPrice}}</text>
+  </view>
+</view>
