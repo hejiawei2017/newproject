@@ -1,0 +1,9 @@
+.fade-in-enter-active,
+.fade-in-leave-active {
+    opacity: 1;
+    transition: opacity .15s cubic-bezier(.645, .045, .355, 1);
+}
+.fade-in-enter,
+.fade-in-leave-active {
+    opacity: 0;
+}

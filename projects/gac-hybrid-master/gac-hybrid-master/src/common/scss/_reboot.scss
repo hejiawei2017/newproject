@@ -1,0 +1,26 @@
+html, body {
+    // width: 100%;
+    // min-width: 1200px;
+    // height: 100%;
+    margin: 0;
+    @include resp((
+        default: (
+            font-size: $--font-size-sm + px
+        ),
+        1200px: (
+            font-size: $--font-size-md + px
+        ),
+        1600px: (
+            font-size: $--font-size-lg + px
+        )
+    ));
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, button, textarea, p, blockquote, th, td, strong {
+    font-family: $--font-family;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    border: 0;
+}

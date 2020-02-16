@@ -1,0 +1,16 @@
+@mixin resp($map) {
+    @each $size, $styles in $map {
+        @if ($size == default) {
+            @each $param, $value in $styles {
+                #{$param}: $value;
+            }
+        }
+        @else {
+            @media (min-width: $size) {
+                @each $param, $value in $styles {
+                    #{$param}: $value;
+                }
+            }
+        }
+    }
+}
