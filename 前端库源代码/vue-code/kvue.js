@@ -15,6 +15,15 @@ class KVue {
     // new Watcher();
     // this.$data.foo.bar;
 
+    //在真实的vue的Compile中，字符串模版会先生成ast树，
+    //根据ast树上不同的节点，属性，事件，生成不同update函数，最终生成render调用字符串
+    //new Function 得到真正的渲染函数。数据发现变化后，会执行 Watcher 中的 _update 函数,
+    //_update 函数会执行这个渲染函数，输出一个新的 VNode 树形结构的数据。
+    //然后在调用 patch 函数，拿这个新的 VNode 与旧的 VNode 进行对比，
+    //只有发生了变化的节点才会被更新到真实 DOM 树上
+
+
+
     new Compile(options.el, this);
 
     // created执行
