@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <title>Locals路客精品民宿</title>
+</head>
+
+<body style="display:none">
+    <div class="invited">
+            <div class="btn">
+                 <button id="poster">保存海报到本地</button>
+                 <!-- <button id="share">分享给好友</button> -->
+            </div>
+           
+    </div>
+    <div class="post-wrap">
+            <!-- <img id="avatar" src="./images/二维码.png" alt="" id="qrcode" style="display:none"> -->
+            <img src="./images/share-post-v4.png" alt="" style="display:none" id="bg-img">
+            <canvas id="post" width="350" height="580" class="post-img" style="display:none"></canvas>
+            <img src="./images/share-post-v4.png" alt="" id="real-post" class="post-img">
+            <!-- <button>长按图片保存分享给好友</button> -->
+        </div>
+    <!-- 遮罩层 -->
+    <div class="mask" style="display:none">
+        <div></div>
+        <p>点击右上角<br>立刻邀请加入</p>
+    </div>
+    <!-- 活动结束 -->
+    <div class="end-mask">
+        <div class="content">
+        <h4>亲爱的路客粉丝，本期城市漫游活动已结束，谢谢你的参与</h4>
+        <br />
+        以下是前十名榜单：<br />
+        <br />
+        枫行sea 3812<br />
+        空心大哥 3225 <br />
+        钢牙小晓_晓 2918 <br />
+        Yogaki酱 2839 <br />
+        请叫我周大侠 2302 <br />
+        xiaoputao0121 2138 <br />
+        安爱念念 2009 <br />
+        潘子Jane 1972 <br />
+        哈呀阿啦蕾 1939 <br />
+        董强 1883<br />
+
+        <br />
+        中奖须知：
+        恭喜10位幸运朋友，请尽快与我们工作人员联系，并提供排名截图凭据，以兑换7晚民宿免费住奖励，谢谢。
+      </div>
+    </div>
+</body>
+<script>
+    var _mtac = { "performanceMonitor": 1 };
+    (function () {
+        var mta = document.createElement("script");
+        mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500621431");
+        mta.setAttribute("cid", "500621455");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+    })();
+</script>
+
+</html>

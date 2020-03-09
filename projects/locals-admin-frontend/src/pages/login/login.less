@@ -1,0 +1,54 @@
+.login-page{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../images/loginBg.png);
+    background-size: cover;
+    position: relative;
+    background-position: 50% center;
+    .ant-input-group-addon .anticon {
+        display: block;
+    }
+    form .ant-input-group, form .ant-input-group-wrappe{
+        display: inline-table;
+    }
+    .login-content{
+        position: absolute;
+        right: 100px;
+        top: 50%;
+        transform: translateY(-60%);
+        width: 300px;
+        .ivu-card {
+            font-size: 14px;
+            position: relative;
+            background: rgb(255, 255, 255);
+            border-radius: 4px;
+            transition: all 0.2s ease-in-out;
+        }
+        .ivu-card-head {
+            line-height: 1;
+            border-bottom: 1px solid rgb(233, 234, 236);
+            padding: 14px 16px;
+        }
+        .ivu-card-head-inner, .ivu-card-head p {
+            display: inline-block;
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            color: rgb(28, 36, 56);
+            font-weight: 700;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+    .ivu-card-body{
+        padding:6px 16px 16px;
+        .tips{
+            font-size: 12px;
+            text-align: center;
+            color: #c3c3c3;
+            
+        }
+    }
+}

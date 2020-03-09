@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv=”Cache-Control” content=”no-siteapp” />
+    <meta name=”HandheldFriendly” content=”true”>
+    <title>Locals路客精品民宿</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+</head>
+<body>
+    <div class="main">
+        <img src="./image/loginBg.png" alt="">
+        <ul>
+            <li>
+                <span class="label">
+                    房源编号
+                </span>
+                <div class="input">
+                    <input type="text" placeholder="请输入房源编号" class="houseNo" value=""><button class="submit">提交</button>
+                </div>
+            </li>
+            <li>
+                <span class="label">
+                    订单号
+                </span>
+                <div class="input">
+                    <input type="text" readonly="readonly" class="orderNo noButton" onclick="this.blur();">
+                </div>
+            </li>
+            <li class="copyButton">
+                <button id="copy-btn" data-clipboard-action="copy" data-clipboard-target=".orderNo">一键复制</button>
+            </li>
+            <li class="tips">
+                注：复制订单号，进入"果加安装"公众号提交安装单
+            </li> 
+        </ul>
+    </div>
+    <div class="tipsModal"></div>
+</body>
+<script>
+    (function() {
+        let submitButton = document.getElementsByClassName('submit')[0];
+        let api = 'http://ms.localhome.cn/api/3rd-plus'
+        submitButton.addEventListener('click',function(){
+            let houseNo = document.getElementsByClassName('houseNo')[0].value;
+            if(houseNo.length > 0){
+                pajax({
+                    method: "get",
+                    url: `${api}/third/go-lock/${houseNo}/order-add`}).then(function(e){
+                        console.log('e', typeof e, e)
+                        if(e.success){
+                            try {
+                                document.getElementsByClassName('orderNo')[0].value = e.data.data.order_no
+                                document.getElementById('copy-btn').className = 'click'
+                                var clipboard = new ClipboardJS('#copy-btn');
+                                clipboard.on('success', function(e) {
+                                    console.log(e);
+                                    showModal('复制成功')
+                                });
+                                clipboard.on('error', function(e) {
+                                    alert("浏览器不支持，请选中订单号复制！")
+                                });
+                            } catch (error) {
+                                console.log(error)
+                            }
+                        }else{
+                            alert(e.errorDetail)
+                        }
+                    }
+                )
+            }else{
+                
+            }
+        })
+        
+    })();
+    function showModal(text){
+        let tipsModal = document.getElementsByClassName('tipsModal')[0];
+        tipsModal.innerText = text
+        tipsModal.style.display = 'block';
+        setTimeout(()=>{
+            tipsModal.style.display = 'none';
+        },3000)
+    }
+    function pajax({
+        url= null,
+        method = 'get',
+        dataType = 'json',
+        async = true}){
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest()
+            xhr.open(method, url, async)
+            // xhr.responseType = dataType
+            xhr.onreadystatechange = () => {
+                if(!/^[23]\d{2}$/.test(xhr.status)) return
+                if(xhr.readyState === 4) {
+                    var result = xhr.responseText
+                    console.log('dataType', dataType, typeof result)
+                    switch(dataType.toUpperCase()){
+                        case 'TEXT':
+                        case 'HTML':
+                            break;
+                        case 'JSON':
+                            result = JSON.parse(result)
+                            break;
+                        case 'XML':
+                            result = xhr.responseXML
+                    }
+                    resolve(result)
+                }
+            }
+            xhr.onerror = (err) => {
+                reject(err)
+            }
+            xhr.send()
+        })
+    }
+ </script>
+</html>

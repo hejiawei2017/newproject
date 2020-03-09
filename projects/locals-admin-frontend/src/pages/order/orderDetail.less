@@ -1,0 +1,101 @@
+.order-card {
+    background: #fafafa;
+    margin-right: 12px;
+    margin-bottom: 6px;
+    padding: 12px;
+}
+
+.order-h1 {
+    font-size: 20px;
+    font-weight: 800;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.order-h2 {
+    font-size: 14px;
+    margin: 6px 0;
+    font-weight: 600;
+}
+
+.order-detail {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+
+.order-detail-progress {
+    
+    .order-detail-progress__wrapper {
+        display: flex;
+        min-height: 220px;
+    }
+    .order-detail-progress__left {
+        flex-basis: 70%;
+
+        .order-detail-progress__info {
+            overflow: hidden;
+    
+            > li {
+                width: 33.33%;
+                font-size: 12px;
+                font-weight: normal;
+                float: left;
+                margin-bottom: 8px;
+            }
+        }
+
+        .order-detail-progress__timeline {
+            margin: 28px auto 0 auto;
+            width: 600px;
+            height: 2px;
+
+            .buttons {
+                display: none;
+            }
+
+            .timeline-labels {
+                width: 100px;
+    
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .order-detail-progress__right {
+        flex-basis: 30%;
+        position: relative;
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .order-detail-handword__btn {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+        }
+        .order-detail-depositStatus__btns {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .order-log__btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+        }
+    }
+}

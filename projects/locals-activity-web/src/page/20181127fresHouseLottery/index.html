@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="//res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <title>Locals路客精品民宿</title>
+  </head>
+
+  <body style="display:none">
+    <div class="main">
+      <img class="logo" src="./images/locals.png" alt="" />
+      <img class="title" src="./images/title.png" alt="" />
+      <div class="lottery">
+        <div class="lottery-window">
+          <div class="lottery-card">
+            <img src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/20181127fresHouseLottery/index_begin001.png" alt="">
+            <img src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/20181127fresHouseLottery/index_begin001.png" alt="">
+            <!-- <img src="./images/index_begin001.png" alt=""> -->
+          </div>
+        </div>
+        <div class="lottery-bg">
+          <button class="btn" id="start">
+            <img
+              id="start-btn"
+              src="./images/btn2.png"
+              alt=""
+              style="display:none"
+            />
+          </button>
+          <div>
+              <p id="check-prize">查看我的奖品</p>
+              <p id="invite-post">邀请好友参与</p>
+          </div>
+        </div>
+      </div>
+      <div class="prize-info">
+        <p class="title">百分百中奖，马上抽免单</p>
+        <div class="content">
+          <p class="content-text1 prize-txt">
+            恭喜您，抽中了<span>￥</span><strong>50</strong>优惠劵
+            <!-- 恭喜您，抽中了路客定制卫衣一件 -->
+          </p>
+          <img id="" class="gouse prize-img" src="./images/invite_50.png" alt="" />
+          <div class="content-btn share">告诉朋友来抽奖</div>
+          <p class="content-text2">剩余抽奖机会 <span id="chance-left">0</span> 次</p>
+        </div>
+        <p class="rule">查看活动规则</p>
+      </div>
+      <div class="info">
+        <p class="info-title">已经有<span id="peoples">3486</span>人参与抽奖</p>
+        <div class="info-detail">
+          <p>最新中奖</p>
+          <ul id="info-list">
+            <!-- <li>
+              <div class="user">
+                <img src="./images/onepeace.png" alt="" /> <span>Harry Su</span>
+              </div>
+              <div class="prize">
+                <p>获得IphoneXS一台</p>
+                <p class="best">
+                  <img src="./images/best.png" alt="" />手气最佳
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="user">
+                <img src="./images/onepeace.png" alt="" /> <span>Harry Su</span>
+              </div>
+              <div class="prize"><p>获得IphoneXS一台</p></div>
+            </li>
+            <li>
+              <div class="user">
+                <img src="./images/onepeace.png" alt="" /> <span>Harry Su</span>
+              </div>
+              <div class="prize"><p>获得IphoneXS一台</p></div>
+            </li>
+            <li>
+              <div class="user">
+                <img src="./images/onepeace.png" alt="" /> <span>Harry Su</span>
+              </div>
+              <div class="prize"><p>获得IphoneXS一台</p></div>
+            </li>
+            <li>
+              <div class="user">
+                <img src="./images/onepeace.png" alt="" /> <span>Harry Su</span>
+              </div>
+              <div class="prize"><p>获得IphoneXS一台</p></div>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="prize-mask mask">
+      <div class="prize-detail">
+        <div class="prize-content">
+          <p class="prize-text">恭喜您，抽中了<span>￥</span><strong>50</strong>优惠劵</p>
+          <img class="pic1" src="./images/pic_bg.png" alt="" />
+          <img class="pic2 gouse prize-img" src="./images/invite_50.png" alt="" />
+          <ul>
+            <li>
+              分享后可以再抽一次，后面每个好友抽奖你都可以获得一次抽奖机会。
+            </li>
+            <li>
+              抽的越多,机会越高(重复抽到会员资格不会叠加时长，优惠劵累计面额最多300元)
+            </li>
+          </ul>
+        </div>
+        <div class="btn">
+          <span id="reject" class="reject">忍痛拒绝</span>
+          <span class="share">生成海报邀请朋好友来抽奖</span>
+        </div>
+      </div>
+    </div>
+    <div class="loading-mask">
+      <img src="./images/loading-bubbles.svg" alt="" />
+    </div>
+    <div class="my-prize-mask mask">
+      <div class="my-prize-content">
+        <div class="prize-info">
+          <p class="title">我的奖品</p>
+          <ul id="my-prize-list">
+            <li>您还没有中奖信息哦，快去邀请好友抽奖吧</li>
+          </ul>
+          <p class="chance-have">您还有<span id="chance-have">0</span>次抽奖机会</p>
+        </div>
+        <button id="hide">确定</button>
+      </div>
+    </div>
+    <!--
+      <div class="share"><img src="./images/loading-bubbles.svg" alt="" /></div>
+    -->
+    <div class="miniCode-mask mask">
+      <div class="index-code">
+        <p>路客精品民宿预定</p>
+        <img
+          src="https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/hotapp_index.png"
+          alt=""
+        />
+        <p>长按识别二维码<br />立即查看10000+套精品民宿，开启路客之旅～</p>
+      </div>
+    </div>
+    <div class="post-mask mask">
+      <img id="real-post" src="./images/picture.png" alt="">
+      <img id="bg-img" src="./images/picture.png" alt="" style="display:none" />
+      <canvas style="display:none" id="post" width="350" height="580" ></canvas>
+    </div>
+    <div class="rule-mask mask">
+      <div class="rule-info">
+        <h4>活动规则：</h4>
+        <ol>
+            <li>用户参与活动就可进行一次抽奖，分享后成功邀请1人参与，即可获得多一次抽奖机会，每天最多3次抽奖机会，当天抽奖机会用完不积累。</li>
+            <li>奖品包含：0元住民宿名额、路客金卡一年、50元优惠券、iPhone XS 256G、路客定制卫衣、100元现金红包。</li>
+            <li>奖品须知：
+              <p>
+                  1）抽中虚拟奖品（0元住民宿名额、路客金卡一年、50元优惠券）奖品即刻到账，奖品用于预订房源使用，不可兑现；<br>
+                  2）抽中实物奖品（iPhone XS 256G、路客定制卫衣），我们会在48小时内联系您发货，不可兑现；<br>
+                  3）抽中现金红包（100元现金红包），红包即刻到账。
+              </p>
+            </li>
+        </ol>
+        <p>*该活动的解释权在法律规定的范围内归北京路客互联网科技有限公司所有</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    var _mtac = { performanceMonitor: 1 };
+    (function() {
+      var mta = document.createElement("script");
+      mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+      mta.setAttribute("name", "MTAH5");
+      mta.setAttribute("sid", "500621431");
+      mta.setAttribute("cid", "500621455");
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(mta, s);
+    })();
+  </script>
+</html>

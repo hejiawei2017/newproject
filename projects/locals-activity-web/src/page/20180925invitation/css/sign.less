@@ -1,0 +1,204 @@
+html,body{width: 100%;background: #f4f4f4}
+.main{
+    width: 100%;
+    background: url(../image/图层3.png) no-repeat;
+    background-size: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 32px;
+
+    .header{
+        margin-top: 180px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #fff;
+
+        h2{
+            font-size: 90px;
+            font-weight: bold;
+            // text-shadow:1px 1px 1px #000;
+            
+        }
+        p{
+            font-size: 56px;
+            // font-weight: bold;
+            letter-spacing: 2px;
+            // text-shadow:1px 1px 1px #000;
+        }
+        div{
+            text-align: center;
+            font-size: 30px;
+            margin-top: 30px;
+            span{
+                padding: 0 50px;
+            }
+            .middle{
+                border-left: 1px solid #fff;
+                border-right: 1px solid #fff;
+            }
+        }
+    }
+    .success{
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 180px;
+        margin-top: 140px;
+        .suc-img{
+            width: 380px;
+            vertical-align: bottom;
+        }
+        p{
+            font-size: 36px;
+            text-align: center;
+            color: #fff;
+            margin-top: 30px;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+        }
+        .coupon-img{
+            width: 612px;
+            vertical-align: bottom;
+        }
+        button{
+            width: 400px;
+            padding: 20px;
+            text-align: center;
+            font-size: 30px;
+            line-height: 30px;
+            border-radius: 16px;
+            background: #fff;
+            color: #fd6780;
+            font-weight: bold;
+            letter-spacing: 2px;
+            outline: none;
+        }
+    }
+    .coupon{
+        // display: flex;
+        margin-top: 90px;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 180px;
+        font-size: 0;
+        transition: all 0.3s linear;
+        img{
+            width: 500px;
+            vertical-align: bottom;
+        }
+        button{
+            width: 380px;
+            padding: 20px;
+            text-align: center;
+            font-size: 30px;
+            line-height: 30px;
+            border-radius: 16px;
+            background: #fff;
+            color: #fd6780;
+            font-weight: bold;
+            letter-spacing: 2px;
+            outline: none;
+        }
+    }
+    .dialog{
+        display: none;
+        flex-direction: column;
+        margin-top: 90px;
+        width: 100%;
+        padding: 40px 60px 50px 60px;
+        background: rgba(255, 255, 255, .4);
+        border-radius: 16px;
+        margin-bottom: 40px;
+        font-size: 30px;
+        transition: all 0.5s linear;
+        input {
+            outline: none;
+            outline-style: none;
+            outline-width: 0px;
+            border: none;
+            text-shadow: none;
+            -webkit-appearance: none;
+            -webkit-user-select: text;
+            box-shadow: none;
+            font-size: 30px;
+            padding-left: 22px;
+        }
+        .phone{
+            width: 100%;
+            flex: 1;
+            display: flex;
+            input {
+                width: 100%;
+                height: 90px;
+                border-radius: 16px;
+                flex: 1;
+                margin-bottom:20px;
+            }
+        }
+        .authcode {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: 30px;
+
+            input {
+                height: 90px;
+                width: 60%;
+                border-radius: 16px;
+            }
+            button{
+                height: 90px;
+                width: 50%;
+                color: #fd4978;
+                margin-left: 16px;
+                border: none;
+                border-radius: 16px;
+                background-color: #fff;
+                font-size: 30px;
+                outline: none;
+            }
+        }
+        &>button{
+            height: 90px;
+            width: 100%;
+            color: #fff;
+            border-radius: 16px;
+            background-color: #fd4978;
+            border: 0;
+            letter-spacing: 2px;
+            font-size: 30px;
+            outline: none;
+        }
+    }
+    .desc{
+        background: rgba(255, 255, 255, .8);
+        border-radius: 16px;
+        padding: 50px;
+        font-size: 30px;
+        p{
+            font-size: 40px;
+            font-weight: bold;
+            padding-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        span{
+            line-height: 50px;
+            color: #3c3e3d;
+        }
+    }
+    .footer{
+        width: 100%;
+        margin-top: 60px;
+        
+        img{
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 0 10px rgba(55, 55, 55, .3);
+        }
+        
+    }
+}

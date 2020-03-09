@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>民宿投资人火热招募！</title>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color:#FFFFFF;
+			margin:0;
+			height:100%;
+		}
+	</style>
+	<!-- copy these lines to your document head: -->
+
+	<meta name="viewport" content="user-scalable=no, width=750" />
+	 <script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+   <script>
+  
+weShare();
+
+  //   微信分享方法
+  function weShare(nickName) {
+    var appId,
+      timestamp,
+      nonceStr,
+      signature = "";
+
+    nickName = nickName || "";
+    // console.log(invitationCode, 2222);
+    var shareUrl = window.location.href;
+    shareUrl = encodeURI(shareUrl);
+
+    var shareImg =
+      "https://oss.localhome.cn/localhomeqy/activity/touziren2019/share.jpg";
+
+    var desc = "邀请您查收2019年最hot投资攻略";
+
+    var title = "民宿投资人火热招募！";
+
+    var url = encodeURIComponent(location.href.split("#")[0].toString());
+
+    weChatShare();
+
+    async function weChatShare() {
+      // 获取参数
+      await getParams();
+      // 微信分享方法
+      share();
+    }
+    function getParams() {
+      return new Promise((resolve, reject) => {
+        $.ajax({
+          type: "POST",
+          url: "https://ms.localhome.cn/api/wechat/five-plus/config?url=" + url,
+          contentType: "application/json",
+          success: function(res) {
+            appId = res.data.appId;
+            timestamp = res.data.timestamp;
+            nonceStr = res.data.nonceStr;
+            signature = res.data.signature;
+            resolve(true);
+          },
+          fail: function() {
+            showMsg("服务器连接error", "bottom");
+            reject(false);
+          }
+        });
+      });
+    }
+    function share() {
+      wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: appId, // 必填，公众号的唯一标识
+        timestamp: timestamp, // 必填，生成签名的时间戳
+        nonceStr: nonceStr, // 必填，生成签名的随机串
+        signature: signature, // 必填，签名
+        jsApiList: [
+          "checkJsApi",
+          "hideMenuItems",
+          "showMenuItems",
+          "hideAllNonBaseMenuItem",
+          "showAllNonBaseMenuItem",
+          "hideOptionMenu",
+          "showOptionMenu",
+          "closeWindow",
+          "onMenuShareTimeline",
+          "onMenuShareAppMessage",
+          "previewImage",
+          "chooseImage",
+          "uploadImage",
+          "downloadImage"
+        ] // 必填，需要使用的JS接口列表
+      });
+      wx.ready(function() {
+        wx.onMenuShareTimeline({
+          title: title,
+          link: shareUrl,
+          imgUrl: shareImg,
+          success: function() {}
+        });
+        wx.onMenuShareAppMessage({
+          title: title,
+          desc: desc,
+          link: shareUrl,
+          imgUrl: shareImg, // 分享图标
+          type: "",
+          dataUrl: "",
+          success: function() {}
+        });
+      });
+    }
+  }
+
+	</script>
+
+	
+
+	<!-- end copy -->
+  </head>
+  <body>
+	<!-- copy these lines to your document: -->
+
+	<div id="index_hype_container" style="margin:auto;position:relative;width:750px;height:14522px;overflow:hidden;">
+		<script type="text/javascript" charset="utf-8" src="./index_hype_generated_script.js?56387"></script>
+	</div>
+
+	<!-- end copy -->
+  </body>
+</html>

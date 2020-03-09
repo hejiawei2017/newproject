@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Locals路客精品民宿</title>
+  <script src="./js/mui.min.js"></script>
+</head>
+
+<body>
+
+  <div id="refreshContainer" class="mui-scroll-wrapper">
+    <div class="mui-scroll">
+      <div class="list-wrapper">
+        <header class="bar-nav">
+          <h1 class="title">助理奖金报表</h1>
+        </header>
+        <div class="content-page">
+          <div class="content-header">
+            <i class="icon-human"></i>
+            <div class="assistant">助理房东 <span class="userName"></span></div>
+            <select id="changeDate" placeholder="月 / 日"></select>
+          </div>
+          <div class="card">
+            <div>
+              <div>
+                <p>￥ <span class="monthTotalReward">0</span></p>
+                <p><span class="monthText">六月</span>奖励（截止<span class="selectDate"></span>）<i class="icon-shuoming"></i>
+                </p>
+              </div>
+              <div>
+                <div>
+                  <p>￥ <span class="monthReward">0</span></p>
+                  月度奖励
+                  <i class="icon-month"></i>
+                </div>
+                <div>
+                  <p>￥ <span class="dailyTotalReward">0</span></p>
+                  累计日奖
+                  <i class="icon-day"></i>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p>￥ <span class="dailyReward">0</span></p>
+              <span class="selectDate"></span>日奖
+            </div>
+          </div>
+          <div class="monthlist">
+            <div class="item">
+              <div>
+                <div class="item-top">
+                  <i class="icon-month"></i>
+                  <div class="rewardName">月度好评奖</div>
+                  <div class="time">截止<span class="monthDate"></span></div>
+                </div>
+                <div class="item-body">
+                  <div class="content color666"></div>
+                  <!-- <div>
+                                            <p class="tips color666">奖励：500元/人</p>
+                                            <p class="orderNum">超过10单</p>
+                                        </div> -->
+                </div>
+                <p>
+                  <a class="download_detail mr10" data-index="praise_star_detail">下载评价明细</a>
+                  <a class="download_detail" data-index="center_channel_order_detail">下载中央渠道明细</a>
+                </p>
+              </div>
+              <div>
+                <p>¥ <span class="reward">0.00</span></p>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="item-top">
+                  <i class="icon-month"></i>
+                  <div class="rewardName">路客订单奖</div>
+                  <div class="time">截止<span class="monthDate"></span></div>
+                </div>
+                <div class="item-body">
+                  <div class="content color666"></div>
+                  <!-- <div>
+                                            <p class="tips color666">奖励：500元/人</p>
+                                            <p class="orderNum">超过10单</p>
+                                        </div> -->
+                </div>
+                <p>
+                  <a class="download_detail mr10" data-index="locals_channel_order_detail">下载路客订单明细</a>
+                  <a class="download_detail" data-index="full_month_house_detail">下载满月房源明细</a>
+                </p>
+              </div>
+              <div>
+                <p>¥ <span class="reward">0.00</span></p>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="item-top">
+                  <i class="icon-month"></i>
+                  <div class="rewardName">月入住率奖</div>
+                  <div class="time">截止<span class="monthDate"></span></div>
+                </div>
+                <div class="item-body">
+                  <div class="content color666"></div>
+                  <!-- <div>
+                                            <p class="tips color666">奖励：500元/人</p>
+                                            <p class="orderNum">超过10单</p>
+                                        </div> -->
+                </div>
+                <p>
+                  <a class="download_detail mr10" data-index="check_in_dataDetail">下载入住明细</a>
+                  <a class="download_detail" data-index="full_month_house_detail">下载满月房源明细</a>
+                </p>
+              </div>
+              <div>
+                <p>¥ <span class="reward">0.00</span></p>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="item-top">
+                  <i class="icon-month"></i>
+                  <div class="rewardName">当月重点工作奖</div>
+                  <div class="time">截止<span class="monthDate"></span></div>
+                </div>
+                <div class="item-body">
+                  <div class="content color666"></div>
+                  <!-- <div>
+                                            <p class="tips color666">奖励：500元/人</p>
+                                            <p class="orderNum">超过10单</p>
+                                        </div> -->
+                </div>
+              </div>
+              <div>
+                <p>¥ <span class="reward">0.00</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="daylist"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="modalTpis">
+    <div class="modal-scroll">
+      <div class="list-wrapper">
+        <div class="modal-title">计算规则说明</div>
+        <div class="modal-sub-title">月奖</div>
+        <div class="modal-item">
+          <div class="modal-title2">
+            一、月度中央渠道好评奖
+          </div>
+          <div class="table">
+            <table border="" cellspacing="" cellpadding="">
+              <tr>
+                <th>条件</th>
+                <th width="44.5%">金额</th>
+              </tr>
+              <tr>
+                <td>评价率x≥50%且好评率y≥90%</td>
+                <td>奖励20元/单（中央渠道总订单）</td>
+              </tr>
+              <tr>
+                <td>评价率x≥50%且好评率90%>y≥80%</td>
+                <td>奖励10元/单（中央渠道总订单）</td>
+              </tr>
+              <tr>
+                <td>评价率x≥50%且好评率y&lt80%</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>3星及以下评价（路客订单）</td>
+                <td>扣罚100元/单（客人撤销可申述)</td>
+              </tr>
+              <tr>
+                <td>3星及以下评价（API渠道）</td>
+                <td>扣罚50元/单（客人撤销可申述)</td>
+              </tr>
+              <tr>
+                <td>中央渠道评价率x&lt50%</td>
+                <td>扣罚300/人</td>
+              </tr>
+              <tr>
+                <td>若中央渠道评价率>50%，路客渠道好评率&lt50%</td>
+                <td>以上奖励减半</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="modal-item">
+          <div class="modal-title2">
+            二、路客订单奖
+          </div>
+          <div class="modal-text">
+            路客订单按照完成百分比考核，按照不同的完成率阶梯奖励
+          </div>
+          <br>
+          <div class="table">
+            <table border="" cellspacing="" cellpadding="">
+              <tr>
+                <th>条件</th>
+                <th width="60%">金额</th>
+              </tr>
+              <tr>
+                <td>x≥30%</td>
+                <td>奖励20元/单（超过指标部分）</td>
+              </tr>
+              <tr>
+                <td>30%>x≥25%</td>
+                <td>奖励15元/单（超过指标部分）</td>
+              </tr>
+              <tr>
+                <td>25%>x≥20%</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>&lt20%</td>
+                <td>扣罚20/单(低于指标部分)</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="modal-item">
+          <div class="modal-title2">
+            三、月度入住率奖（以入住日期为准）
+          </div>
+          <div class="table">
+            <table border="" cellspacing="" cellpadding="">
+              <tr>
+                <th>规则说明</th>
+                <th width="30%">条件</th>
+                <th width="22%">金额</th>
+              </tr>
+
+              <tr>
+                <td rowspan="5">北京、广州、成都、上海、西安、重庆、深圳</td>
+                <td>≥85%</td>
+                <td>1200元/人</td>
+              </tr>
+              <tr>
+                <td>85%＞X≥75%</td>
+                <td>900元/人</td>
+              </tr>
+              <tr>
+                <td>75＞X≥65%</td>
+                <td>600元/人</td>
+              </tr>
+              <tr>
+                <td>65%＞X≥55%</td>
+                <td>400元/人</td>
+              </tr>
+              <tr>
+                <td>＜55%</td>
+                <td>0</td>
+              </tr>
+
+              <tr>
+                <td rowspan="5">
+                  南京、长沙、乌鲁木齐、保定、南昌、厦门、合肥、天津、太原、宁波、无锡、杭州、武汉、济南、福州、苏州、郑州、哈尔滨、珠海、青岛、恩施、昆明、日照、泰安、西宁、洛阳、大连
+                </td>
+                <td>≥80%</td>
+                <td>1200元/人</td>
+              </tr>
+              <tr>
+                <td>80%＞X≥70%</td>
+                <td>900元/人</td>
+              </tr>
+              <tr>
+                <td>70＞X≥60%</td>
+                <td>600元/人</td>
+              </tr>
+              <tr>
+                <td>60%＞X≥50%</td>
+                <td>400元/人</td>
+              </tr>
+              <tr>
+                <td>＜50%</td>
+                <td>0</td>
+              </tr>
+
+              <tr>
+                <td rowspan="5">峨眉山市、乐山、桂林、银川、西昌、都江堰、海口、三亚、开封</td>
+                <td>≥75%</td>
+                <td>1200元/人</td>
+              </tr>
+              <tr>
+                <td>75%＞X≥65%</td>
+                <td>900元/人</td>
+              </tr>
+              <tr>
+                <td>65＞X≥55%</td>
+                <td>600元/人</td>
+              </tr>
+              <tr>
+                <td>55%＞X≥45%</td>
+                <td>400元/人</td>
+              </tr>
+              <tr>
+                <td>＜45%</td>
+                <td>0</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="modal-item">
+          <div class="modal-title2">
+            四、当月重点工作奖
+          </div>
+          <div class="modal-text">
+            每月公司安排运营重点工作的落地情况，由总部运营检查邮件通知
+          </div>
+        </div>
+        <div class="modal-sub-title">日奖</div>
+        <div class="modal-item">
+          <div class="modal-title2">
+            一、高效接单奖（以下单日期为准）
+          </div>
+          <div class="table">
+            <table border="" cellspacing="" cellpadding="">
+              <tr>
+                <th width="50%">渠道</th>
+                <th width="30%">条件</th>
+                <th>金额</th>
+              </tr>
+              <tr>
+                <td>中央渠道能正常发起咨询回复的订单：路客自有订单（公众号、APP）及API平台订单（Airbnb API）</td>
+                <td>成功接单且回应时间≤3min</td>
+                <td>奖励6元/单</td>
+              </tr>
+              <tr>
+                <td>中央渠道无法主动发起咨询回复的订单（booking、美团、途家API）</td>
+                <td>成功接单</td>
+                <td>奖励4元/单</td>
+              </tr>
+              <tr>
+                <td>非中央渠道的订单（区域私联账户订单，财务确认收入后奖励）</td>
+                <td>成功接单</td>
+                <td>奖励2元/单</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="modal-item mb90">
+          <div class="modal-title2">
+            二、热情接待奖
+          </div>
+          <div class="table">
+            <table border="" cellspacing="" cellpadding="">
+              <tr>
+                <th width="60%">条件</th>
+                <th>金额</th>
+              </tr>
+              <tr>
+                <td>成功办理入住登记（目前暂为成功投保）</td>
+                <td>奖励2元/单</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <i class="icon-delete"></i>
+  </div>
+</body>
+
+</html>

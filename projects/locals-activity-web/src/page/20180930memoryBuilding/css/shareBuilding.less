@@ -1,0 +1,365 @@
+html,
+body {
+  background: #89dee5;
+  width: 100%;
+}
+.main {
+  background: url(../image/背景.jpg) no-repeat;
+  background-size: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  & > .title {
+    position: absolute;
+    font-size: 38px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 4px #fff;
+    text-align: center;
+    width: 600px;
+    height: 166px;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    img {
+      position: absolute;
+      height: 90px;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .share-building {
+      // display: none;
+      text-align: center;
+      justify-content: center;
+      p:first-child {
+        font-size: 48px;
+      }
+      p:nth-child(2) {
+        font-size: 30px;
+      }
+    }
+    .my-building {
+      font-size: 48px;
+      display: none;
+      text-align: center;
+      letter-spacing: 2px;
+      justify-content: center;
+    }
+  }
+
+  .gusts-wrap {
+    width: 100%;
+    height: 740px;
+    overflow: auto;
+    // background: red;
+    margin-top: 20%;
+
+    .achv {
+      // width: 100%;
+      padding: 20px;
+      background: url(../image/gif.gif) no-repeat;
+      background-size: 100% 100%;
+      height: 150px;
+      margin: 0 70px;
+      margin-top: 40px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        font-size: 30px;
+        color: #eb3760;
+        font-weight: bolder;
+        text-align: center;
+      }
+      span {
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+    .level-one {
+      display: flex;
+    }
+    .level-two {
+    }
+    .level-three {
+    }
+    .level-four {
+    }
+    ul {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 0 25px;
+      margin: 0 50px;
+      font-size: 0;
+      li {
+        background-image: url(../image/窗户暗.png);
+        width: 176px;
+        height: 167px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        margin-top: 78px;
+        position: relative;
+
+        img {
+          position: absolute;
+          top: -44px;
+          left: 68px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          overflow: hidden;
+          vertical-align: bottom;
+        }
+      }
+      .trip {
+        background-image: url(../image/出差.png);
+      }
+      .sing {
+        background-image: url(../image/唱K.png);
+      }
+      .eat {
+        background-image: url(../image/吃饭.png);
+      }
+      .figth {
+        background-image: url(../image/打架.png);
+      }
+      .fun {
+        background-image: url(../image/怼领导.png);
+      }
+      .drink {
+        background-image: url(../image/喝酒.png);
+      }
+      .tear {
+        background-image: url(../image/流泪.png);
+      }
+      .trival {
+        background-image: url(../image/旅游.png);
+      }
+      .sleep {
+        background-image: url(../image/睡觉.png);
+      }
+    }
+  }
+  & > .content {
+    margin-top: 50px;
+    width: 100%;
+    // background: rgba(255, 255, 255, .1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+
+    .build-my {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      & > img:nth-child(1) {
+        width: 60px;
+      }
+      & > img:nth-child(4) {
+        width: 40px;
+        margin-top: 20px;
+      }
+      & > p {
+        margin-top: 10px;
+        font-size: 20px;
+        line-height: 30px;
+        color: white;
+        text-align: center;
+      }
+      & > div {
+        margin-top: 10px;
+        font-size: 36px;
+        padding: 0 20px;
+        // width: 270px;
+        box-shadow: 0 6px 0 #ffc547;
+        border-radius: 16px;
+        background: #fdff5c;
+        border: none;
+        outline: none;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        line-height: 50px;
+        flex: 0;
+        text-align: center;
+      }
+    }
+    .invite {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      p:nth-child(1) {
+        background: #fdff5c;
+        width: 486px;
+        padding: 10px 0;
+        text-align: center;
+        font-size: 28px;
+        border-radius: 16px;
+        line-height: 28px;
+        font-weight: bold;
+      }
+      p:nth-child(2) {
+        width: 486px;
+        border: 2px solid #fdff5c;
+        color: #ffc547;
+        border-radius: 16px;
+        text-align: center;
+        font-size: 28px;
+        line-height: 28px;
+        padding: 10px;
+        margin-top: 20px;
+      }
+      img {
+        width: 40px;
+        margin-top: 20px;
+      }
+    }
+    // .desc{
+    //     margin-top: 50px;
+    //     width: 596px;
+    //     background: #c5dee2;
+    //     border-radius: 16px;
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     padding: 30px;
+
+    //     .title{
+    //         font-size: 46px;
+    //         font-weight: bold;
+    //         line-height: 46px;
+    //     }
+    //     .title-sub{
+    //         font-size: 28px;
+    //         line-height: 28px;
+    //         margin-top: 50px;
+    //     }
+    //     .desc-body{
+    //         margin-top: 10px;
+    //         font-size: 30px;
+    //         font-weight: bold;
+    //         text-align: center;
+    //         line-height: 50px;
+    //     }
+    //     .desc-body-sub{
+    //         margin-top: 30px;
+    //         font-size: 26px;
+    //         font-weight: bold;
+    //     }
+    //     .footer{
+    //         margin-top: 20px;
+    //         font-size: 30px;
+    //         line-height: 50px;
+    //         text-align: center;
+    //         border-top: 2px solid #91b3bc;
+    //         width: 100%;
+    //         padding-top: 30px;
+    //     }
+    // }
+    .rule {
+      margin: 0 30px;
+      margin-top: 40px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #65d5e3;
+      border-radius: 16px;
+      padding: 40px 24px 24px 24px;
+      h2 {
+        font-size: 50px;
+        font-weight: bold;
+        margin-bottom: 50px;
+      }
+      .rule-wrap {
+        border: 2px solid #182947;
+        border-top: none;
+        // padding: 0 22px 22px 22px;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 40px;
+        .title {
+          width: 100%;
+          padding: 10px 0;
+          background: #182947;
+          font-size: 34px;
+          color: #fbff5e;
+          text-align: center;
+        }
+        .content {
+          padding: 22px;
+          line-height: 50px;
+          font-size: 30px;
+          line-height: 50px;
+          padding-left: 50px;
+          li {
+              text-indent: -0.5em;
+            }
+          }
+      }
+      .rule-desc {
+        padding: 22px;
+        padding-top: 0;
+        border-radius: 16px;
+        font-size: 30px;
+        .desc-title {
+          font-weight: bold;
+          font-size: 30px;
+          margin-bottom: 20px;
+        }
+        .desc-content {
+          font-size: 24px;
+          line-height: 40px;
+        }
+      }
+      & > p {
+        margin-top: 10px;
+        font-size: 24px;
+      }
+      & > img {
+        width: 100%;
+      }
+    }
+  }
+}
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  div {
+    width: 186px;
+    background-image: url(../image/zhishi@2x.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 280px;
+    align-self: flex-end;
+    margin-right: 60px;
+  }
+  p {
+    margin-top: 30px;
+    color: #fff;
+    font-size: 38px;
+    font-family: "FZLTTHK--GBK1-0";
+    text-align: center;
+  }
+}

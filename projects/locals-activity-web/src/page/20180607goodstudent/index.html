@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Locals路客精品民宿</title>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav">
+    <h1 class="mui-title">菁英计划</h1>
+</header>
+<div class="mui-content">
+    <img class="banner" src="images/2x/banner.png" alt="" />
+    <form id="inputs-area">
+        <div class="input">
+            <i class="icon-name"></i>
+            <input name="realName" type="text" placeholder="真实姓名" />      
+        </div>
+        <div class="input">
+            <i class="icon-phone"></i>
+            <input name="mobile" type="tel" placeholder="手机号码" />      
+        </div>
+        <div class="input">
+            <i class="icon-card"></i>
+            <input name="idCard" type="text" placeholder="身份证号" />      
+        </div>
+        <div class="take-picture-area">
+            <span id="upload-text">上传您的学生证</span>
+            <input type="file" accept="image/*" id="take-picture" style="display: none;" placeholder="学生证" />
+            <div id="take-picture-button"></div>
+        </div>
+        <button id="submit" type="button">我要参与</button>
+    </form>
+    <footer>已有<span id="count">3897</span>个小伙伴成功领取福利</footer>
+</div>  
+
+<div class="modal" id="activity-end" style="display: none">
+    <div id="mask"></div>
+    <article class="content">
+        <div id="close"></div>
+        <div class="margin-auto">
+            <img src="images/2x/text.png" style="width: 4.973333rem;" />
+        </div>
+        <div class="margin-auto">
+            <img src="images/2x/qrcord.png" alt="二维码" style="width: 3.426667rem; margin: 0.8rem 0;">
+        </div>
+        <p>关注微信公众号：路客精品民宿</p>
+        <p>长按识别二维码</p>
+    </article>
+</div>
+
+<div class="modal" id="activity-success" style="display: none">
+    <div id="mask"></div>
+    <article class="content">
+        <div id="close"></div>
+        <div class="margin-auto">
+            <img src="images/2x/success.png" style="width: 3.8rem; margin-bottom: 0.2rem;" />
+        </div>
+        <p style="color: #f76578; margin-bottom: 0.666667rem">又一位有位青年加入「菁英计划」</p>
+        <p>关注「Locals路客精品名宿」</p>
+        <p>等待优惠发放哦。</p>
+        <p>「通常24小时内审核成功后发放」</p>
+        <div class="margin-auto">
+            <img src="images/2x/qrcord.png" alt="二维码" style="width: 3.426667rem; margin-bottom: 0.226667rem;">
+        </div>
+        <p>扫码进入青年玩乐中心</p>
+        <p>有为青年们都在这嗨</p>
+        <button id="ikonw" type="button">我知道了</button>
+    </article>
+</div>
+
+<div class="modal sm" id="loading" style="display: none;">
+    <div id="mask"></div>
+    <article class="content" >
+        <p>发送中<span id="dot">.</span></p>
+    </article>
+</div>
+
+</body>
+</html>

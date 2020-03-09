@@ -1,0 +1,67 @@
+{
+  "name": "locals-hd-backend",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "ali-oss": "^6.1.0",
+    "egg": "^2.2.1",
+    "egg-cors": "^2.1.2",
+    "egg-jwt": "^3.1.4",
+    "egg-oss": "^2.0.0",
+    "egg-redis": "^2.3.0",
+    "egg-scripts": "^2.5.0",
+    "egg-sequelize": "^4.3.1",
+    "egg-session": "^3.1.0",
+    "egg-validate": "^2.0.2",
+    "es6-promisify": "^6.0.1",
+    "excel": "^1.0.0",
+    "ioredis": "^4.6.2",
+    "moment": "^2.23.0",
+    "mysql2": "^1.6.4",
+    "nanoid": "^2.0.1",
+    "node-excel-export": "^1.4.4",
+    "utility": "^1.15.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "autod-egg": "^1.0.0",
+    "egg-bin": "^4.3.5",
+    "egg-ci": "^1.8.0",
+    "egg-mock": "^3.14.0",
+    "eslint": "^5.12.1",
+    "eslint-config-egg": "^6.0.0",
+    "mysql": "^2.16.0",
+    "power-assert": "^1.6.1",
+    "sequelize-auto": "^0.4.29",
+    "sequelize-cli": "^5.4.0",
+    "webstorm-disable-index": "^1.2.0",
+    "cross-env": "^5.2.0"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "scripts": {
+    "stop": "egg-scripts stop --title=egg-server-locals-hd-backend",
+    "dev": "cross-env LOCALS_ENV=development node cli/start.js",
+    "start": "LOCALS_ENV=production node cli/start.js",
+    "uat": "LOCALS_ENV=unittest node cli/start.js",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "MIT"
+}

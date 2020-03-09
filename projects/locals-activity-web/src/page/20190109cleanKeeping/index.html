@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>路客保洁系统</title>
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="winpmdth=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <link href="https://cdn.bootcss.com/framework7/3.6.3/css/framework7.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/vue/2.5.21/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/framework7/3.6.3/js/framework7.min.js"></script></head>
+  <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+<body>
+  <div id="app">
+    <div class="view view-main">
+      <div class="page">
+        <div class="page-content infinite-scroll-content" style="padding: 0 20px">
+          <header class="header">线下单填写</header>
+          <form class="list" id="form-submit">
+            <ul>
+              <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">保洁单编号</div>
+                  <div class="item-input-wrap" >
+                    <input type="text" placeholder="填写姓名" id="orderCode" readonly>
+                  </div>
+                </div>
+              </li>
+              <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">保洁人员</div>
+                  <div class="item-input-wrap">
+                    <input type="text" placeholder="填写姓名" name="cleanerName">
+                    <span class="input-clear-button"></span>
+                  </div>
+                </div>
+              </li>
+              <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">保洁人手机号</div>
+                  <div class="item-input-wrap">
+                    <input type="text" placeholder="填写手机号" name="cleanerPhone" maxlength="11">
+                    <span class="input-clear-button"></span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="title">保洁时间</h3>
+              </li>
+              <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">保洁日期</div>
+                  <div class="item-input-wrap">
+                    <input type="text" placeholder="请选择日期" readonly="readonly" id="clean-keep-date" name="cleanerTime"/>
+                    <span class="input-clear-button"></span>
+                  </div>
+                </div>
+              </li>
+              <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">保洁时间</div>
+                  <div class="item-input-wrap">
+                    <input type="text" placeholder="请选择时间" readonly="readonly" id="clean-keep-picker-time" name="cleanerTimeRange"/>
+                    <span class="input-clear-button"></span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <h3 class="title">保洁后效果图(（点击下方相机拍照上传）)</h3>
+              </li>
+              <li>
+                <div class="upload-wrapper">
+
+                  <div class="show-image upload-operate">
+                    <div class="plus-icon">
+                      <img src="./images/plus.png">
+                    </div>
+                    <div class="upload-operate-footer">上传</div>
+                    <input type="file" accept="image/*" capture="camera" class="file-upload">
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="item-title item-label" style="margin-top: 18px;">若有以下情况，请打勾并及时追踪处理</div>
+                <ul class="step-remark-list" style="padding: 0;"></ul>
+                <textarea class="textarea" placeholder="其他备注信息" name="remark"></textarea>
+                <button class="submit-button" type="button">确认提交</button>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

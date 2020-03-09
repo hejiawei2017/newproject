@@ -1,0 +1,173 @@
+html,body{
+    width: 100%;
+    background: #4fadad;
+}
+.main{
+    background: url(../image/h5扫码之后页面9.28.gif) no-repeat;
+    background-size: 100%;
+    // padding: 100% 15px 15px 15px;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    // padding: 0 20px;
+    overflow: hidden;
+    .business{
+        position: absolute;
+        width: 400px;
+        top:266px;
+        left: 100px;
+    }
+    .memory{
+        background: rgba(255, 255, 255, .3);
+        border-radius: 16px;
+        // width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // position: absolute;
+        // bottom: 20px;
+        margin: 0 20px;
+        padding: 20px;
+        margin-top: 80%;
+        .bottom{
+            margin-top: 20px;
+            div{
+                width: 220px;
+            }
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .my-dasha{
+                display: inline-block;
+                font-size: 36px;
+                text-decoration:none;
+                color: #000;
+                font-weight: 800;
+                border-bottom: 1px solid #000
+            }
+        }
+        .title{
+            line-height: 44px;
+            font-size: 44px;
+            padding: 30px 0;
+            width: 100%;
+            background: #d4f2f4;
+            text-align: center;
+            border-radius: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        ul{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+
+            li{
+                padding: 26px 0;
+                font-size: 30px;
+                line-height: 30px;
+                background: #d4f2f4;
+                border-radius: 16px;
+                width: 200px;
+                margin-top: 30px;
+                text-align: center;
+                font-weight: bolder;
+                border: 4px solid #d4f2f4;
+
+            }
+            .active{
+                border:4px solid  #fdff5c;
+                box-shadow: 0 0 0px 3px #fdff5c inset;
+            }
+        }
+        .button{
+            margin-top: 44px;
+            font-size: 36px;
+            padding: 20px 50px;
+            box-shadow: 0 6px 0 #ffc547;
+            border-radius: 16px;
+            background: #fdff5c;
+            border: none;
+            outline: none;
+            font-weight: bold;
+            line-height: 36px;
+            flex: 0;
+            text-decoration: none;
+            color: #000;
+        }
+        img{
+            margin-top: 20px;
+            width: 60px;
+        }
+    }
+    
+    .rule{
+        margin: 0 30px;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #65d5e3;
+        border-radius: 16px;
+        padding: 40px 24px 24px 24px;
+        h2{
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 50px;
+        }
+        .rule-wrap{
+            border: 2px solid #182947;
+            border-top: none;
+            // padding: 0 22px 22px 22px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            .title{
+                width: 100%;
+                padding: 10px 0;
+                background: #182947;
+                font-size: 34px;
+                color: #fbff5e;
+                text-align: center;
+                
+            }
+            .content{
+                padding: 22px;
+                line-height: 50px;
+                font-size:30px;
+                line-height: 50px;
+                padding-left: 50px;
+                li{
+                    text-indent: -0.5em;
+                }
+            }
+        }
+        .rule-desc{
+            padding:22px;
+            padding-top: 0;
+            border-radius: 16px;
+            font-size: 30px;
+            .desc-title{
+                font-weight: bold;
+                font-size: 30px;
+                margin-bottom: 20px;
+            }
+            .desc-content{
+                font-size: 24px;
+                line-height: 40px;
+            }
+        }
+        &>p{
+            margin-top: 10px;
+            font-size: 24px;
+        }
+        &>img{
+            width: 100%;
+        }
+    }
+}
+

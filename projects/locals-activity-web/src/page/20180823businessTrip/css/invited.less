@@ -1,0 +1,145 @@
+html,body{
+    width: 100%;
+    position: relative;
+}
+.content{
+    position: relative;
+    width: 100%;
+    padding: 518px 17px 36px;
+    .bg-invited{
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 518px;
+        background: url(https://locals-house-prod.oss-cn-shenzhen.aliyuncs.com//localhomeqy/businessTrip/other_banner.png) no-repeat;
+        background-size: 100% 100%;
+
+    }
+    .main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .title{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 74px;
+
+            h3{
+                font-size: 36px;
+            }
+            p{
+                font-size: 26px;
+                color: rgb(153, 153, 153);
+                text-align: center;
+                margin-top: 20px;
+            }
+        }
+        .ad{
+            margin-top: 40px;
+            width: 268px;
+            height: 190px;
+            background-image: url(../images/share1@2x.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+                background-image: url(../images/share1@2x.png);
+            }
+        }
+        .invited{
+            width: 100%;
+            margin-top: 20px;
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 22px;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(90, 89, 89, 0.18);
+            letter-spacing: 1px;
+            
+            .red{
+                color:rgb(232,67,88);
+            }
+        }
+        .invited-people{
+            width: 100%;
+            ul{
+                width: 100%;
+
+                li{
+                    width: 100%;
+                    height: 44px;
+                    margin-top: 16px;
+                    display: flex;
+                    justify-content: space-around;
+                    font-size: 24px;
+                    align-items: center;
+                    border-bottom: 1px solid #e6e6e6;
+                    letter-spacing: 1px;
+                    color: #333;
+                }
+            }   
+        }
+        .save{
+            font-size: 24px;
+            color: #999999;
+            margin-top: 39px;
+            #save-money{
+                color:#3d4665;
+            }
+        }
+        .step{
+	        font-size: 24px;
+            color: #999999;
+            margin-top: 89px;
+        }
+        button{
+            margin-top: 56px;
+            outline: none;
+            width: 100%;
+            height: 70px;
+            text-align: center;
+            background-color: rgb(61,70,101);
+            border-radius: 13px;
+            border: none;
+            color:#fff;
+            // letter-spacing: 5px;
+            font-family: 'PingFangSC-Medium';
+            font-size: 30px;
+        }
+    }
+
+}
+.mask{
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div{
+        width: 186px;
+        background-image: url(../images/zhishi@2x.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        height: 280px;
+        align-self:flex-end;
+        margin-right: 60px;
+        @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+            background-image: url(../images/zhishi@3x.png);
+        }
+    }
+    p{
+        margin-top: 30px;
+        color: #fff;
+        font-size: 38px;
+        font-family: "FZLTTHK--GBK1-0";
+        text-align: center;
+    }
+}
