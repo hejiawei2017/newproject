@@ -1,9 +1,0 @@
-{
-    "usingComponents": {
-        "amount-control": "/components/amount-control/amount-control",
-        "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box",
-        "im-message": "/components/im-message/im-message",
-        "stars": "/components/stars/index"
-    },
-    "navigationBarTitleText": "联系管家"
-}

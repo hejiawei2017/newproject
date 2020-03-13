@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "picker-view-component": "/components/picker-view/index",
-    "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box"
-  }
-}

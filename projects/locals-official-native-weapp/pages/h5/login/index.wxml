@@ -1,5 +1,0 @@
-<auth-drawer-box 
-    id="auth-drawer-box"
-    initHide="{{ true }}"
-    bind:cancelEvent="signInCallback"
-/>

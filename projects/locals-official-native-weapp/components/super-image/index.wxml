@@ -1,9 +1,0 @@
-<image 
-  src="{{ src }}"
-  mode="{{ mode }}"
-  style="{{ style }}"
-  lazy-load="{{ lazyLoad }}"
-  bindload="bindload"
-  binderror="binderror"
-  class="super-image {{ propClass }}"
-/>

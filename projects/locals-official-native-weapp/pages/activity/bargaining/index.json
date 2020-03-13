@@ -1,7 +1,0 @@
-{
-    "usingComponents": {
-        "count-down": "/components/count-down/index",
-        "activity-progress": "/components/activity-progress/index",
-        "scroll-list": "/components/scroll-list/index"
-    }
-}

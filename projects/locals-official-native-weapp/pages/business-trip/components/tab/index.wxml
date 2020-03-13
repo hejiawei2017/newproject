@@ -1,7 +1,0 @@
-<view class="tab">
-    <view class="tab-icon">
-        <image class="tab-icon-img" mode="widthFix"
-            src="{{icon}}" />
-    </view>
-    <slot></slot>
-</view>

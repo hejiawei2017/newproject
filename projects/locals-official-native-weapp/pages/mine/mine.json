@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "我的",
-  "usingComponents": {
-    "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box",
-    "im-message": "/components/im-message/im-message",
-    "menber-rgiht": "/components/menber-tabs/menber-rgiht/menber-rgiht"
-  },
-  "enablePullDownRefresh": true
-}

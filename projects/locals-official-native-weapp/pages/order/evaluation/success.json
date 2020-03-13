@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "im-message": "/components/im-message/im-message",
-    "super-image": "/components/super-image/index"
-  }
-}

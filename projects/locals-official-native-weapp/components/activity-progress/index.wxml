@@ -1,8 +1,0 @@
-<view class="progress-container">
-    <progress class="progress" style="border-color:{{activeColor}};border-radius:{{borderRadius}}" percent="{{percent}}" border-radius="{{borderRadius}}" stroke-width="{{strokeWidth}}" active-color="{{activeColor}}" background-color="{{backgroundColor}}" />
-    <view class="progress-bar-text" wx:if="{{barText.curr!==''}}">
-        <view class="min-text">{{barText.min}}</view>
-        <view class="max-text">{{barText.max}}</view>
-        <view class="curr-text" style="left:{{currTextleft}}">{{barText.curr}}</view>
-    </view>
-</view>

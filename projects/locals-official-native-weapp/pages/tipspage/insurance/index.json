@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "保险告知书",
-  "usingComponents": {
-    "flexible-component": "/components/flexible-text/index",
-    "im-message": "/components/im-message/im-message"
-  }
-}

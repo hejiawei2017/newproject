@@ -1,8 +1,0 @@
-<view class="panel">
-    <view class="panel--header">
-        <text class="title">{{ title }}</text>
-    </view>
-    <view class="content">
-        <slot></slot>
-    </view>
-</view>

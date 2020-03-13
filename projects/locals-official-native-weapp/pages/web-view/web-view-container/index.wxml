@@ -1,9 +1,0 @@
-<web-view 
-    wx:if="{{ url }}" 
-    src="{{ url }}"
-></web-view>
-
-<auth-drawer-box 
-    id="auth-drawer-box"
-    bind:cancelEvent="_cancelEventFn"
-/>

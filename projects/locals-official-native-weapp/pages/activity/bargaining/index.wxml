@@ -1,5 +1,0 @@
-<view class='bargaining-container'>
-    <count-down end-time="{{endTime}}" start-time="{{startTime}}" valid-duration="{{validDuration}}"></count-down>
-    <activity-progress class="progress-row" percent="{{progress.precent}}" border-radius="{{progress.borderRadius}}" bar-text="{{progress.barText}}" />
-    <scroll-list class="scroll-list" list="{{players}}" />
-</view>

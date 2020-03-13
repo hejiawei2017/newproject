@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "select-date": "/components/select-date/select-date",
-    "im-message": "/components/im-message/im-message"
-  }
-}

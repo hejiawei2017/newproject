@@ -1,9 +1,0 @@
-{
-  "usingComponents": {
-    "swiper-component": "/components/swiper/index",
-    "im-message": "/components/im-message/im-message",
-    "flexible-component": "/components/flexible-text/index",
-    "time-line": "/components/time-line/index",
-    "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box"
-  }
-}

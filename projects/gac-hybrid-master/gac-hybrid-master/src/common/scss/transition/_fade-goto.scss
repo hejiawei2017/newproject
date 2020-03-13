@@ -1,9 +1,0 @@
-.fade-goto-enter-active,
-.fade-goto-leave-active {
-    opacity: .5;
-    transition: opacity .15s cubic-bezier(.645, .045, .355, 1);
-}
-.fade-goto-enter,
-.fade-goto-leave-active {
-    opacity: 0;
-}

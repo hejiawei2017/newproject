@@ -1,2 +1,0 @@
-<canvas class="canvas" canvas-id="customCanvas" style="width: {{width}}px; height: {{height}}px;"></canvas>
-  

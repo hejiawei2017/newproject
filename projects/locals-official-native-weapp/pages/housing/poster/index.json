@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "panel": "./components/panel/index",
-    "cell": "./components/cell/index"
-  }
-}

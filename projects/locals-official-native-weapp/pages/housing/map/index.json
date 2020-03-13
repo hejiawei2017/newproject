@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "地图",
-  "usingComponents": {
-    "im-message": "/components/im-message/im-message"
-  },
-  "disableScroll": true
-}

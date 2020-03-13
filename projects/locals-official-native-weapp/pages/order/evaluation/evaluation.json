@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "im-message": "/components/im-message/im-message",
-    "modal": "/components/modal/index",
-    "auth-drawer-box": "/components/auth-drawer-box/auth-drawer-box"
-  }
-}

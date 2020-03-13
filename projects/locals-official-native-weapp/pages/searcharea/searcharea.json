@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "tag-list": "/components/taglist/taglist",
-    "select-city": "/components/select-city/select-city",
-    "im-message": "/components/im-message/im-message"
-  },
-  "navigationBarTitleText": "选择城市"
-}

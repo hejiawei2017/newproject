@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText" : "",
-  "usingComponents": {
-    "poster": "/components/poster/poster"
-  },
-  "enablePullDownRefresh": false
-}

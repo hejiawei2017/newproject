@@ -1,9 +1,0 @@
-<view class="notice-cell" wx:if="{{content}}">
-    <view class="cell--left">
-        <image class="" src="{{avatar}}" mode="aspectFit" lazy-load="false" binderror="" bindload="" />       
-    </view>
-    <view class="cell--right">
-        {{content}}
-    </view>
-</view>
-  
