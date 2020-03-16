@@ -20,6 +20,8 @@ router.get('/github/login', async (ctx) => {
     //转发到授权服务器
     ctx.redirect(path);
 })
+
+//这个地方如果是微信的公众号的话，带上url让前端跳转到指定的url
 router.get('/github/callback', async (ctx) => {
     console.log('callback..')
     const code = ctx.query.code;
