@@ -1,0 +1,72 @@
+{
+  "id": "1745562",
+  "name": "溯源项目icon",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "溯源项目icon",
+  "glyphs": [
+    {
+      "icon_id": "14002954",
+      "name": "9_icon_xinjian",
+      "font_class": "_icon_xinjian",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "14002955",
+      "name": "1_icon_daochu",
+      "font_class": "_icon_daochu",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "14002956",
+      "name": "3_icon_home",
+      "font_class": "_icon_home",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "14002957",
+      "name": "10_icon_yingyong",
+      "font_class": "_icon_yingyong",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "14002958",
+      "name": "7_icon_tongji",
+      "font_class": "_icon_tongji",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "14002959",
+      "name": "4_icon_shiyong",
+      "font_class": "_icon_shiyong",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "14002960",
+      "name": "8_icon_weishiyong",
+      "font_class": "_icon_weishiyong",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "14002961",
+      "name": "6_icon_tijiao",
+      "font_class": "_icon_tijiao",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "14002962",
+      "name": "2_icon_guanli",
+      "font_class": "_icon_guanli",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    }
+  ]
+}
