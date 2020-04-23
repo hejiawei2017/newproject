@@ -590,8 +590,61 @@ let fs =require('fs')
 fs.mkdir("a",()=>{
 })
 
-//判断一个文件是否存在
 
+注意utf-8前面有三个字节是不能要的，一般情况下是要过滤的
+let fs =require('fs')
+fs.readFile('1.txt',function(err,data){
+   if(data[0]==oxef&&data[1]==oxbb&&data[2]==oxbf){
+      data =data.slice(3)
+   }
+
+})
+默认的情况下nodejs是不支持gbk的,可以通过iconv-lite的库来解决
+let iconb = require('iconv-lite');
+fs.readFile('2.txt',function(err,data){
+    let str = iconv.decode(data,'gbk')
+})
+
+//读目录,判断是目录还是文件
+let fs =require('fs');
+let path = require('path')
+fs.readdire("./a",function(err,files){
+  console.log(files)
+  files.forEach((file)=>{
+    let child = path.join("a",file);//把路径拼起来
+    fs.stat(child,(err,stat)=>{
+       //stat.isDirecttory 有需要的信息
+         
+    })
+  })
+})
+
+//删除文件，文件夹
+let fs = require('fs')
+//删除文件:fs.unlink
+//删除文件夹 fs.rmdir
+
+
+//同步删除目录以及目录下面的文件
+function remove(dir){
+   let files = fs.readdirSync(dir);
+   files.forEach((item)=>{
+        let child = fs.statSync(path.join(dir,item));
+        if(child.isDirectory()){
+           rmdirSync(path.join(dir,item))
+        }else{
+           fs.unlinkSync(path.join(dir,item))
+        }
+   });
+   fs.rmdirSync(dir)
+}
+remove("a")
+
+
+//异步删除目录以及下面的文件夹
 
 ```
 
+20.stream
+
+ 
