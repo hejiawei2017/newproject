@@ -93,7 +93,7 @@ git init
 ls -all 
 
 //创建文件
-toucn 1.txt
+touch 1.txt
 
 //查看文件内容
 cat 1.txt
@@ -643,8 +643,141 @@ remove("a")
 
 //异步删除目录以及下面的文件夹
 
+function rmPromise(dir) {
+    return new Promise((resolve,reject) => {
+        fs.stat(dir,(err,stat) => {
+            if (err) return reject(err);
+            if (stat.isDirectory()) {
+                fs.readdir(dir,(err,files) => {
+                    let paths = files.map(file => path.join(dir,file));
+                    let promises = paths.map(p=>rmPromise(p));
+                    Promise.all(promises).then((() => fs.rmdir(dir,resolve)));
+                });
+            } else {
+                fs.unlink(dir,resolve);
+            }
+        });
+    });
+}
+rmPromise(path.join(__dirname,'a')).then(() => {
+    console.log('删除成功');
+})
+
+//同步深度先序遍历目录
+  console.log(dir);
+  fs.readdirSync(dir).forEach(file=>{
+      let child = path.join(dir,file);
+      let stat = fs.statSync(child);
+      if(stat.isDirectory()){
+          deepSync(child);
+      }else{
+          console.log(child);
+      }
+  });
+}
+
+//异步深度先序遍历目录
+function deep(dir,callback) {
+  console.log(dir);
+  fs.readdir(dir,(err,files)=>{
+      !function next(index){
+          if(index == files.length){
+              return callback();
+          }
+          let child = path.join(dir,files[index]);
+          fs.stat(child,(err,stat)=>{
+              if(stat.isDirectory()){
+                  deep(child,()=>next(index+1));
+              }else{
+                  console.log(child);
+                  next(index+1);
+              }
+          })
+      }(0)
+  })
+}
+
+
+//连接两个目录
+let path = require("path")
+path.join('a','b')
+//resolve从当前目录出发解析出一个绝对路径
+//..代表上一级目录
+//.代表当前目录
+//字符串a代表当前目录下面的啊目录
+path.resolve("..",".","a")
+
+//获取文件名字
+path.basename(__filename,'a.js')
+//获取文件扩展名字
+path.extname(__filename)
+
+//监听文件的变化
+let fs = require('fs');
+fs.watchFile("a.txt",function(nexStat，preStat){
+    if(Date.parse(preState.ctime==0)){
+      //新增的文件
+    }else if(Date.parse(preState.ctime)!=Date.parse(nexStat.ctime)){
+       //修改文件了
+    }else if(Date.parse(nexStat.ctime)==0){
+      //删除文件了
+    }
+
+})
+
+
 ```
 
 20.stream
 
- 
+  1.可读流
+
+```
+let fs =require('fs')
+
+//options
+//flags打开文件要做的操作,默认为'r'
+//encoding默认为null
+//start开始读取的索引位置
+//end结束读取的索引位置(包括结束位置),包括结束符
+//highWaterMark读取缓存区默认的大小64kb
+let rs = fs.createReadStream('./1.txt',{highWaterMark:64})
+
+rs.on('open',()=>{}) //顺序1
+//一般是先读64k，触发data,highWaterMark为缓冲区大小默认64k
+rs.on('data',functiion(data){
+   rs.pause()//暂停读取和发射data事件
+   setTimeout(()=>{
+     rs.resume()//恢复读取和发射data
+   },1000)
+   
+
+})//顺序2
+rs.on('end',()=>{})//顺序3
+rs.on('close',()=>{})//顺序4
+rs.on('error',()=>{})
+```
+
+2.可写流
+
+```
+let fs = require('fs');
+
+let ws = fs.createWriteStream('./1.txt',{
+    flags:'w',
+    mode:0o666,
+    autoClose:true,
+    highWaterMark:3, // 默认写是16k
+    encoding:'utf8',
+    start:0
+});
+
+// 写入的数据必须是字符串或者buffer
+// flag代表是否能继续写
+// 表示符表示的并不是是否写入 表示的是能否继续写，但是返回false 也不会丢失，就是会把内容放到内存中
+let flag = ws.write("1")//true
+let flag = ws.write("1")//true
+let flag = ws.write("1")//false
+let flag = ws.write("1")//false
+```
+
