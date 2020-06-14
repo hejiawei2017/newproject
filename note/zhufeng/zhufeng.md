@@ -1,4 +1,177 @@
+# 一.docker
+
+1.体系结构
+
+![image-20200527211635007](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200527211635007.png)
+
+![image-20200527212140424](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200527212140424.png)
+
+2.安装docker
+
+  
+
+```js
+1.安装依赖包 
+sudo yum install -y yum-utils
+
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+sudo yum install docker-ce docker-ce-cli containerd.io
+2.启动docker
+ systemctl start docker
+3.查看安装的版本
+docker info
+
+4.拉取镜像
+docker pull nginx
+
+5.查看本地的镜像
+docker images
+
+6.卸载
+yum remove dockrer-ce
+rm -rf /var/lib/docker
+```
+
+3.镜像的管理
+
+什么是镜像？简单来说镜像是一个不包含linux内核而又精简的操作系统
+
+镜像从哪里来的？docker hub 是由docker公司负责维护的公共注册中心，包含大量的容器镜像，docker工具默认会从这个源下载镜像：https://hub.docker.com/explore
+
+默认是国外的源，可以改为国内的：
+
+#vi  /etc/docker/deamon.json
+
+{
+
+ "registry-mirrors":['https://registy.docker-cn.com']
+
+}
+
+
+
+4.镜像与容器联系
+
+容器其实是在镜像的最上面加了一层读写层，在运行容器里做的任何文件的改动，都会写到这个读写层，如果容器删除了，最上面的读写层也就删除了，改动也就丢失了
+
+
+
+5.dokcer帮助命令：docker --help
+
+![image-20200609062101290](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200609062101290.png)
+
+帮助子命令：：docker image --help
+
+
+
+![image-20200609063905451](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200609063905451.png)
+
+docker一般命令
+
+ 1.查看所有的镜像：docker image ls
+
+2.查看一个镜像的详情：docker image inspect nginx
+
+3.远程拉取一个镜像docker image pull nginx:1.11
+
+4.删除一个镜像：docker image rm nginx:1.12
+
+5.给镜像打标签 ：docker tag  9bc90d9f01f3  jenken:test  //给镜像id9bc90d9f01f3，重新命名一个名字和tag
+
+6.保存导入镜像：docker image save nginx:1.11 > nginx1.11.tar    docker load < nginx1.11.tar
+
+
+
+
+
+6.docker 容器：
+
+![image-20200611065025868](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200611065025868.png)
+
+  1.创建并且运行一个容器：dockder container run -itd --name bs busybox
+
+​    传入变量：dockder container run -itd -e a=123  --name bs busybox
+
+  2.查看所有容器：docker ps    //docker ps -a //停止的再用的所有的容器都在里面  
+
+​    也可以是docker container ls, 看一个容器的详细信息：docker container inspect  容器id
+
+  3.进入一个容器：docker container attach bs
+
+​     进入容器并且运行 sh : docker exec -it  bs sh    (推荐)
+
+​     如果有变量的话：echo $a
+
+  4.启动一个容器：docker container start bs
+
+  5.进入容器退出来：ctrl + T +Q
+
+  6.把容器的80端口映射到主机的8080：
+
+  docker container run -itd -p 8080:80 --name ng nginx
+
+  7.现在容器cpu使用一个 ：docker container run -itd  --cpus 1  -p 8080:80 --name ng nginx
+
+  8.限制使用内存：docker container run -itd  --menory 512m  -p 8080:80 --name ng nginx
+
+  9.禁止主机因为内存不住而杀掉容器：--oom-kill-disable
+
+ 10.提交一个镜像：docker commit 新镜像名字 busybox:v2（busybox:是原来的镜像）
+
+11.把当前主机上的文件拷贝到容器中：docker container cp filename bs1:/root
+
+​     进入容器查看：：docker container exec bs1 ls /root   (容器重启文件还会在)
+
+12.查看某个容器的错误输出信息,和资源使用情况
+
+​    docker logs bs1      docker stats  bs1
+
+13.容器启动停止和删除
+
+  docker container  start 容器id
+
+ docker container  stop 容器id
+
+  docker container  rm 容器id
+
+
+
+
+
+7.管理应用程序的数据
+
+![image-20200614111944443](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200614111944443.png)
+
+
+
+volumes：可以在主机中挂载数据到容器中
+
+![image-20200614170821338](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200614170821338.png)
+
+1.docker volume ls //查看卷
+
+2.docker volume create nginx-vol//创建
+
+3.创建并且运行一个容器，在主机挂载数据卷nginx-vol 到容器的/usr/share/ngiux/html
+
+   docker run -d -it --name=nginx-test --mount src=nginx-vol, dst=/usr/share/ngiux/html nginx
+
+进入数据卷里面 cd /var/lib/docker/volumes/ngnix-vol/_data/    新建一个index.html，就可以用nginx访问了，多个网站的数据共享可以这么配置
+
+4.停止容器，删除容器，删除数据卷
+
+  docker container stop nginx-test
+
+  dokcer container rm nginx-text
+
+  docker volume rm nginx-vol
+
 # 一.webpack
+
+
 
 1.实现简单的webpack
 
@@ -781,3 +954,523 @@ let flag = ws.write("1")//false
 let flag = ws.write("1")//false
 ```
 
+21.stream2
+
+```
+1.
+Readable - 可读的流 (例如 fs.createReadStream()).
+Writable - 可写的流 (例如 fs.createWriteStream()).
+Duplex - 可读写的流 (例如 net.Socket).
+Transform - 在读写过程中可以修改和变换数据的 Duplex 流 (例如 zlib.createDeflate()).
+2.流中的数据有两种模式
+二进制模式, 每个分块都是buffer或者string对象.
+对象模式, 流内部处理的是一系列普通对象
+3.可读流有两种模式
+可读流事实上工作在下面两种模式之一：flowing 和 paused
+在 flowing 模式下， 可读流自动从系统底层读取数据，并通过 EventEmitter 接口的事件尽快将数据提供给应用。
+在 paused 模式下，必须显式调用 stream.read() 方法来从流中读取数据片段。
+所有初始工作模式为 paused 的 Readable 流，可以通过下面三种途径切换到 flowing 模式：
+监听 'data' 事件
+调用 stream.resume() 方法
+调用 stream.pipe() 方法将数据发送到 Writable
+可读流可以通过下面途径切换到 paused 模式：
+如果不存在管道目标（pipe destination），可以通过调用 stream.pause() 方法实现。
+如果存在管道目标，可以通过取消 'data' 事件监听，并调用 stream.unpipe() 方法移除所有管道目标来实现。
+4.缓冲区
+Writable 和 Readable 流都会将数据存储到内部的缓冲器（buffer）中。这些缓冲器可以 通过相应的 writable._writableState.getBuffer() 或 readable._readableState.buffer 来获取。
+
+缓冲器的大小取决于传递给流构造函数的 highWaterMark 选项。 对于普通的流， highWaterMark 选项指定了总共的字节数。对于工作在对象模式的流， highWaterMark 指定了对象的总数。
+
+当可读流的实现调用stream.push(chunk)方法时，数据被放到缓冲器中。如果流的消费者没有调用stream.read()方法， 这些数据会始终存在于内部队列中，直到被消费。
+
+当内部可读缓冲器的大小达到 highWaterMark 指定的阈值时，流会暂停从底层资源读取数据，直到当前 缓冲器的数据被消费 (也就是说， 流会在内部停止调用 readable._read() 来填充可读缓冲器)。
+
+可写流通过反复调用 writable.write(chunk) 方法将数据放到缓冲器。 当内部可写缓冲器的总大小小于 highWaterMark 指定的阈值时， 调用 writable.write() 将返回true。 一旦内部缓冲器的大小达到或超过 highWaterMark ，调用 writable.write() 将返回 false 。
+
+stream API 的关键目标， 尤其对于 stream.pipe() 方法， 就是限制缓冲器数据大小，以达到可接受的程度。这样，对于读写速度不匹配的源头和目标，就不会超出可用的内存大小。
+
+Duplex 和 Transform 都是可读写的。 在内部，它们都维护了 两个 相互独立的缓冲器用于读和写。 在维持了合理高效的数据流的同时，也使得对于读和写可以独立进行而互不影响。
+5.可读流的三种状态
+
+在任意时刻，任意可读流应确切处于下面三种状态之一：
+
+readable._readableState.flowing = null
+readable._readableState.flowing = false
+readable._readableState.flowing = true
+
+若 readable._readableState.flowing 为 null，由于不存在数据消费者，可读流将不会产生数据。 在这个状态下，监听 'data' 事件，调用 readable.pipe() 方法，或者调用 readable.resume() 方法， readable._readableState.flowing 的值将会变为 true 。这时，随着数据生成，可读流开始频繁触发事件。
+
+调用 readable.pause() 方法， readable.unpipe() 方法， 或者接收 “背压”（back pressure）， 将导致 readable._readableState.flowing 值变为 false。 这将暂停事件流，但 不会 暂停数据生成。 在这种情况下，为 'data' 事件设置监听函数不会导致 readable._readableState.flowing 变为 true。
+
+当 readable._readableState.flowing 值为 false 时， 数据可能堆积到流的内部缓存中
+
+6.readable
+let fs =require('fs');
+let rs = fs.createReadStream('./1.txt',{
+  start:3,
+  end:8,
+  encoding:'utf8',
+  highWaterMark:3
+});
+rs.on('readable',function () {
+  console.log('readable');
+  console.log('rs._readableState.buffer.length',rs._readableState.length);
+  let d = rs.read(1);
+  console.log('rs._readableState.buffer.length',rs._readableState.length);
+  console.log(d);
+  setTimeout(()=>{
+      console.log('rs._readableState.buffer.length',rs._readableState.length);
+  },500)
+});
+注意highWaterMark为3，当调用 rs.read(1);读取一个的时候，rs会立即补充3个字节，所以settimeout出来的为rs._readableState.length为5
+
+
+7.流的经典应用：行读取器：
+let fs = require('fs');
+let EventEmitter = require('events');
+let util = require('util');
+util.inherits(LineReader, EventEmitter)
+fs.readFile('./1.txt',function (err,data) {
+    console.log(data);
+})
+function LineReader(path) {
+    EventEmitter.call(this);
+    this._rs = fs.createReadStream(path);
+    this.RETURN = 0x0D;// \r 13
+    this.NEW_LINE = 0x0A;// \n 10
+    this.on('newListener', function (type, listener) {
+        if (type == 'newLine') {
+            let buffer = [];
+            //当read读取后少于缓存的时候，会重新触发readable，直到全部读完
+            this._rs.on('readable', () => {
+                let bytes;
+                while (null != (bytes = this._rs.read(1))) {
+                    let ch = bytes[0];
+                    switch (ch) {
+                        case this.RETURN:
+                            this.emit('newLine', Buffer.from(buffer));
+                            buffer.length = 0;
+                            let nByte = this._rs.read(1);
+                            if (nByte && nByte[0] != this.NEW_LINE) {
+                                buffer.push(nByte[0]);
+                            }
+                            break;
+                        case this.NEW_LINE:
+                            this.emit('newLine', Buffer.from(buffer));
+                            buffer.length = 0;
+                            break;
+                        default:
+                            buffer.push(bytes[0]);
+                            break;
+                    }
+                }
+            });
+            this._rs.on('end', () => {
+                if (buffer.length > 0) {
+                    this.emit('newLine', Buffer.from(buffer));
+                    buffer.length = 0;
+                    this.emit('end');
+                }
+            })
+        }
+    });
+}
+//读文件，一行一行地读取
+var lineReader = new LineReader('./1.txt');
+lineReader.on('newLine', function (data) {
+    console.log(data.toString());
+}).on('end', function () {
+    console.log("end");
+})
+
+
+```
+
+22.自定义可写流动
+
+
+
+```
+let EventEmitter = require('events');
+let fs = require('fs');
+class WriteStream extends EventEmitter{
+    constructor(path,options){
+        super();
+        this.path = path;
+        this.highWaterMark = options.highWaterMark||16*1024;
+        this.autoClose = options.autoClose||true;
+        this.mode = options.mode;
+        this.start = options.start||0;
+        this.flags = options.flags||'w';
+        this.encoding = options.encoding || 'utf8';
+
+        // 可写流 要有一个缓存区，当正在写入文件是，内容要写入到缓存区中
+        // 在源码中是一个链表 => []
+
+        this.buffers = [];
+
+        // 标识 是否正在写入
+        this.writing = false;
+
+        // 是否满足触发drain事件
+        this.needDrain = false;
+
+        // 记录写入的位置
+        this.pos = 0;
+
+        // 记录缓存区的大小
+        this.length = 0;
+        this.open();
+    }
+    destroy(){
+        if(typeof this.fd !=='number'){
+            return this.emit('close');
+        }
+        fs.close(this.fd,()=>{
+            this.emit('close')
+        })
+    }
+    open(){
+        fs.open(this.path,this.flags,this.mode,(err,fd)=>{
+            if(err){
+                this.emit('error',err);
+                if(this.autoClose){
+                    this.destroy();
+                }
+                return
+            }
+            this.fd = fd;
+            this.emit('open');
+        })
+    }
+    write(chunk,encoding=this.encoding,callback=()=>{}){
+       //写文件一般是二进制的所以要转换
+        chunk = Buffer.isBuffer(chunk)?chunk:Buffer.from(chunk,encoding);
+        // write 返回一个boolean类型 
+        this.length+=chunk.length; 
+        let ret = this.length<this.highWaterMark; // 比较是否达到了缓存区的大小
+        this.needDrain = !ret; // 是否需要触发needDrain
+        // 判断是否正在写入 如果是正在写入 就写入到缓存区中
+        if(this.writing){
+            this.buffers.push({
+                encoding,
+                chunk,
+                callback
+            }); // []
+        }else{
+            // 专门用来将内容 写入到文件内
+            this.writing = true;
+            this._write(chunk,encoding,()=>{
+                callback();
+                this.clearBuffer();
+            }); // 8
+        }
+        return ret;
+    }
+    
+    //排空缓存区，改变标志位writing =false
+    clearBuffer(){
+        let buffer = this.buffers.shift();
+        if(buffer){
+            this._write(buffer.chunk,buffer.encoding,()=>{
+                buffer.callback();
+                this.clearBuffer()
+            });
+        }else{
+            this.writing = false;
+            if(this.needDrain){ // 是否需要触发drain 需要就发射drain事件
+                this.needDrain = false;
+                this.emit('drain');
+            }
+        }
+    }
+    _write(chunk,encoding,callback){
+        //等文件打开再去写
+        if(typeof this.fd !== 'number'){
+            return this.once('open',()=>this._write(chunk,encoding,callback));
+        }
+        fs.write(this.fd,chunk,0,chunk.length,this.pos,(err,byteWritten)=>{
+            this.length -= byteWritten;
+            this.pos += byteWritten;
+            
+            callback(); // 清空缓存区的内容
+        });
+    }
+}
+
+module.exports = WriteStream;
+
+
+
+```
+
+23.自定义读流
+
+```
+let fs = require('fs');
+let EventEmitter = require('events');
+function computeNewHighWaterMark(n) {
+      n--;
+      n |= n >>> 1;
+      n |= n >>> 2;
+      n |= n >>> 4;
+      n |= n >>> 8;
+      n |= n >>> 16;
+      n++;
+     return n;
+  }
+class ReadStream extends EventEmitter {
+    constructor(path, options) {
+        super();
+        this.path = path;
+        this.highWaterMark = options.highWaterMark || 64 * 1024;
+        this.autoClose = options.autoClose || true;
+        this.start = 0;
+        this.end = options.end;
+        this.flags = options.flags || 'r';
+
+        this.buffers = []; // 缓存区 
+        this.pos = this.start;
+        this.length = 0; // 缓存区大小
+        this.emittedReadable = false;
+        this.reading = false; // 不是正在读取的
+        this.open();
+        this.on('newListener', (eventName) => {
+            if (eventName === 'readable') {
+                this.read();
+            }
+        })
+    }
+    read(n) { // 想取1个
+
+        if(n>this.length){
+            // 更改缓存区大小  读取五个就找 2的几次放最近的
+            this.highWaterMark = computeNewHighWaterMark(n)
+            this.emittedReadable = true;
+            this._read();
+        }
+
+
+        // 如果n>0 去缓存区中取吧
+        let buffer=null;
+        let index = 0; // 维护buffer的索引的
+        let flag = true;
+        if (n > 0 && n <= this.length) { // 读的内容 缓存区中有这么多
+            // 在缓存区中取 [[2,3],[4,5,6]]
+            buffer = Buffer.alloc(n); // 这是要返回的buffer
+            let buf;
+            while (flag&&(buf = this.buffers.shift())) {
+                for (let i = 0; i < buf.length; i++) {
+                    buffer[index++] = buf[i];
+                    if(index === n){ // 拷贝够了 不需要拷贝了
+                        flag = false;
+                        this.length -= n;
+                        let bufferArr = buf.slice(i+1); // 取出留下的部分
+                        // 如果有剩下的内容 在放入到缓存中
+                        if(bufferArr.length > 0){
+                            this.buffers.unshift(bufferArr);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        // 当前缓存区 小于highWaterMark时在去读取
+        if (this.length == 0) {
+            this.emittedReadable = true;
+        }
+        if (this.length < this.highWaterMark) {
+            if(!this.reading){
+                this.reading = true;
+                this._read(); // 异步的
+            }
+        }
+        return buffer
+    }
+    // 封装的读取的方法
+    _read() {
+        // 当文件打开后在去读取
+        if (typeof this.fd !== 'number') {
+            return this.once('open', () => this._read());
+        }
+        // 上来我要喝水 先倒三升水 []
+        let buffer = Buffer.alloc(this.highWaterMark);
+        fs.read(this.fd, buffer, 0, buffer.length, this.pos, (err, bytesRead) => {
+            if (bytesRead > 0) {
+                // 默认读取的内容放到缓存区中
+                this.buffers.push(buffer.slice(0, bytesRead));
+                this.pos += bytesRead; // 维护读取的索引
+                this.length += bytesRead;// 维护缓存区的大小
+                this.reading = false;
+                // 是否需要触发readable事件
+                if (this.emittedReadable) {
+                    this.emittedReadable = false; // 下次默认不触发
+                    this.emit('readable');
+                }
+            } else {
+                this.emit('end');
+                this.destroy();
+            }
+        })
+    }
+    destroy() {
+        if (typeof this.fd !== 'number') {
+            return this.emit('close')
+        }
+        fs.close(this.fd, () => {
+            this.emit('close')
+        })
+    }
+    open() {
+        fs.open(this.path, this.flags, (err, fd) => {
+            if (err) {
+                this.emit('error', err);
+                if (this.autoClose) {
+                    this.destroy();
+                }
+                return
+            }
+            this.fd = fd;
+            this.emit('open');
+        });
+    }
+}
+
+module.exports = ReadStream;
+```
+
+# 四.tcp
+
+1.为了让计算机能够通讯， 计算机需要定义通讯规则，这些规则就是协议，协议就是数据封装格式+传输
+
+OSI模型把网络通信的工作分为7层，分别是物理层、数据链路层、网络层、传输层、会话层、表示层和应用层。 首先来看看OSI的七层模型
+
+
+
+![image-20200607112608016](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200607112608016.png)
+
+
+
+
+
+2.tcp/ip参考模型：参考了osi的七层协议
+
+
+
+![image-20200607112823540](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200607112823540.png)
+
+*TCP/IP协议被称为传输控制协议/互联网协议，又称网络通讯协议
+
+*是由网络层的ip协议和传输层的tcp协议组成，是一个很大的协议集合
+
+*物理层和数据链路层没有定义任何的特定协议，支持所有的标准和专用的协议
+
+*网络层电仪了网络互联也就是ip协议
+
+  1.网际协议ip负责主机和网络之间的寻址和路由数据包
+
+  2.地址解析协议arp 获得同一物理网络中的硬件主机mac地址
+
+  3.反向地址转换协议 通过mac地址找ip地址
+
+  4.网际控制消息协议icmp，发送消息，并报告有关数据包的传送错误（ping地址）
+
+  5.互联组管理协议igmp  ip主机向本地多路广播路由器报告主机成员
+
+*传输层定义了tcp 和upd协议
+
+*应用层定义了http，ftp，dns等协议
+
+五层对应的协议：
+
+![image-20200607160409426](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200607160409426.png)
+
+双工，单工，半双攻
+
+双工：服务器和客户端可以同时双向通讯
+
+半双攻：服务器和客户端可以不同时双向通讯
+
+单工：服务器和客户端只能单向通讯
+
+## tcp/ip各层的介绍：
+
+1.物理层
+
+  计算机在传递数据的时候传递的都是0和1的数字，而物理层关心的是用什么信号来表示0和1，是否可以双向通信，最初的连接如何建立以及完成连接如何终止,物理层是为数据传输提供可靠的环境。
+
+- 为数据端设备提供传送数据的通路
+
+- 传输数据
+
+  - 激活物理连接，在连接的设备之间连接起来形成通路
+  - 传输数据,关心如何打包数据和控制传输速度
+  - 关闭物理连接
+
+  ![image-20200608055817834](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200608055817834.png)
+
+
+
+2.数据链路层
+
+数据链路层们于物理层和互联网层之间，用来向网络层提供数据，就是把源计算机网络层传过来的信息传递给目标主机。
+
+- 如何将数据组合成数据帧(Frame)，帧是数据链路层的传输单位
+- 数据链路的建立、维护和拆除
+- 帧包装、帧传输、帧同步
+- 帧的差错恢复
+- 流量控制
+
+
+
+注意：物理层可以简单的理解为运输过程中的道路，数据链路层可以理解为货车（数据需要拆分打包）
+
+
+
+3.mac地址（全球唯一的）
+
+
+
+- 在通信过程中是用内置在网卡内的地址来标识计算机身份的
+- 每个网卡都有一个全球唯一的地址来标识自己，不会重复
+- MAC地址48位的二进制组成，通常分为6段，用16进制表示
+
+![image-20200608061501924](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200608061501924.png)
+
+4.网络层
+
+  位于传输层和数据链路层之间,用于把数据从源主机经过若干个中间节点传送到目标主机,并向传输层提供最基础的数据传输服务,它要提供路由和选址的工作（ip地址有层次结构的，对应地方地址的）
+
+ 4.1 选址
+
+   交换机是靠MAC来寻址的，而因为MAC地址是无层次的,所以要靠IP地址来确认计算机的位置,这就是选址
+
+![image-20200608065949948](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200608065949948.png)
+
+![image-20200608070348139](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200608070348139.png)
+
+ip地址就是省市区地址，申请上网的时候，电信服务商会给一个ip地址，姓名就是mac地址，先地位ip地址，再在局域网里面找mac地址
+
+ip地址分为三类：
+
+![image-20200609233621612](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200609233621612.png)
+
+私有IP
+
+- A类私有IP：10.0.0.0 ~ 10.255.255.255
+- B类私有IP：172.16.0.0 ~ 172.31.255.255
+- C类私有IP：192.168.0.0 ~ 192.168.255.255
+
+其他范围的IP均为公有IP地址
+
+![image-20200610000143224](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200610000143224.png)
+
+
+
+局域网的ip地址和子网掩码 作运算（遇到1是原来的，遇到0就是0），如果得到的网络部分相同，就可以在局域网里面通信
+
+4.2路由（选择最近的道路）
+
+![image-20200611231334097](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200611231334097.png)
+
+2发出请求，路由器寻址，找到理1最近的路由器，最近的路由器再找到ip，找到mac地址，再在两个mac地址之间通讯
