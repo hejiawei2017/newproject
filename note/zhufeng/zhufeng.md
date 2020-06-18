@@ -47,7 +47,7 @@ rm -rf /var/lib/docker
 
 {
 
- "registry-mirrors":['https://registy.docker-cn.com']
+ "registry-mirrors":['https://mirror.ccs.tencentyun.com']
 
 }
 
@@ -168,6 +168,67 @@ volumes：可以在主机中挂载数据到容器中
   dokcer container rm nginx-text
 
   docker volume rm nginx-vol
+
+
+
+
+
+8.搭建lnmp网站平台
+
+ 1.创建自定义网络：
+
+​    docker network create lnmp 
+
+  2.创建mysql容器：
+
+
+
+docker run -itd --name  lnmp_mysql  --net lnmp -p 3306:3306  --mount src=mysql-vol,dst=/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_c
+
+ 查看lnmp_mysql 进程和日志   
+
+   docker top lnmp_mysql 
+   docker logs lnmp_mysql 
+
+  3.创建数据库
+
+
+
+   docker exec  lnmp_mysql sh -c 'exec mysql -uroot  -p123456  -e"create database wp"'
+
+  进入数据库： docker exec -it lnmp_mysql bash
+
+​                          mysql -uroot -p   //密码123456
+
+
+
+   执行命令show databases;  //注意分号
+
+   修改登录密码：ALTER user 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456'; 
+
+  在主机安装mysql ：yum install  mysql
+
+
+
+4.创建php环境容器
+
+ docker run -itd --name lump_web --net lnmp -p 88:80 --mount type=bind,src=/app/wwwroot,dst=/var/www/html richarvey/nginx-php-fpm
+
+
+
+5.以wordpress博客为例测试
+
+ wget https://cn.wordpress.org/wordpress-4.7.4-zh_CN.tar.gz
+
+  tar zxf wordpress-4.7.4-zh_CN.tar.gz -C /app/wwwroot
+
+
+
+ 访问： http://106.52.141.232:88/wordpress/
+
+![image-20200617231654396](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200617231654396.png)
+
+
 
 # 一.webpack
 
@@ -1474,3 +1535,75 @@ ip地址分为三类：
 ![image-20200611231334097](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200611231334097.png)
 
 2发出请求，路由器寻址，找到理1最近的路由器，最近的路由器再找到ip，找到mac地址，再在两个mac地址之间通讯
+
+
+
+
+
+5.网络层
+
+   位于应用层和网络接口层之间
+
+- 是面向连接的、可靠的的进程到进程通信的协议
+- TCP提供全双工服务，即数据可在同一时间双向传播
+- TCP将若干个字节构成一个分组，此分组称为报文段(Segment)
+
+
+
+![image-20200618071649293](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200618071649293.png)
+
+
+
+5.1对可靠性要求高的上层协议，实现可靠性的保证
+
+- 如果数据丢失、损坏的情况下如何保证可靠性
+
+- 网络层只管传递数据，成功与否并不关心
+
+  
+
+  
+
+5.2协议分类
+
+- TCP(Transimision Control Protocal)
+
+  - 传输控制协议
+  - 可靠的、面向连接的协议
+  - 传输效率低
+
+- UDP(User Datagram Protocal)
+
+  - 用户数据报协议
+
+  - 不可靠的、无连接的服务
+
+  - 传输效率高
+
+    
+
+5.3TCP功能
+
+- 将数据进行分段打包传输
+
+- 对每个数据包编号控制顺序
+
+- 运输中丢失、重发和丢弃处理
+
+- 流量控制避免拥塞
+
+  
+
+5.4TCP数据包封装
+
+
+
+![image-20200618072117548](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200618072117548.png)
+
+5.4.1源端口号和目标端口号，计算机通过端口号识别访问哪个服务,比如http服务或ftp服务，发送方端口号是进行随机端口，目标端口号决定了接收方哪个程序来接收
+
+5.4.2 32位序列号 TCP用序列号对数据包进行标记，以便在到达目的地后重新重装，假设当前的序列号为 s，发送数据长度为 l，则下次发送数据时的序列号为 s + l。在建立连接时通常由计算机生成一个随机数作为序列号的初始值
+
+5.4.3 确认应答号 它等于下一次应该接收到的数据的序列号。假设发送端的序列号为 s，发送数据的长度为 l，那么接收端返回的确认应答号也是 s + l。发送端接收到这个确认应答后，可以认为这个位置以前所有的数据都已被正常接收(ack)
+
+5.4.4 首部长度：TCP 首部的长度，单位为 4 字节。如果没有可选字段，那么这里的值就是 5。表示 TCP 首部的长度为 20 字节(每行2字节，32位)
