@@ -230,6 +230,154 @@ docker run -itd --name  lnmp_mysql  --net lnmp -p 3306:3306  --mount src=mysql-v
 
 
 
+
+
+6.dockerfile
+
+![image-20200619071958668](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200619071958668.png)
+
+
+
+![image-20200619072131121](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200619072131121.png)
+
+
+
+
+
+run 是执行shell命令的，加【】是另外开一个线程去执行，不加是当前的线程去执行，加【】能并行的去执行任务
+
+cmd是镜像启动一个容器的最后一步去执行的，一般执行npm install 等命令
+
+entrypoint 是镜像启动一个容器前执行，可以传参数给容器，一般执行/bin/bash 等命令
+
+env从外包传入变量到容器里面
+
+add 把镜像外的一个包拉倒镜像中
+
+add  php-5.6.31.tar.gz /tmp/  把文件字段解压放到tmp中，同时有拷贝和解压的功能
+
+copy和add基本一样，就是没有自动解压的功能
+
+volume 挂载宿主机的目录到容器目录
+
+workdir 切换到工作目录，默认exec进的是根目录，配合这个可以进指定目录
+
+
+
+
+
+6.0，可以通过dokcerfile 构建基础的镜像，用镜像启动相应的容器：
+
+6.1nginx dockerfle:
+
+ <img src="C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622070516024.png" alt="image-20200622070516024" style="zoom:150%;" />
+
+![image-20200622070451551](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622070451551.png)
+
+
+
+ 构建镜像：docker image build -t nginx:v1 -f Dockerfile .   
+
+  -t ：指定一个镜像名称    -f：指定一个dockerfile的名字   . : 当前的上下文环境
+
+
+
+6.2.php 的dockerfile
+
+![image-20200622070725126](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622070725126.png)
+
+
+
+![image-20200622070753298](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622070753298.png)
+
+![image-20200622070846550](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622070846550.png)
+
+6.3.java的docker镜像：
+
+![image-20200622231935692](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622231935692.png)
+
+
+
+有了dockerfile之后就开始构建镜像了：
+
+docker build -t  tomcat:v1 .
+
+
+
+根据镜像启动容器
+
+
+
+![image-20200622231952293](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622231952293.png)
+
+
+
+7.镜像仓库
+
+  //这种方法不推荐
+
+ 7.1 docker image save -o /data2/shenyaqi/syq-anaconda.tar anaconda//  将镜像anaconda保存到目录
+
+  docker load -i /data2/shenyaqi/syq-anaconda.tar  //本地拉去镜像
+
+
+
+7.2搭建私有的镜像创库
+
+![image-20200623070518712](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200623070518712.png)
+
+1.从docker hub上面拉去镜像：  docker pull nginx:1.12
+
+2.打标签：docker  tag nginx:1.1.2  192.168.0.211:5000/niginx:1.12
+
+3.上传镜像：docker push 192.168.0.211:5000/nginx:1.12
+
+可能会报错的。设置信任地址：
+
+![image-20200623072609055](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200623072609055.png)
+
+
+
+4.现在可以在别的机器拉取了：
+
+docker pull 192.168.0.211:5000/nginx:1.12 
+
+或者
+
+docker run -itd --name nginx -p 88:80  192.168.0.211:5000/nginx:1.2
+
+
+
+8.docker hub 公共仓库的使用
+
+![image-20200629060700471](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200629060700471.png)
+
+
+
+docker hub 帐号密码：hejiawei2020   as7683032389
+
+
+
+8.1 创建仓库
+
+![image-20200629061716868](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200629061716868.png)8.2登录 docker login   输入用户名和密码
+
+8.3打tag：docker tag nginx:v1   hejiawei2020/nignx:v1 //     把 nginx:v1 的镜像打tag为 hejiawei2020/nignx:v1 ，hejiawei2020是帐号
+
+8.4上传镜像  docker push  hejiawei2020/nignx:v1
+
+8.5拉取镜像     docker pull hejiawei2020/nignx:v1
+
+
+
+
+
+
+
+9.企业级的私有镜像harbor
+
+
+
 # 一.webpack
 
 
@@ -1607,3 +1755,43 @@ ip地址分为三类：
 5.4.3 确认应答号 它等于下一次应该接收到的数据的序列号。假设发送端的序列号为 s，发送数据的长度为 l，那么接收端返回的确认应答号也是 s + l。发送端接收到这个确认应答后，可以认为这个位置以前所有的数据都已被正常接收(ack)
 
 5.4.4 首部长度：TCP 首部的长度，单位为 4 字节。如果没有可选字段，那么这里的值就是 5。表示 TCP 首部的长度为 20 字节(每行2字节，32位)
+
+5.4. 5 SYN(synchronous建立联机) 同步序号位 TCP建立连接时要将这个值设为1
+
+5.4. 6 ACK(acknowledgement 确认)为1表示确认号
+
+5.4.7 FIN发送端完成位，提出断开连接的一方把FIN置为1表示要断开连接 
+
+###### 三次握手
+
+- 第一次握手主机A通过一个标识为SYN标识位的数据段发送给主机B请求连接，通过该数据段告诉主机B希望建立连接，需要B应答，并告诉主机B传输的起始序列号
+
+- 第二次握手是主机B用一个确认应答ACK和同步序列号SYNC标志位的数据段来响应主机A，一是发送ACK告诉主机A收到了数据段，二是通知主机A从哪个序列号做标记。
+
+- 第三次握手是主机A确认收到了主机B的数据段并可以开始传输实际数据。
+
+- ![image-20200621080257365](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200621080257365.png)
+
+  简单来说：
+
+  1客户端第一次请求，发送一个seq=x，和ack确认位到服务器，
+
+  2服务器接受到请求发送一个确认位置ack=x+1,标识x+1以上的位置都收到了，下次客户端seq从 x+1开始发把，同时发送一个服务端的seq位置，客户端下次发送的的ack=seq+1
+
+  3.客户端发送seq=x+1，ack=服务端seq+1
+
+###### 四次断开
+
+- 主机A发送FIN控制位发出断开连接的请求
+- 主机B进行响应，确认收到断开连接请求
+- 主机B提出反方向的关闭要求
+- 主机A确认收到的主机B的关闭连接请求
+- ![image-20200621080308478](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200621080308478.png)
+
+
+
+![image-20200629071634387](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200629071634387.png)
+
+断开为什么是4次的呢
+
+因为服务端收到客户端的断开请求，先给客户端通知收到，因为要处理数据，并不能马上断开，就先发一个消息通知到客户端，等数据处理完成之后，再发一个处理完成之后的一个消息
