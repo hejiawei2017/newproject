@@ -376,6 +376,65 @@ docker hub 帐号密码：hejiawei2020   as7683032389
 
 9.企业级的私有镜像harbor
 
+9.1安装：一般采用离线安装，因为在线安装很多包不能访问
+
+ git地址：https://github.com/vmare/harbor
+
+ 下载地址：https://github.com/goharbor/harbor/releases，选择offline安装
+
+  用winscp工具上传文件到服务器 
+
+ 进入服务器目录tar zxvf harbor-offline-installer-v1.5.0.tgz  解压压缩包
+
+92.自签tls证书
+
+ https://gitbub.com/vmware/harbor/blob/marter/doc/configure_https.md
+
+  9.2.1  生成自签证书（不受信任的）： openssl req -newkey rsa:4096 -nodes -sha256 -keyout ca.key -x509 -days 365 -out ca.crt
+  ![image-20200704204655124](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200704204655124.png)
+
+9.2.3  生成请求证书：  openssl req -newkey rsa:4096 -nodes -sha256 -keyout  reg.hejiawei2020.cn.key  -out reg.hejiawei.cn.csr
+
+9.24 颁发证书：openssl x509 -req -days 365 -in reg.hejiawei.cn.csr -CA ca.crt  -CAkey ca.key -CAcreateserial -out reg.hejiawei.cn.crt
+
+
+
+93.harbor配置
+
+ 进入harbor安装目录  vi harbor.cfg   
+
+   修改主域名，修改密码，修改证书文字，保存提出
+
+执行：./prepare // 生成配置文件和指定的证书
+
+执行：./install.sh //安装
+
+执行：docker-compose ps //查看容器的启动状态
+
+没有经过dns域名解释所以行不通：https://reg.hejiawei.cn  通过host配置先做映射
+
+进入目录编辑hosts文件，C:\Windows\System32\drivers\etc
+
+可以创建项目和创建成员了，项目下有管理成员的选项
+
+
+
+
+
+9.5  docker主机访问harbor
+
+
+
+9.6发布到企业私有的配置
+
+ 9.6.1 先登录  docker login reg.hejiawei.cn
+
+​     输入用户名和密码（之前这harbor创建的用户）
+
+​    之后打tag，然后push，然后pull，注意都要加reg.hejiawei.cn
+
+ 
+
 
 
 # 一.webpack
