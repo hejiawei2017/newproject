@@ -433,9 +433,23 @@ docker hub 帐号密码：hejiawei2020   as7683032389
 
 ​    之后打tag，然后push，然后pull，注意都要加reg.hejiawei.cn
 
+10. 使用kubeadm快速部署一个K8S集群![image-20200713232305808](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200713232305808.png)
+
+    10.1 在每台机器上面安装doker
+
+    ![image-20200715233637456](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200715233637456.png)
+
  
 
 
+
+​    ![image-20200715234323016](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200715234323016.png)
+
+![image-20200715234535294](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200715234535294.png)
+
+![image-20200716002709090](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200716002709090.png)
+
+第五部在主机上执行，其他都在各个机器要执行
 
 # 一.webpack
 
@@ -1854,3 +1868,5 @@ ip地址分为三类：
 断开为什么是4次的呢
 
 因为服务端收到客户端的断开请求，先给客户端通知收到，因为要处理数据，并不能马上断开，就先发一个消息通知到客户端，等数据处理完成之后，再发一个处理完成之后的一个消息
+
+第21讲20分钟
