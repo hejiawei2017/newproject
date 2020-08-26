@@ -762,69 +762,69 @@ if(!res){
 
 
 ​		
-		<!-- #ifdef MP-WEIXIN -->
-		<button type="primary" @click="applogin">app微信登录</button>
-	
-		<!-- #endif -->
+​		<!-- #ifdef MP-WEIXIN -->
+​		<button type="primary" @click="applogin">app微信登录</button>
+​	
+​		<!-- #endif -->
 
 
 ​	
-			methods: {
-			   applogin(){
-			     uni.getProvider({//获取手机上安装了那些第三方授权app
-			       service:'oauth',
-			       success：function(){
-			           if(~res.provider.indexOf('weixin')){
-			              uni.login({
-			                 provider:'weixin',
-			                 success:function(reslogin){
-			                      //这里面就有openid或者unionid，昵称等等
-			                 }
-			              })
-			           }
-			       }
-			     })
-			   },
-				getUserInfo(res) {
-					if (!res.detail.iv) {
-						uni.showToast({
-							title: "你取消了授权登录",
-							icon: 'none'
-						})
-					} else {
-						//用微信授权登录
-						uni.login({
-							provider: "weixin",
-							success(res1) {
-								//关键是这个code
-								let code = res1.code;
-								//获取sessionkey和openid
-								//后端创建一个接口给前端调用test.com， 后端调用接口https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=code&grant_type=authorization_code
-								//这个接口返回就有openid，
-								uni.request({
-									url: "test.com",
-									success(res) {
-										//
-										let openid = res.data.openid;
-										let session_key  = res.data.session_key
-										//如果符合的话还会返回unionid,（注册了企业的）
-										let unionid  = res.data.unionid
-										//最后获取明文数据，包含手机号码
-										// 后端下载demo生成一个接口test2.com 下载地址https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html
-										
-										uni.request({
-											url:'test2.com',
-											method:"post",
-											header:{"content-type":"application/x-www-form-urlencoded"},
-											data:{
-												appid:"your app id",
-												sessionKey:session_key,
-												iv:res.detail.iv,
-												encryptedData:res.detail.encryptedData
-											},
-											success(lastres) {
-												//这里就是最后的数据了,包含手机号的
-												
+​			methods: {
+​			   applogin(){
+​			     uni.getProvider({//获取手机上安装了那些第三方授权app
+​			       service:'oauth',
+​			       success：function(){
+​			           if(~res.provider.indexOf('weixin')){
+​			              uni.login({
+​			                 provider:'weixin',
+​			                 success:function(reslogin){
+​			                      //这里面就有openid或者unionid，昵称等等
+​			                 }
+​			              })
+​			           }
+​			       }
+​			     })
+​			   },
+​				getUserInfo(res) {
+​					if (!res.detail.iv) {
+​						uni.showToast({
+​							title: "你取消了授权登录",
+​							icon: 'none'
+​						})
+​					} else {
+​						//用微信授权登录
+​						uni.login({
+​							provider: "weixin",
+​							success(res1) {
+​								//关键是这个code
+​								let code = res1.code;
+​								//获取sessionkey和openid
+​								//后端创建一个接口给前端调用test.com， 后端调用接口https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=code&grant_type=authorization_code
+​								//这个接口返回就有openid，
+​								uni.request({
+​									url: "test.com",
+​									success(res) {
+​										//
+​										let openid = res.data.openid;
+​										let session_key  = res.data.session_key
+​										//如果符合的话还会返回unionid,（注册了企业的）
+​										let unionid  = res.data.unionid
+​										//最后获取明文数据，包含手机号码
+​										// 后端下载demo生成一个接口test2.com 下载地址https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/signature.html
+​										
+​										uni.request({
+​											url:'test2.com',
+​											method:"post",
+​											header:{"content-type":"application/x-www-form-urlencoded"},
+​											data:{
+​												appid:"your app id",
+​												sessionKey:session_key,
+​												iv:res.detail.iv,
+​												encryptedData:res.detail.encryptedData
+​											},
+​											success(lastres) {
+​												//这里就是最后的数据了,包含手机号的
+​												
 											}
 										})
 									}
@@ -835,12 +835,12 @@ if(!res){
 
 
 ​	
-							}
-						})
-					}
-	
-				}
-			}
+​							}
+​						})
+​					}
+​	
+​				}
+​			}
 
 
 ​		
@@ -936,6 +936,44 @@ mvvm：第一个model是单页的静态数据，第一个v是页面html，后面
 ![image-20200804073539617](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200804073539617.png)
 
 
+
+
+
+48.应用生命周期：
+
+   onLaunch：第一次初始化的时候调用，只调用一次
+
+  onShow: 第一次也会调用，在onlaunch之后，程序隐藏之后就会重新显示
+
+  onHide：与onshow相反
+
+  注意：应用生命周期仅可在`App.vue`中监听，在其它页面监听无效
+
+49.页面生命周期
+
+   ![image-20200810070922276](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200810070922276.png)
+
+50.屏幕尺寸单位
+
+  rpx：无论那个手机都是750rpx，字体和高度最好不要用rpx
+
+51.表达式绑定 属性:url="url"
+
+52.事件：
+
+ 
+
+<input type="text"  @confirm='confirm' @click="click" @tap='tap'  @longpress="longpress"  @longtap="longtap">
+
+如果web上面click和tap同时存在的话，tap会覆盖click
+
+如果在app上面 两者都会触发，tap会优于click触发
+
+所以一般情况下面取tap事件就可以了
+
+longpress 和longtap 也是，在web上面longtap 会覆盖longpress  ，在app上面longtap 事件不注销了
+
+所以一般情况下面取longpress 事件就可以了
 
 
 
