@@ -28,6 +28,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "uploadsplit" */ "../views/uploadsplit.vue"),
   },
+  {
+    path: '/encryptedLogin',
+    name: "encryptedLogin",
+    component: () =>
+      import(/* webpackChunkName: "uploadsplit" */ "../views/encryptedLogin.vue"),
+  },
 ];
 
 const router = new VueRouter({
