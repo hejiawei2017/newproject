@@ -1,4 +1,4 @@
-# 一.docker
+一.docker
 
 1.体系结构
 
@@ -1763,29 +1763,21 @@ ip地址分为三类：
 
 5.网络层
 
-   位于应用层和网络接口层之间
-
-- 是面向连接的、可靠的的进程到进程通信的协议
-- TCP提供全双工服务，即数据可在同一时间双向传播
-- TCP将若干个字节构成一个分组，此分组称为报文段(Segment)
+   网络层的目的是实现两个[端系统](https://baike.baidu.com/item/端系统)之间的数据透明传送，具体功能包括[寻址](https://baike.baidu.com/item/寻址)和[路由选择](https://baike.baidu.com/item/路由选择)、连接的建    立、保持和终止等。它提供的服务使[传输层](https://baike.baidu.com/item/传输层)不需要了解网络中的数据传输和[交换技术](https://baike.baidu.com/item/交换技术)。
 
 
+
+5.1传输层
 
 ![image-20200618071649293](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200618071649293.png)
 
 
 
-5.1对可靠性要求高的上层协议，实现可靠性的保证
 
-- 如果数据丢失、损坏的情况下如何保证可靠性
 
-- 网络层只管传递数据，成功与否并不关心
 
-  
 
-  
-
-5.2协议分类
+5.2传输层级协议分类
 
 - TCP(Transimision Control Protocal)
 
@@ -1869,4 +1861,520 @@ ip地址分为三类：
 
 因为服务端收到客户端的断开请求，先给客户端通知收到，因为要处理数据，并不能马上断开，就先发一个消息通知到客户端，等数据处理完成之后，再发一个处理完成之后的一个消息
 
-第21讲20分钟
+5.5.udp是一个不可靠的五连接的传输层的协议。也就是不关心到没有到目标主机
+
+
+
+![image-20200806232441317](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200806232441317.png)
+
+一般用于qq，视频软件中
+
+###### dns服务器的作用是根据域名找ip，找到ip返回给本机再连接主机
+
+6.应用层常用的协议
+
+ http ftp  smtp(发邮件) pop3(收邮件)
+
+6.1数据封装过程
+
+![image-20200807000308715](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200807000308715.png)
+
+
+
+6.2 nodejs 创建 tcp server
+
+```javascript
+// node 为了实现tcp 提供了一个模块 模块叫net模块
+// 和http用法一致
+
+let net = require('net');
+// 创建一个tcp服务 里面放的是回调函数 监听函数，当连接到来时才会执行
+// socket 套接字 是一个duplex 可以支持读操作和写操作
+let server = net.createServer(function(socket){
+    // 最大连接数2个
+    // 希望每次请求到来时都一个提示 当前连接了多少个 一共连接多少个
+    server.maxConnections = 2;
+    server.getConnections(function(err,count){
+        // socket每次连接时都会产生一个新的socket
+        socket.write(`当前最大容纳${server.maxConnections},现在${count}人`)
+    });
+    socket.setEncoding('utf8');
+    socket.on('data',function(data){
+        console.log(data);
+        // socket.end(); // 触发客户端的关闭事件
+        // close事件表示服务端不在接收新的请求了，当前的还能继续使用，当客户端全部关闭后会执行close事件
+        // server.close();
+        // 如果所有客户端都关闭了，服务端就关闭，如果有人进来仍然可以
+        server.unref();
+    });
+    socket.on('end',function(){
+        console.log('客户端关闭');
+    });
+    // 请求到来时会触发这个函数
+    // socket时一个可读可写
+});
+// backlog默认511
+let port = 8080;
+// 如果端口号被占用了怎么办
+server.listen(port,'localhost',function(){
+    console.log(`server start ${port}`)
+});
+// 当服务端发生错误时，close事件只有调用close方法才会触发
+server.on('close',function(){
+    console.log('服务端关闭');
+})
+server.on('error',function(err){
+    if(err.code === 'EADDRINUSE'){
+        server.listen(++port)
+    }
+});
+
+socket.on('end') // 服务器收到客户端关闭的请求的时候会触发这个end事件
+socket.on('close') // 服务器真正关闭的时候会触发这个事件，先end 后close
+
+//server.close() //调用以后新的连接就连不上去了，但是以前的连接还是有效的
+//server.unref(); //如果所有客户端都关闭了，服务端就关闭，如果有人进来仍然可以
+```
+
+6.3. 创建net服务器，通过客户端连接telnet  localhost 8080 到服务器输入文字，服务器写入文件
+
+```
+let net = require("net");
+let path = require("path");
+let ws = require("fs").createWriteStream(path.join(__dirname, "msg.txt"));
+let server = net.createServer(function (socket) {
+  //先暂停
+  socket.pause();
+  socket.setTimeout(3 * 1000);
+  //3秒后再重新写入
+  socket.on("timeout", function () {
+    //通过socket.pipe，灌入写流，end: false代表写完后不关闭
+    socket.pipe(ws, { end: false });
+  });
+});
+server.listen(8080);
+//node net.js 启动
+
+```
+
+6.4用nodejs实现客户端和服务器通讯
+
+```
+//client.js
+let net = require("net");
+let socket = new net.Socket();
+socket.connect(8080, "localhost", function () {
+  //连接后向服务器写数据
+  socket.write("hello");
+});
+//防止乱码
+socket.setEncoding("utf8");
+//接受服务器过来的数据
+socket.on("data", function (data) {
+  console.log(data);
+});
+
+
+
+//server.js
+let net = require("net");
+let server = net.createServer((socker) => {
+  socker.setEncoding("utf8");
+  //接受客户端的数据
+  socker.on("data", function (data) {
+    socker.write("服务器回应：" + data);
+  });
+  socker.on("end", function () {});
+  socker.on("close", function () {});
+});
+server.listen(8080, function () {
+  console.log("listen in 8080");
+});
+
+```
+
+6.5用nodejs实现聊天室
+
+```
+let net = require('net');
+// 当客户端连接服务端时 会触发回调函数 默认提示 输入用户名,就可以通信了
+// 自己的说的话 不应该通知自己 应该通知别人
+let clients = {};
+function broadcast(nickname,chunk){
+    Object.keys(clients).forEach(key=>{
+        if(key!=nickname){
+            clients[key].write(`${nickname}:${chunk} \r\n`);
+        }
+    })
+}
+let server = net.createServer(function(socket){
+    server.maxConnections = 3;
+    server.getConnections((err,count)=>{
+        socket.write(`欢迎来到聊天室 当前用户数${count}个,请输入用户名\r\n`);
+    });
+    let nickname;
+    socket.setEncoding('utf8'); 
+  
+    socket.on('data',function(chunk){
+        chunk = chunk.replace(/\r\n/,'')
+        if(nickname){
+            // 发言 broadcast
+            broadcast(nickname,chunk);
+        }else{
+            nickname = chunk;
+            clients[nickname] = socket;
+            socket.write(`您的新用户名是${nickname} \r\n`);
+        }
+    });
+     socket.on('end',function(){
+        clients[nickname] &&clients[nickname].destroy();
+        delete clients[nickname]; // 删除用户
+    });
+});
+
+server.listen(8080);
+```
+
+6.6.udp服务器广播实现
+
+
+
+```
+1.服务器
+let dgram = require('dgram');
+let server = dgram.createSocket('udp4);
+server.on('message',function(msg){
+  let buf = new Bufffer('已经接收客户端发送的数据'+msg);
+  server.setBroadcast(true);
+  //向所有的广播
+  server.send(buf,0,buf.length,41235,"192.168.1.255");
+});
+server.bind(41234,'192.168.1.100');
+
+2.客户端
+let dgram = require('dgram');
+let client = dgram.createSocket('udp4);
+client.bind(41235,'192.168.1.102);
+let buf = new Buffer('hello');
+client.send(buf,0,buf.length,41234,'192.168.1.100');
+client.on('message',function(msg,rinfo){
+  console.log('received : ',msg);
+});
+```
+
+  8.0  udp组播
+
+```
+1.服务器
+let dgram = require('dgram');
+let server = dgram.createSocket('udp4');
+server.on('listening',function(){
+  server.MulticastTTL(128);
+  server.setMulticastLoopback(true);
+  server.addMembership('230.185.192.108');
+});
+setInterval(broadcast,1000);
+function broadcast(){
+  let buffer = Buffer.from(new Date().toLocaleString());
+  server.send(buffer,0,buffer.length,8080,"230.185.192.108");//向主机广播
+}
+
+2.客户端
+let dgram = require('dgram');
+let client = dgram.createSocket('udp4');
+client.on('listening',function(){
+    client.addMembership('230.185.192.108');//加入组
+});
+client.on('message',function(message,remote){
+  console.log(message.toString());
+});
+client.bind(8080,'192.168.1.103');
+
+
+
+
+
+```
+
+
+
+7.http请求的过程
+
+  ![image-20200817233137945](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200817233137945.png)
+
+7.2.http**长连接**
+
+  http.10以前的请求只能一个一个来，开销非常的大
+
+   ![image-20200817233232501](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200817233232501.png)
+
+如果一个连接不断开的情况下就可以连续发送图片和资源了
+
+![image-20200817233338276](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200817233338276.png)
+
+上面的这中情况其实还是不够因为每次发送一个才能再次发送
+
+**管线化技术**：可以不用等待同时发送多个，注意每个浏览器支持的并发数是不固定的
+
+![image-20200817233942067](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200817233942067.png)
+
+7.3url格式
+
+![image-20200817234340592](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200817234340592.png)
+
+7.4http请求一般分为一下部分
+
+  1.通用首部：请求和响应都有的字段
+
+  2.请求首部：描述请求的情况的
+
+  3.响应首部：描述响应首部
+
+  4.实体首部：描述主体数据的类型长度等等信息的，一般以content开头的
+
+以上4种类型既可以在请求报文上，也可以在响应报文上面
+
+75.gzip，HTTP请求默认开启了gzip压缩，在服务器端先压缩，在网络中传输，然后在客户端解压
+
+76.分割发送的分块传输编码，当文件比较大的时候可以通过分块传输，部分先显示的策略更快的显示界面
+
+![image-20200818065738195](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200818065738195.png)
+
+7.7form表单上传
+
+####  multiparty/form-data
+
+![image-20200818070511515](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200818070511515.png)
+
+7.8内容协商
+
+![image-20200818071606010](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200818071606010.png)
+
+7.9创建http服务器
+
+```
+let http = require('http'); 
+// 核心模块
+
+// let server = http.createServer(function(req,res){
+
+// });
+// http是基于tcp的
+
+// POST / HTTP/1.1
+// > Host: www.baidu.com
+// > User-Agent: curl/7.46.0
+// > Accept: */*
+// > Content-Length: 11
+// > Content-Type: application/x-www-form-urlencoded
+
+let server = http.createServer();
+// curl 可以帮我们发http请求
+// req是请求 是一个可读流 = socket
+// res是响应 是一个可写流
+server.on('request',function(req,res){
+    let method = req.method;
+    let httpVersion  = req.httpVersion;
+    let url = req.url;
+    let headers = req.headers; // 请求头的名字都是小写的
+    console.log(method,httpVersion,url,headers);
+    // 如果数据 大于64k data事件可能会触发多次
+    let buffers = [];
+    // 如果没有请求体 不会走on('data'),没有请求体也会触发end事件
+    req.on('data',function(data){
+        console.log(1)
+        buffers.push(data);
+    });
+
+    req.on('end',function(){
+        console.log(Buffer.concat(buffers).toString());
+        // socket.write socket.end
+        res.write('hello');
+        res.end('world');
+    });
+});
+// 监听请求的到来
+server.on('connection',function(socket){
+    console.log('建立连接');
+});
+server.on('close',function(){
+    console.log('服务端关闭')
+})
+server.on('error',function(err){
+    console.log(err);
+});
+
+
+server.listen(8080);
+```
+
+客户端可以通过git push的curl -v -data ‘name=hejiawei’ -x POST http://localhost:8008  模拟发送请求
+
+
+
+8.0 nodejs的url模块
+
+
+
+```
+let url = require("url");
+let str = "http://usr:pwd@localhost:8080/user?id=5#top";
+//如果第二个参数为true，那么query就是一个对象了
+let userObj = url.parse(str, true);
+console.log(userObj);
+console.log(url.format(userObj));
+```
+
+  ![image-20200822224445147](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200822224445147.png)
+
+8.1 服务器设置响应体
+
+
+
+```
+let http = reqiure('http')
+let server = http.createServer(function(req,res){
+   res.status = 200;//设置状态
+   res.sendDate =false//设置日期
+   res.setHeader("Content-Type","text/html;charset=utf8")//设置响应头、
+   res.writeHead(200,{"Conten-Type":'text/html;charset=utf8'})
+   //注意setheader和writeHead的区别，当调用writeHeader的时候会立刻调用响应头，而setheader是到第一次调用write的时候才会开始发送
+   res.write('hello')//多次写入
+   res.write('word')
+   res.end()//发送流
+});
+
+//三次握手会触发这个，而require是长链接中都，每次请求都会触发的
+server.on("connection",function(socker){
+    
+
+})
+
+serer.listen(8080)
+
+
+
+
+```
+
+8.2.http和tcp的关系
+
+ 一般来说http是继承至tcp的，http只是tcp的一种固定文本格式，http中的req和res其实是解析至socker.on("data"),的data的值，先解析出req，通过req创建res
+
+8.3.  通过tcp 写出http服务器
+
+```
+let net = require("net");
+let { StringDecoder } = require("string_decoder");
+let { Readable } = require("stream");
+class IncomingMessage extends Readable {
+  _read() {}
+}
+function parser(socket, callback) {
+  let buffers = []; // 每次读取的数据放到数组中
+  let sd = new StringDecoder();
+  let im = new IncomingMessage();
+  function fn() {
+    let res = {
+      write: socket.write.bind(socket),
+      end: socket.end.bind(socket),
+    };
+    let content = socket.read(); // 默认将请缓存区内容读干，读完后如果还有会触发readable事件
+    buffers.push(content);
+    let str = sd.write(Buffer.concat(buffers));
+    if (str.match(/\r\n\r\n/)) {
+      let result = str.split("\r\n\r\n");
+      let head = parserHeader(result[0]);
+      // im = {...im,...head}
+      Object.assign(im, head);
+      socket.removeListener("readable", fn); // 移除监听
+      socket.unshift(Buffer.from(result[1])); // 将内容塞回流中
+      if (result[1]) {
+        // 有请求体
+        socket.on("data", function (data) {
+          im.push(data);
+          im.push(null);
+          callback(im, res);
+        });
+      } else {
+        // 没请求体
+        im.push(null);
+        callback(im, res);
+      }
+      //callback(socket);
+      // 先默认socket 是req对象 （内部又封装了一个可读流 IncomingMessage）
+    }
+  }
+  socket.on("readable", fn);
+}
+function parserHeader(head) {
+  let lines = head.split(/\r\n/);
+  let start = lines.shift();
+  let method = start.split(" ")[0];
+  let url = start.split(" ")[1];
+  let httpVersion = start.split(" ")[2].split("/")[1];
+  let headers = {};
+  lines.forEach((line) => {
+    let row = line.split(": ");
+    headers[row[0]] = row[1];
+  });
+  return { url, method, httpVersion, headers };
+}
+let server = net.createServer(function (socket) {
+  parser(socket, function (req, res) {
+    server.emit("request", req, res);
+  });
+});
+server.on("request", function (req, res) {
+  console.log(req.url);
+  console.log(req.headers);
+  console.log(req.httpVersion);
+  console.log(req.method);
+
+  req.on("data", function (data) {
+    console.log("ok", data.toString());
+  });
+  req.on("end", function () {
+    res.end(`
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 5
+
+hello`);
+  });
+});
+server.on("connection", function () {
+  console.log("建立连接");
+});
+server.listen(3000);
+
+```
+
+8.4 通过node 模拟浏览器发送接口
+
+```
+let http = require('http');
+// node可以做爬虫
+let options = {
+    hostname:'localhost',
+    port:4000,
+    path: '/',
+    method:'get',
+    // 告诉服务端我当前要给你发什么样的数据
+    headers:{
+        'Content-Type':'application/x-www-form-urlencoded',
+        'Content-Length':15
+    }
+}
+let req = http.request(options);
+// 前后端通信 靠的都是json字符串
+req.on('response',function(res){
+    res.on('data',function(chunk){
+        console.log(chunk);
+    });
+});
+req.end('name=zfpx&&age=9');
+```
+
+
+
