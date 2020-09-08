@@ -5,6 +5,9 @@ const router = require('koa-router')()
 const static = require('koa-static')
 const bodyParser = require('koa-bodyparser')
 const app = new Koa();
+const path = require('path');
+const fs = require('fs');
+
 
 app.use(bodyParser())
 app.use(static(__dirname + '/'));
@@ -30,6 +33,26 @@ router.post('/nodersa/login', (ctx) => {
     }
 })
 
+
+//nodejs 流文件下载服务器
+router.get('/file/:fileName', function (ctx) {
+    // 实现文件下载 
+    var fileName = ctx.params.fileName;
+    var filePath = path.join(__dirname, "files/" + fileName);
+    var stats = fs.statSync(filePath);
+    if (stats.isFile()) {
+        ctx.set({
+            'Content-Type': 'application/octet-stream',
+            'Content-Disposition': 'attachment; filename=' + fileName,
+            'Content-Length': stats.size
+        });
+        ctx.body = fs.createReadStream(filePath);
+    } else {
+        res.end(404);
+    }
+});
+
+
 app.use(router.routes());
 app.use(router.allowedMethods());
-app.listen(3001)
+app.listen(3009)
