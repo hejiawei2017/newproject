@@ -18,6 +18,14 @@ module.exports = {
         target: "hhttp://14.23.157.98:8090",
         changOrigin: true,
       },
+      '/gtcommtool': {
+        target: "http://10.10.104.3",
+        changOrigin: true,
+      },
+      '/nodersa': {
+        target: "http://localhost:3001",
+        changOrigin: true,
+      }
     },
   },
 };
