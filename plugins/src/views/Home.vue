@@ -12,6 +12,11 @@ export default {
   name: "home",
   components: {
     HelloWorld
+  },
+  created() {
+    setTimeout(() => {
+      this.$router.push({ name: "about", params: { name: 2224 } });
+    }, 2000);
   }
 };
 </script>
