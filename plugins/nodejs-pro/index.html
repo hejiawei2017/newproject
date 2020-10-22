@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>plugins</title>
+</head>
+
+<body>
+    <button id="btn1">点击下载1</button>
+    <button id="btn2">点击下载2</button>
+    <button id="btn3">点击下载3</button>
+    <button id="btn4">点击下载4</button>
+    <button id="btn5">点击下载视频5</button>
+    <script>
+
+        var getDownLoadFileName = function (url) {
+            var a = url;
+            var b = a.split("/");
+            var c = b.slice(b.length - 1, b.length).toString(String).split(".");
+            return c.slice(0, 1);
+        }
+        // 下载的公共方法
+        var download = function (url) {
+            /*downloadmode=1时，图片、文本等类型的文件不会进行下载，改为2就可以了*/
+            url = url.replace('downloadmode=1', 'downloadmode=2');
+            function downloadinner(urli) {
+                var iframe = document.createElement('iframe');
+                iframe.style.display = 'none';
+                iframe.src = urli;
+                document.body.appendChild(iframe);
+            }
+            if (navigator.userAgent.indexOf('Firefox') > 0) {
+                downloadinner(url);
+            } else {
+                let a = document.createElement('a');
+                a.href = url;
+                a.download = getDownLoadFileName(url)
+                a.target = '_blank';
+                a.click();
+            }
+        };
+        document.getElementById("btn1").onclick = function () {
+            download("http://106.52.141.232:3009/file/1.docx")
+        }
+        document.getElementById("btn2").onclick = function () {
+            download("http://106.52.141.232:3009/file/2.docx")
+        }
+        document.getElementById("btn3").onclick = function () {
+            download("http://106.52.141.232:3009/file/3.docx")
+        }
+        document.getElementById("btn4").onclick = function () {
+            download("http://106.52.141.232:3009/file/4.xlsx")
+        }
+        document.getElementById("btn5").onclick = function () {
+            download("http://106.52.141.232:3009/file/5.mp4")
+        }
+    </script>
+
+</body>
+
+</html>
