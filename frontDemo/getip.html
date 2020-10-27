@@ -1,0 +1,31 @@
+<html>
+
+<body>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script type="text/javascript">
+        document.write(returnCitySN["cip"] + ',' + returnCitySN["cname"])
+
+        //只能在https上面或者localhost或者127.0.0.1 可以获取到经纬度
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            }
+            else {
+                console.log('该浏览器不支持获取地理位置。');
+            }
+        }
+
+        function showPosition(position) {
+            console.log("纬度: " + position.coords.latitude +
+                " 经度: " + position.coords.longitude);
+        }
+
+        function showError(error) {
+            console.log(error);
+        }
+        getLocation()
+    </script>
+
+</body>
+
+</html>
