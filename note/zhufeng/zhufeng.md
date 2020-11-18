@@ -3273,3 +3273,88 @@ http.createServer(function(req,res){
 10.8 user-agent-parser
 
 ![image-20200927070846375](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200927070846375.png)
+
+11.express
+
+ 11.1 nodejs  模版引擎的实现原理
+
+   
+
+```
+/**
+<%if(user){%>
+  hello <%=user.name%>
+<%}else{%>
+  hello guest
+<%}%>
+*/
+/**
+上面的代码最终会返回下面的with形式的代码
+ let tpl = ``;
+ with (obj) {
+        tpl += ``;
+        if (user) {
+            tpl += `hello ${user.name}`;
+        } else {
+            tpl += `hello guest`;
+        }
+        tpl += ``;
+    }
+ return tpl;
+ **/
+源代码实现：
+const fs = require('fs');
+function render(filepath,options,callback){
+  fs.readFile(filepath,'utf8',function(err,content){
+      if(err) return callback(err);
+      let head = "let tpl = ``;\n with(obj){\n tpl +=`";
+      content = content.replace(/<%=([\s\S]+?)%>/g,function(){
+          return "${"+arguments[1]+"}";
+      });
+      content = content.replace(/<%([\s\S]+?)%>/g,function(){
+          return "`;\n"+arguments[1]+" tpl+=`";
+      });
+      let tail = "`\n}\nreturn tpl;";
+      let html = head + content + tail;
+      console.log(html);
+      html = new Function('obj',html);
+      html = html(options);
+      return callback(null,html);
+  })
+}
+module.exports = render;
+```
+
+
+
+11.2express.static 静态文件服务器：
+
+```
+let express = require("express")
+let path = require("path")
+let fs = require("fs")
+let url = require("url")
+let mime = require("getType")
+let app = express()
+app.use(express.static(path.join(__dirname,'pubilc')))
+app.listen(8080)
+
+具体实现的方法
+function static(root,options={}){
+   return function(){
+     let {pathname} = url.parse(req.url,true);//得到文件路径
+     let file = path.join(root,pathname);//得到文件绝对路径
+     fs.stat(file,function(err,stat){
+        if(err){
+          next()
+        }else{
+          let contentType = mime.getType(pathname);
+          res.setheader("Content-Type",contentType);
+          fs.createReadStream(file).pipe(res)
+        }
+     })
+   } 
+}
+
+```
+
