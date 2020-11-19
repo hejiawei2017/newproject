@@ -2263,7 +2263,7 @@ serer.listen(8080)
 
 8.3.  通过tcp 写出http服务器
 
-```
+```js
 let net = require("net");
 let { StringDecoder } = require("string_decoder");
 let { Readable } = require("stream");
@@ -2377,4 +2377,984 @@ req.end('name=zfpx&&age=9');
 ```
 
 
+
+8.5 静态文件服务器   26-44
+
+```js
+let http = require("http");
+let path = require("path");
+let url = require("url");
+let fs = require("fs");
+let { promisify } = require("util");
+let mime = require("mime");
+let zlib = require("zlib");
+//把一个异步的方法转换成一个promise方法
+let stat = promisify(fs.stat);
+//客户端发起请求的时候，会通过accept-encoding 告诉服务器我支持的解压格式
+// 例如：accept-encodinh:gzip,deflate
+http
+  .createServer(async function (req, res) {
+    let { pathname } = url.parse(req.url);
+    if (pathname == "favicon.ico") {
+      return;
+    }
+    let filepath = path.join(__dirname, pathname);
+    try {
+      let statObj = await stat(filepath);
+      //根据文件名返回不同的content-type，设置响应头
+      res.setHeader("Content-Type", mime.getType(pathname));
+      //accept-encoding小写是为了兼容不同的浏览器
+      let acceptEncodeing = req.headers["accept-encoding"];
+      //内容压缩协商
+      if (acceptEncodeing) {
+        if (acceptEncodeing.match(/\bgzip\b/)) {
+          res.setHeader("Content-Encoding", "gzip");
+          fs.createReadStream(filepath).pipe(zlib.createGzip()).pipe(res);
+        } else if (acceptEncodeing.match(/\bdeflate\b/)) {
+          res.setHeader("Content-Encoding", "deflat");
+          fs.createReadStream(filepath).pipe(zlib.createDeflate()).pipe(res);
+        } else {
+          fs.createReadStream(filepath).pipe(res);
+        }
+      } else {
+        fs.createReadStream(filepath).pipe(res);
+      }
+    } catch (e) {
+      res.statueCode = 404;
+      res.end();
+    }
+  })
+  .listen(8081, function () {
+    console.log("success");
+  });
+
+
+
+
+
+
+```
+
+8.5 gzip 使用方法
+
+let zlib = require('zilb')
+
+let str = 'hello';
+
+zlib.gzip(str,(err,buffer)=>{ //加压
+
+​     zlib.unzip(buffer,(err,data)=>{ //解压
+
+​        console.log(data.toString())
+
+  })
+
+})
+
+8.5 取文件路径 中的文件名称和文件后缀
+
+```
+let path = require("path");
+let str = "a/b/c/a.jpg";
+//去连接中和文件名称，并且去掉后缀
+console.log(path.basename(str, ".jpg"));
+//取得后缀名称
+console.log(path.extname(str));
+
+```
+
+8.6 node中的sha1加密
+
+```
+let crypto = require("crypto"); //加密库
+let sha1 = crypto.createHash("sha1");//创建加密方法
+sha1.update("hello");//指定加密值
+sha1.update("world");
+console.log(sha1.digest("hex"));//输出加密值
+
+```
+
+
+
+8.7 nodejs中的加盐，加密两端都同时加一个盐（私钥）就可以防止破解
+
+```
+let crypto = require('crypto');
+let fs = require('fs');
+let path = require('path');
+let key = fs.readFileSync(path.join(__dirname,'./rsa_private.key')
+let m = crypto.createHmac('sha1',key));
+m.update('ok');
+console.log(m.digest('hex'));
+
+//生成秘钥，下载OpenSSL windows版本 
+//输入：genrsa -out rsa_private.key 1024
+```
+
+8.8.nodejs 对称加密算法
+
+```
+// 对称加密  用一把要是可以 加密也可以解密
+let crypto = require('crypto');
+let path = require('path');
+let fs = require('fs')
+let name = 'zfpx';
+let private = fs.readFileSync(path.join(__dirname,'./rsa_private.key'))
+let m = crypto.createCipher('blowfish',private);
+m.update(name,'utf8');
+let result = m.final('hex');
+console.log(result)
+// 解密
+let r = crypto.createDecipher('blowfish',private);
+r.update(result,'hex');
+console.log(r.final('utf8'));
+//缺点，在网络传输和时候第一次没有办法传秘钥给解密方
+```
+
+8.9 在cmd上面执行命令，并且传递参数
+
+```
+1、建立一个bat 后缀的文件hello.bat
+在里面写node hello.js %1 %2  //百分号代表的是可以传递的参数
+
+2.在hello.js中 ，读取node hello.js 后面的参数
+let yargs = require('yargs')
+yargs.options('n',{
+  alias:'name'//别名
+  demand:true//必填
+  default:'hejiawei',//默认值
+  description:'描述'
+})
+
+
+console.log(yargs.argv)
+
+3.在cmd中 输入hello --name hejiawei
+就会输出 {name:hejiawei}
+
+
+
+
+
+
+```
+
+![image-20200910235651925](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200910235651925.png)
+
+输入--help
+
+
+
+
+
+9.0在node中输出彩色文字：
+
+```
+let chalk = require('chalk');
+console.log(chalk.green('hello'))
+```
+
+9.1.node中输出debug
+
+```
+let debug = require('debug')('static:app')
+debug("error msg")
+
+在cmd的命令中输出set DEBUG='static:app'
+就会输出设置了static:app的debug的信息
+注意mac 和 linux 下面设置环境变量是： export DEBUG=static:*
+实际的上在nodejs是可以读取和设置环境变量的值的
+console.log(process.env)
+process.env.DUBUG = "static:*"
+
+```
+
+9.2 npm 软连接配置方式。简单的脚手架实现
+
+```
+1.在packjson里面配置bin
+
+  "bin": {
+    "zf-server2": "bin/www"
+  }
+ 在cmd中运行：npm link
+ 成功之后就可以全局运行命令zf-server2
+ 运行命令会执行：bin/www：
+ // -d --root 静态文件目录  -o --host 主机 -p --port 端口号
+let yargs = require('yargs');
+let Server = require('../src/app.js');
+let argv = yargs.option('d', {
+    alias: 'root',
+    demand: 'false',
+    type: 'string',
+    default: process.cwd(),
+    description: '静态文件根目录'
+}).option('o', {
+    alias: 'host',
+    demand: 'false',
+    default: 'localhost',
+    type: 'string',
+    description: '请配置监听的主机'
+}).option('p', {
+    alias: 'port',
+    demand: 'false',
+    type: 'number',
+    default: 8080,
+    description: '请配置端口号'
+})
+    .usage('zf-server2 [options]')
+    .example(
+    'zf-server2 -d / -p 9090 -o localhost', '在本机的9090端口上监听客户端的请求'
+    ).help('h').argv;
+
+// argv = {d,root,o,host,p,port}
+let server = new Server(argv);
+server.start();
+
+//通过这个文件构建argv 参数传入server中
+
+
+//服务器代码：
+//要创建一个服务器
+let config = require('./config');
+let http = require('http');
+let chalk = require('chalk');
+let path = require('path');
+let url = require('url');
+let fs = require('fs');
+let handlebars = require('handlebars');
+let { promisify, inspect } = require('util');
+let mime = require('mime');
+let stat = promisify(fs.stat);
+let readdir = promisify(fs.readdir);
+//编译模板，得到一个渲染的方法,然后传入实际数据数据就可以得到渲染后的HTML了
+function list() {
+    let tmpl = fs.readFileSync(path.resolve(__dirname, 'template', 'list.html'), 'utf8');
+    return handlebars.compile(tmpl);
+}
+//在代码内部是可以读到环境变量的值，当然也可以写入环境变量的值
+//console.log(process.env);
+//process.env.DEBUG = 'static:*';
+//console.log(process.env);
+//这是一个在控制台输出的模块,名称有特点有二部分组成，第一部分一般是项目名，第二模分是模块名
+//每个debug实例都有一个名字，是否在控制台打印取决于环境变量中DEBUG的值是否等于static:app
+let debug = require('debug')('static:app');
+class Server {
+    constructor(argv) {
+        this.list = list();
+        this.config = Object.assign({}, this.config, argv);
+    }
+    start() {
+        let server = http.createServer();
+        server.on('request', this.request.bind(this));
+        server.listen(this.config.port, () => {
+            let url = `http://${this.config.host}:${this.config.port}`;
+            debug(`server started at ${chalk.green(url)}`);
+        });
+    }
+    //静态文件服务器
+    async request(req, res) {
+        ///先取到客户端想说的文件或文件夹路径 
+        // /images     my.jpg home
+        let { pathname } = url.parse(req.url);
+        if (pathname == '/favicon.ico') {
+            return this.sendError(req, res);
+        }
+        let filepath = path.join(this.config.root, pathname);
+        try {
+            let statObj = await stat(filepath);
+            if (statObj.isDirectory()) {//如果是目录的话，应该显示目录 下面的文件列表
+                let files = await readdir(filepath);
+                files = files.map(file => ({
+                    name: file,
+                    url: path.join(pathname, file)
+                }));
+                let html = this.list({
+                    title: pathname,
+                    files
+                });
+                res.setHeader('Content-Type', 'text/html');
+                res.end(html);
+            } else {
+                this.sendFile(req, res, filepath, statObj);
+            }
+        } catch (e) {
+            debug(inspect(e));//inspect把一个对象转成字符
+            this.sendError(req, res);
+        }
+    }
+    sendFile(req, res, filepath, statObj) {
+        res.setHeader('Content-Type', mime.getType(filepath));// .jpg
+        fs.createReadStream(filepath).pipe(res);
+    }
+    sendError(req, res) {
+        res.statusCode = 500;
+        res.end(`there is something wrong in the server! please try later!`);
+    }
+}
+//let server = new Server();
+//server.start();//启动服务
+//npm i supervisor -g
+
+module.exports = Server;
+
+//config.js
+
+let debug = require('debug')('static:config');
+let path = require('path');
+let config = {
+    host: 'localhost',//监听的主机
+    port: 8080,//监听的端口号
+    root: path.resolve(__dirname, '..', 'public')//配置静态文件根目录
+}
+debug(config);
+module.exports = config;
+
+//template/list.html  文件
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+</head>
+let data = {title:'zfpx',files:[{name:'1',url:'/1'}]};
+
+<body>
+    <ul>
+        {{#each files}}
+        <li>
+            <a href={{url}}>{{name}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</body>
+
+</html>
+
+
+ 
+ 
+ 
+
+```
+
+9.3  用nodejs实现的对比环境机制（Last-Modified）：
+
+```
+let http = require('http');
+let url = require('url');
+let path = require('path');
+let fs = require('fs');
+let mime = require('mime');
+let server = http.createServer(function (req, res) {
+    let { pathname } = url.parse(req.url);
+    let p = path.join(__dirname, 'public', '.' + pathname);
+    fs.stat(p, function (err, stat) {
+        // 第一次你来的时候给你一个表示 下次你在来的时候会带上这个表示
+        // 这次你来的时候我用我的标识和你比如果有区别就返回新文件
+        // 8:00 8：00 304
+        // 9:00 8:00 这是就返回一个新文件
+        // 根据修改时间判断
+        // if-modified-since  Last-Modified
+        if (!err) {
+            //浏览器发过来的时间
+            let since = req.headers['if-modified-since'];
+            if(since){
+                //与本地文件的创建时间对比，如果是一样的就返回304告诉浏览器用缓存
+                if(since === stat.ctime.toUTCString()){
+                    res.statusCode = 304;
+                    res.end();
+                }else{
+                   //如果是修改过和就用新的文件，同时设置修改时间
+                    sendFile(req,res,p,stat);
+                }
+            }else{
+                sendFile(req,res,p,stat);
+            }
+        } else {
+            sendError(res);
+        }
+    })
+});
+function sendError(res) {
+    res.statusCode = 404;
+    res.end();
+}
+function sendFile(req, res, p,stat) {
+    res.setHeader('Cache-Control','no-cache')
+    res.setHeader('Last-Modified',stat.ctime.toUTCString());
+    res.setHeader('Content-Type', mime.getType(p) + ';charset=utf8')
+    fs.createReadStream(p).pipe(res);
+}
+server.listen(8080);
+
+//注意了，最后修改时间是会有一下几个方面问题的
+1.有些服务器不能精确到文件的最后修改时间
+2.Last-Modified 只能精确到秒
+3.有时候覆盖内容了，内容没有更新，但是修改时间边了，我们希望他还是用缓存的
+4.同一个文件位于多个cdn服务器，修改的时间可能就不统一了
+
+```
+
+9.4 用etag的形式 判断对比缓存
+
+```
+let http = require('http');
+let url = require('url');
+let path = require('path');
+let fs = require('fs');
+let mime = require('mime');
+let crypto = require('crypto');
+// 根据的是最新修改时间  这回根据的是文件的内容 111 111
+// ETag:md5加密 / if-none-match
+let server = http.createServer(function (req, res) {
+    let { pathname } = url.parse(req.url);
+    let p = path.join(__dirname, 'public', '.' + pathname);
+    fs.stat(p, function (err, stat) {
+        let md5 = crypto.createHash('md5');
+        let rs = fs.createReadStream(p);
+        rs.on('data',function(data){
+            md5.update(data);
+        });
+        rs.on('end',function(){
+            // stat.ctime+stat.size
+            let r = md5.digest('hex'); // 当前文件的唯一标识
+            // 下次再拿最新文件的加密值 和客户端请求来比较
+            let ifNoneMatch = req.headers['if-none-match'];
+            if(ifNoneMatch){
+                if(ifNoneMatch === r){
+                    res.statusCode = 304;
+                    res.end();
+                }else{
+                    sendFile(req,res,p,r);
+                }
+            }else{
+                sendFile(req,res,p,r);
+            }
+        });
+    })
+});
+function sendError(res) {
+    res.statusCode = 404;
+    res.end();
+}
+function sendFile(req, res, p,r) {  
+   //如果是index.html的话就会这样配置，'Cache-Control':'no-cache'不用客户端缓存，缓存由对比缓存控制
+    res.setHeader('Cache-Control','no-cache')
+    res.setHeader('Etag',r);
+    res.setHeader('Content-Type', mime.getType(p) + ';charset=utf8')
+    fs.createReadStream(p).pipe(res);
+}
+server.listen(8080);
+//根本的原理的通过对文件的内容的摘要算法生成md5，形成etag，其实也可以是创建时间和文件大少形成etag
+```
+
+9.5nodejs的强缓存实现
+
+```
+let http = require('http');
+let url = require('url');
+let path = require('path');
+let fs = require('fs');
+let mime = require('mime');
+let server = http.createServer(function(req,res){
+   let {pathname} =  url.parse(req.url);
+   console.log(pathname);
+   let p = path.join(__dirname,'public','.'+pathname);
+   fs.stat(p,function(err,stat){
+        if(!err){
+            sendFile(req,res,p);
+        }else{
+            sendError(res);
+        }
+   })
+});
+function sendError(res){
+    res.statusCode = 404;
+    res.end();
+}
+function sendFile(req,res,p){
+    //Expires是htp1.0里面的如果作用和Cache-Control一样，两个共存的话Cache-Control要高级一点
+    let date = new Date(Date.now()+10*1000);
+   // res.setHeader('Expires',date.toUTCString());
+   //10秒里不在请求服务器
+    res.setHeader('Cache-Control','max-age=10');
+    res.setHeader('Content-Type',mime.getType(p)+';charset=utf8')
+    fs.createReadStream(p).pipe(res);
+}
+server.listen(8080);
+//注意Cache-Control还有一下几个参数可以选择
+1.private客户端可以缓存
+2.public 客户端和服务器都可以缓存
+3.max-ago=60 客户端缓存60秒
+4.no-cache强制使用对比缓存
+5.no-store所有内容都不会缓存
+```
+
+9.6 进程
+
+```
+1.在Node.js中每个应用程序都是一个进程类的实例对象。
+使用process对象代表应用程序,这是一个全局对象，可以通过它来获取Node.jsy应用程序以及运行该程序的用户、环境等各种信息的属性、方法和事件
+
+
+```
+
+9.7进程对象属性
+
+- execPath 可执行文件的绝对路径,如 `/usr/local/bin/node`
+- version 版本号
+- versions 依赖库的版本号
+- platform 运行平台。 如 darwin、freebsd、linux、sunos、win32
+- stdin 标准输入流可读流，默认暂停状态
+- stdout 标准输出可写流，同步操作
+- stderr 错误输出可写流，同步操作
+- argv 属性值为数组
+- env 操作系统环境信息
+- pid 应用程序进程ID
+- title 窗口标题
+- arch 处理器架构 arm ia32 x64
+
+9.7.1 内存使用情况：
+
+ console.log(process.memoryUsage())
+
+- rss（resident set size）：所有内存占用，包括指令区和堆栈。
+- heapTotal："堆"占用的内存，包括用到的和没用到的。
+- heapUsed：用到的堆的部分。
+- external： V8 引擎内部的 C++ 对象占用的内存
+
+### 9.7.1.3 nextTick方法
+
+nextTick方法用于将一个函数推迟到代码中所书写的下一个同步方法执行完毕或异步方法的回调函数开始执行前调用
+
+### 9.7.1.4 chdir
+
+chdir方法用于修改Node.js应用程序中使用的当前工作目录，使用方式如下
+
+```javascript
+process.chdir(directory);
+```
+
+### 9.7.1.5 cwd 方法
+
+cwd方法用返回当前目录，不使用任何参数
+
+```javascript
+console.log(process.cwd());
+```
+
+### 9.7.1.6 chdir 方法
+
+改变当前的工作目录
+
+```javascript
+console.log(`当前目录: ${process.cwd()}`);
+process.chdir('..);
+console.log(`上层目录: ${process.cwd()});
+```
+
+### 9.7.1.7 exit 方法
+
+退出运行Node.js应用程序的进程
+
+```javascript
+process.exit(0);
+```
+
+### 9.7.1.8 kill方法
+
+用于向进程发送一个信号
+
+- SIGINT 程序终止(interrupt)信号, 在用户键入INTR字符(通常是Ctrl-C)时发出，用于通知前台进程组终止进程。
+- SIGTERM 程序结束(terminate)信号, 该信号可以被阻塞和处理。通常用来要求程序自己正常退出，shell命令kill缺省产生这个信号
+
+```javascript
+process.kill(pid,[signal]);
+```
+
+- pid是一个整数，用于指定需要接收信号的进程ID
+- signal 发送的信号，默认为 SIGTERM
+
+### 9.7.1.9 uptime
+
+返回当前程序的运行时间
+
+```javascript
+process.uptime()
+```
+
+### 1.10 hrtime
+
+测试一个代码段的运行时间,返回两个时间，第一个单位是秒，第二个单位是纳秒
+
+```javascript
+let fs = require('fs);
+let time = process.hrtime();
+let data = fs.readFileSync('index.txt');
+let diff = process.hrtime(time);
+console.log(`读文件操作耗费的%d秒`,diff[0]);
+```
+
+### 9.7.1.11 exit事件
+
+当运行Node.js应用程序进程退出时触发进程对象的exit事件。可以通过指定事件回调函数来指定进程退出时所执行的处理。
+
+```javascript
+process.on('exit',function(){
+    console.log('Node.js进程被推出);
+});
+process.exit();
+```
+
+### 9.7.1.12 uncaughtException事件
+
+当应用程序抛出一个未被捕获的异常时触发进程对象的uncaughtException事件
+
+```javascript
+process.on('uncaughtException',function(err){
+  console.log('捕获到一个未被处理的错误:',err);
+});
+notExist();
+```
+
+### 9.7.1.13 信号事件
+
+```javascript
+process.stdin.resume();
+process.on('SIGINT',function(){
+    console.log('接收到SIGINT信号');
+});
+```
+
+10.0 node下面的子进程：
+
+  10.1 通过spawn创建子进程：
+
+  
+
+```
+let {spawn} = require('child_process');
+let path = require('path');
+// process.cwd()
+let child = spawn('node',['1.test.js','a','b','c'],{
+    cwd:path.join(__dirname,'pro')
+});
+
+//1.test.js
+process.argv.slice(2).forEach(function(arg){
+    process.stdout.write(arg);
+})  
+
+```
+
+10.2 node 中和fork.js
+
+```
+let {
+    fork
+} = require('child_process');
+let path = require('path');
+let child = fork(path.join(__dirname, 'fork.js'));
+child.on('message', function (m) {
+    console.log('父进程接收到消息:', m);
+    process.exit();
+});
+child.send({
+    name: 'zfpx'
+});
+child.on('error', function (err) {
+    console.error(arguments);
+});
+
+//fork.js
+process.on('message', function (m, setHandle) {
+    console.log('子进程收到消息:', m);
+    process.send({
+        age: 9
+    });
+})
+```
+
+10.21 detached
+
+- 在默认情况下，只有在子进程全部退出后，父进程才能退出。为了让父进程可以先退出，而让子进程继续进行I/O操作,可以在spawn方法中使用options参数，把detached属性值设置为true
+
+- 默认情况下父进程会等待所有的子进程退出后才可以退出，使用subprocess.unref方法可以让父进程不用等待子进程退出就可以直接退出
+
+  ```javascript
+  let cp = require('child_process');
+  let fs = require('fs');
+  let path = require('path');
+  let out = fs.openSync(path.join(__dirname, 'msg.txt'), 'w', 0o666);
+  let sp = cp.spawn('node', ['4.detached.js'], {
+    detached: true,
+    stdio: ['ignore', out, 'ignore']
+  });
+  sp.unref();
+  ```
+
+```javascript
+let count = 10;
+let $timer = setInterval(() => {
+    process.stdout.write(new Date().toString() + '\r\n');
+    if (--count == 0) {
+        clearInterval($timer);
+    }
+}, 500);
+`
+```
+
+10.3共享net服务器：
+
+```
+let {fork} = require('child_process');
+let path = require('path');
+let child = fork('socket.js',{
+    cwd:path.join(__dirname,'test')   //socket.js的目录
+});
+let net = require('net');
+
+let server = net.createServer(function(socket){
+    if(Math.random()>0.5){
+        socket.write('father');
+    }else{
+        child.send('socket',socket);
+    }
+}).listen(3000);
+
+
+
+//socket.js
+process.on('message',function(msg,socket){
+    if(msg === 'socket'){
+        socket.write('child')
+    }
+})
+
+
+```
+
+10.4 nodejs 后端支持语言切换
+
+```
+// 多语言  vue-i18n 国际化 前端的
+// 可以支持语言的切换
+
+// 服务端如何支持多语言
+let pack = {
+    'zh-CN':{content:'你好'},
+    'en':{content:'hello'},
+    'fr-FR':{content:'Bonjour'}
+};
+let http = require('http');
+let server = http.createServer();
+server.on('request',function(req,res){
+    let lan = 'en'; // 默认语言
+    let language = req.headers['accept-language'];
+    // Accept-Language: zh;q=0.9,en;q=0.7,fr-FR，浏览器设置的语言权重
+    let arrs = [];
+    if(language){
+    //根据权重排序数组，倒叙排序
+        arrs = language.split(',').map(l=>{
+            l = l.split(';');
+            return {
+                name:l[0],
+                q:l[1]?Number(l[1].split('=')[1]):1
+            }
+        }).sort((lang1,lang2)=>lang2.q-lang1.q);
+        console.log(arrs);
+    }
+    
+    res.setHeader('Content-Type','text/plain;charset=utf8');
+    for(var i = 0;i<arrs.length;i++){
+        // 去语言包里找对应的内容 看看有没有
+        let name = arrs[i].name
+        if(pack[name]){
+            res.end(pack[name].content);
+            break;
+        }
+    }
+    res.end(pack[lan].content);
+}).listen(8888);
+```
+
+10.5图片防盗连
+
+```
+let fs = require('fs');
+let path = require('path');
+let http = require('http');
+let url = require('url');
+let getHostName = (str) => {
+    let {hostname} = url.parse(str,true);
+    return hostname;
+}
+// 白名单  可以允许 某个域名访问这张图片
+let whitList = ['www.zf2.cn']
+let server = http.createServer(function (req, res) {
+   //有refer代表是从其他的网页中引入的
+    let refer = req.headers['referer'] || req.headers['referrer'];
+    // 先看一下refer的值 ，还要看图片的请求路径
+    // 要读取文件 返回给客户端
+    let {pathname} = url.parse(req.url,true);
+    let p = path.join(__dirname,'public','.'+pathname);
+    // p代表我要找的文件
+    fs.stat(p,function(err){ // 判断请求的文件到底有没有啊？
+        if(!err){
+            if(refer){
+                let referHostName = getHostName(refer);
+                let host = req.headers['host'].split(':')[0];
+                if(referHostName!=host && !whitList.includes(referHostName)){
+                    // 防盗链
+                    fs.createReadStream(path.join(__dirname,'public','./2.jpg')).pipe(res);
+                }else{
+                    // 正常显示
+                    fs.createReadStream(p).pipe(res);
+                }
+            }else{
+                // 正常显示
+                fs.createReadStream(p).pipe(res);
+            }
+        }else{
+            res.end();
+        }
+    })
+}).listen(9999);
+```
+
+10.6 nodejs创建代理服务器
+
+```
+
+// http-proxy;
+let httpProxy = require('http-proxy');
+let http = require('http');
+// 创建代理服务器
+let proxy = httpProxy.createProxyServer();
+http.createServer(function(req,res){
+    proxy.web(req,res,{
+        target:'http://localhost:8000'
+    });
+}).listen(3000);
+
+// 虚拟主机
+```
+
+10.7 同一台主机共享80端口
+
+```
+1.在服务器的host文件中指定域名
+  127.0.0.1 baidu.com
+  127.0.0.1 tengxun.com
+2.创建代理服务器
+let httpProxy = require('http-proxy');
+let http = require('http');
+// 创建代理服务器
+let proxy = httpProxy.createProxyServer();
+let hosts = {
+    'www.zf1.cn':'http://localhost:5000',
+    'www.zf2.cn':'http://localhost:8000',
+
+}
+//根据host来判断代理到哪里去
+http.createServer(function(req,res){
+   let host = req.headers['host'];
+   proxy.web(req,res,{
+       target:hosts[host]
+   })
+}).listen(80);
+
+```
+
+10.8 user-agent-parser
+
+![image-20200927070846375](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200927070846375.png)
+
+11.express
+
+ 11.1 nodejs  模版引擎的实现原理
+
+   
+
+```
+/**
+<%if(user){%>
+  hello <%=user.name%>
+<%}else{%>
+  hello guest
+<%}%>
+*/
+/**
+上面的代码最终会返回下面的with形式的代码
+ let tpl = ``;
+ with (obj) {
+        tpl += ``;
+        if (user) {
+            tpl += `hello ${user.name}`;
+        } else {
+            tpl += `hello guest`;
+        }
+        tpl += ``;
+    }
+ return tpl;
+ **/
+源代码实现：
+const fs = require('fs');
+function render(filepath,options,callback){
+  fs.readFile(filepath,'utf8',function(err,content){
+      if(err) return callback(err);
+      let head = "let tpl = ``;\n with(obj){\n tpl +=`";
+      content = content.replace(/<%=([\s\S]+?)%>/g,function(){
+          return "${"+arguments[1]+"}";
+      });
+      content = content.replace(/<%([\s\S]+?)%>/g,function(){
+          return "`;\n"+arguments[1]+" tpl+=`";
+      });
+      let tail = "`\n}\nreturn tpl;";
+      let html = head + content + tail;
+      console.log(html);
+      html = new Function('obj',html);
+      html = html(options);
+      return callback(null,html);
+  })
+}
+module.exports = render;
+```
+
+
+
+11.2express.static 静态文件服务器：
+
+```
+let express = require("express")
+let path = require("path")
+let fs = require("fs")
+let url = require("url")
+let mime = require("getType")
+let app = express()
+app.use(express.static(path.join(__dirname,'pubilc')))
+app.listen(8080)
+
+具体实现的方法
+function static(root,options={}){
+   return function(){
+     let {pathname} = url.parse(req.url,true);//得到文件路径
+     let file = path.join(root,pathname);//得到文件绝对路径
+     fs.stat(file,function(err,stat){
+        if(err){
+          next()
+        }else{
+          let contentType = mime.getType(pathname);
+          res.setheader("Content-Type",contentType);
+          fs.createReadStream(file).pipe(res)
+        }
+     })
+   } 
+}
+
+```
 
