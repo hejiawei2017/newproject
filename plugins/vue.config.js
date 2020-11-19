@@ -13,9 +13,21 @@ module.exports = {
     },
   },
   devServer: {
+    headers: { // needed for iFrame inclusion
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+    },
     proxy: {
+      "/redirectTest": {
+        target: "http://localhost:3009",
+        changOrigin: true,
+        headers: { // needed for iFrame inclusion
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': '*',
+        },
+      },
       "/uploadfromfront": {
-        target: "hhttp://14.23.157.98:8090",
+        target: "http://14.23.157.98:8090",
         changOrigin: true,
       },
       '/gtcommtool': {

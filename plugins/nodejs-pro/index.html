@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>plugins</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -15,6 +16,7 @@
     <button id="btn3">点击下载3</button>
     <button id="btn4">点击下载4</button>
     <button id="btn5">点击下载视频5</button>
+    <button id="btn6">点击302重定向</button>
     <script>
 
         var getDownLoadFileName = function (url) {
@@ -58,6 +60,13 @@
         document.getElementById("btn5").onclick = function () {
             download("http://106.52.141.232:3009/file/5.mp4")
         }
+        document.getElementById("btn6").onclick = function () {
+            axios.get("/redirect2");
+            //window.location.href = "/redirect2"
+        }
+
+
+
     </script>
 
 </body>

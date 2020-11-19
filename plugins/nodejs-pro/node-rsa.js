@@ -12,6 +12,10 @@ const fs = require('fs');
 app.use(bodyParser())
 app.use(static(__dirname + '/'));
 
+
+var cors = require('koa2-cors');
+app.use(cors());
+
 const NodeRSA = require('node-rsa')
 const key = new NodeRSA({ b: 512 })
 key.setOptions({ encryptionScheme: 'pkcs1' })
@@ -32,6 +36,18 @@ router.post('/nodersa/login', (ctx) => {
         data: decrypted
     }
 })
+
+
+router.get("/redirectTest", function (ctx) {
+    ctx.set("Access-Control-Allow-Origin", "*")
+    ctx.response.redirect('http://172.30.207.28:3009/index.html')
+})
+
+router.get("/redirect2", function (ctx) {
+    ctx.set("Access-Control-Allow-Origin", "*")
+    ctx.response.redirect('http://172.30.207.28:3009/index2.html')
+})
+
 
 
 //nodejs 流文件下载服务器
@@ -55,4 +71,6 @@ router.get('/file/:fileName', function (ctx) {
 
 app.use(router.routes());
 app.use(router.allowedMethods());
-app.listen(3009)
+app.listen(3009, function () {
+    console.log("listen in 3009")
+})
