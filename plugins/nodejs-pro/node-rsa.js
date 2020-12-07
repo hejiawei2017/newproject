@@ -13,8 +13,8 @@ app.use(bodyParser())
 app.use(static(__dirname + '/'));
 
 
-var cors = require('koa2-cors');
-app.use(cors());
+// var cors = require('koa2-cors');
+// app.use(cors());
 
 const NodeRSA = require('node-rsa')
 const key = new NodeRSA({ b: 512 })
@@ -39,13 +39,15 @@ router.post('/nodersa/login', (ctx) => {
 
 
 router.get("/redirectTest", function (ctx) {
-    ctx.set("Access-Control-Allow-Origin", "*")
-    ctx.response.redirect('http://172.30.207.28:3009/index.html')
+    // ctx.set("Access-Control-Allow-Origin", "*")
+    ctx.response.redirect('http://172.30.207.28:3009/login.html')
 })
 
 router.get("/redirect2", function (ctx) {
-    ctx.set("Access-Control-Allow-Origin", "*")
-    ctx.response.redirect('http://172.30.207.28:3009/index2.html')
+    // ctx.set("Access-Control-Allow-Origin", "*")
+    // ctx.set("Access-Control-Allow-Credentials", true)
+    ctx.cookies.set('RSESSIONID', 'hejiawei002');
+    ctx.response.redirect('http://172.30.207.28:8080/#/logins')
 })
 
 
@@ -59,7 +61,7 @@ router.get('/file/:fileName', function (ctx) {
     if (stats.isFile()) {
         ctx.set({
             'Content-Type': 'application/octet-stream',
-            'Content-Disposition': 'attachment; filename=' + fileName,
+            'Content-Disposition': 'inline;filename=' + fileName,
             'Content-Length': stats.size
         });
         ctx.body = fs.createReadStream(filePath);
