@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>video</title>
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .control-bar {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        background-color: rgba(255, 255, 255, 0.7);
+        position: absolute;
+        z-index: 99;
+        left: 0px;
+        top: 0px;
+
+    }
+
+    .video-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+
+    }
+
+    .video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
+        left: 0px;
+        top: 0px;
+        display: block;
+        object-fit: contain;
+        background-color: black;
+    }
+
+    .cbtn {
+        margin: 0px 20px;
+        background-color: teal;
+        padding: 5px;
+        border-radius: 3px;
+    }
+</style>
+
+<body>
+    <div class="video-container">
+        <video class="video" id="video" autoplay="autoplay" loop="loop" muted="muted" src="./unloadtest.mp4"></video>
+    </div>
+    <div class="control-bar"><span class="cbtn" onclick="paused()">暂停</span><span class="cbtn"
+            onclick="play()">开始</span></div>
+    <script>
+        let video = document.getElementById("video");
+        function paused() {
+            video.pause()
+        }
+        function play() {
+            video.play()
+        }
+
+
+        messageTypesLabel: (item) => {
+
+            return (h) => {
+                return h("div", [
+                    h("i", {
+                        class: 'h-icon iconfont .icon-fireball',
+                        style: {
+                            fontSize: '16px'
+                        }
+                    }),
+                    h("span", "标签一"),
+                    h("h-badge", {
+                        props: {
+                            count: 3,
+                        },
+                    })
+                ])
+            }
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

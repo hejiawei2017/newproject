@@ -40,6 +40,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "uploadsplit" */ "../views/encryptedLogin.vue"),
   },
+  {
+    path: '/seleleDemo',
+    name: "seleleDemo",
+    component: () =>
+      import(/* webpackChunkName: "seleleDemo" */ "../components/page/seleleDemo.vue"),
+  },
 ];
 
 const router = new VueRouter({
