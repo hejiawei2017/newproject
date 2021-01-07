@@ -1,5 +1,7 @@
 <template>
-  <div class="toast" v-if="!hide" :style="{ opacity: opacity }">{{ innerText }}</div>
+  <div class="toast" v-if="!hide" :style="{ opacity: opacity }">
+    {{ innerText }}
+  </div>
 </template>
 <script>
 export default {
@@ -9,7 +11,7 @@ export default {
       opacity: 0,
       hide: false,
       innerText: "",
-      interVal: 3000
+      interVal: 3000,
     };
   },
 
@@ -30,14 +32,14 @@ export default {
     hideTips() {
       clearTimeout(this.hideTimeout);
       this.hide = true;
-    }
+    },
   },
 
   mounted() {
     setTimeout(() => {
       this.opacity = 1;
     }, 1000);
-  }
+  },
 };
 </script>
 <style scoped>

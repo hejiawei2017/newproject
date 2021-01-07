@@ -9,10 +9,14 @@ Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
 
+import suyuanui from "@/library/src/index.js"
+debugger
+Vue.use(suyuanui)
 
-import hui from 'h_ui';
-import 'h_ui/dist/h_ui.min.css'; // 使用 CSS\
-Vue.use(hui); // 路由配置 
+
+// import hui from 'h_ui';
+// import 'h_ui/dist/h_ui.min.css'; // 使用 CSS\
+// Vue.use(hui); // 路由配置 
 
 import uploader from 'vue-simple-uploader'
 Vue.use(uploader);

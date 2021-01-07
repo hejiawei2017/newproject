@@ -11,12 +11,12 @@ import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "home",
   components: {
-    HelloWorld
+    HelloWorld,
   },
   created() {
-    setTimeout(() => {
-      this.$router.push({ name: "about", params: { name: 2224 } });
-    }, 2000);
-  }
+    // setTimeout(() => {
+    //   this.$router.push({ name: "about", params: { name: 2224 } });
+    // }, 2000);
+  },
 };
 </script>
