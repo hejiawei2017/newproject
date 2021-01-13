@@ -14,7 +14,7 @@ module.exports = {
 		'vue': 'Vue',
 		'vue-router': 'VueRouter',
 		'axios': 'axios',
-		'element-ui': 'element-ui',
+		'element-ui': 'ELEMENT',
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),

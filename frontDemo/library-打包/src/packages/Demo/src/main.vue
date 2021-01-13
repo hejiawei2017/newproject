@@ -7,8 +7,9 @@ export default {
   data() {
     return {
       text: "这是一个测试组件",
+      demo: [...[]]
     };
-  },
+  }
 };
 </script>
 <style scoped>
