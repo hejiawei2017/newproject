@@ -3276,6 +3276,12 @@ http.createServer(function(req,res){
 
 11.express
 
+
+
+   todo源码实现原理
+
+
+
  11.1 nodejs  模版引擎的实现原理
 
    
@@ -3358,3 +3364,356 @@ function static(root,options={}){
 
 ```
 
+12.1前端监控sdk
+
+参考下面项目sdk https://github.com/geeknull/eagle-monitor.git
+
+12.2 nodejs简单的set-cookie代码
+
+```
+let http = require('http');
+let server = http.createServer(function (req, res) {
+    if (req.url == '/write') {//向客户端写入cookie
+        res.setHeader('Set-Cookie', "name=zfpx");
+        res.end('write ok');
+    } else if (req.url == '/read') {
+        //客户端第二次请求的时候会向服务器发送   Cookie
+        let cookie = req.headers['cookie'];
+        res.end(cookie);
+    } else {
+        res.end('Not Found');
+    }
+}).listen(8080);
+```
+
+12.3 nodejs基于cookie的防止篡改
+
+```
+const express =require('express');
+const cookieParser = reqiure("cookie-parser");
+const app = express();
+app.use(cookieParser('this is a key'))
+app.get('/write',function(req,res){
+   //signed=true 表示要加密
+   res.cookie("name",'zfpx',{signed:true});
+   res.cookie('age',"8")
+   res.end("wrirte ok")
+})
+app.get("/read",function(req,res){
+ //req.signedCookies 可以读取已经签名的cookie
+ //req.cookies 读取没有签名的cookie
+   res.end(req.signedCookies)
+})
+```
+
+12.4 cookie 的各个参数意义:
+
+```
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const app = express();
+app.use(cookieParser());
+app.listen(8080);
+/**
+ * Set-Cookie:name=zfpx; Domain=a.zfpx.cn; Path=/
+ * domain 就是指定此cookie是属于哪些域名的
+ */
+app.get('/write', function (req, res) {
+    res.cookie = function (key, val, options) {
+        let { domain, path, maxAge, expires, httpOnly, secure } = options;
+        let parts = [`${key}=${val}`];
+        if (domain) {
+            parts.push(`Domain=${domain}`);
+        }
+        if (path) {
+            parts.push(`Path=${path}`);
+        }
+        if (maxAge) {
+            parts.push(`Max-Age=${maxAge}`);
+        }
+        if (expires) {
+            parts.push(`Expires=${expires.toUTCString()}`);
+        }
+        if (httpOnly) {
+            parts.push(`httpOnly`);
+        }
+        if (secure) {
+            parts.push(`Secure`);
+        }
+        let cookie = parts.join('; ');
+        res.setHeader('Set-Cookie', cookie);
+    }
+    //Set-Cookie:name=zfpx; Domain=localhost; Path=/read2; Max-Age=10000; Expires=Wed, 07 M
+    res.cookie('name', 'zfpx', {
+        httpOnly: true, //不允许客户端通过浏览的cookie访问
+        secure: true,//只能通过https访问
+        maxAge: 10 * 1000,//最大存在时间
+        path: '/read2',//规定那个路径下有用，注意http：localhost/read2/5 这样的路径下也有用的
+        domain: 'localhost',//生效的域名
+        expires: new Date(Date.now() + 10 * 1000)//过期时间
+    });
+    res.end('ok');
+});
+app.get('/read', function (req, res) {
+    res.send(req.cookies);
+});
+app.get('/read1', function (req, res) {
+    res.send(req.cookies);
+});
+app.get('/read1/1', function (req, res) {
+    res.send(req.cookies);
+});
+```
+
+12.5  express cookie 登录验证
+
+```
+let express = require('express');
+let path = require('path');
+let bodyParser = require('body-parser');
+let cookieParser = require('cookie-parser');
+let app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.set('view engine', 'html');
+app.set('views', path.join(__dirname, 'views'));
+app.engine('html', require('ejs').__express);
+//判断用户是否登录，如果登录的话可以继续访问，如果不登录，则跳到登录页
+function checkLogin(req, res, next) {
+    if (req.cookies.username) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+}
+
+app.get('/login', function (req, res) {
+    res.render('login', { title: '登录' });
+});
+app.post('/login', function (req, res) {
+    let user = req.body;
+    if (user.username == '1' && user.password == "1") {
+        res.cookie('username', user.username, {
+            httpOnly: true
+        });
+        res.redirect('/user');
+    } else {
+        res.redirect('back');
+    }
+});
+app.get('/user', checkLogin, function (req, res) {
+    let { username } = req.cookies;
+    res.render('user', { title: '登录', username });
+});
+app.listen(8080);
+```
+
+12.6 express session 原理
+
+```
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const uuid = require('uuid');
+const app = express();
+app.use(cookieParser());
+//自己实现套session的原理
+//这个key就是服务器向客户端写卡号时的name
+const SESSION_KEY = 'connect.sid';
+//记录每一个卡号和对应的数据的对应关系 
+const sessions = {};
+app.get('/', function (req, res) {
+    let sessionId = req.cookies[SESSION_KEY];
+    if (sessionId) {
+        let sessionObj = sessions[sessionId];
+        if (sessionObj) {
+            sessionObj['balance'] -= 10;
+            res.send(`你还剩${sessionObj['balance']}钱`);
+        } else {
+            banKa();
+        }
+    } else {
+        banKa();
+    }
+    //1.卡号不能相同 2.最好不容易猜 出来
+    function banKa() {
+        let sessionId = uuid.v4();//编一个卡号
+        //在服务器端记录此卡号对应的余额
+        sessions[sessionId] = { balance: 100 };
+        //把卡号发给客户端
+        res.cookie(SESSION_KEY, sessionId);
+        res.send(`欢迎新客户，送你一张会员卡，余额100`);
+    }
+});
+app.listen(8080);
+```
+
+13.koa 上传文件代码
+
+```
+const Koa = require('koa');
+const path = require('path');
+const uuid = require('uuid');
+const fs = require('fs');
+const querystring = require('querystring');
+const app = new Koa();
+app.listen(3000);
+Buffer.prototype.split = function (sep) {
+    let pos = 0;//记录当前是从哪个索引开始查找分隔符
+    let len = sep.length;//分隔符的字节长度 2
+    let index = -1;//查找到的分隔子串所在的索引
+    let parts = [];
+    while (-1 != (index = this.indexOf(sep, pos))) {
+        parts.push(this.slice(pos, index));
+        pos = index + len;
+    }
+    parts.push(this.slice(pos))
+    return parts;
+}
+//如果说要在表单里上传文件的话，就需要给表单增加一个enctype="multipart/form-data"
+app.use(async function (ctx, next) {
+    if (ctx.url == '/user' && ctx.method == 'GET') {
+        ctx.set('Content-Type', 'text/html;charset=utf8');
+        ctx.body = (
+            `
+             <form method="POST" enctype="multipart/form-data">
+               <input type="text" name="username">
+               <input type="file" name="avatar">
+               <input type="submit">
+             </form>
+            `
+        );
+    } else {
+        await next();
+    }
+});
+app.use(async function (ctx, next) {
+    if (ctx.url == '/user' && ctx.method == 'POST') {
+        let contentType = ctx.headers['content-type'];
+        console.log(contentType);
+        if (contentType.includes('multipart')) {
+            let matches = contentType.match(/\bboundary=(.+)/);
+            let sep = '--' + matches[1];//------WebKitFormBoundaryTy7iIuU5OKqScnqj
+            ctx.body = await getBody(ctx.req, sep);
+        } else {
+            next();
+        }
+
+    } else {
+        await next();
+    }
+});
+//返回了真正的请求体
+function getBody(req, seq) {
+    return new Promise(function (resolve, reject) {
+        let buffers = [];
+        req.on('data', function (data) {
+            buffers.push(data);
+        });
+        req.on('end', function () {
+            let all = Buffer.concat(buffers);
+            let fields = {};
+            let lines = all.split(seq);
+            lines = lines.slice(1, -1);//2
+            lines.forEach(function (line) {
+                let [desc, val] = line.split('\r\n\r\n');
+                desc = desc.toString();
+                val = val.slice(0, -2);//去掉尾部的/r/n
+                if (desc.includes('filename')) {//如果包含filename就认为它是一个文件
+                    let [, line1, line2] = desc.split('\r\n');
+                    let lineObj1 = querystring.parse(line1, '; ');
+                    let lineObj2 = querystring.parse(line2, '; ');
+                    let filepath = path.join(__dirname, 'uploads', uuid.v4());
+                    fs.writeFileSync(filepath, val);
+                    fields[lineObj1.name] = [
+                        { ...lineObj1, ...lineObj2, filepath }
+                    ]
+                } else {//普通字段
+                    let name = querystring.parse(desc, '; ').name.replace(/"/g, '');
+                    fields[name] = val.toString();
+                }
+
+            })
+            resolve(fields);
+        });
+    });
+}
+/**
+ * 请求头中的内容类型
+ * Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryTy7iIuU5OKqScnqj
+ * 
+ * 请求体
+------WebKitFormBoundary2WK3bilBxisKdBXD
+Content-Disposition: form-data; name="username"
+
+123
+------WebKitFormBoundary2WK3bilBxisKdBXD
+Content-Disposition: form-data; name="avatar"; filename="msg.txt"
+Content-Type: text/plain
+
+abc
+------WebKitFormBoundary2WK3bilBxisKdBXD--
+
+ */
+
+
+```
+
+13.2 koa 源码
+
+```
+class Koa {
+    constructor() {
+        this.middleware = [];
+    }
+    use(fn) {
+        this.middleware.push(fn);
+    }
+    listen(port) {
+        let middleware = this.middleware;
+        require('http').createServer((req, res) => {
+            let ctx = { req, res };
+            // koa2.0 3.0
+            // dispatch(0);
+            // function dispatch(idx) {
+            //     middleware[idx](ctx, () => next(idx + 1));
+            // }
+            // [1,2,3]
+            //是koa1.0原理
+            (middleware.reduceRight((val, item) => {
+                return item.bind(null, ctx, val);
+            }, (function () { })))()
+        }).listen(port);
+    }
+}
+module.exports = Koa;
+```
+
+14.v8引擎原理：
+
+  1.内存的分类，process.memoryUsage 打印出来的4个变量分代表的意思：
+
+![image-20210109224023647](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20210109224023647.png)
+
+   2.v8系统的；内存限制：64位系统的一般就为1.4g。为什么有这个限制呢？因为垃圾回收的超过1.4g就会超过1秒，垃圾回收的时间我们叫做Stop The World时间，期间程序不能做任何操作
+
+ 3.v8的垃圾回收机制
+
+ v8是基于分代回收回收，分为新生代和老生代，不同的分代有不同的回收方式。
+
+​    在新生代中：分为form--to两个区域 ，新生代的扫描一开始是从根元素，通过 广度优先算法，遍历根元素的每个节点，如果是活着的就会方法to区域，不是活着的就要销毁，完成遍历之后，就会交换to，和from两个区域，继续上次的操作，如果一个变量在to，from交换了5次以上，还是存活的话就会继续放到老生带里面（一开始大对象也有可能放到老生代里面，因为老生代的空间比较大）
+
+   在老生代中：通过三种方式清除没有用的变量
+
+   1.标记清除：遍历老生代的变量，没有存活的就标记下来。通过标记删除不存活的变量
+
+   2.标记整理：通过交互存活和不存活的变量的位置，存活的向左，不存在的向又，最后清除右边不存活的变量
+
+ 3.增量标记：就是把标记过程，变成多次标记，垃圾回收和应用程序运行交替进行，停顿时间减少到1/6左右。
+
+​      
+
+
+
+
+
+​    
