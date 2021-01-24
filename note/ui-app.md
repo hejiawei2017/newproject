@@ -25,7 +25,7 @@ uni-app多端演示
 
 
 
-![image-20200618230520475](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200618230520475.png)
+![image-20200618230520475](ui-app.assets/image-20200618230520475.png)
 
 
 
@@ -45,15 +45,15 @@ App开发插件体积大的原因主要有2方面：
 
 2.创建项目：文件，新建项目，选择uni\-app
 
-![image-20200618230707236](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200618230707236.png)
+![image-20200618230707236](ui-app.assets/image-20200618230707236.png)
 
 注意：没有办法启动小程序的时候：
 
-![image-20200619000040427](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200619000040427.png)
+![image-20200619000040427](ui-app.assets/image-20200619000040427.png)
 
 3.项目目录结构：
 
-![image-20200619064718347](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200619064718347.png)
+![image-20200619064718347](ui-app.assets/image-20200619064718347.png)
 
 
 
@@ -113,13 +113,13 @@ app.vue :全局样式
 ​		"backgroundColor": "#F8F8F8"
 ​	},}
 
-![image-20200710070843121](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200710070843121.png)
+![image-20200710070843121](ui-app.assets/image-20200710070843121.png)
 
 放在pages第一个对应就是首页
 
-![image-20200710071739356](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200710071739356.png)
+![image-20200710071739356](ui-app.assets/image-20200710071739356.png)
 
-![image-20200710071958927](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200710071958927.png)
+![image-20200710071958927](ui-app.assets/image-20200710071958927.png)
 
 
 
@@ -129,7 +129,7 @@ app.vue :全局样式
 
 9.condition可以模拟参数导入，方便调试
 
-![image-20200712180727725](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200712180727725.png)
+![image-20200712180727725](ui-app.assets/image-20200712180727725.png)
 
 10.page.json主要是为了兼容小程序的，mainfest.json是app总体配置
 
@@ -170,7 +170,7 @@ app.vue :全局样式
 
   uni-app的事件和web是一样的
 
-   ![image-20200716063955761](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200716063955761.png)
+   ![image-20200716063955761](ui-app.assets/image-20200716063955761.png)
 
 ```
 <view  @click="clicktest" @longtap="longtap"></vievw>
@@ -620,9 +620,9 @@ quickapp-webview-huawei	快应用华为
 
 静态文件：在static文件夹下面放置转有的文件夹
 
-![image-20200728073416220](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200728073416220.png)
+![image-20200728073416220](ui-app.assets/image-20200728073416220.png)
 
-![image-20200728073751919](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200728073751919.png)
+![image-20200728073751919](ui-app.assets/image-20200728073751919.png)
 
 条件编译快捷键：
 
@@ -642,7 +642,7 @@ quickapp-webview-huawei	快应用华为
 
   })
 
-![image-20200729064432841](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200729064432841.png)
+![image-20200729064432841](ui-app.assets/image-20200729064432841.png)
 
 uni.showLoading({
 
@@ -652,7 +652,7 @@ uni.showLoading({
 
 })
 
-![image-20200729065122703](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200729065122703.png)
+![image-20200729065122703](ui-app.assets/image-20200729065122703.png)
 
 uni.showModal({
 			title: "提示",
@@ -665,7 +665,7 @@ uni.showModal({
 ​			}
 ​	})
 
-![image-20200729070444935](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200729070444935.png)
+![image-20200729070444935](ui-app.assets/image-20200729070444935.png)
 
 uni.showActionSheet({
 
@@ -703,11 +703,11 @@ uni.showActionSheet({
 
 2.app 微信登录授权
 
-![image-20200729233127258](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200729233127258.png)
+![image-20200729233127258](ui-app.assets/image-20200729233127258.png)
 
 2.2app sdk配置，appid和appsecret  开发的时候可以乱填，但是正式上线的时候要填写回来
 
-![image-20200729233301170](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200729233301170.png)
+![image-20200729233301170](ui-app.assets/image-20200729233301170.png)
 
 2.3 openid和unioid的区别，如果应用只在一个端上运行的话可以用openid  如果想要在多个端同一个标识的话就要用到unioid
 
@@ -715,9 +715,9 @@ uni.showActionSheet({
 
 3.uni-app的全局对象，可以用来放置全局方法和属性
 
-![image-20200729235402570](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200729235402570.png)
+![image-20200729235402570](ui-app.assets/image-20200729235402570.png)
 
- ![image-20200729235452521](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200729235452521.png)
+ ![image-20200729235452521](ui-app.assets/image-20200729235452521.png)
 
 强烈建议先去微信开方平台注册一个联合的帐号，每年300元
 
@@ -825,11 +825,11 @@ if(!res){
 ​											success(lastres) {
 ​												//这里就是最后的数据了,包含手机号的
 ​												
-											}
-										})
-									}
-								})
-	
+​											}
+​										})
+​									}
+​								})
+​	
 							},
 							fail() {
 
@@ -901,15 +901,15 @@ uni.share({
 
 分享的配置如下：
 
-![image-20200801173017827](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200801173017827.png)
+![image-20200801173017827](ui-app.assets/image-20200801173017827.png)
 
 45.iconfont
 
- 在iconfont官网下载鲜明的图标，要inconfont.css的内容，copy到app.vue的style标签下面， 字体url只留下base64类型的
+ 在iconfont官网下载鲜明的图标，要inconfont.css的内容，copy到app.vue的style标签下面， 字体url只留下base64类型
 
-![image-20200801173909757](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200801173909757.png)
+![image-20200801173909757](ui-app.assets/image-20200801173909757.png)
 
-  ![image-20200801174302492](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200801174302492.png)
+  ![image-20200801174302492](ui-app.assets/image-20200801174302492.png)
 
 调用：<view class="iconfont icon-name"></view>
 
@@ -929,11 +929,11 @@ https://ask.dcloud.net.cn/article/1232
 
 ​     整体处理过程：
 
-![image-20200804072804964](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200804072804964.png)
+![image-20200804072804964](ui-app.assets/image-20200804072804964.png)
 
 mvvm：第一个model是单页的静态数据，第一个v是页面html，后面的vm就是viewmodel是核心调度者，负责数据model到view的渲染，和从view操作到model的改变
 
-![image-20200804073539617](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200804073539617.png)
+![image-20200804073539617](ui-app.assets/image-20200804073539617.png)
 
 
 
@@ -951,7 +951,7 @@ mvvm：第一个model是单页的静态数据，第一个v是页面html，后面
 
 49.页面生命周期
 
-   ![image-20200810070922276](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200810070922276.png)
+   ![image-20200810070922276](ui-app.assets/image-20200810070922276.png)
 
 50.屏幕尺寸单位
 
