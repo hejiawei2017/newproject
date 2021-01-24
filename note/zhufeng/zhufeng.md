@@ -2,9 +2,9 @@
 
 1.体系结构
 
-![image-20200527211635007](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200527211635007.png)
+![image-20200527211635007](zhufeng.assets/image-20200527211635007.png)
 
-![image-20200527212140424](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200527212140424.png)
+![image-20200527212140424](zhufeng.assets/image-20200527212140424.png)
 
 2.安装docker
 
@@ -61,13 +61,13 @@ rm -rf /var/lib/docker
 
 5.dokcer帮助命令：docker --help
 
-![image-20200609062101290](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200609062101290.png)
+![image-20200609062101290](zhufeng.assets/image-20200609062101290.png)
 
 帮助子命令：：docker image --help
 
 
 
-![image-20200609063905451](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200609063905451.png)
+![image-20200609063905451](zhufeng.assets/image-20200609063905451.png)
 
 docker一般命令
 
@@ -89,7 +89,7 @@ docker一般命令
 
 6.docker 容器：
 
-![image-20200611065025868](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200611065025868.png)
+![image-20200611065025868](zhufeng.assets/image-20200611065025868.png)
 
   1.创建并且运行一个容器：dockder container run -itd --name bs busybox
 
@@ -143,13 +143,13 @@ docker一般命令
 
 7.管理应用程序的数据
 
-![image-20200614111944443](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200614111944443.png)
+![image-20200614111944443](zhufeng.assets/image-20200614111944443.png)
 
 
 
 volumes：可以在主机中挂载数据到容器中
 
-![image-20200614170821338](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200614170821338.png)
+![image-20200614170821338](zhufeng.assets/image-20200614170821338.png)
 
 1.docker volume ls //查看卷
 
@@ -226,7 +226,7 @@ docker run -itd --name  lnmp_mysql  --net lnmp -p 3306:3306  --mount src=mysql-v
 
  访问： http://106.52.141.232:88/wordpress/
 
-![image-20200617231654396](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200617231654396.png)
+![image-20200617231654396](zhufeng.assets/image-20200617231654396.png)
 
 
 
@@ -234,11 +234,11 @@ docker run -itd --name  lnmp_mysql  --net lnmp -p 3306:3306  --mount src=mysql-v
 
 6.dockerfile
 
-![image-20200619071958668](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200619071958668.png)
+![image-20200619071958668](zhufeng.assets/image-20200619071958668.png)
 
 
 
-![image-20200619072131121](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200619072131121.png)
+![image-20200619072131121](zhufeng.assets/image-20200619072131121.png)
 
 
 
@@ -270,9 +270,9 @@ workdir 切换到工作目录，默认exec进的是根目录，配合这个可�
 
 6.1nginx dockerfle:
 
- <img src="C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622070516024.png" alt="image-20200622070516024" style="zoom:150%;" />
+ <img src="zhufeng.assets/image-20200622070516024.png" alt="image-20200622070516024" style="zoom:150%;" />
 
-![image-20200622070451551](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622070451551.png)
+![image-20200622070451551](zhufeng.assets/image-20200622070451551.png)
 
 
 
@@ -284,17 +284,17 @@ workdir 切换到工作目录，默认exec进的是根目录，配合这个可�
 
 6.2.php 的dockerfile
 
-![image-20200622070725126](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622070725126.png)
+![image-20200622070725126](zhufeng.assets/image-20200622070725126.png)
 
 
 
-![image-20200622070753298](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622070753298.png)
+![image-20200622070753298](zhufeng.assets/image-20200622070753298.png)
 
-![image-20200622070846550](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622070846550.png)
+![image-20200622070846550](zhufeng.assets/image-20200622070846550.png)
 
 6.3.java的docker镜像：
 
-![image-20200622231935692](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622231935692.png)
+![image-20200622231935692](zhufeng.assets/image-20200622231935692.png)
 
 
 
@@ -308,7 +308,7 @@ docker build -t  tomcat:v1 .
 
 
 
-![image-20200622231952293](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200622231952293.png)
+![image-20200622231952293](zhufeng.assets/image-20200622231952293.png)
 
 
 
@@ -324,7 +324,7 @@ docker build -t  tomcat:v1 .
 
 7.2搭建私有的镜像创库
 
-![image-20200623070518712](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200623070518712.png)
+![image-20200623070518712](zhufeng.assets/image-20200623070518712.png)
 
 1.从docker hub上面拉去镜像：  docker pull nginx:1.12
 
@@ -334,7 +334,7 @@ docker build -t  tomcat:v1 .
 
 可能会报错的。设置信任地址：
 
-![image-20200623072609055](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200623072609055.png)
+![image-20200623072609055](zhufeng.assets/image-20200623072609055.png)
 
 
 
@@ -350,7 +350,7 @@ docker run -itd --name nginx -p 88:80  192.168.0.211:5000/nginx:1.2
 
 8.docker hub 公共仓库的使用
 
-![image-20200629060700471](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200629060700471.png)
+![image-20200629060700471](zhufeng.assets/image-20200629060700471.png)
 
 
 
@@ -360,7 +360,7 @@ docker hub 帐号密码：hejiawei2020   as7683032389
 
 8.1 创建仓库
 
-![image-20200629061716868](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200629061716868.png)8.2登录 docker login   输入用户名和密码
+![image-20200629061716868](zhufeng.assets/image-20200629061716868.png)8.2登录 docker login   输入用户名和密码
 
 8.3打tag：docker tag nginx:v1   hejiawei2020/nignx:v1 //     把 nginx:v1 的镜像打tag为 hejiawei2020/nignx:v1 ，hejiawei2020是帐号
 
@@ -391,7 +391,7 @@ docker hub 帐号密码：hejiawei2020   as7683032389
  https://gitbub.com/vmware/harbor/blob/marter/doc/configure_https.md
 
   9.2.1  生成自签证书（不受信任的）： openssl req -newkey rsa:4096 -nodes -sha256 -keyout ca.key -x509 -days 365 -out ca.crt
-  ![image-20200704204655124](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200704204655124.png)
+  ![image-20200704204655124](zhufeng.assets/image-20200704204655124.png)
 
 9.2.3  生成请求证书：  openssl req -newkey rsa:4096 -nodes -sha256 -keyout  reg.hejiawei2020.cn.key  -out reg.hejiawei.cn.csr
 
@@ -433,21 +433,21 @@ docker hub 帐号密码：hejiawei2020   as7683032389
 
 ​    之后打tag，然后push，然后pull，注意都要加reg.hejiawei.cn
 
-10. 使用kubeadm快速部署一个K8S集群![image-20200713232305808](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200713232305808.png)
+10. 使用kubeadm快速部署一个K8S集群![image-20200713232305808](zhufeng.assets/image-20200713232305808.png)
 
     10.1 在每台机器上面安装doker
 
-    ![image-20200715233637456](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200715233637456.png)
+    ![image-20200715233637456](zhufeng.assets/image-20200715233637456.png)
 
  
 
 
 
-​    ![image-20200715234323016](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200715234323016.png)
+​    ![image-20200715234323016](zhufeng.assets/image-20200715234323016.png)
 
-![image-20200715234535294](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200715234535294.png)
+![image-20200715234535294](zhufeng.assets/image-20200715234535294.png)
 
-![image-20200716002709090](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200716002709090.png)
+![image-20200716002709090](zhufeng.assets/image-20200716002709090.png)
 
 第五部在主机上执行，其他都在各个机器要执行
 
@@ -495,7 +495,7 @@ https://github.com/zhufengzhufeng/webpack-public
 
 git中各区的区分
 
-![image-20200321221026276](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200321221026276.png)
+![image-20200321221026276](zhufeng.assets/image-20200321221026276.png)
 
 5.安装
 
@@ -656,7 +656,7 @@ git stash
 
 8.当遇到冲突的时候，回有提示那个文件冲突，修改好文件
 
-![image-20200322215608442](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200322215608442.png)
+![image-20200322215608442](zhufeng.assets/image-20200322215608442.png)
 
 等号是分割线，最后只留下需要的代码 color：red，修改好之后 执行 git add . 再执行
 
@@ -670,7 +670,7 @@ git commit -m 'msg'
 
   2.不想提交的文件列表.gitignore
 
-​     ![image-20200322221743379](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200322221743379.png)
+​     ![image-20200322221743379](zhufeng.assets/image-20200322221743379.png)
 
 3.连接github创库
 
@@ -762,7 +762,7 @@ nodejs的包管理器npm，是全球最大的开源生态系统
 
 
 
-![image-20200328183403863](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200328183403863.png)
+![image-20200328183403863](zhufeng.assets/image-20200328183403863.png)
 
   5.为什么js是单线程的呢？
 
@@ -776,7 +776,7 @@ nodejs的包管理器npm，是全球最大的开源生态系统
 
    
 
-  ![image-20200328205745324](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200328205745324.png)
+  ![image-20200328205745324](zhufeng.assets/image-20200328205745324.png)
 
 
 
@@ -792,7 +792,7 @@ nodejs的包管理器npm，是全球最大的开源生态系统
 
 9.repl：在cmd下面输入node进入repl环境，就是nodejs的执行环境
 
-![image-20200329170127799](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200329170127799.png)
+![image-20200329170127799](zhufeng.assets/image-20200329170127799.png)
 
 可以新建一个文件repl.js:
 
@@ -820,7 +820,7 @@ context.hello = function(){
 
 3. 断言console.assert(1==1,‘报错’)//如果表达式为false的话就会报错
 
-​    ![image-20200329210043378](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200329210043378.png)
+​    ![image-20200329210043378](zhufeng.assets/image-20200329210043378.png)
 
 ​    4.跟踪代码调用栈console.trace()
 
@@ -1629,7 +1629,7 @@ OSI模型把网络通信的工作分为7层，分别是物理层、数据链路�
 
 
 
-![image-20200607112608016](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200607112608016.png)
+![image-20200607112608016](zhufeng.assets/image-20200607112608016.png)
 
 
 
@@ -1639,7 +1639,7 @@ OSI模型把网络通信的工作分为7层，分别是物理层、数据链路�
 
 
 
-![image-20200607112823540](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200607112823540.png)
+![image-20200607112823540](zhufeng.assets/image-20200607112823540.png)
 
 *TCP/IP协议被称为传输控制协议/互联网协议，又称网络通讯协议
 
@@ -1665,7 +1665,7 @@ OSI模型把网络通信的工作分为7层，分别是物理层、数据链路�
 
 五层对应的协议：
 
-![image-20200607160409426](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200607160409426.png)
+![image-20200607160409426](zhufeng.assets/image-20200607160409426.png)
 
 双工，单工，半双攻
 
@@ -1689,7 +1689,7 @@ OSI模型把网络通信的工作分为7层，分别是物理层、数据链路�
   - 传输数据,关心如何打包数据和控制传输速度
   - 关闭物理连接
 
-  ![image-20200608055817834](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200608055817834.png)
+  ![image-20200608055817834](zhufeng.assets/image-20200608055817834.png)
 
 
 
@@ -1717,7 +1717,7 @@ OSI模型把网络通信的工作分为7层，分别是物理层、数据链路�
 - 每个网卡都有一个全球唯一的地址来标识自己，不会重复
 - MAC地址48位的二进制组成，通常分为6段，用16进制表示
 
-![image-20200608061501924](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200608061501924.png)
+![image-20200608061501924](zhufeng.assets/image-20200608061501924.png)
 
 4.网络层
 
@@ -1727,7 +1727,7 @@ OSI模型把网络通信的工作分为7层，分别是物理层、数据链路�
 
    交换机是靠MAC来寻址的，而因为MAC地址是无层次的,所以要靠IP地址来确认计算机的位置,这就是选址
 
-![image-20200608065949948](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200608065949948.png)
+![image-20200608065949948](zhufeng.assets/image-20200608065949948.png)
 
 ![image-20200608070348139](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200608070348139.png)
 
@@ -1735,7 +1735,7 @@ ip地址就是省市区地址，申请上网的时候，电信服务商会给一
 
 ip地址分为三类：
 
-![image-20200609233621612](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200609233621612.png)
+![image-20200609233621612](zhufeng.assets/image-20200609233621612.png)
 
 私有IP
 
@@ -1745,7 +1745,7 @@ ip地址分为三类：
 
 其他范围的IP均为公有IP地址
 
-![image-20200610000143224](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200610000143224.png)
+![image-20200610000143224](zhufeng.assets/image-20200610000143224.png)
 
 
 
@@ -1753,7 +1753,7 @@ ip地址分为三类：
 
 4.2路由（选择最近的道路）
 
-![image-20200611231334097](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200611231334097.png)
+![image-20200611231334097](zhufeng.assets/image-20200611231334097.png)
 
 2发出请求，路由器寻址，找到理1最近的路由器，最近的路由器再找到ip，找到mac地址，再在两个mac地址之间通讯
 
@@ -1769,7 +1769,7 @@ ip地址分为三类：
 
 5.1传输层
 
-![image-20200618071649293](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200618071649293.png)
+![image-20200618071649293](zhufeng.assets/image-20200618071649293.png)
 
 
 
@@ -1811,7 +1811,7 @@ ip地址分为三类：
 
 
 
-![image-20200618072117548](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200618072117548.png)
+![image-20200618072117548](zhufeng.assets/image-20200618072117548.png)
 
 5.4.1源端口号和目标端口号，计算机通过端口号识别访问哪个服务,比如http服务或ftp服务，发送方端口号是进行随机端口，目标端口号决定了接收方哪个程序来接收
 
@@ -1835,7 +1835,7 @@ ip地址分为三类：
 
 - 第三次握手是主机A确认收到了主机B的数据段并可以开始传输实际数据。
 
-- ![image-20200621080257365](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200621080257365.png)
+- ![image-20200621080257365](zhufeng.assets/image-20200621080257365.png)
 
   简单来说：
 
@@ -1851,11 +1851,11 @@ ip地址分为三类：
 - 主机B进行响应，确认收到断开连接请求
 - 主机B提出反方向的关闭要求
 - 主机A确认收到的主机B的关闭连接请求
-- ![image-20200621080308478](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200621080308478.png)
+- ![image-20200621080308478](zhufeng.assets/image-20200621080308478.png)
 
 
 
-![image-20200629071634387](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200629071634387.png)
+![image-20200629071634387](zhufeng.assets/image-20200629071634387.png)
 
 断开为什么是4次的呢
 
@@ -1865,7 +1865,7 @@ ip地址分为三类：
 
 
 
-![image-20200806232441317](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200806232441317.png)
+![image-20200806232441317](zhufeng.assets/image-20200806232441317.png)
 
 一般用于qq，视频软件中
 
@@ -1877,7 +1877,7 @@ ip地址分为三类：
 
 6.1数据封装过程
 
-![image-20200807000308715](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200807000308715.png)
+![image-20200807000308715](zhufeng.assets/image-20200807000308715.png)
 
 
 
@@ -2100,27 +2100,27 @@ client.bind(8080,'192.168.1.103');
 
 7.http请求的过程
 
-  ![image-20200817233137945](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200817233137945.png)
+  ![image-20200817233137945](zhufeng.assets/image-20200817233137945.png)
 
 7.2.http**长连接**
 
   http.10以前的请求只能一个一个来，开销非常的大
 
-   ![image-20200817233232501](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200817233232501.png)
+   ![image-20200817233232501](zhufeng.assets/image-20200817233232501.png)
 
 如果一个连接不断开的情况下就可以连续发送图片和资源了
 
-![image-20200817233338276](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200817233338276.png)
+![image-20200817233338276](zhufeng.assets/image-20200817233338276.png)
 
 上面的这中情况其实还是不够因为每次发送一个才能再次发送
 
 **管线化技术**：可以不用等待同时发送多个，注意每个浏览器支持的并发数是不固定的
 
-![image-20200817233942067](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200817233942067.png)
+![image-20200817233942067](zhufeng.assets/image-20200817233942067.png)
 
 7.3url格式
 
-![image-20200817234340592](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200817234340592.png)
+![image-20200817234340592](zhufeng.assets/image-20200817234340592.png)
 
 7.4http请求一般分为一下部分
 
@@ -2138,13 +2138,13 @@ client.bind(8080,'192.168.1.103');
 
 76.分割发送的分块传输编码，当文件比较大的时候可以通过分块传输，部分先显示的策略更快的显示界面
 
-![image-20200818065738195](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200818065738195.png)
+![image-20200818065738195](zhufeng.assets/image-20200818065738195.png)
 
 7.7form表单上传
 
 ####  multiparty/form-data
 
-![image-20200818070511515](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200818070511515.png)
+![image-20200818070511515](zhufeng.assets/image-20200818070511515.png)
 
 7.8内容协商
 
@@ -2225,7 +2225,7 @@ console.log(userObj);
 console.log(url.format(userObj));
 ```
 
-  ![image-20200822224445147](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200822224445147.png)
+  ![image-20200822224445147](zhufeng.assets/image-20200822224445147.png)
 
 8.1 服务器设置响应体
 
@@ -2539,7 +2539,7 @@ console.log(yargs.argv)
 
 ```
 
-![image-20200910235651925](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200910235651925.png)
+![image-20200910235651925](zhufeng.assets/image-20200910235651925.png)
 
 输入--help
 
@@ -3272,7 +3272,7 @@ http.createServer(function(req,res){
 
 10.8 user-agent-parser
 
-![image-20200927070846375](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20200927070846375.png)
+![image-20200927070846375](zhufeng.assets/image-20200927070846375.png)
 
 11.express
 
@@ -3692,11 +3692,13 @@ module.exports = Koa;
 
   1.内存的分类，process.memoryUsage 打印出来的4个变量分代表的意思：
 
-![image-20210109224023647](C:\Users\acert\AppData\Roaming\Typora\typora-user-images\image-20210109224023647.png)
+![image-20210109224023647](zhufeng.assets/image-20210109224023647.png)
 
    2.v8系统的；内存限制：64位系统的一般就为1.4g。为什么有这个限制呢？因为垃圾回收的超过1.4g就会超过1秒，垃圾回收的时间我们叫做Stop The World时间，期间程序不能做任何操作
 
  3.v8的垃圾回收机制
+
+
 
  v8是基于分代回收回收，分为新生代和老生代，不同的分代有不同的回收方式。
 
