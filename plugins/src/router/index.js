@@ -11,6 +11,12 @@ const routes = [
     component: Home,
   },
   {
+    path: "/redirectTest",
+    name: "redirectTest",
+    component: () =>
+      import(/* webpackChunkName: "redirectTest" */ "../components/redirectTest.vue"),
+  },
+  {
     path: "/about",
     name: "about",
     component: () =>
@@ -33,6 +39,12 @@ const routes = [
     name: "encryptedLogin",
     component: () =>
       import(/* webpackChunkName: "uploadsplit" */ "../views/encryptedLogin.vue"),
+  },
+  {
+    path: '/seleleDemo',
+    name: "seleleDemo",
+    component: () =>
+      import(/* webpackChunkName: "seleleDemo" */ "../components/page/seleleDemo.vue"),
   },
 ];
 

@@ -86,18 +86,19 @@ class Server {
         }
     }
     getStream(req, res, filepath, statObj) {
-        let start = 0;
-        let end = statObj.size - 1;
-        let range = req.headers['range'];
+        let start = 0;//文件开始为止
+        let end = statObj.size - 1; //文件结束为止
+        let range = req.headers['range'];//这个字段存在便是，浏览器想服务器用流的形式一段一段返回
         if (range) {
-            res.setHeader('Accept-Range', 'bytes');
-            res.statusCode = 206;//返回整个内容的一块
-            let result = range.match(/bytes=(\d*)-(\d*)/);
-            if (result) {
+            res.setHeader('Accept-Range', 'bytes');//服务器告诉浏览器，我返回的流的格式是字符bytes
+            res.statusCode = 206;//表示告诉浏览器，我开始返回一段bytes格式的数据了
+            let result = range.match(/bytes=(\d*)-(\d*)/); //读取浏览器发送过来的开始和结束位置
+            if (result) {//处理开始和结束位置的边界
                 start = isNaN(result[1]) ? start : parseInt(result[1]);
                 end = isNaN(result[2]) ? end : parseInt(result[2]) - 1;
             }
         }
+        //真正读取文件返回
         return fs.createReadStream(filepath, {
             start, end
         });

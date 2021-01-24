@@ -6,6 +6,7 @@
       @lotteryEndHandler="lotteryEndHandler"
       :options="options"
     ></turntable>
+    <demo></demo>
   </div>
 </template>
 
@@ -28,7 +29,7 @@ export default {
           //抽奖数据
           { name: "80积分", id: 1, angle: [240, 360] },
           { name: "200积分", id: 2, angle: [0, 120] },
-          { name: "免单", id: 3, angle: [120, 240] }
+          { name: "免单", id: 3, angle: [120, 240] },
         ],
         getDegByUser(item, angle) {
           //用户设定角度
@@ -42,12 +43,12 @@ export default {
             return [120, 240];
           }
           return angle;
-        }
-      }
+        },
+      },
     };
   },
   props: {
-    msg: String
+    msg: String,
   },
   methods: {
     clickHandler(e) {
@@ -57,8 +58,8 @@ export default {
     lotteryEndHandler(item) {
       //每次点击按钮抽奖结束回调用
       alert("恭喜你获得" + item.name);
-    }
-  }
+    },
+  },
 };
 </script>
 

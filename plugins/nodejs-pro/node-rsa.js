@@ -12,6 +12,10 @@ const fs = require('fs');
 app.use(bodyParser())
 app.use(static(__dirname + '/'));
 
+
+// var cors = require('koa2-cors');
+// app.use(cors());
+
 const NodeRSA = require('node-rsa')
 const key = new NodeRSA({ b: 512 })
 key.setOptions({ encryptionScheme: 'pkcs1' })
@@ -34,6 +38,20 @@ router.post('/nodersa/login', (ctx) => {
 })
 
 
+router.get("/redirectTest", function (ctx) {
+    // ctx.set("Access-Control-Allow-Origin", "*")
+    ctx.response.redirect('http://172.30.207.28:3009/login.html')
+})
+
+router.get("/redirect2", function (ctx) {
+    // ctx.set("Access-Control-Allow-Origin", "*")
+    // ctx.set("Access-Control-Allow-Credentials", true)
+    ctx.cookies.set('RSESSIONID', 'hejiawei002');
+    ctx.response.redirect('http://172.30.207.28:8080/#/logins')
+})
+
+
+
 //nodejs 流文件下载服务器
 router.get('/file/:fileName', function (ctx) {
     // 实现文件下载 
@@ -43,7 +61,7 @@ router.get('/file/:fileName', function (ctx) {
     if (stats.isFile()) {
         ctx.set({
             'Content-Type': 'application/octet-stream',
-            'Content-Disposition': 'attachment; filename=' + fileName,
+            'Content-Disposition': 'inline;filename=' + fileName,
             'Content-Length': stats.size
         });
         ctx.body = fs.createReadStream(filePath);
@@ -55,4 +73,6 @@ router.get('/file/:fileName', function (ctx) {
 
 app.use(router.routes());
 app.use(router.allowedMethods());
-app.listen(3009)
+app.listen(3009, function () {
+    console.log("listen in 3009")
+})
