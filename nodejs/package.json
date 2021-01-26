@@ -2,5 +2,8 @@
   "dependencies": {
     "mime": "^2.4.6",
     "mine": "^0.1.0"
+  },
+  "devDependencies": {
+    "request": "^2.88.2"
   }
 }

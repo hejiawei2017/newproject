@@ -9,7 +9,7 @@ Vue.config.productionTip = false;
 Vue.use(ElementUI);
 
 
-import suyuanui from "@/library/dist/suyuanui.js"
+import suyuanui from "@/common/suyuanui.js"
 Vue.use(suyuanui)
 
 
