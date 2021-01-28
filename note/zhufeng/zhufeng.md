@@ -3712,7 +3712,25 @@ module.exports = Koa;
 
  3.增量标记：就是把标记过程，变成多次标记，垃圾回收和应用程序运行交替进行，停顿时间减少到1/6左右。
 
-​      
+   
+
+25.如何提高网页加载速度
+
+ 1.合并请求，nginx模块，spirte雪碧图
+
+2.缓存：强缓存，协商缓存，localstorage，http头
+
+3.tcp网络优化链接，tcp调优，http/2，keep-alive
+
+4.硬件：加大宽带，使用cdn，
+
+5.资源大少：gzip，webp，image压缩，cookie体积
+
+6.预加载，多个cdn域名，dns预取，异步读取js
+
+  
+
+
 
 
 
