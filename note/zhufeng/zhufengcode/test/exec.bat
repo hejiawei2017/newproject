@@ -1,1 +1,0 @@
-node exec2.js %1
