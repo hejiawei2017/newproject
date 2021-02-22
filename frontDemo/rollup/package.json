@@ -1,0 +1,23 @@
+{
+  "name": "vue-shepherd",
+  "version": "1.0.0",
+  "description": "vue-shepherd",
+  "main": "./dist/vue-shepherd.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "cross-env": "^7.0.2",
+    "rollup": "^2.6.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-serve": "^1.0.1"
+  },
+  "dependencies": {
+    "vue-template-compiler": "^2.6.11"
+  }
+}
