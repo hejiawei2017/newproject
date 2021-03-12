@@ -13,7 +13,12 @@ module.exports = {
 		'vue': 'Vue',
 		'vue-router': 'VueRouter',
 		'axios': 'axios',
-		'element-ui': 'ELEMENT',
+		'element-ui': {//不同规范下对应不同的变量
+			commonjs: 'element-ui',
+			commonjs2: 'element-ui',
+			amd: 'element-ui',
+			root: 'ELEMENT'
+		},
 	},
 	resolve: {
 		//自动补全后缀，注意第一个必须是空字符串,后缀一定以点开头
@@ -22,7 +27,7 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: '[name].js',
-		library: 'suyuan',
+		library: 'suyuanUi',
 		libraryTarget: 'umd'
 	},
 	devServer: {

@@ -10,7 +10,10 @@
   "keywords": [],
   "author": "",
   "license": "",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "html-webpack-plugin": "^4.5.1",
+    "html-withimg-loader": "^0.1.16",
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/polyfill": "^7.12.1",
@@ -36,9 +39,5 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "style-loader": "^2.0.0"
-  },
-  "devDependencies": {
-    "html-webpack-plugin": "^4.5.1",
-    "html-withimg-loader": "^0.1.16"
   }
 }
