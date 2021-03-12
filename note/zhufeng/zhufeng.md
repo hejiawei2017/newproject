@@ -3730,10 +3730,38 @@ module.exports = Koa;
 
   
 
+15.服务器部署与运维
 
+   1.cmd登录服务器：ssh root@118.190.59.49  然后输入密码
 
+   2.root用户的权限非常大，一般不用root登录的
 
+   3.下载xshell软件，按新建连接按钮配置如下：
 
+​    ![1613918073736](zhufeng.assets/1613918073736.png)
 
+  登录成功界面：
+
+![1613918102830](zhufeng.assets/1613918102830.png)
+
+15.2 docker
+
+  部署我们的应该越来越复杂，为了统一部署方便需要用到docker
+
+ docker 常见的命令：
+
+  1.拉取镜像：docker pull centos
+
+  2.创建新的容器并运行：docker run --name mynginx -d  nginx:latest (-d 代表后天运行)
+
+ 3.启动容器：docker start container_name/id
+
+ 4.停止容器：docker stop container_name/id
+
+ 5.重启容器：docker restart container_name/id
+
+ 6.在容器中开始交互终端：docker exec -i -t container _id /bin/bash
+
+ 7.使用当前目录docker创建镜像，标签为xxx:v1：docker build -t xxx:v1 
 
 ​    
