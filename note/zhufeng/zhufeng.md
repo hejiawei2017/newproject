@@ -3764,4 +3764,43 @@ module.exports = Koa;
 
  7.使用当前目录docker创建镜像，标签为xxx:v1：docker build -t xxx:v1 
 
-​    
+16.持续部署和集成
+
+  16.1.建立后端项目: 建立文件夹：vue-back-master，新建文件：server.js
+
+ 
+
+```
+let http = require('http');
+let users = [
+    {id:22,name:'zhufeng1'},
+    {id:22,name:'zhufeng2'},
+    {id:22,name:'zhufeng3'}
+]
+let server = http.createServer(function(req,res){
+  res.setHeader('Access-Control-Allow-Origin','*');
+  if(req.url === '/api/users'){
+      res.end(JSON.stringify(users));
+  }else{
+      res.end('Not Found');
+  }
+});
+server.listen(3000,()=>{
+    console.log('后端API接口服务器已经启动在3000端口！')
+});
+
+
+//在packaged.json 配置：
+  "scripts": {
+    "start": "node ./server.js"
+  },
+//启动 npm run start
+```
+
+   
+
+16.2 用vue-cli新建前端项目：vue create vue-front-master
+
+16.3 新建nodejs项目：新建文件夹 vue-webhook-master ，npm init -y，然后安装cnpm i nodemailer ，安装发邮件项目
+
+16.4 把项目vue-front-master，vue-back-master 推送到git
