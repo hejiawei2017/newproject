@@ -1,6 +1,6 @@
 <template>
   <div class="view-images" v-loading="loading">
-    <el-row>
+    <el-row style="display: none">
       <el-col :span="18">
         <el-row v-for="item in fileList" :key="item.name" class="url-item">
           <el-input
@@ -15,7 +15,7 @@
       <el-col :span="6">
         <el-upload
           ref="uploadfile"
-          style="margin-left:10px"
+          style="margin-left: 10px"
           class="upload-demo"
           action="/uploadfromfront"
           :on-preview="handlePreview"
@@ -39,15 +39,67 @@
 </template>
 
 <script>
-import ThreeSixty from "@mladenilic/threesixty.js";
+import ThreeSixty from '@mladenilic/threesixty.js';
 
 export default {
   data() {
     return {
       loading: false,
       limit: 100,
-      downLoadUrl: "http://14.23.157.98:8090/downloadfromfront/",
-      fileList: [{ name: "testitem157" }],
+      downLoadUrl: 'http://10.10.104.3:80/downloadfromfront/',
+      fileList: [
+        { name: '1.png' },
+        { name: '2.png' },
+        { name: '3.png' },
+        { name: '4.png' },
+        { name: '5.png' },
+        { name: '6.png' },
+        { name: '7.png' },
+        { name: '7.png' },
+        { name: '9.png' },
+        { name: '10.png' },
+        { name: '11.png' },
+        { name: '12.png' },
+        { name: '13.png' },
+        { name: '14.png' },
+        { name: '15.png' },
+        { name: '16.png' },
+        { name: '17.png' },
+        { name: '18.png' },
+        { name: '19.png' },
+        { name: '20.png' },
+        { name: '21.png' },
+        { name: '22.png' },
+        { name: '23.png' },
+        { name: '24.png' },
+        { name: '25.png' },
+        { name: '26.png' },
+        { name: '27.png' },
+        { name: '28.png' },
+        { name: '29.png' },
+        { name: '30.png' },
+        { name: '31.png' },
+        { name: '32.png' },
+        { name: '33.png' },
+        { name: '34.png' },
+        { name: '35.png' },
+        { name: '36.png' },
+        { name: '37.png' },
+        { name: '38.png' },
+        { name: '39.png' },
+        { name: '40.png' },
+        { name: '41.png' },
+        { name: '42.png' },
+        { name: '43.png' },
+        { name: '44.png' },
+        { name: '45.png' },
+        { name: '46.png' },
+        { name: '47.png' },
+        { name: '48.png' },
+        { name: '50.png' },
+        { name: '51.png' },
+        { name: '52.png' },
+      ],
       threesixty: null,
     };
   },
@@ -68,7 +120,7 @@ export default {
     onSuccess(response, file, fileList) {
       this.fileList = fileList.filter((item) => {
         item.downLoadUrl = this.downLoadUrl + item.name;
-        return item.name != "testitem157";
+        return item.name != 'testitem157';
       });
       this.initThreesixty();
     },
@@ -79,18 +131,18 @@ export default {
       function loadImage() {
         let image = new Image();
         image.src = vm.fileList[index].downLoadUrl;
-        image.onload = function() {
+        image.onload = function () {
           arrImg.push(image.src);
           if (index < vm.fileList.length - 1) {
             index++;
             loadImage();
           } else {
             vm.threesixty = new ThreeSixty(
-              document.getElementById("threesixty"),
+              document.getElementById('threesixty'),
               {
                 image: arrImg,
-                prev: document.getElementById("prev"),
-                next: document.getElementById("next"),
+                prev: document.getElementById('prev'),
+                next: document.getElementById('next'),
               }
             );
             vm.loading = false;
@@ -103,6 +155,7 @@ export default {
 
   mounted() {
     // this.threesixty.play();
+    this.onSuccess(null, null, this.fileList);
   },
 };
 </script>
