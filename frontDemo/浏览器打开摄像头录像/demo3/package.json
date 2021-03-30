@@ -1,0 +1,32 @@
+{
+  "name": "vertojs",
+  "version": "0.0.3",
+  "description": "Verto FreeSWITCH interface",
+  "main": "src/index.ts",
+  "author": "Roman Yerin <r.yerin@640kb.co.uk>",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roman-yerin/vertojs.git"
+  },
+  "keywords": [
+    "verto",
+    "freeswitch"
+  ],
+  "bugs": {
+    "url": "https://github.com/roman-yerin/vertojs/issues"
+  },
+  "homepage": "https://github.com/roman-yerin/vertojs#readme",
+  "devDependencies": {
+    "@types/ws": "^6.0.3",
+    "https": "^1.0.0",
+    "mime": "^2.4.4",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.3",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.9",
+    "ws": "^7.1.2"
+  },
+  "dependencies": {}
+}
