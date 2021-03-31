@@ -57,6 +57,12 @@ app.get('/loadData', function(req, res, next) {
   });
   next();
 });
+
+app.post('/webhook', function(req, res, next) {
+  console.log('webhook');
+  next();
+});
+
 app.listen(3007, function() {
   console.log('listen in 3007');
 });

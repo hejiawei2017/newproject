@@ -3801,6 +3801,123 @@ server.listen(3000,()=>{
 
 16.2 用vue-cli新建前端项目：vue create vue-front-master
 
-16.3 新建nodejs项目：新建文件夹 vue-webhook-master ，npm init -y，然后安装cnpm i nodemailer ，安装发邮件项目
+16.3 新建nodejs项目：新建文件夹 vue-webhook-master ，npm init -y，然后安装cnpm i nodemailer ，安装发邮件项目，配置webhook，编写webhook代码，上传代码到服务器并且启动：
+
+```
+let http = require('http');
+let crypto = require('crypto');
+let {spawn} = require('child_process');
+let SECRET= '123456';
+let sendMail = require('./sendMail');
+function sign(body){
+    return `sha1=`+crypto.createHmac('sha1',SECRET).update(body).digest('hex');
+}
+let server = http.createServer(function(req,res){
+   console.log(req.method,req.url);
+   if(req.method == 'POST' && req.url == '/webhook'){
+       let buffers = [];
+       req.on('data',function(buffer){
+           buffers.push(buffer);
+       });
+       req.on('end',function(buffer){
+           let body = Buffer.concat(buffers);
+           let event = req.headers['x-github-event'];//event=push
+           //github请求来的时候，要传递请求体body,另外还会传一个signature过来，你需要验证签名对不对
+           let signature = req.headers['x-hub-signature'];
+           if(signature  !== sign(body)){
+             return res.end('Not Allowed');
+           }
+           res.setHeader('Content-Type','application/json');
+           res.end(JSON.stringify({ok:true}));
+           if(event == 'push'){//开始布署
+                let payload = JSON.parse(body);
+                let child = spawn('sh',[`./${payload.repository.name}.sh`]);
+                let buffers = [];
+                child.stdout.on('data',function(buffer){
+                    buffers.push(buffer);
+                });
+                 child.stdout.on('end',function(buffer){
+                    let logs = Buffer.concat(buffers).toString();
+                    sendMail(`
+                        <h1>部署日期: ${new Date()}</h1>
+                        <h2>部署人: ${payload.pusher.name}</h2>
+                        <h2>部署邮箱: ${payload.pusher.email}</h2>
+                        <h2>提交信息: ${payload.head_commit&&payload.head_commit['message']}</h2>
+                        <h2>布署日志: ${logs.replace("\r\n",'<br/>')}</h2>
+                    `);
+                });
+           }
+       });
+      
+   }else{
+       res.end('Not Found');
+   }
+});
+server.listen(4000,()=>{
+    console.log('webhook服务已经在4000端口上启动')
+});
+```
 
 16.4 把项目vue-front-master，vue-back-master 推送到git
+
+16.5.安装git。如果是不想每次都填写密码，生成公钥
+
+```
+ssh-keygen -t rsa -b 4096 -C "499200621@qq.com"  //-t是加密的算法rsa，-b是生成的大少，-c就是邮箱
+cat /root/.ssh/id_rsa.pub
+然后看到公钥，把公钥复制到github上面
+```
+
+16.6安装node 以及nvm ,通过nvm来实现的
+
+```
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash //安装nvm,nvm可以让电脑系统；里面同时安装多个node
+. /root/.bashrc  //执行一个脚本
+nvm install stable //有了nvm就可以安装node，和npm
+npm i nrm -g  //nrm用来切换阿里云的
+nrm use taobao
+npm i pm2 -g
+```
+
+16.7安装docker
+
+```
+yum install -y yum-utils   device-mapper-persistent-data   lvm2
+//为yum添加一个阿里安装源
+yum-config-manager \
+    --add-repo \
+    https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+// docker-ce 是免费的，docker-ee是企业版本，要收费的
+yum install -y docker-ce docker-ce-cli containerd.io
+```
+
+16.8.docker阿里云加速
+
+```
+//创建一个文件夹
+mkdir -p /etc/docker
+//在文件夹中添加阿里云配置
+tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://fwvjnv59.mirror.aliyuncs.com"]
+}
+EOF
+# 重载所有修改过的配置文件
+systemctl daemon-reload
+systemctl restart docker
+```
+
+16.9   vue-webhooks项目要常态化运行，不能关闭cmd就不能运行了，这个时候需要全局安装
+
+pm2 进行维护：cnpm i pm2 -g，在项目中的packjson.json 中配置   
+
+```
+"scripts":{
+       "start":"pm2  start  ./index.js  --name webhook --watch",
+       "stop":"pm2 stop  webhook"
+}
+
+1.启动用npm start
+2.看打印的日志pm2 logs
+```
+
