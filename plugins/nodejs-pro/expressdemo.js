@@ -31,7 +31,7 @@ let datas = [
 ];
 
 //列表数据
-app.get('/loadData', function(req, res, next) {
+app.get('/loadData', function (req, res, next) {
   let page_index = req.query.page_index;
   let page_size = req.query.page_size;
   let filterValue = req.query.filterValue;
@@ -57,6 +57,6 @@ app.get('/loadData', function(req, res, next) {
   });
   next();
 });
-app.listen(3007, function() {
+app.listen(3007, function () {
   console.log('listen in 3007');
 });
