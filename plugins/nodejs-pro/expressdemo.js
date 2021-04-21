@@ -31,11 +31,10 @@ let datas = [
 ];
 
 //列表数据
-app.get('/loadData', function (req, res, next) {
-  let page_index = req.query.page_index;
-  let page_size = req.query.page_size;
+app.get('/api/loadData', function (req, res, next) {
+  let page_index = req.query.page_index || 1;
+  let page_size = req.query.page_size || 10;
   let filterValue = req.query.filterValue;
-  console.log(filterValue);
   let filterData = datas;
   if (filterValue) {
     filterData = filterData.filter(item => {
@@ -57,6 +56,17 @@ app.get('/loadData', function (req, res, next) {
   });
   next();
 });
+
+let userCount = 0;
+//列表数据
+app.get('/api/getUserName', function (req, res, next) {
+  res.json({
+    username: "hejaiwei" + userCount
+  });
+  next();
+});
+
+
 app.listen(3007, function () {
   console.log('listen in 3007');
 });

@@ -1549,7 +1549,7 @@
                 }
                 return (md5_WordToHex(a) + md5_WordToHex(b) + md5_WordToHex(c) + md5_WordToHex(d)).toLowerCase();
             }
-            transformLanguage('zh');
+            // transformLanguage('zh');
             function transformLanguage(newLanguage) {
                 // 获取所有dom元素中文
                 var transformStr = '';
@@ -1562,16 +1562,13 @@
                         var c = childNodes[i];
                         switch (c.nodeType) {
                             case 1:
-                                if (c.nodeName == "A") c;
                                 extractDocument(c);
                                 break;
                             case 3:
                                 var text = trim(c.nodeValue)
-                                var reg = new RegExp('\n', "g");
-                                text = text.replace(reg, '');
                                 if (text.length == 0) break;
                                 if (re.test(text) && c.tagName != 'SCRIPT' && c.parentNode.tagName != 'SCRIPT') {
-                                    transformStr += `\n${text}`
+                                    transformStr += `${text},`
                                     contents.push(c)
                                 }
                                 break;
@@ -1586,12 +1583,21 @@
                     if (type == 'read') {
                         extractDocument(dom)
                     } else {
-                        console.log("contents.length", contents.length)
-                        console.log(" data.trans_result.length", data.trans_result.length)
+                        var resultArr = [];
                         for (var i = 0, l = data.trans_result.length; i < l; i++) {
-                            contents[i].nodeValue = data.trans_result[i].dst
-                        }
+                            var arr1 = data.trans_result[i].dst.split('\uFF0C');
+                            var arr2 = data.trans_result[i].dst.split(',');
+                            if (arr1[1]) {
+                                resultArr = resultArr.concat(arr1)
+                            }
+                            // if (arr2[1]) {
+                            //     resultArr = resultArr.concat(arr2)
+                            // }
 
+                        }
+                        for (var i = 0, l = contents.length; i < l; i++) {
+                            contents[i].nodeValue = resultArr[i]
+                        }
                     }
                 }
                 getChildDom(document, 'read');
@@ -1620,9 +1626,8 @@
                             sign: sign
                         },
                         success: function (data) {
-                            console.log(data);
                             data.trans_result && getChildDom(document, 'write', data);
-
+                            console.log(data);
                         }
                     });
                 }
