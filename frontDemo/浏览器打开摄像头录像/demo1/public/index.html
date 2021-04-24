@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+    <style type="text/css">
+        #container {
+            padding-top: 50px;
+        }
+
+        .video-container {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div>方案1：打开摄像头，获取视频流，通过MediaRecorder记录留，通过文件上传到服务器</div>
+        <div>
+            <button id="start" v-show="!isStartCatch">开始录像</button>
+            <button id="shop" v-show="isStartCatch">停止录像</button>
+            <button id="download">下载</button>
+        </div>
+        <canvas id="canvas" style="display: none;"></canvas>
+        <div class="video-container">
+            <video id="video" width="600" height="300" autoplay src="#"></video>
+        </div>
+        <el-dialog title="提示" :visible.sync="dialogVisible" width="600px">
+            <span>视频已经完成录制，并且已经上传，路径为：<a :href="baseUrl+fileUrl">{{baseUrl+fileUrl}}</a></span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+            </span>
+        </el-dialog>
+
+    </div>
+    <script>
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    isStartCatch: true,
+                    dialogVisible: false,
+                    baseUrl: "http://376aj41610.zicp.vip/",
+                    fileUrl: "",
+                }
+            },
+            methods: {
+
+            }
+        })
+
+        var videoControl = {
+            allChunks: [],
+            client: {},
+            stream: {},
+            initEvent: function () {
+                document.getElementById("start").addEventListener("click", function () {
+                    videoControl.recorder.start(1000);
+                    app.isStartCatch = true;
+                    videoControl.video.srcObject = videoControl.stream;
+                })
+                document.getElementById("shop").addEventListener("click", function () {
+                    //videoControl.sendData({ type: "pushend" })
+                    app.isStartCatch = false;
+                    videoControl.video.srcObject = null;
+                    videoControl.recorder.stop();
+                    videoControl.allChunks = videoControl.allChunks.splice(1, videoControl.allChunks.length);
+                    videoControl.stream.getTracks()[0].stop();
+                    //videoControl.stream = {};
+
+                })
+                document.getElementById("download").addEventListener("click", function () {
+                    if (videoControl.recorder.state != "inactive") {
+                        videoControl.recorder.stop();
+                        videoControl.saveRecordingData()
+                    }
+                })
+                videoControl.video = document.getElementById("video")
+                videoControl.video.addEventListener('play', function () {
+                    var i = window.setInterval(function () {
+                        videoControl.ctx.drawImage(videoControl.video, 0, 0, 100, 100);
+                    }, 20);
+                }, false);
+                videoControl.canvas = document.getElementById("canvas");
+                videoControl.ctx = videoControl.canvas.getContext('2d')
+                videoControl.supported();
+                //videoControl.initWebStocket()
+
+            },
+            initWebStocket: function () {
+                videoControl.client = new window.WebSocket('ws://172.30.223.227:3002')
+            },
+            sendData: function (data) {
+                videoControl.client.send(data)
+            },
+            render: function (e) {
+                console.log("render", e)
+                videoControl.ctx.drawImage(e.data, 0, 0, 200, 200)
+            },
+            supported: function () {
+                var types = ["video/webm",
+                    "audio/webm",
+                    "video/webm\;codecs=vp8",
+                    "video/webm\;codecs=daala",
+                    "video/webm\;codecs=h264",
+                    "audio/webm\;codecs=opus",
+                    "video/mpeg"];
+
+                for (var i in types) {
+                    console.log("Is " + types[i] + " supported? " + (MediaRecorder.isTypeSupported(types[i]) ? "Maybe!" : "Nope :("));
+                }
+            },
+            requestAudioAccess: function () {
+                function setSoure(stream) {
+                    videoControl.mediaStreamTrack =
+                        typeof stream.stop === "function"
+                            ? stream
+                            : stream.getTracks()[1];
+                    videoControl.recorder = new window.MediaRecorder(stream);
+                    videoControl.stream = stream;
+                    videoControl.video.srcObject = stream;
+                    //videoControl.video.src = window.URL.createObjectURL(stream);   
+                    videoControl.video.play();
+                    videoControl.bindEvents();
+                    videoControl.onPreview();
+                    videoControl.recorder.start(1000)
+                }
+                if (navigator.mozGetUserMedia) {
+                    videoControl.userMedia = navigator.mediaDevices.getUserMedia({ "video": true, "audio": true }, function (stream) {
+                        setSoure(stream)
+                    }, function () { });
+                    return
+                }
+                videoControl.userMedia = navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: "user" } })
+                    .then(function (stream) {
+                        setSoure(stream)
+                    },
+                        function (error) {
+                            alert("出错，请确保已允许浏览器获取音视频权限");
+                            console.log(error)
+                        }
+                    );
+            },
+            bindEvents: function () {
+                !videoControl.recorder.ondataavailable && (videoControl.recorder.ondataavailable = videoControl.ondataavailable)
+            },
+            ondataavailable: function (e) {
+                console.log("ondataavailable", e)
+                videoControl.allChunks.push(
+                    e.data
+                );
+                //视频推流
+                //const videoBlob = new Blob([event.data], { type: 'video/webm' });
+                //videoControl.sendData({type:"push",videoBlob})
+            },
+            download: function () {
+                var fullBlob = new Blob(videoControl.allChunks);
+                var downloadUrl = window.URL.createObjectURL(fullBlob);
+                var link = document.createElement("a")
+                link.href = downloadUrl;
+                link.download = 'media.mp4';
+                link.click()
+            },
+            onPreview: function () {
+
+            },
+            getRecordingData: function (e) {
+                console.log(111, e)
+            },
+            saveRecordingData: function () {
+                console.log("step1", videoControl.allChunks)
+                videoControl.uploading = true;
+                var blob = new Blob(videoControl.allChunks, { type: "video/mp4" });
+                console.log("step2")
+                var file = new File(
+                    [blob],
+                    "msr-" + new Date().toISOString().replace(/:|\./g, "-") + ".mp4",
+                    {
+                        type: "video/mp4"
+                    }
+                );
+                console.log("step3")
+                var formData = new FormData();
+                formData.append("fileName", file);
+                var request = new XMLHttpRequest();
+                var url = "/upload";
+                console.log("step4")
+                request.open("POST", url);
+                request.send(formData);
+                var self = videoControl;
+                request.onreadystatechange = function () {
+                    var res = request.responseText;
+                    if (request.readyState == 4 && request.status == 200) {
+                        videoControl.uploading = false;
+                        res = JSON.parse(res);
+                        app.fileUrl = res.fileUrl;
+                        app.dialogVisible = true
+
+                    } else {
+                        //  alert("抱歉上传失败")
+                    }
+                };
+            }
+        }
+        videoControl.initEvent()
+        videoControl.requestAudioAccess()
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -3921,3 +3921,124 @@ pm2 进行维护：cnpm i pm2 -g，在项目中的packjson.json 中配置
 2.看打印的日志pm2 logs
 ```
 
+17.0webhook主要的流程：
+
+​    1.github 或者gitee平台在收到用户的push请求的时候，会调用用户自己注册的webhook接口
+
+​    2.然后接口在接受到请求之后就执行sh脚本：
+
+​    let child = spawn('sh',[`./${payload.repository.name}.sh`]);  执行对应仓库的脚本
+
+```
+  if(event == 'push'){//开始布署
+                let payload = JSON.parse(body);
+                //如果是push执行创库的对应的脚步,例如vue-back.sh
+                let child = spawn('sh',[`./${payload.repository.name}.sh`]);
+                let buffers = [];
+                child.stdout.on('data',function(buffer){
+                    buffers.push(buffer);
+                });
+                 child.stdout.on('end',function(buffer){
+                    let logs = Buffer.concat(buffers).toString();
+                    sendMail(`
+                        <h1>部署日期: ${new Date()}</h1>
+                        <h2>部署人: ${payload.pusher.name}</h2>
+                        <h2>部署邮箱: ${payload.pusher.email}</h2>
+                        <h2>提交信息: ${payload.head_commit&&payload.head_commit['message']}</h2>
+                        <h2>布署日志: ${logs.replace("\r\n",'<br/>')}</h2>
+                    `);
+                });
+           }
+```
+
+ 3.以下以前端和后端的脚本说明，具体说明构建流程：前端
+
+
+
+```
+#!/bin/bash
+WORK_PATH='/usr/projects/vue-front'  // 进入前端项目所在的目录
+cd $WORK_PATH                        // 进入前端项目所在的目录
+echo "先清除老代码"
+git reset --hard origin/master
+git clean -f
+echo "拉取最新代码"
+git pull origin master
+echo "编译"
+npm run build
+echo "开始执行构建
+
+//表示在当前目录下面找docker-file文件，构建名为 vue-front的镜像，-t表示名字
+docker build -t vue-front:1.0 .  
+
+
+echo "停止旧容器并删除旧容器"
+docker stop vue-front-container
+docker rm vue-front-container
+echo "启动新容器"
+
+//用镜像vue-front:1.0启动容器
+docker container run -p 80:80 --name vue-front-container -d vue-front:1.0
+
+
+//当前项目的docker-file
+FROM nginx
+LABEL name="vue-front"
+LABEL version="1.0"
+COPY ./dist /usr/share/nginx/html        //复制主机的./dist到/html下面
+COPY ./vue-front.conf  /etc/nginx/conf.d  //复制ng配置到conf.d下面
+EXPOSE 80                                 //向外暴露80端口
+
+//ng的vue-front.conf配置:
+server {
+    listen 80;
+    server_name 47.105.129.109;
+    location / {
+    //root静态根路径跟目录设置为/usr/share/nginx/html
+        root /usr/share/nginx/html;    
+        index index.html index.htm;    //用index.html index.htm 作为启动文件
+        try_files $uri $uri/ /index.html;//前端如果用history模式就要这样配置
+    }
+    location /api {                      //接口代理配置
+        proxy_pass http://47.105.129.109:3000;
+    }
+}
+
+//到此为止整个前端项目就起来了
+
+```
+
+后端脚本：跟前端差不多
+
+```
+
+
+#!/bin/bash
+WORK_PATH='/usr/projects/vue-back'
+cd $WORK_PATH
+echo "先清除老代码"
+git reset --hard origin/master
+git clean -f
+echo "拉取最新代码"
+git pull origin master
+echo "开始执行构建"
+docker build -t vue-back:1.0 .   
+echo "停止旧容器并删除旧容器"
+docker stop vue-back-container
+docker rm vue-back-container
+echo "启动新容器"
+docker container run -p 3000:3000 --name vue-back-container -d vue-back:1.0
+
+
+//docker-file配置：
+FROM node              //从node拉取镜像
+LABEL name="vue-back"  //
+LABEL version="1.0"
+COPY . /app            //复制当前文件夹的代码到容器的app目录下面
+WORKDIR /app           //进入app目录下面
+RUN npm install        //安装依赖
+EXPOSE 3000           //导出端口
+CMD npm start         //启动项目
+
+```
+
