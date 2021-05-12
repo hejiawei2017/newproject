@@ -3801,6 +3801,244 @@ server.listen(3000,()=>{
 
 16.2 用vue-cli新建前端项目：vue create vue-front-master
 
-16.3 新建nodejs项目：新建文件夹 vue-webhook-master ，npm init -y，然后安装cnpm i nodemailer ，安装发邮件项目
+16.3 新建nodejs项目：新建文件夹 vue-webhook-master ，npm init -y，然后安装cnpm i nodemailer ，安装发邮件项目，配置webhook，编写webhook代码，上传代码到服务器并且启动：
+
+```
+let http = require('http');
+let crypto = require('crypto');
+let {spawn} = require('child_process');
+let SECRET= '123456';
+let sendMail = require('./sendMail');
+function sign(body){
+    return `sha1=`+crypto.createHmac('sha1',SECRET).update(body).digest('hex');
+}
+let server = http.createServer(function(req,res){
+   console.log(req.method,req.url);
+   if(req.method == 'POST' && req.url == '/webhook'){
+       let buffers = [];
+       req.on('data',function(buffer){
+           buffers.push(buffer);
+       });
+       req.on('end',function(buffer){
+           let body = Buffer.concat(buffers);
+           let event = req.headers['x-github-event'];//event=push
+           //github请求来的时候，要传递请求体body,另外还会传一个signature过来，你需要验证签名对不对
+           let signature = req.headers['x-hub-signature'];
+           if(signature  !== sign(body)){
+             return res.end('Not Allowed');
+           }
+           res.setHeader('Content-Type','application/json');
+           res.end(JSON.stringify({ok:true}));
+           if(event == 'push'){//开始布署
+                let payload = JSON.parse(body);
+                let child = spawn('sh',[`./${payload.repository.name}.sh`]);
+                let buffers = [];
+                child.stdout.on('data',function(buffer){
+                    buffers.push(buffer);
+                });
+                 child.stdout.on('end',function(buffer){
+                    let logs = Buffer.concat(buffers).toString();
+                    sendMail(`
+                        <h1>部署日期: ${new Date()}</h1>
+                        <h2>部署人: ${payload.pusher.name}</h2>
+                        <h2>部署邮箱: ${payload.pusher.email}</h2>
+                        <h2>提交信息: ${payload.head_commit&&payload.head_commit['message']}</h2>
+                        <h2>布署日志: ${logs.replace("\r\n",'<br/>')}</h2>
+                    `);
+                });
+           }
+       });
+      
+   }else{
+       res.end('Not Found');
+   }
+});
+server.listen(4000,()=>{
+    console.log('webhook服务已经在4000端口上启动')
+});
+```
 
 16.4 把项目vue-front-master，vue-back-master 推送到git
+
+16.5.安装git。如果是不想每次都填写密码，生成公钥
+
+```
+ssh-keygen -t rsa -b 4096 -C "499200621@qq.com"  //-t是加密的算法rsa，-b是生成的大少，-c就是邮箱
+cat /root/.ssh/id_rsa.pub
+然后看到公钥，把公钥复制到github上面
+```
+
+16.6安装node 以及nvm ,通过nvm来实现的
+
+```
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash //安装nvm,nvm可以让电脑系统；里面同时安装多个node
+. /root/.bashrc  //执行一个脚本
+nvm install stable //有了nvm就可以安装node，和npm
+npm i nrm -g  //nrm用来切换阿里云的
+nrm use taobao
+npm i pm2 -g
+```
+
+16.7安装docker
+
+```
+yum install -y yum-utils   device-mapper-persistent-data   lvm2
+//为yum添加一个阿里安装源
+yum-config-manager \
+    --add-repo \
+    https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+// docker-ce 是免费的，docker-ee是企业版本，要收费的
+yum install -y docker-ce docker-ce-cli containerd.io
+```
+
+16.8.docker阿里云加速
+
+```
+//创建一个文件夹
+mkdir -p /etc/docker
+//在文件夹中添加阿里云配置
+tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://fwvjnv59.mirror.aliyuncs.com"]
+}
+EOF
+# 重载所有修改过的配置文件
+systemctl daemon-reload
+systemctl restart docker
+```
+
+16.9   vue-webhooks项目要常态化运行，不能关闭cmd就不能运行了，这个时候需要全局安装
+
+pm2 进行维护：cnpm i pm2 -g，在项目中的packjson.json 中配置   
+
+```
+"scripts":{
+       "start":"pm2  start  ./index.js  --name webhook --watch",
+       "stop":"pm2 stop  webhook"
+}
+
+1.启动用npm start
+2.看打印的日志pm2 logs
+```
+
+17.0webhook主要的流程：
+
+​    1.github 或者gitee平台在收到用户的push请求的时候，会调用用户自己注册的webhook接口
+
+​    2.然后接口在接受到请求之后就执行sh脚本：
+
+​    let child = spawn('sh',[`./${payload.repository.name}.sh`]);  执行对应仓库的脚本
+
+```
+  if(event == 'push'){//开始布署
+                let payload = JSON.parse(body);
+                //如果是push执行创库的对应的脚步,例如vue-back.sh
+                let child = spawn('sh',[`./${payload.repository.name}.sh`]);
+                let buffers = [];
+                child.stdout.on('data',function(buffer){
+                    buffers.push(buffer);
+                });
+                 child.stdout.on('end',function(buffer){
+                    let logs = Buffer.concat(buffers).toString();
+                    sendMail(`
+                        <h1>部署日期: ${new Date()}</h1>
+                        <h2>部署人: ${payload.pusher.name}</h2>
+                        <h2>部署邮箱: ${payload.pusher.email}</h2>
+                        <h2>提交信息: ${payload.head_commit&&payload.head_commit['message']}</h2>
+                        <h2>布署日志: ${logs.replace("\r\n",'<br/>')}</h2>
+                    `);
+                });
+           }
+```
+
+ 3.以下以前端和后端的脚本说明，具体说明构建流程：前端
+
+
+
+```
+#!/bin/bash
+WORK_PATH='/usr/projects/vue-front'  // 进入前端项目所在的目录
+cd $WORK_PATH                        // 进入前端项目所在的目录
+echo "先清除老代码"
+git reset --hard origin/master
+git clean -f
+echo "拉取最新代码"
+git pull origin master
+echo "编译"
+npm run build
+echo "开始执行构建
+
+//表示在当前目录下面找docker-file文件，构建名为 vue-front的镜像，-t表示名字
+docker build -t vue-front:1.0 .  
+
+
+echo "停止旧容器并删除旧容器"
+docker stop vue-front-container
+docker rm vue-front-container
+echo "启动新容器"
+
+//用镜像vue-front:1.0启动容器
+docker container run -p 80:80 --name vue-front-container -d vue-front:1.0
+
+
+//当前项目的docker-file
+FROM nginx
+LABEL name="vue-front"
+LABEL version="1.0"
+COPY ./dist /usr/share/nginx/html        //复制主机的./dist到/html下面
+COPY ./vue-front.conf  /etc/nginx/conf.d  //复制ng配置到conf.d下面
+EXPOSE 80                                 //向外暴露80端口
+
+//ng的vue-front.conf配置:
+server {
+    listen 80;
+    server_name 47.105.129.109;
+    location / {
+    //root静态根路径跟目录设置为/usr/share/nginx/html
+        root /usr/share/nginx/html;    
+        index index.html index.htm;    //用index.html index.htm 作为启动文件
+        try_files $uri $uri/ /index.html;//前端如果用history模式就要这样配置
+    }
+    location /api {                      //接口代理配置
+        proxy_pass http://47.105.129.109:3000;
+    }
+}
+
+//到此为止整个前端项目就起来了
+
+```
+
+后端脚本：跟前端差不多
+
+```
+
+
+#!/bin/bash
+WORK_PATH='/usr/projects/vue-back'
+cd $WORK_PATH
+echo "先清除老代码"
+git reset --hard origin/master
+git clean -f
+echo "拉取最新代码"
+git pull origin master
+echo "开始执行构建"
+docker build -t vue-back:1.0 .   
+echo "停止旧容器并删除旧容器"
+docker stop vue-back-container
+docker rm vue-back-container
+echo "启动新容器"
+docker container run -p 3000:3000 --name vue-back-container -d vue-back:1.0
+
+
+//docker-file配置：
+FROM node              //从node拉取镜像
+LABEL name="vue-back"  //
+LABEL version="1.0"
+COPY . /app            //复制当前文件夹的代码到容器的app目录下面
+WORKDIR /app           //进入app目录下面
+RUN npm install        //安装依赖
+EXPOSE 3000           //导出端口
+CMD npm start         //启动项目
+
+```
+
