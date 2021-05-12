@@ -8,7 +8,7 @@
 const { merge } = require("webpack-merge")
 const path = require("path")
 const base = require("./webpack.base")
-
+//const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const VueSSRServerPlugin = require("vue-server-renderer/server-plugin")
 
@@ -27,6 +27,9 @@ module.exports = merge(base, {
   },
   plugins: [
     //  生成服务端描述文件
+    // new webpack.DefinePlugin({
+    //   'process.env.VUE_ENV': '"server"'
+    // }),
     new VueSSRServerPlugin(),
     new HtmlWebpackPlugin({
       filename: "index.ssr.html", // 输出文件名

@@ -12,7 +12,7 @@
     "client": "webpack --config ./config/webpack.client.js --mode=production",
     "server": "webpack --config ./config/webpack.server.js --mode=production",
     "dev": "npm-run-all client:noWatch server:noWatch appserver",
-    "dev:watch": "npm-run-all --parallel client:build server:build",
+    "dev:w": "npm-run-all --parallel client:build server:build",
     "appserver": "nodemon server.js",
     "build": "cross-env IS_BUILD=1 npm-run-all client server "
   },
@@ -22,6 +22,7 @@
   "dependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
+    "axios": "^0.21.1",
     "babel-loader": "^8.1.0",
     "css-loader": "3.6.0",
     "html-webpack-plugin": "^4.5.0",
@@ -41,11 +42,16 @@
     "webpack-merge": "^5.2.0"
   },
   "devDependencies": {
+    "autoprefixer": "9.2.1",
     "clean-webpack-plugin": "^3.0.0",
     "console-color-mr": "^2.0.2",
     "cross-env": "^7.0.3",
+    "file-loader": "^6.2.0",
+    "koa-server-http-proxy": "^0.1.0",
     "nodemon": "^2.0.7",
     "npm-run-all": "^4.1.5",
-    "os": "^0.1.1"
+    "os": "^0.1.1",
+    "postcss-loader": "3.0.0",
+    "url-loader": "^4.1.1"
   }
 }

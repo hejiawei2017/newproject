@@ -6,6 +6,7 @@
  * @Description: 客户端webpack配置
  */
 const VueSSRClientPlugin = require("vue-server-renderer/client-plugin")
+//const webpack = require('webpack');
 const { merge } = require("webpack-merge")
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
@@ -19,6 +20,9 @@ if (isClear) {
 } else {
   plugins = [new VueSSRClientPlugin()]
 }
+// plugins.push(new webpack.DefinePlugin({
+//   'process.env.VUE_ENV': '"client"'
+// }))
 const resolve = dir => {
   return path.resolve(__dirname, dir)
 }

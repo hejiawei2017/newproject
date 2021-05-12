@@ -1,8 +1,8 @@
 import Vue from "vue"
 import App from "./App.vue"
 
-import createRouter from "./create-router"
-import createStore from "./create-store"
+import createRouter from "./router/create-router.js"
+import createStore from "./store/create-store.js"
 
 export default () => {
   const router = createRouter()

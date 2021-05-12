@@ -1360,8 +1360,10 @@
     </div>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        var oldLoad = window.onload
+
         var jq = window.jQuery.noConflict();
+
+        var oldLoad = window.onload
         window.onload = function () {
             if (oldLoad) {
                 oldLoad()
@@ -1569,7 +1571,11 @@
                                 var text = trim(c.nodeValue)
                                 var reg = new RegExp('\n', "g");
                                 text = text.replace(reg, '');
+                                if (text == "Cronjob") {
+                                    break;
+                                }
                                 if (text.length == 0) break;
+                                text = text.toLowerCase()
                                 if (re.test(text) && c.tagName != 'SCRIPT' && c.parentNode.tagName != 'SCRIPT') {
                                     transformStr += `\n${text}`
                                     contents.push(c)
@@ -1628,8 +1634,29 @@
                 }
             }
         }
-        console.log(11111111111111111)
 
+
+
+
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;//浏览器兼容
+        var config = { attributes: true, childList: true }//配置对象
+        var observer = new MutationObserver(function (mutations) {//构造函数回调
+            mutations.forEach(function (record) {
+                if (record.type == "attributes") {//监听属性
+                    console.log("html的属性发生了变化")
+                    window.onload()
+                }
+                if (record.type == 'childList') {//监听结构发生变化
+                    console.log("html的结构发生了变化")
+                    window.onload()
+                }
+            });
+        });
+        observer.observe(document.body, config);
+
+        // setTimeout(() => {
+        //     document.body.innerHTML = ""
+        // }, 5000)
     </script>
 
 </body>
