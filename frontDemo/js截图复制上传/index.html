@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #paste {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id="paste" @paste="paste" contenteditable>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                imgs: []
+            },
+            methods: {
+                paste(event) {
+                    let items = (event.clipboardData || window.clipboardData).items;
+                    if (items && items.length) {
+                        let reader = new FileReader();
+                        let file = items[0].getAsFile();
+                        reader.readAsDataURL(file);
+                        let data = new FormData();
+                        data.append('file', file)
+                        reader.onload = function (event) {
+                            let url = '' //你的后台上传地址
+                            axios.post(url, data).then(res => {
+                                console.log(res)
+                            }).catch(error => {
+                                console.log(error)
+                            })
+                        }
+                        //图片复制到本地
+                        // var imgObjPreview = document.createElement("img");
+                        // //火狐下，直接设img属性 
+                        // imgObjPreview.style.display = 'block';
+                        // imgObjPreview.src = window.URL.createObjectURL(file)
+                        //document.body.appendChild(imgObjPreview)
+
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

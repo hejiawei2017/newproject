@@ -5,7 +5,7 @@ app.use(express.static('./public'));
 
 var proxy = require("http-proxy-middleware");
 var options = {
-    target: 'http://14.23.157.98:8090', // target host
+    target: 'http://10.10.104.3:80', // target host
     changeOrigin: true,               // needed for virtual hosted sites
 };
 var exampleProxy = proxy.createProxyMiddleware('/uploadfromfront', options);

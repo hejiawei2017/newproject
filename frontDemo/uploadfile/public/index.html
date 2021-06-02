@@ -1,84 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
-    />
-    <!-- 引入样式 -->
-    <link
-      rel="stylesheet"
-      href="https://lib.baomitu.com/element-ui/2.13.2/theme-chalk/index.css"
-    />
 
-    <title>文件上传</title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://lib.baomitu.com/element-ui/2.13.2/theme-chalk/index.css" />
 
-    <div id="app">
-    <el-row  style=" margin: 0 auto; margin-top: 30px;width:600px" >
-     <el-col  :span="18">
-     <el-input
-       
-        type="textarea"
-        :rows="2"
-        placeholder="上传后地址"
-        v-model="successUrl">
-       </el-input>
+  <title>文件上传</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <el-row style=" margin: 0 auto; margin-top: 30px;width:600px">
+      <el-col :span="18">
+        <el-input type="textarea" :rows="2" placeholder="上传后地址" v-model="successUrl">
+        </el-input>
       </el-col>
       <el-col :span="6">
-        <el-upload
-        ref="uploadfile"
-        style="margin-left:10px"
-        class="upload-demo"
-        action="/uploadfromfront"
-        :on-preview="handlePreview"
-        :on-remove="handleRemove"
-        :before-remove="beforeRemove"
-        :limit="1"
-        :on-exceed="handleExceed"
-        :file-list="fileList"
-        :before-upload="beforeUpload"
-        :on-success="onSuccess"
-      >
-        <el-button size="small" type="primary">点击上传</el-button>
-      </el-upload>
+        <el-upload ref="uploadfile" style="margin-left:10px" class="upload-demo" action="/uploadfromfront"
+          :on-preview="handlePreview" :on-remove="handleRemove" :before-remove="beforeRemove" :limit="1"
+          :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeUpload" :on-success="onSuccess">
+          <el-button size="small" type="primary">点击上传</el-button>
+        </el-upload>
       </el-col>
     </el-row>
-    
-    </div>
-      <!-- import Vue before Element -->
-    <script src="https://lib.baomitu.com/vue/2.6.11/vue.min.js"></script>
-    <!-- import JavaScript -->
-    <script src="https://lib.baomitu.com/element-ui/2.13.2/index.js"></script>
 
-    <script>
+  </div>
+  <!-- import Vue before Element -->
+  <script src="https://lib.baomitu.com/vue/2.6.11/vue.min.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://lib.baomitu.com/element-ui/2.13.2/index.js"></script>
 
-      let filename = ""
-      new Vue({
-        el: "#app",
-        data: function() {
-          return {  successUrl:'' , visible: false,fileList:[] };
+  <script>
+
+    let filename = ""
+    new Vue({
+      el: "#app",
+      data: function () {
+        return { successUrl: '', visible: false, fileList: [] };
+      },
+      methods: {
+        beforeUpload(file) {
+          // file = new File([file], "1111" +file.name, {
+          // type: file.type});
+          filename = file.name
+          return true;
         },
-        methods: {
-          beforeUpload(file) {
-            // file = new File([file], "1111" +file.name, {
-            // type: file.type});
-            filename = file.name
-            return true;
-          },
-          onSuccess(){
-              this.successUrl = "http://14.23.157.98:8090/downloadfromfront/"+filename
-              this.$refs.uploadfile.clearFiles()
-          },
-          handlePreview() {},
-          handleRemove() {},
-          beforeRemove() {},
-          handleExceed() {},
+        onSuccess() {
+          this.successUrl = "http://10.10.104.3:80/downloadfromfront/" + filename
+          this.$refs.uploadfile.clearFiles()
         },
-      });
-    </script>
-  </body>
+        handlePreview() { },
+        handleRemove() { },
+        beforeRemove() { },
+        handleExceed() { },
+      },
+    });
+  </script>
+</body>
+
 </html>
