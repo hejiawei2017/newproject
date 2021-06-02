@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置网站cookie</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+</head>
+
+<body>
+    <button id="gologin">登录</button>
+    <iframe id="iframe" width="300px" height="300px"></iframe>
+    <script>
+        axios.defaults.withCredentials = true;
+        var iframe = document.getElementById("iframe");
+
+
+        document.getElementById("gologin").onclick = function () {
+            //window.open("http://localhost:3010")
+            iframe.src = "http://localhost:3010"
+        }
+        axios.get("http://localhost:3010/api/user").then(function () { })
+
+        window.addEventListener('message', function () {
+            alert("success")
+        })
+    </script>
+</body>
+
+</html>

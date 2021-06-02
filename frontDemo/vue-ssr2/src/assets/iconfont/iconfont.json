@@ -1,0 +1,100 @@
+{
+  "id": "2558452",
+  "name": "GTC",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6845293",
+      "name": "推荐",
+      "font_class": "tuijian",
+      "unicode": "e6fb",
+      "unicode_decimal": 59131
+    },
+    {
+      "icon_id": "13366713",
+      "name": "星星-线",
+      "font_class": "stars-lines",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "7588096",
+      "name": "警告",
+      "font_class": "jinggao",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "2729551",
+      "name": "客服",
+      "font_class": "kefu",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "7404574",
+      "name": "右",
+      "font_class": "you",
+      "unicode": "e793",
+      "unicode_decimal": 59283
+    },
+    {
+      "icon_id": "7674911",
+      "name": "左",
+      "font_class": "xiangzuo",
+      "unicode": "e71a",
+      "unicode_decimal": 59162
+    },
+    {
+      "icon_id": "21594168",
+      "name": "consumer-arrow",
+      "font_class": "consumer-arrow",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "21594169",
+      "name": "industry-arrow",
+      "font_class": "industry-arrow",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "21594170",
+      "name": "centerMain-arrow",
+      "font_class": "centerMain-arrow",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "21594171",
+      "name": "intellectual-arrow",
+      "font_class": "intellectual-arrow",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "21594172",
+      "name": "Inspection-arrow",
+      "font_class": "Inspection-arrow",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "21594173",
+      "name": "start-i",
+      "font_class": "start-i",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "21594174",
+      "name": "start-o",
+      "font_class": "start-o",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    }
+  ]
+}

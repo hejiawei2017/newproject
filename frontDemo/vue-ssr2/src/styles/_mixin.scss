@@ -1,0 +1,5 @@
+@mixin square($count: 2) {
+  $length: calc((100% - #{$count} * 10px) / #{$count});
+  width: $length;
+  height: $length;
+}

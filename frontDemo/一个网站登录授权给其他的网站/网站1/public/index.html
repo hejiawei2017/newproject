@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置网站cookie</title>
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+
+</head>
+
+<body>
+
+    <div>
+        用户名：<input type="text" id="username" value="hejiawei" />
+    </div>
+
+    <div>
+        用户名：<input type="password" id="password" value="123456" />
+    </div>
+    <button id="submitbtn">提交</button>
+    <script>
+        // axios.defaults.withCredentials = true
+        document.getElementById("submitbtn").addEventListener("click", function () {
+            debugger
+            let username = document.getElementById("username").value
+            let password = document.getElementById("password").value
+            window.top.postMessage('data111', 'http://172.30.220.205:8084/')
+            // axios.post("/api/login", { username: username, password: password }).then(function (res) {
+            //     if (res.data.code == 0) {
+            //         window.opener.postMessage('data111', 'http://172.30.220.205:8084/')
+
+            //     }
+            // }).catch(function (error) {
+            //     console.log(error)
+            // })
+        })
+       // axios.get("/api/user").then(function () { })
+
+    </script>
+
+
+</body>
+
+</html>
