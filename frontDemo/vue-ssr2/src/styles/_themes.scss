@@ -1,0 +1,102 @@
+
+$themes: (
+        centerMain: (
+                //字体
+                font_color1: #2B29D6,
+                font_color2: #444444,
+                svg_fill1: #2B29D6,
+                //背景
+                background_color1: #2B29D6,
+                background_color2: #252525,
+                background_color3: rgba(43,41,214,.2),
+                background_color4: rgba(43,41,214,.8),
+                table_row_bj_color1: #f3f7ff,
+
+                //边框
+                border_color1: #2B29D6,
+                border_color2: #444444,
+                border_color3: Rgba(255,255,255,0.2),
+                border_bottom_color1: #2B29D6,
+                border_bottom_color2: rgba(43,41,214,.5),
+                border_top_color1: #2B29D6,
+        ),
+        intellectual: (
+                //字体
+                font_color1: #F56160,
+                font_color2: #444444,
+                svg_fill1: #F56160,
+                //背景
+                background_color1: #F56160,
+                background_color2: #252525,
+                background_color3: rgba(245,97,96,.2),
+                background_color4: rgba(245,97,96,.8),
+                background_color5: #fab0b0,
+                table_row_bj_color1: #f3f7ff,
+                //边框
+                border_color1: #F56160,
+                border_color2: #444444,
+                border_color3: Rgba(255,255,255,0.2),
+                border_bottom_color1: #F56160,
+                border_bottom_color2: rgba(245,97,96,.5),
+                border_top_color1: #F56160,
+        ),
+        Inspection: (
+                //字体
+                font_color1: #007EFF,
+                font_color2: #444444,
+                svg_fill1: #007EFF,
+                //背景
+                background_color1: #007EFF,
+                background_color2: #252525,
+                background_color3: rgba(0,126,255,.2),
+                background_color4: rgba(0,126,255,.8),
+                background_color5: #80bfff,
+                table_row_bj_color1: #f3f7ff,
+                //边框
+                border_color1: #007EFF,
+                border_color2: #444444,
+                border_color3: Rgba(255,255,255,0.2),
+                border_bottom_color1: #007EFF,
+                border_bottom_color2: rgba(0,126,255,.5),
+                border_top_color1: #007EFF,
+        ),
+        consumer: (
+                //字体
+                font_color1: #339060,
+                font_color2: #444444,
+                svg_fill1:#339060,
+                //背景
+                background_color1: #339060,
+                background_color2: #252525,
+                background_color3: rgba(51,144,96,.2),
+                background_color4: rgba(51,144,96,.8),
+                table_row_bj_color1: #f3f7ff,
+                //边框
+                border_color1: #339060,
+                border_color2: #444444,
+                border_color3: Rgba(255,255,255,0.2),
+                border_bottom_color1: #339060,
+                border_bottom_color2: rgba(51,144,96,.5),
+                border_top_color1: #007EFF,
+        ),
+        industry: (
+                //字体
+                font_color1: #FD6B02,
+                font_color2: #444444,
+                svg_fill1: #FD6B02,
+                //背景
+                background_color1: #FD6B02,
+                background_color2: #252525,
+                background_color3: rgba(253,107,2,.2),
+                background_color4: rgba(253,107,2,.8),
+                background_color5: #feb581,
+                table_row_bj_color1: #f3f7ff,
+                //边框
+                border_color1: #FD6B02,
+                border_color2: #444444,
+                border_color3: Rgba(255,255,255,0.2),
+                border_bottom_color1: #FD6B02,
+                border_bottom_color2: rgba(253,107,2,.5),
+                border_top_color1: #FD6B02,
+        )
+)

@@ -1,0 +1,50 @@
+
+@import "./themes";
+//此处用了sass的map遍历、函数、map存取、混合器等相关知识，
+//详细API参考https://www.sass.hk/docs/
+@mixin themeify {
+  @each $theme-name, $theme-map in $themes {
+    $theme-map: $theme-map !global;
+    [data-theme="#{$theme-name}"] & {
+      @content;
+    }
+  }
+}
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+@mixin background_color($color) {
+  @include themeify {
+    background-color: themed($color);
+  }
+}
+@mixin font_color($color) {
+  @include themeify {
+    color: themed($color);
+  }
+}
+@mixin border_color($color) {
+  @include themeify {
+    border-color: themed($color);
+  }
+}
+@mixin border_bottom_color($color) {
+  @include themeify {
+    border-color: themed($color);
+  }
+}
+@mixin border_top_color($color) {
+  @include themeify {
+    border-top-color: themed($color);
+  }
+}
+@mixin table_row_bj_color($color) {
+  @include themeify {
+    background-color: themed($color);
+  }
+}
+@mixin svg_fill($color) {
+  @include themeify {
+    fill: themed($color);
+  }
+}
