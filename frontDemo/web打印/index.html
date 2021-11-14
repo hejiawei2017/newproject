@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>web 打印</title>
+
+    <style>
+        /* 打印的样式 */
+        @media print {
+            @page {
+                margin: 0cm; /*去掉默认的页边距*/
+            }
+            body {
+              /* border:1px solid red */
+            }
+            #print-btn {
+                display: none
+            }
+            #page-footer-con{
+                display: block!important;
+            }
+        }
+        #print-btn {
+            position: fixed;
+            bottom: 50px;
+            width: 100px;
+            left: 50%;
+            margin-left: -50px;
+        }
+        table{
+            /* 解决表格重边，并行rowspan的地方变粗的问题 */
+            border-spacing: 0px !important;
+            border-collapse: collapse !important;    
+        }
+        html,body{
+            margin: 0px;
+            width: 210mm;
+            margin:  0 auto;
+        }
+
+        table,
+        table tr th,
+        table tr td {
+            border: 1px solid #ccc;
+            height: 100px;
+        }
+        tr,td{
+            /* 防止内容跨页断裂 */
+            page-break-inside: avoid;
+        }
+
+        #container {
+            width: 188.8mm;
+            padding: 20px 10.1mm 20px 10.1mm;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+        #container table {
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+            text-align: center;
+        }
+
+        #page-footer-con
+         {
+            position: absolute;
+            z-index: 80;
+            margin: 0;
+            padding: 0;
+            top: 0px;
+            width: 188.8mm;
+            height: 100%;
+            display: none;
+            
+         }
+        .page-content {
+            position:relative;
+            width: 100%;
+            height: 100%;
+        } 
+        .page-footer{
+            position:absolute;
+            bottom:0mm; 
+            padding-bottom:6mm;
+            padding-left: 0mm;
+            width: 100%;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+      <div id="page-footer-con">
+          <div class="page-content">
+              <div class="page-footer">第一页</div>
+          </div>
+          <div class="page-content">
+            <div class="page-footer">第二页</div>
+        </div>
+      </div>
+        <table>
+            <thead id="thead">
+                <tr>
+                    <td>姓名</td>
+                    <td>性别</td>
+                    <td>年龄</td>
+                    <td>爱好</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>20</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>21</td>
+                    <td>tangsi</td>
+                </tr>
+
+                <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>21</td>
+                    <td>tangsi</td>
+                </tr> <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>21</td>
+                    <td>tangsi</td>
+                </tr> <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>21</td>
+                    <td>tangsi</td>
+                </tr> <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>21</td>
+                    <td>tangsi</td>
+                </tr> <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>21</td>
+                    <td>tangsi</td>
+                </tr> <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>21</td>
+                    <td>tangsi</td>
+                </tr> <tr>
+                    <td>hejiawei</td>
+                    <td>nan</td>
+                    <td>21</td>
+                    <td>tangsi</td>
+                </tr> 
+           
+            </tbody>
+        </table>
+    </div>
+    <button id="print-btn" >立即打印</button>
+    <script>
+
+        let pageA4Height = 297; //a4纸张的页面高度
+        let pageA4Width = 210; //a4纸张的页面宽度
+        //计算总页数
+        function getPageCount() {
+            var theadH = document.getElementById("thead").offsetHeight
+            var bh = px2mm(document.body.offsetHeight - theadH)
+            
+            //计算要添加多少个表头，打印的时候默认加每页加了表头，要先计算加了多少个表头
+            var addHeaderNum =  bh % pageA4Height==0?bh / pageA4Height:(bh / pageA4Height+1);
+            var addHeight = theadH *(addHeaderNum);
+            
+            //打印时实际的总高度应该是document.body.offsetHeight+addHeight
+            let containHeight = px2mm(document.body.offsetHeight+addHeight)
+            return Number.parseInt(containHeight %  pageA4Height ==0? containHeight /pageA4Height :( containHeight /pageA4Height +1))
+        }
+         //根据DPI 像素转为 mm
+         function px2mm(px) {
+            //获取DPI
+            function getDPI() {
+                var arrDPI = new Array();
+                if (window.screen.deviceXDPI != undefined) { //ie 9
+                    arrDPI[0] = window.screen.deviceXDPI;
+                    arrDPI[1] = window.screen.deviceYDPI;
+                } else { //chrome firefox
+                    var tmpNode = document.createElement("DIV");
+                    tmpNode.style.cssText = "width:1in; height:1in; position:absolute; left:0px; top:0px; z-index:99; visibility:hidden;";
+                    document.body.appendChild(tmpNode);
+                    arrDPI[0] = parseInt(tmpNode.offsetWidth);
+                    arrDPI[1] = parseInt(tmpNode.offsetHeight);
+                    tmpNode.parentNode.removeChild(tmpNode);
+                }
+                return arrDPI;
+            }
+            var dpi = getDPI();
+            // 1 英寸=2.54 厘米
+            var mm = parseFloat(px) * 25.4 / dpi[0];//只计算x轴的dPI
+            return mm;
+        }
+
+        function setPageCount(){
+           var totalPage = getPageCount();
+           var pageCon  = document.getElementById("page-footer-con");
+           pageCon.innerHTML = ""
+           for(var i =0,l=totalPage;i<l;i++){
+              var pageFooter = document.createElement("div")
+              pageFooter.className = "page-content";
+              pageFooter.innerHTML = `<div class="page-footer">自定义页脚第${i+1}页</div>`
+              pageCon.appendChild(pageFooter)
+           }
+        }
+        //开始打印
+        window.addEventListener("click",function(){
+            setPageCount()//设置自定义页脚
+            window.print()
+        })
+    </script>
+</body>
+
+</html>
