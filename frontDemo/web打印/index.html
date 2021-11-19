@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>web 打印</title>
@@ -11,99 +12,147 @@
         /* 打印的样式 */
         @media print {
             @page {
-                margin: 0cm; /*去掉默认的页边距*/
+                margin: 0cm;
+                /*去掉默认的页边距*/
             }
+
             body {
-              /* border:1px solid red */
+                /* border:1px solid red */
+
             }
+
             #print-btn {
                 display: none
             }
-            #page-footer-con{
-                display: block!important;
+
+            #page-footer-con {
+                display: block !important;
             }
+
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                padding: 0px;
+
+            }
+
+
         }
+
         #print-btn {
             position: fixed;
             bottom: 50px;
             width: 100px;
             left: 50%;
             margin-left: -50px;
+            z-index: 999;
+
         }
-        table{
+
+        table {
             /* 解决表格重边，并行rowspan的地方变粗的问题 */
             border-spacing: 0px !important;
-            border-collapse: collapse !important;    
+            border-collapse: collapse !important;
+
         }
-        html,body{
+
+        html,
+        body {
             margin: 0px;
+            padding: 0px;
             width: 210mm;
-            margin:  0 auto;
-        }
-
-        table,
-        table tr th,
-        table tr td {
-            border: 1px solid #ccc;
-            height: 100px;
-        }
-        tr,td{
-            /* 防止内容跨页断裂 */
-            page-break-inside: avoid;
-        }
-
-        #container {
-            width: 188.8mm;
-            padding: 20px 10.1mm 20px 10.1mm;
             margin: 0 auto;
-            padding-bottom: 50px;
+
         }
-        #container table {
+
+        table {
             border-collapse: collapse;
             width: 100%;
             table-layout: fixed;
             text-align: center;
         }
 
-        #page-footer-con
-         {
-            position: absolute;
-            z-index: 80;
-            margin: 0;
-            padding: 0;
-            top: 0px;
-            width: 188.8mm;
-            height: 100%;
-            display: none;
-            
-         }
-        .page-content {
-            position:relative;
-            width: 100%;
-            height: 100%;
-        } 
-        .page-footer{
-            position:absolute;
-            bottom:0mm; 
-            padding-bottom:6mm;
-            padding-left: 0mm;
-            width: 100%;
-            text-align: center;
+        thead td,
+        tbody td {
+            /* 防止内容跨页断裂 */
+            height: 100px;
+            border: 1px solid #ccc;
+            page-break-inside: avoid;
+
         }
 
+        #container {
+            /* 这个是body下面的总的打印容器，最好用这种方式设置边框打印，因为打印机会有默认边距，最好是打印的时候设置没有边距 */
+            width: 200mm;
+            margin: 0 auto;
+            padding-top: 10px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        .page-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        #page-footer-con {
+            position: absolute;
+            margin: 0;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 999;
+            box-sizing: border-box;
+
+        }
+
+        .page-footer {
+            position: absolute;
+            bottom: 0px;
+            padding-left: 0mm;
+            padding-bottom: 4px;
+            width: 100%;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            background-color: white;
+        }
+
+        /* 这个地方是兼用safari打印的时候，不能兼容打印的内容不断开的问题
+        包裹一层div，设置div为  display: inline-table;
+         */
+        .user-name {
+            display: inline-table;
+            height: 100%;
+            width: 100%;
+        }
+
+        .center {
+            height: 100px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
     </style>
 </head>
 
 <body>
     <div id="container">
-      <div id="page-footer-con">
-          <div class="page-content">
-              <div class="page-footer">第一页</div>
-          </div>
-          <div class="page-content">
-            <div class="page-footer">第二页</div>
+        <!-- 这个地方是分页容器，通过计算总页数，输出总元素，通过position：absolute，地位到页面的底部 -->
+        <div id="page-footer-con">
+            <div class="page-content">
+                <div class="page-footer">第一页</div>
+            </div>
+            <div class="page-content">
+                <div class="page-footer">第二页</div>
+            </div>
         </div>
-      </div>
         <table>
             <thead id="thead">
                 <tr>
@@ -115,130 +164,485 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>hejiawei</td>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
                     <td>nan</td>
                     <td>18</td>
                     <td>tangsi</td>
                 </tr>
                 <tr>
-                    <td>hejiawei</td>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                        </div>
+
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                        </div>
+                    </td>
                     <td>nan</td>
                     <td>18</td>
                     <td>tangsi</td>
                 </tr>
 
                 <tr>
-                    <td>hejiawei</td>
+                    <td>
+                        <div class="user-name">
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                            <div>hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
+                    <td>nan</td>
+                    <td>18</td>
+                    <td>tangsi</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="user-name">
+                            <div class="center"> hejiawei</div>
+                        </div>
+                    </td>
                     <td>nan</td>
                     <td>18</td>
                     <td>tangsi</td>
                 </tr>
 
-                <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>18</td>
-                    <td>tangsi</td>
-                </tr>
-
-                <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>18</td>
-                    <td>tangsi</td>
-                </tr>
-
-                <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>18</td>
-                    <td>tangsi</td>
-                </tr>
-                <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>18</td>
-                    <td>tangsi</td>
-                </tr>
-                <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>18</td>
-                    <td>tangsi</td>
-                </tr>
-                <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>20</td>
-                    <td>tangsi</td>
-                </tr>
-                <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>21</td>
-                    <td>tangsi</td>
-                </tr>
-
-                <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>21</td>
-                    <td>tangsi</td>
-                </tr> <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>21</td>
-                    <td>tangsi</td>
-                </tr> <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>21</td>
-                    <td>tangsi</td>
-                </tr> <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>21</td>
-                    <td>tangsi</td>
-                </tr> <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>21</td>
-                    <td>tangsi</td>
-                </tr> <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>21</td>
-                    <td>tangsi</td>
-                </tr> <tr>
-                    <td>hejiawei</td>
-                    <td>nan</td>
-                    <td>21</td>
-                    <td>tangsi</td>
-                </tr> 
-           
             </tbody>
+
+            <!-- 这个地方时候给页面底部固定留出50px，防止内容走到底部，覆盖自定义分页 -->
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="height: 50px;">
+                      
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
-    <button id="print-btn" >立即打印</button>
+    <button id="print-btn">立即打印</button>
     <script>
 
         let pageA4Height = 297; //a4纸张的页面高度
         let pageA4Width = 210; //a4纸张的页面宽度
         //计算总页数
         function getPageCount() {
-            var theadH = document.getElementById("thead").offsetHeight
-            var bh = px2mm(document.body.offsetHeight - theadH)
-            
-            //计算要添加多少个表头，打印的时候默认加每页加了表头，要先计算加了多少个表头
-            var addHeaderNum =  bh % pageA4Height==0?bh / pageA4Height:(bh / pageA4Height+1);
-            var addHeight = theadH *(addHeaderNum);
-            
-            //打印时实际的总高度应该是document.body.offsetHeight+addHeight
-            let containHeight = px2mm(document.body.offsetHeight+addHeight)
-            return Number.parseInt(containHeight %  pageA4Height ==0? containHeight /pageA4Height :( containHeight /pageA4Height +1))
+            const pageDefalutPadding = 30
+            const theadH = px2mm(document.getElementById('thead').offsetHeight)
+            const totalHeight = px2mm(document.body.offsetHeight)
+            const pageNum = (totalHeight) / (pageA4Height - theadH)
+            return Math.ceil(pageNum)
         }
-         //根据DPI 像素转为 mm
-         function px2mm(px) {
+        //根据DPI 像素转为 mm
+        function px2mm(px) {
             //获取DPI
             function getDPI() {
                 var arrDPI = new Array();
@@ -261,19 +665,19 @@
             return mm;
         }
 
-        function setPageCount(){
-           var totalPage = getPageCount();
-           var pageCon  = document.getElementById("page-footer-con");
-           pageCon.innerHTML = ""
-           for(var i =0,l=totalPage;i<l;i++){
-              var pageFooter = document.createElement("div")
-              pageFooter.className = "page-content";
-              pageFooter.innerHTML = `<div class="page-footer">自定义页脚第${i+1}页</div>`
-              pageCon.appendChild(pageFooter)
-           }
+        function setPageCount() {
+            var totalPage = getPageCount();
+            var pageCon = document.getElementById("page-footer-con");
+            pageCon.innerHTML = ""
+            for (var i = 0, l = totalPage; i < l; i++) {
+                var pageFooter = document.createElement("div")
+                pageFooter.className = "page-content";
+                pageFooter.innerHTML = `<div class="page-footer">自定义页脚第${i + 1}页</div>`
+                pageCon.appendChild(pageFooter)
+            }
         }
         //开始打印
-        window.addEventListener("click",function(){
+        document.getElementById("print-btn").addEventListener("click", function () {
             setPageCount()//设置自定义页脚
             window.print()
         })
