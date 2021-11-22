@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://www.cnblogs.com/zengfp/p/9888048.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin-when-crossorigin">
+    <meta name="description" content="在前端开发中，对于自己开发的app或者web page性能的好坏，一直是让前端开发很在意的话题。我们需要专业的网站测试工具，让我们知道自己的网页还有哪些需要更为优化的方面，我自己尝试了一款工具：Lig">
+    <meta property="og:description" content="在前端开发中，对于自己开发的app或者web page性能的好坏，一直是让前端开发很在意的话题。我们需要专业的网站测试工具，让我们知道自己的网页还有哪些需要更为优化的方面，我自己尝试了一款工具：Lig">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lighthouse前端性能优化测试工具 - 雨吻蝶 - 博客园</title>
+    <link id="highlighter-theme-cnblogs" rel="stylesheet" data-loaded="true" href="./LighthouseFile/cnblogs.css"><link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.svg" type="image/svg+xml">
+    
+    <link rel="stylesheet" href="./LighthouseFile/blog-common.min.css">
+    <link id="MainCss" rel="stylesheet" href="./LighthouseFile/bundle-codinglife.min.css">
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./LighthouseFile/bundle-codinglife-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/zengfp/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/zengfp/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/zengfp/wlwmanifest.xml">
+    <script type="text/javascript" src="./LighthouseFile/encoder.js"></script><script type="text/javascript" async="" src="./LighthouseFile/analytics.js"></script><script>
+        var currentBlogId = 455302;
+        var currentBlogApp = 'zengfp';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'CodingLife';
+        var visitorUserId = '';
+        var hasCustomScript = false;
+        try {
+            if (hasCustomScript && document.referrer && document.referrer.indexOf('baidu.com') >= 0) {
+                Object.defineProperty(document, 'referrer', { value: '' });
+                Object.defineProperty(Document.prototype, 'referrer', { get: function(){ return ''; } });
+            }
+        } catch(error) { }
+        window.codeHighlightEngine = 1
+        window.enableCodeLineNumber = false
+        window.codeHighlightTheme = 'cnblogs'
+    </script>
+        <script>
+            var currentPostDateAdded = '2018-11-01 11:00';
+        </script>
+    <script src="./LighthouseFile/jquery-2.2.0.min.js"></script>
+    <script src="./LighthouseFile/blog-common.min.js"></script><style type="text/css">.medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)!important}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}</style><style>.prismjs-engine pre[class*='language-'],
+.prismjs-engine pre[class*='language-'].line-numbers {
+  white-space: initial;
+}
+.prismjs-engine pre[class*='language-'] code,
+.prismjs-engine pre[class*='language-'].line-numbers code {
+  display: block;
+  white-space: pre;
+}
+.hljs-engine pre[class*='language-'],
+.hljs-engine pre[class*='language-'].line-numbers {
+  white-space: initial;
+}
+.hljs-engine pre[class*='language-'] code,
+.hljs-engine pre[class*='language-'].line-numbers code {
+  white-space: pre;
+}
+.hljs-engine .hljs .hljs-ln-numbers {
+  padding: 0 14px;
+  color: #bfbfbf;
+}
+</style>
+    
+    
+    
+<meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A8FHS1NmdCwGqD9DwOicnHHY+y27kdWfxKa0YHSGDfv0CSpDKRHTQdQmZVPDUdaFWUsxdgVxlwAd6o+dhJykPA0AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A8zdXi6dr1hwXEUjQrYiyYQGlU3557y5QWDnN0Lwgj9ePt66XMEvNkVWOEOWPd7TP9sBQ25X0Q15Lr1Nn4oGFQkAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A4/Htern2udN9w3yJK9QgWQxQFruxOXsXL7cW60DyCl0EZFGCSme/J33Q/WzF7bBkVvhEWDlcBiUyZaim5CpFQwAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><script src="./LighthouseFile/pubads_impl_2021111601.js" async=""></script><link rel="preload" href="./LighthouseFile/f.txt" as="script"><script type="text/javascript" src="./LighthouseFile/f.txt"></script></head>
+<body class="skin-codinglife has-navbar">
+    <a name="top"></a>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="./LighthouseFile/logo.svg" alt="博客园Logo"></a></li>
+                <li><a href="https://www.cnblogs.com/" onclick="countClicks(&#39;skin-navbar-sitehome&#39;)">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-news&#39;)">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-q&#39;)">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-brands&#39;)">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-ing&#39;)">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="countClicks(&#39;nav&#39;, &#39;skin-navbar-edu&#39;)">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3">
+                        <button type="submit" id="zzk_search_button">
+                            <img src="./LighthouseFile/search.svg" alt="搜索">
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a class="navbar-user-info navbar-blog" href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔" style="display: none;">
+                        <img id="new_post_icon" class="navbar-icon" src="./LighthouseFile/newpost.svg" alt="写随笔">
+                    </a>
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客" style="display: none;">
+                        <img id="myblog_icon" class="navbar-icon" src="./LighthouseFile/myblog.svg" alt="我的博客">
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息" style="display: none;">
+                        <img id="msg_icon" class="navbar-icon" src="./LighthouseFile/message.svg" alt="短消息">
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown" style="display: none;">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="./LighthouseFile/avatar-default.svg" alt="用户头像">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" id="navbar_lite_mode_toggle" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <img id="navbar_lite_mode_on" src="./LighthouseFile/lite-mode-check.svg" class="hide"><span id="navbar_lite_mode_spinner" class="hide">...</span>
+</a>
+                            <a href="javascript:void(0)" onclick="account.logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/" style="display: inline;">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="account.login()" style="display: inline;">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/zengfp/"><img id="blogLogo" src="./LighthouseFile/logo.gif" alt="返回主页"></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/zengfp/">雨吻蝶</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/zengfp/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/%E9%9B%A8%E5%90%BB%E8%9D%B6">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/zengfp/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<span id="stats_post_count">随笔 - 43&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 9&nbsp; </span>
+<span id="stats-total-view-count">阅读 - 
+<span title="总阅读数: 186020">
+18万</span></span>
+
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/zengfp/p/9888048.html">
+    <span>Lighthouse前端性能优化测试工具</span>
+    
+
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                <div id="cnblogs_post_body" class="blogpost-body blogpost-body-html">
+<p><span style="font-size: 15px">在前端开发中，对于自己开发的app或者web page性能的好坏，一直是让前端开发很在意的话题。我们需要专业的网站测试工具，让我们知道自己的网页还有哪些需要更为优化的方面，我自己尝试了一款工具：Lighthouse，感觉还不错，记录下来，也顺便分享给用得着的伙伴。</span></p>
+<p><span style="font-size: 15px">Lighthouse分析web应用程序和web页面，收集关于开发人员最佳实践的现代性能指标和见解，让开发人员根据生成的评估页面，来进行网站优化和完善，提高用户体验。</span></p>
+<p><strong><span style="font-size: 15px">1、在chrome开发者工具中使用lighthouse</span></strong></p>
+<p><span style="font-size: 15px">Lighthouse是直接集成到chrome开发者工具中的，位于‘Audits’面板下。</span></p>
+<p><span style="font-size: 15px">首先，你得下载安装 了chrome浏览器，相信每个做开发的人员都应该拥有chrome浏览器。</span></p>
+<p><span style="font-size: 15px">其次，在chrome浏览器中打开你需要测试的网站，按f12进入开发者调试模式，点击‘Audits’选项，看到如下界面：</span></p>
+<p><span style="font-size: 15px"><img src="./LighthouseFile/1475852-20181101104241104-1699605686.png" alt="" class="medium-zoom-image"></span></p>
+<p><span style="font-size: 15px">然后点击“Run audits”，之后就是等待生成评估界面。</span></p>
+<p><strong><span style="font-size: 15px">2、使用Node Cli</span></strong></p>
+<p><span style="font-size: 15px">lighthouse依赖node 8或者更高的node版本</span></p>
+<p><span style="font-size: 15px">首先全局安装lighthouse:</span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 15px">npm install -<span style="color: rgba(0, 0, 0, 1)">g lighthouse
+# or use yarn:
+# yarn global add lighthouse</span></span></pre>
+</div>
+<p>&nbsp;</p>
+<p><span style="font-size: 15px">然后在终端输入命令，我使用的是博客园首页地址</span></p>
+<div class="cnblogs_code">
+<pre><span style="font-size: 15px">$ lighthouse https:<span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)">www.cnblogs.com/</span></span></pre>
+</div>
+<p>&nbsp;</p>
+<p><span style="font-size: 15px"><img src="./LighthouseFile/1475852-20181101105315437-1420101963.png" alt="" class="medium-zoom-image"></span></p>
+<p><span style="font-size: 15px">然后会生成一个评估的html页面，直接在浏览器中打开进行查看即可。</span></p>
+<p><span style="font-size: 15px"><img src="./LighthouseFile/1475852-20181101105508010-1014013582.png" alt="" class="medium-zoom-image"></span></p>
+<p><span style="font-size: 15px">在这里面你可以看到它给你各个方面的建议，比如图片、css、js这些文件的处理，还有html里面标签的使用，缓存处理等建议，可以根据这些来对网站进行优化。</span></p>
+<p><span style="font-size: 15px">3、附上Lighthouse的git地址，更为详细的内容，可以去参考git：https://github.com/GoogleChrome/lighthouse</span></p>
+</div>
+<div class="clear"></div>
+<div id="blog_post_info_block"><div id="BlogPostCategory">
+    分类: 
+            <a href="https://www.cnblogs.com/zengfp/category/1289956.html" target="_blank">javascript</a>,             <a href="https://www.cnblogs.com/zengfp/category/1329870.html" target="_blank">杂文记录</a></div>
+<div id="EntryTag">
+    标签: 
+            <a href="https://www.cnblogs.com/zengfp/tag/Lighthouse/">Lighthouse</a>,             <a href="https://www.cnblogs.com/zengfp/tag/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E5%B7%A5%E5%85%B7/">前端性能工具</a></div>
+
+    <div id="blog_post_info">
+<div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(9888048,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+        <a id="green_channel_follow" onclick="follow(&#39;e26f1f55-2c9d-4f8e-b381-08d60c616b70&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./LighthouseFile/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./LighthouseFile/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/zengfp/" target="_blank"><img src="./LighthouseFile/20180828180423.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/zengfp/">雨吻蝶</a><br>
+            <a href="https://home.cnblogs.com/u/zengfp/followees/">关注 - 0</a><br>
+            <a href="https://home.cnblogs.com/u/zengfp/followers/">粉丝 - 9</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;e26f1f55-2c9d-4f8e-b381-08d60c616b70&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(9888048,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">2</span>
+    </div>
+    <div class="buryit" onclick="votePost(9888048,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+    <div class="clear"></div>
+    <div id="post_next_prev">
+
+    <a href="https://www.cnblogs.com/zengfp/p/9883073.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/zengfp/p/9883073.html" title="发布于 2018-10-31 14:47">Javascript的字符串（String）操作学习</a>
+    <br>
+    <a href="https://www.cnblogs.com/zengfp/p/9889610.html" class="p_n_p_prefix">» </a> 下一篇：    <a href="https://www.cnblogs.com/zengfp/p/9889610.html" title="发布于 2018-11-01 15:41">Javascript中DOM详解与学习</a>
+
+</div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2018-11-01 11:00</span>&nbsp;
+<a href="https://www.cnblogs.com/zengfp/">雨吻蝶</a>&nbsp;
+阅读(<span id="post_view_count">34990</span>)&nbsp;
+评论(<span id="post_comment_count">1</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=9888048" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(9888048);return false;">收藏</a>&nbsp;
+<a href="javascript:void(0)" onclick="reportManager.report({ currentUserId: &#39;&#39;, targetType: &#39;blogPost&#39;, targetId: &#39;9888048&#39;, targetLink: &#39;https://www.cnblogs.com/zengfp/p/9888048.html&#39;, title: &#39;Lighthouse前端性能优化测试工具&#39; })">举报</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+
+<script>
+    markdown_highlight()
+    var allowComments = true, cb_blogId = 455302, cb_blogApp = 'zengfp', cb_blogUserGuid = 'e26f1f55-2c9d-4f8e-b381-08d60c616b70';
+    var cb_entryId = 9888048, cb_entryCreatedDate = '2018-11-01 11:00', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+    zoomManager.apply("#cnblogs_post_body img:not(.code_img_closed):not(.code_img_opened)");
+</script>
+
+<a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/zengfp/p/9888048.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/zengfp/p/9888048.html#top">返回顶部</a></div>
+    <div id="comment_form_container" style="visibility: visible;"><div class="login_tips">
+    登录后才能查看或发表评论，立即 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return account.login(&#39;!comments&#39;);">登录</a> 或者
+    <a href="https://www.cnblogs.com/">逛逛</a> 博客园首页
+</div>
+</div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="cnblogs_ch"><a href="https://cloud.tencent.com/act/pro/weda?from=15420" target="_blank" onclick="t2Click();gtag(&#39;event&#39;, &#39;click&#39;, {&#39;event_category&#39;: &#39;ad&#39;, &#39;event_label&#39;: &#39;T2-腾讯云&#39;})">【推荐】腾讯云微搭低代码，快速构建小程序/企业级应用，3个月免费</a><br><a href="https://www.cnblogs.com/cmt/p/15564119.html" target="_blank" onclick="gtag(&#39;event&#39;, &#39;click&#39;, {&#39;event_category&#39;: &#39;ad&#39;, &#39;event_label&#39;: &#39;T2-阿里云&#39;})">【推荐】博客园x阿里云联合征文活动：我修复的印象最深的一个bug</a><br><a href="http://www.uccpsoft.com/index.htm" target="_blank" onclick="gtag(&#39;event&#39;, &#39;click&#39;, {&#39;event_category&#39;: &#39;ad&#39;, &#39;event_label&#39;: &#39;T2-ucancode&#39;})">【推荐】跨平台组态\工控\仿真\CAD 50万行C++源码全开放免费下载！</a><br><a href="https://shunshun.com/huodong/cnblogs202111" target="_blank" onclick="gtag(&#39;event&#39;, &#39;click&#39;, {&#39;event_category&#39;: &#39;ad&#39;, &#39;event_label&#39;: &#39;T2-顺顺企服&#39;})">【推荐】博客园老会员送现金大礼包，VTH大屏助力研发企业协同数字化</a><br><a href="https://brands.cnblogs.com/huawei/p/2573" target="_blank" onclick="gtag(&#39;event&#39;, &#39;click&#39;, {&#39;event_category&#39;: &#39;ad&#39;, &#39;event_label&#39;: &#39;T2-华为专区&#39;})">【推荐】华为AppGallery Connect研习社 - Serverless技术沙龙 - 厦门站</a><br><img style="display:none" src="./LighthouseFile/k=2272798&amp;p=81SLM&amp;dx=__IPDX__&amp;rt=2&amp;pro=s&amp;ns=__IP__&amp;ni=__IESID__&amp;v=__LOC__&amp;xa=__ADPLATFORM__&amp;tr=__REQUESTID__&amp;vg=__AUTOPLAY__&amp;nh=__AUTOREFRESH__&amp;mo=__OS__&amp;m0=__OPENUDID__&amp;m0a=__DUID__&amp;m1=__ANDROIDID1__&amp;m1a=__ANDROIDID__&amp;m2=__IMEI__&amp;m4=__AAID__&amp;m5=__IDFA__&amp;"></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="under-post-card">
+            <div id="div-gpt-ad-1592365906576-0" style="width: 300px; height: 250px;" data-google-query-id="CJnCg6zbq_QCFYWSwgodTtQJ4w"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C1_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./LighthouseFile/saved_resource.html"></iframe></div></div>
+    </div>
+    <div id="under_post_card1"><div class="under-post-card">
+<b>编辑推荐：</b>
+<br>
+
+· <a href="https://www.cnblogs.com/xiaxveliang/p/15568823.html" target="_blank">一文分析 Android现状及发展前景</a>
+    <br>
+· <a href="https://www.cnblogs.com/dragonir/p/15574412.html" target="_blank">Three.js 实现脸书元宇宙 3D 动态 Logo</a>
+    <br>
+· <a href="https://www.cnblogs.com/wangjiming/p/15572643.html" target="_blank">关于研发规范化的一些实践和思考</a>
+    <br>
+· <a href="https://www.cnblogs.com/yexiaochai/p/15564407.html" target="_blank">2次心态变化和27个问题：机制落地的部分全貌与节奏控制</a>
+    <br>
+· <a href="https://www.cnblogs.com/xuanyuan/p/15564302.html" target="_blank">CPU 被挖矿，Redis 竟是内鬼！</a>
+    <br>
+</div></div>
+    <div id="cnblogs_c2" class="under-post-card" style="display: none;">
+        <div id="div-gpt-ad-1592366332455-0" style="width: 468px; height: 60px;"></div>
+    </div>
+    <div id="under_post_card2"><div class="itnews under-post-card">
+    <b>最新新闻</b>：
+    <br>
+ ·          <a href="https://news.cnblogs.com/n/707478/" target="_blank">AI大厂迎最冷冬天？网传阿里拟裁员2万人，净利下滑高管离职（2021-11-22 16:57）</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/707477/" target="_blank">美商务部拟将脑机接口技术纳入出口管制！这项黑科技为何3年2入黑名单？（2021-11-22 16:49）</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/707476/" target="_blank">MIT视频新研究：让7000多人看了48个广告，发现「眼见为实」并不成立（2021-11-22 16:41）</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/707475/" target="_blank">元宇宙好与坏，腾讯还没被逼到死角？（2021-11-22 16:33）</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/707474/" target="_blank">屏幕护眼设置来了！还有3款App推荐（2021-11-22 16:26）</a>
+        <br>
+    » <a href="https://news.cnblogs.com/" title="IT 新闻" target="_blank">更多新闻...</a>
+</div></div>
+    <div id="HistoryToday" class="under-post-card" style="display: none;"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+
+           window.tocManager.displayDisableTocTips = false
+           window.tocManager.generateToc();
+           setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem"><!--done-->
+<h3 class="catListTitle">公告</h3>
+
+<div id="blog-news">
+    
+    <div id="profile_block">
+        昵称：
+        <a href="https://home.cnblogs.com/u/zengfp/">
+            雨吻蝶
+        </a>
+        <br>
+        园龄：
+        <a href="https://home.cnblogs.com/u/zengfp/" title="入园时间：2018-08-28">
+            3年2个月
+        </a>
+        <br>
+        粉丝：
+        <a href="https://home.cnblogs.com/u/zengfp/followers/">
+            9
+        </a>
+        <br>
+        关注：
+        <a href="https://home.cnblogs.com/u/zengfp/followees/">
+            0
+        </a>
+        <div id="p_b_follow">
+<a href="javascript:void(0)" onclick="follow(&#39;e26f1f55-2c9d-4f8e-b381-08d60c616b70&#39;)">+加关注</a></div>
+        <script>getFollowStatus('e26f1f55-2c9d-4f8e-b381-08d60c616b70');</script>
+    </div>
+</div>
+
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="">
+
+<table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <table class="CalTitle" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2021/10/22&#39;); return false;">&lt;</a>
+                            </td>
+                            <td align="center">2021年11月</td>
+                            <td align="right" class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2021/12/22&#39;); return false;">&gt;</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    <tr>
+        <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+        <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+        <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+        <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+        <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+        <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+        <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+    </tr>
+            <tr>
+                            <td class="CalOtherMonthDay" align="center">31</td>
+                        <td class="" align="center">
+                            1
+                        </td>
+                        <td class="" align="center">
+                            2
+                        </td>
+                        <td class="" align="center">
+                            3
+                        </td>
+                        <td class="" align="center">
+                            4
+                        </td>
+                        <td class="" align="center">
+                            5
+                        </td>
+                    <td class="CalWeekendDay" align="center">
+                        6
+                    </td>
+            </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            7
+                        </td>
+                            <td class="" align="center">
+                                8
+                            </td>
+                            <td class="" align="center">
+                                9
+                            </td>
+                            <td class="" align="center">
+                                10
+                            </td>
+                            <td class="" align="center">
+                                11
+                            </td>
+                            <td class="" align="center">
+                                12
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            13
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            14
+                        </td>
+                            <td class="" align="center">
+                                15
+                            </td>
+                            <td class="" align="center">
+                                16
+                            </td>
+                            <td class="" align="center">
+                                17
+                            </td>
+                            <td class="" align="center">
+                                18
+                            </td>
+                            <td class="" align="center">
+                                19
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            20
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            21
+                        </td>
+                            <td class="CalTodayDay" align="center">
+                                22
+                            </td>
+                            <td class="" align="center">
+                                23
+                            </td>
+                            <td class="" align="center">
+                                24
+                            </td>
+                            <td class="" align="center">
+                                25
+                            </td>
+                            <td class="" align="center">
+                                26
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            27
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            28
+                        </td>
+                            <td class="" align="center">
+                                29
+                            </td>
+                            <td class="" align="center">
+                                30
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                1
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                2
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                3
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            4
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalOtherMonthDay" align="center">
+                            5
+                        </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                6
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                7
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                8
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                9
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                10
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            11
+                        </td>
+                </tr>
+    </tbody>
+</table></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><!-- 搜索 -->
+<div id="sidebar_search" class="sidebar-block">
+    <div id="sidebar_search" class="mySearch">
+        <h3 class="catListTitle">搜索</h3>
+        <div id="sidebar_search_box">
+            <div id="widget_my_zzk" class="div_my_zzk">
+                <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+            </div>
+            <div id="widget_my_google" class="div_my_zzk">
+                <input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 常用链接 -->
+<div id="sidebar_shortcut" class="sidebar-block"><div class="catListLink">
+<h3 class="catListTitle">
+常用链接
+</h3>
+<ul>
+    
+<li><a href="https://www.cnblogs.com/zengfp/p/" title="我的博客的随笔列表">我的随笔</a></li>
+<li><a href="https://www.cnblogs.com/zengfp/MyComments.html" title="我的发表过的评论列表">我的评论</a></li>
+<li><a href="https://www.cnblogs.com/zengfp/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li>
+<li><a href="https://www.cnblogs.com/zengfp/RecentComments.html" title="我的博客的评论列表">最新评论</a></li>
+<li><a href="https://www.cnblogs.com/zengfp/tag/" title="我的博客的标签列表">我的标签</a></li>
+
+</ul>
+</div>
+
+</div>
+
+<!-- 最新随笔 -->
+
+
+<!-- 我的标签 -->
+<div id="sidebar_toptags" class="sidebar-block"><div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+        <li>
+            <a href="https://www.cnblogs.com/zengfp/tag/Flutter/">Flutter<span class="tag-count">(9)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/zengfp/tag/Widget/">Widget<span class="tag-count">(6)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/zengfp/tag/javascript/">javascript<span class="tag-count">(6)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/zengfp/tag/Nginx/">Nginx<span class="tag-count">(4)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/zengfp/tag/linux/">linux<span class="tag-count">(3)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/zengfp/tag/eclipse/">eclipse<span class="tag-count">(2)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/zengfp/tag/Tomcat/">Tomcat<span class="tag-count">(2)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/zengfp/tag/mysql/">mysql<span class="tag-count">(2)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/zengfp/tag/vue/">vue<span class="tag-count">(2)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/zengfp/tag/webpack/">webpack<span class="tag-count">(2)</span></a>
+        </li>
+    <li>
+        <a href="https://www.cnblogs.com/zengfp/tag/">更多</a>
+    </li>
+
+</ul>
+</div>
+
+</div>
+
+<!-- 积分与排名 -->
+<div id="sidebar_scorerank" class="sidebar-block"><div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	
+67429
+	</li>
+	<li class="liRank">
+		排名 -	
+18850
+	</li>
+</ul>
+</div>
+
+
+
+</div>
+
+<!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+<div id="sidebar_categories">
+
+    <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+        <h3 class="catListTitle">
+            
+随笔分类
+
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/category/1337481.html" class="category-item-link" rel="" target="">Flutter(9)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/category/1289955.html" class="category-item-link" rel="" target="">html&amp;css3(4)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/category/1289956.html" class="category-item-link" rel="" target="">javascript(16)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/category/1329817.html" class="category-item-link" rel="" target="">linux(6)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/category/1329997.html" class="category-item-link" rel="" target="">mysql(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/category/1295070.html" class="category-item-link" rel="" target="">vue(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/category/1289952.html" class="category-item-link" rel="" target="">webpack(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/category/1329870.html" class="category-item-link" rel="" target="">杂文记录(8)</a>
+ 
+                </li>                
+            
+        </ul>
+
+
+    </div>    
+    <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+        <h3 class="catListTitle">
+            
+随笔档案
+
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/archive/2019/05.html" class="category-item-link" rel="" target="">2019年5月(1)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/archive/2019/03.html" class="category-item-link" rel="" target="">2019年3月(3)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/archive/2018/12.html" class="category-item-link" rel="" target="">2018年12月(7)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/archive/2018/11.html" class="category-item-link" rel="" target="">2018年11月(12)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/archive/2018/10.html" class="category-item-link" rel="" target="">2018年10月(11)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/archive/2018/09.html" class="category-item-link" rel="" target="">2018年9月(6)</a>
+ 
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/zengfp/archive/2018/08.html" class="category-item-link" rel="" target="">2018年8月(3)</a>
+ 
+                </li>                
+            
+        </ul>
+
+
+    </div>    
+</div>
+
+<!-- 最新评论 -->
+<!-- 阅读排行榜 -->
+<div id="sidebar_topviewedposts" class="sidebar-block"><div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/zengfp/p/9888048.html">
+                            1. Lighthouse前端性能优化测试工具(34969)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/zengfp/p/9897026.html">
+                            2. Nginx的配置详解(26928)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/zengfp/p/10149871.html">
+                            3. eclipse配置tomcat，让java web项目运行起来！(20749)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/zengfp/p/9910473.html">
+                            4. 移动端H5页面返回并且刷新页面（BFcache）(15720)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/zengfp/p/10026541.html">
+                            5. Flutter中打造多行列列表GridView组件的使用(11164)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<!-- 评论排行榜 -->
+<div id="sidebar_topcommentedposts" class="sidebar-block"><div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/zengfp/p/10103437.html">
+                            1. hexo博客pure主题解决不蒜子计数不显示的问题(2)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/zengfp/p/9897026.html">
+                            2. Nginx的配置详解(2)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/zengfp/p/10558470.html">
+                            3. 一次与客户端合作的走坑之旅！(1)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/zengfp/p/10026541.html">
+                            4. Flutter中打造多行列列表GridView组件的使用(1)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/zengfp/p/9927860.html">
+                            5. Flutter开发环境（Window）配置及踩坑记录(1)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<!-- 推荐排行榜 -->
+<div id="sidebar_topdiggedposts" class="sidebar-block">
+<div id="topdigg_posts_wrap">
+    <div class="catListView">
+        <h3 class="catListTitle">推荐排行榜</h3>
+        <div id="TopDiggPostsBlock">
+            <ul style="word-break: break-all">
+                        <li>
+                            <a href="https://www.cnblogs.com/zengfp/p/10565143.html">
+                                1. 你有所不知的&lt;script&gt;元素(3)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/zengfp/p/9778119.html">
+                                2. 单页面vue引入百度统计的使用方法！(3)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/zengfp/p/10149871.html">
+                                3. eclipse配置tomcat，让java web项目运行起来！(2)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/zengfp/p/10103872.html">
+                                4. Nginx访问权限配置(2)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/zengfp/p/9888048.html">
+                                5. Lighthouse前端性能优化测试工具(2)
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div></div><div id="sidebar_recentcomments" class="sidebar-block"><div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div class="RecentCommentBlock">
+        <ul>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/zengfp/p/9888048.html">1. Re:Lighthouse前端性能优化测试工具</a></li>
+                    <li class="recent_comment_body"><p>您好，请问下Lighthouse怎么设置账号密码登录认证</p>
+</li>
+                    <li class="recent_comment_author">--不会写代码的测试</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/zengfp/p/9778119.html">2. Re:单页面vue引入百度统计的使用方法！</a></li>
+                    <li class="recent_comment_body"><p>这几天的vue项目需要加入百度统计，很有用，参考下，谢谢大佬</p>
+</li>
+                    <li class="recent_comment_author">--前端-Alan</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/zengfp/p/10103437.html">3. Re:hexo博客pure主题解决不蒜子计数不显示的问题</a></li>
+                    <li class="recent_comment_body">哈哈，我也是被这个display弄晕了</li>
+                    <li class="recent_comment_author">--流漪</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/zengfp/p/10103437.html">4. Re:hexo博客pure主题解决不蒜子计数不显示的问题</a></li>
+                    <li class="recent_comment_body">多谢，这个display是真的坑</li>
+                    <li class="recent_comment_author">--EarthSpirit_Korin</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/zengfp/p/10558470.html">5. Re:一次与客户端合作的走坑之旅！</a></li>
+                    <li class="recent_comment_body">博主挺有意思的，通篇简述为：我心里是真的不是滋味，心里mmp啊，让人心塞啊！我当时脑子是蒙的，我是拒绝的……</li>
+                    <li class="recent_comment_author">--Eiji_g</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+
+</div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright © 2021 雨吻蝶
+<br><span id="poweredby">Powered by .NET 6 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+    <input type="hidden" id="antiforgery_token" value="CfDJ8FO3GXnjClZGrNGr2Ic8Z1qbChIK_c50LXddiXj9MzAg0QkgVWokxXQvEGdh3kZ6dtJTQcye6VtuELX9Ce3PF9vkvbiwTs7sfsezlKRU_9h9ol5P49yE4c4psuDEbGqVFP42sok30vY24K5OolfH5KE">
+    <script async="" src="./LighthouseFile/js"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var kv = getGACustom();
+    if (kv) {
+        gtag('set', kv);
+    }
+    gtag('config', 'UA-476124-1');
+    </script>
+    <script defer="" src="./LighthouseFile/hm.js"></script><iframe src="./LighthouseFile/container.html" style="visibility: hidden; display: none;"></iframe>
+
+
+<iframe src="./LighthouseFile/aframe.html" width="0" height="0" style="display: none;"></iframe></body></html>

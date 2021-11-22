@@ -232,7 +232,7 @@ function initPrintArea(){
 			"</thead>"+
 			"<tfoot class='print-footer'>"+
 				"<tr>"+
-					"<td class='print-footer-cell' style='height: " + pageMarginBottom + "mm;border:'>"+
+					"<td class='print-footer-cell' style='height: " + pageMarginBottom + "mm;border:1px solid green !important'>"+
 						"<div class='footer-info'>"+
 						"</div>"+
 					"</td>"+
