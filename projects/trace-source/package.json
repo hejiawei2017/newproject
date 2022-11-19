@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
-    "@vue/cli-service": "^3.2.0",
+    "@vue/cli-service": "^5.0.8",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "nodemon": "^2.0.2",
